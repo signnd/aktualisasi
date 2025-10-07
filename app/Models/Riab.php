@@ -13,8 +13,8 @@ class Riab extends Model
     protected $table = 'riab';
     
     protected $fillable = [
-        'no_registrasi','nama', 'alamat', 'kabupaten_id','kecamatan_id',
-        'kelurahan', 'kategori_3t','ketua','thn_berdiri','tgl_tanda_daftar',
+        'no_registrasi','nama', 'kabupaten_id','kecamatan_id',
+        'kelurahan', 'kategori_3t','ketua','thn_berdiri','alamat','tgl_tanda_daftar',
         'jenis_riab','status','kondisi','email','no_telp','media_sosial',
         'latitude','longitude','link_foto','deskripsi','jumlah_umat',
         'eksisting','tgl_update','status_verifikasi','user_id'
@@ -36,6 +36,6 @@ class Riab extends Model
     }
 
     public function riabdetail(){
-        return $this->hasOne(RiabDetail::class);
+        return $this->hasOne(RiabDetail::class, 'riab_id');
     }
 }

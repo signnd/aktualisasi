@@ -37,7 +37,7 @@
                                 <a href="{{ route('riab.edit', $riab) }}" class="px-4 py-2 bg-green-800 text-white rounded hover:bg-green-700">Edit</a>
                                 <form action="{{ route('riab.destroy', $riab) }}" method="POST" class="inline">
                                     @csrf @method('DELETE')
-                                    <button class="text-red-600 hover:underline" 
+                                    <button class="rounded hover:underline px-3 py-2 bg-red-800" 
                                             onclick="return confirm('Yakin hapus?')">Hapus</button>
                                 </form>
                             </td>

@@ -63,7 +63,7 @@ class User extends Authenticatable
             ->implode('');
     }
 
-    public function riabs() {
+    public function riab() {
         return $this->hasMany(Riab::class);
     }
 }

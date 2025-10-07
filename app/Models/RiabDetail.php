@@ -10,6 +10,7 @@ class RiabDetail extends Model
     use HasFactory;
 
     protected $table = 'riab_details';
+    protected $primaryKey = 'riab_id';
     public $incrementing = false; // karena primary key bukan auto increment
     protected $keyType = 'int';
 
@@ -24,6 +25,11 @@ class RiabDetail extends Model
         'alas_duduk','sound_system','lcd_proyektor','ruang_laktasi',
         'jumlah_pengelola_perpustakaan','jumlah_pengelola_riab','jumlah_kitab_suci',
         'jumlah_buku_keagamaan','lpj_bantuan','listrik','foto_sebelum_bantuan','foto_setelah_bantuan'
+    ];
+
+    protected $casts = [
+        'kondisi_geografis' => 'array',
+        'peta_rawan_bencana' => 'array',
     ];
     
     public function riab()
