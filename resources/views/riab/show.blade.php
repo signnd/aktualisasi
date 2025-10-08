@@ -7,8 +7,19 @@
 
     <div class="py-6">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-gray- border border-gray-300 shadow-lg rounded-lg overflow-hidden">
-                
+            <div class="bg-gray- shadow-lg overflow-hidden">
+                <!-- Action Buttons -->
+                <div class="px-6 py-4 flex justify-between items-center">
+                    <a href="{{ route('riab.index') }}" 
+                       class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
+                        ← Kembali
+                    </a>
+                    <a href="{{ route('riab.edit', $riab) }}" 
+                       class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
+                        Edit Data
+                    </a>
+                </div>
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
                 <!-- Header Section -->
                 <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
                     <h3 class="text-2xl font-bold">{{ $riab->nama }}</h3>
@@ -191,7 +202,7 @@
                             <div>
                                 <p class="text-sm text-gray-300">Sertifikasi Tanah</p>
                                 <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Ada' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-100' }}">
+                                    <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
                                         {{ $riab->riabdetail->sertifikasi_tanah ?? '-' }}
                                     </span>
                                 </p>
@@ -250,27 +261,27 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Sertifikasi</p>
+                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Sertifikasi Tanah RIAB</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_sertifikasi ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Rehabilitasi</p>
+                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Rehabilitasi/Renovasi RIAB</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_rehabilitasi ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Bersih Sehat</p>
+                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan RIAB Bersih & Sehat</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_bersih_sehat ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun KEK</p>
+                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Pemberdayaan RIAB Subsidi Kelompok Ekonomi Kreatif</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_kek ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Bantuan Bangun</p>
+                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Pembangunan RIAB</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_bantuan_bangun ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun BPRIAB Perpus</p>
+                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Pemberdayaan RIAB Perpustakaan</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_bpriab_perpus ?? '-' }}</p>
                             </div>
                         </div>
@@ -292,10 +303,12 @@
                                     'kursi_roda' => 'Kursi Roda',
                                     'jalur_kursi_roda' => 'Jalur Kursi Roda',
                                     'fasilitas_jalur_kursi_roda' => 'Fasilitas Jalur Kursi Roda',
+                                    'lift' => 'Sarana Lift',
                                     'tempat_bermain' => 'Tempat Bermain',
                                     'toilet_anak' => 'Toilet Anak',
                                     'wastafel_anak' => 'Wastafel Anak',
                                     'ruang_ac' => 'Ruang AC',
+                                    'tempat_duduk_lansia' => 'Tempat Duduk Ramah Lansia',
                                     'perpustakaan' => 'Perpustakaan',
                                     'alas_duduk' => 'Alas Duduk',
                                     'sound_system' => 'Sound System',
@@ -373,18 +386,7 @@
                     @endif
 
                 </div>
-
-                <!-- Action Buttons -->
-                <div class="bg-gray-50 px-6 py-4 flex justify-between items-center border-t">
-                    <a href="{{ route('riab.index') }}" 
-                       class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
-                        ← Kembali
-                    </a>
-                    <a href="{{ route('riab.edit', $riab) }}" 
-                       class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
-                        Edit Data
-                    </a>
-                </div>
+</div>
             </div>
         </div>
     </div>

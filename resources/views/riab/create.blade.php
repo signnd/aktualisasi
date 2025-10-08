@@ -58,7 +58,6 @@
 
                 <form action="{{ route('riab.store') }}" method="POST" class="p-6">
                     @csrf
-                    @method('PUT')
                     
                     <!-- Informasi Lokasi -->
                     <div class="mb-8">
@@ -82,7 +81,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten <span class="text-red-500">*</span></label>
                                 <select id="kabupaten_id" name="kabupaten_id" required
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                     <option value="">-- Pilih Kabupaten --</option>
                                     @foreach($kabupaten as $k)
                                         <option value="{{ $k->id }}">
@@ -94,10 +93,11 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Kecamatan <span class="text-red-500">*</span></label>
                                 <select id="kecamatan_id" name="kecamatan_id" required
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                     <option value="">-- Pilih Kecamatan --</option>
                                     @foreach($kecamatan as $kc)
                                         <option value="{{ $kc->id }}" data-kabupaten="{{ $kc->kabupaten_id }}"
+                                        @selected(old('kecamatan_id', $riab->kecamatan_id) == $kc->id)>
                                             {{ $kc->kecamatan }}
                                         </option>
                                     @endforeach
@@ -174,7 +174,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Jenis RIAB</label>
                                 <input type="text" name="jenis_riab"
-                                       placeholder="Contoh: Gereja, Vihara, Masjid"
+                                       placeholder="Contoh: Vihara, TITD, Kelenteng Buddha, Cetiya"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
@@ -351,7 +351,7 @@
                             </div>
                             <div>
                                 <label class="flex items-center space-x-2 cursor-pointer p-3 border border-gray-300 rounded-lg hover:bg-gray-50">
-                                    <input type="checkbox" name="sertifikasi_tanah" value="1"
+                                    <input type="checkbox" name="sertifikasi_tanah" value="Sudah"
                                         class="rounded text-blue-600 focus:ring-blue-500">
                                     <span class="text-sm font-medium text-gray-100">Memiliki Sertifikasi Tanah</span>
                                 </label>
@@ -420,37 +420,37 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Sertifikasi</label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Menerima Bantuan Sertifikasi Tanah RIAB</label>
                                 <input type="number" name="th_menerima_sertifikasi"
                                        min="1900" max="{{ date('Y') }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Rehabilitasi</label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Menerima Bantuan Rehabilitasi/Renovasi RIAB</label>
                                 <input type="number" name="th_menerima_rehabilitasi"
                                        min="1900" max="{{ date('Y') }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Bersih Sehat</label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Menerima Bantuan RIAB Bersih & Sehat</label>
                                 <input type="number" name="th_menerima_bersih_sehat"
                                        min="1900" max="{{ date('Y') }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun KEK</label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Menerima Bantuan Pemberdayaan RIAB Subsidi Kelompok Ekonomi Kreatif</label>
                                 <input type="number" name="th_menerima_kek"
                                        min="1900" max="{{ date('Y') }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Bantuan Bangun</label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Menerima Bantuan Pembangunan RIAB</label>
                                 <input type="number" name="th_menerima_bantuan_bangun"
                                        min="1900" max="{{ date('Y') }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun BPRIAB Perpus</label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Tahun Menerima Bantuan Pemberdayaan RIAB Perpustakaan</label>
                                 <input type="number" name="th_menerima_bpriab_perpus"
                                        min="1900" max="{{ date('Y') }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -468,79 +468,95 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-800">
-                                <input type="checkbox" name="lahan_parkir" value="1"
+                                <input type="checkbox" name="lahan_parkir" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Lahan Parkir</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="toilet_disable" value="1"
+                                <input type="checkbox" name="toilet_disable" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Difabel</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="kursi_roda" value="1"
+                                <input type="checkbox" name="kursi_roda" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Kursi Roda</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="jalur_kursi_roda" value="1"
+                                <input type="checkbox" name="jalur_kursi_roda" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Jalur Kursi Roda</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="fasilitas_jalur_kursi_roda" value="1"
+                                <input type="checkbox" name="fasilitas_jalur_kursi_roda" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Fasilitas Jalur Kursi Roda</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="tempat_bermain" value="1"
+                                <input type="checkbox" name="lift" value="Ada"
+                                    class="rounded text-blue-600 focus:ring-blue-500">
+                                <span class="text-sm">Sarana Lift</span>
+                            </label>
+                            <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                                <input type="checkbox" name="tempat_bermain" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Tempat Bermain</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="toilet_anak" value="1"
+                                <input type="checkbox" name="toilet_anak" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Anak</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="wastafel_anak" value="1"
+                                <input type="checkbox" name="wastafel_anak" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Wastafel Anak</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="ruang_ac" value="1"
+                                <input type="checkbox" name="ruang_ac" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
-                                <span class="text-sm">Ruang AC</span>
+                                <span class="text-sm">Ruangan AC</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="perpustakaan" value="1"
+                                <input type="checkbox" name="ruang_belajar_anak" value="Ada"
+                                    class="rounded text-blue-600 focus:ring-blue-500">
+                                <span class="text-sm">Ruangan Belajar Anak</span> 
+                            </label>
+
+                            <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                                <input type="checkbox" name="perpustakaan" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Perpustakaan</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="pengelola_perpustakaan" value="1"
+                                <input type="checkbox" name="pengelola_perpustakaan" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Pengelola Perpustakaan</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="alas_duduk" value="1"
+                                <input type="checkbox" name="alas_duduk" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Alas Duduk</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="sound_system" value="1"
+                                <input type="checkbox" name="sound_system" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Sound System</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="lcd_proyektor" value="1"
+                                <input type="checkbox" name="lcd_proyektor" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">LCD Proyektor</span>
                             </label>
                             <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
-                                <input type="checkbox" name="ruang_laktasi" value="1"
+                                <input type="checkbox" name="ruang_laktasi" value="Ada"
                                     class="rounded text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruang Laktasi</span>
+                            </label>
+                                <label class="flex items-center space-x-2 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                                <input type="checkbox" name="tempat_duduk_lansia" value="Ada"
+                                    class="rounded text-blue-600 focus:ring-blue-500">
+                                <span class="text-sm">Tempat Duduk Ramah Lansia</span>
                             </label>
                         </div>
                     </div>
@@ -616,7 +632,8 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Listrik</label>
                                 <input type="text" name="listrik"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       placeholder="(diisi penyedia listrik)">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Foto Sebelum Bantuan (URL)</label>
@@ -627,6 +644,12 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Foto Setelah Bantuan (URL)</label>
                                 <input type="url" name="foto_setelah_bantuan"
+                                       placeholder="https://..."
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Link Berita Acara Penonaktifan</label>
+                                <input type="url" name="link_berita_acara_nonaktif"
                                        placeholder="https://..."
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>

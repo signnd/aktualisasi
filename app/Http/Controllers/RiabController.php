@@ -22,11 +22,12 @@ class RiabController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Riab $riab)
     {
+        $riab->load('riabdetail');
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
-        return view('riab.create', compact('kabupaten', 'kecamatan'));
+        return view('riab.create', compact('kabupaten', 'kecamatan', 'riab'));
     }
 
     /**
@@ -50,7 +51,7 @@ class RiabController extends Controller
             'status' => 'nullable|string|in:Disetujui,Ditolak,Pending',
             'kondisi' => 'nullable|string|in:Sangat Baik,Baik,Rusak Ringan,Rusak Sedang,Rusak Berat',
             'email' => 'nullable|email|max:255',
-            'no_telp' => 'nullable|string|max:20',
+            'no_telp' => 'nullable|string|max:100',
             'media_sosial' => 'nullable|string|max:255',
             'latitude' => 'nullable|string|max:50',
             'longitude' => 'nullable|string|max:50',
@@ -125,17 +126,20 @@ class RiabController extends Controller
             'kursi_roda' => $request->has('kursi_roda') ? 'Ada' : 'Tidak ada',
             'jalur_kursi_roda' => $request->has('jalur_kursi_roda') ? 'Ada' : 'Tidak ada',
             'fasilitas_jalur_kursi_roda' => $request->has('fasilitas_jalur_kursi_roda') ? 'Ada' : 'Tidak ada',
+            'lift' => $request->has('lift') ? 'Ada' : 'Tidak ada',
             'tempat_bermain' => $request->has('tempat_bermain') ? 'Ada' : 'Tidak ada',
             'toilet_anak' => $request->has('toilet_anak') ? 'Ada' : 'Tidak ada',
             'wastafel_anak' => $request->has('wastafel_anak') ? 'Ada' : 'Tidak ada',
             'ruang_ac' => $request->has('ruang_ac') ? 'Ada' : 'Tidak ada',
             'ruang_belajar_anak' => $request->has('ruang_belajar_anak') ? 'Ada' : 'Tidak ada',
             'perpustakaan' => $request->has('perpustakaan') ? 'Ada' : 'Tidak ada',
-            'pengelola_perpustakaan' => $request->pengelola_perpustakaan,
+            'pengelola_perpustakaan' => $request->has('pengelola_perpustakaan') ? 'Ada' : 'Tidak ada',
             'alas_duduk' => $request->has('alas_duduk') ? 'Ada' : 'Tidak ada',
-            'sound_system' => $request->has('alas_duduk') ? 'Ada' : 'Tidak ada',
-            'lcd_proyektor' => $request->has('alas_duduk') ? 'Ada' : 'Tidak ada',
-            'ruang_laktasi' => $request->has('alas_duduk') ? 'Ada' : 'Tidak ada',
+            'sound_system' => $request->has('sound_system') ? 'Ada' : 'Tidak ada',
+            'lcd_proyektor' => $request->has('lcd_proyektor') ? 'Ada' : 'Tidak ada',
+            'tempat_duduk_lansia' => $request->has('tempat_duduk_lansia') ? 'Ada' : 'Tidak ada',
+            'ruang_laktasi' => $request->has('ruang_laktasi') ? 'Ada' : 'Tidak ada',
+            'jenis_kitab_suci' => json_encode($request->jenis_kitab_suci ?? []),
             'jumlah_pengelola_perpustakaan' => $request->jumlah_pengelola_perpustakaan,
             'jumlah_pengelola_riab' => $request->jumlah_pengelola_riab,
             'jumlah_kitab_suci' => $request->jumlah_kitab_suci,
@@ -144,14 +148,15 @@ class RiabController extends Controller
             'listrik' => $request->listrik,
             'foto_sebelum_bantuan' => $request->foto_sebelum_bantuan,
             'foto_setelah_bantuan' => $request->foto_setelah_bantuan,
+            'link_berita_acara_nonaktif' => $request->link_berita_acara_nonaktif,
         ];
 
         Riab::create($validated);
 
-        //if ($request->has('details')) {
-        //foreach ($request->details as $detail) {
-        //    $riab->details()->create($detail);
-        //}
+        $riab->riabdetail()->updateOrCreate(
+            ['riab_id' => $riab->id],
+            $detailData
+        );
 
         // Simpan detail
         $riab->riabdetail()->create($request->only([
@@ -240,7 +245,7 @@ class RiabController extends Controller
             'status' => 'nullable|string|in:Disetujui,Ditolak,Pending',
             'kondisi' => 'nullable|string|in:Sangat Baik,Baik,Rusak Ringan,Rusak Sedang,Rusak Berat',
             'email' => 'nullable|email|max:255',
-            'no_telp' => 'nullable|string|max:20',
+            'no_telp' => 'nullable|string|max:100',
             'media_sosial' => 'nullable|string|max:255',
             'latitude' => 'nullable|string|max:50',
             'longitude' => 'nullable|string|max:50',
@@ -316,17 +321,20 @@ class RiabController extends Controller
             'kursi_roda' => $request->has('kursi_roda') ? 'Ada' : 'Tidak ada',
             'jalur_kursi_roda' => $request->has('jalur_kursi_roda') ? 'Ada' : 'Tidak ada',
             'fasilitas_jalur_kursi_roda' => $request->has('fasilitas_jalur_kursi_roda') ? 'Ada' : 'Tidak ada',
+            'lift' => $request->has('lift') ? 'Ada' : 'Tidak ada',
             'tempat_bermain' => $request->has('tempat_bermain') ? 'Ada' : 'Tidak ada',
             'toilet_anak' => $request->has('toilet_anak') ? 'Ada' : 'Tidak ada',
             'wastafel_anak' => $request->has('wastafel_anak') ? 'Ada' : 'Tidak ada',
             'ruang_ac' => $request->has('ruang_ac') ? 'Ada' : 'Tidak ada',
             'ruang_belajar_anak' => $request->has('ruang_belajar_anak') ? 'Ada' : 'Tidak ada',
             'perpustakaan' => $request->has('perpustakaan') ? 'Ada' : 'Tidak ada',
-            'pengelola_perpustakaan' => $request->pengelola_perpustakaan,
+            'pengelola_perpustakaan' => $request->has('pengelola_perpustakaan') ? 'Ada' : 'Tidak ada',
             'alas_duduk' => $request->has('alas_duduk') ? 'Ada' : 'Tidak ada',
-            'sound_system' => $request->has('alas_duduk') ? 'Ada' : 'Tidak ada',
-            'lcd_proyektor' => $request->has('alas_duduk') ? 'Ada' : 'Tidak ada',
-            'ruang_laktasi' => $request->has('alas_duduk') ? 'Ada' : 'Tidak ada',
+            'sound_system' => $request->has('sound_system') ? 'Ada' : 'Tidak ada',
+            'lcd_proyektor' => $request->has('lcd_proyektor') ? 'Ada' : 'Tidak ada',
+            'tempat_duduk_lansia' => $request->has('tempat_duduk_lansia') ? 'Ada' : 'Tidak ada',
+            'ruang_laktasi' => $request->has('ruang_laktasi') ? 'Ada' : 'Tidak ada',
+            'jenis_kitab_suci' => json_encode($request->jenis_kitab_suci ?? []),
             'jumlah_pengelola_perpustakaan' => $request->jumlah_pengelola_perpustakaan,
             'jumlah_pengelola_riab' => $request->jumlah_pengelola_riab,
             'jumlah_kitab_suci' => $request->jumlah_kitab_suci,
@@ -335,6 +343,7 @@ class RiabController extends Controller
             'listrik' => $request->listrik,
             'foto_sebelum_bantuan' => $request->foto_sebelum_bantuan,
             'foto_setelah_bantuan' => $request->foto_setelah_bantuan,
+            'link_berita_acara_nonaktif' => $request->link_berita_acara_nonaktif,
         ];
 
         $riab->update($request->all());
