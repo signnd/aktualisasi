@@ -395,12 +395,6 @@
                                         <span class="text-sm">Dataran Tinggi</span>
                                     </label>
                                     <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Dataran Tinggi"
-                                             {{ in_array('Dataran Tinggi', $kondisiGeo) ? 'checked' : '' }}
-                                             class="rounded text-blue-600 focus:ring-blue-500">
-                                        <span class="text-sm">Dataran Tinggi</span>
-                                    </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Rendah"
                                              {{ in_array('Dataran Rendah', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-600 focus:ring-blue-500">
