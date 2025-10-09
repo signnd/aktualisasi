@@ -180,7 +180,115 @@
                     <div class="border-b pb-4">
                         <h4 class="text-lg font-semibold text-gray-100 mb-3">Dokumentasi</h4>
                         <a href="{{ $riab->link_foto }}" target="_blank" class="text-blue-600 hover:underline">
-                            Lihat Foto SIORI →
+                            @endif
+                    <!-- Link Foto -->
+                    @if($riab->link_foto)
+                    <div class="border-b pb-4">
+                        @php
+                            // Deteksi jenis URL dan konversi jika perlu
+                            $imageUrl = $riab->link_foto;
+                            $fileId = null;
+                            $isGoogleDrive = false;
+                            $isDirectImage = false;
+                            
+                            // Cek apakah URL dari Google Drive
+                            if (strpos($imageUrl, 'drive.google.com') !== false) {
+                                $isGoogleDrive = true;
+                                // Extract file ID dari berbagai format URL Google Drive
+                                if (preg_match('/\/d\/([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
+                                    $fileId = $matches[1];
+                                } elseif (preg_match('/id=([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
+                                    $fileId = $matches[1];
+                                }
+                                
+                                if ($fileId) {
+                                    // Gunakan format direct image dari lh3.googleusercontent.com
+                                    $imageUrl = "https://lh3.googleusercontent.com/d/{$fileId}";
+                                }
+                            } 
+                            // Cek apakah URL langsung ke gambar (jpg, jpeg, png, gif, webp, svg)
+                            elseif (preg_match('/\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i', $imageUrl)) {
+                                $isDirectImage = true;
+                            }
+                        @endphp
+                        
+                        <div class="space-y-3">
+                            @if($isGoogleDrive && $fileId)
+                                <!-- Google Drive Image dengan fallback ke iframe -->
+                                <div class="relative rounded-lg overflow-hidden border border-gray-300 bg-gray-50">
+                                    <img id="main-image" 
+                                         src="{{ $imageUrl }}" 
+                                         alt="Foto {{ $riab->nama }}"
+                                         class="w-full h-auto max-h-96 object-contain mx-auto"
+                                         style="display: block;"
+                                         onerror="showIframeViewer('main-image', 'iframe-viewer-main', '{{ $fileId }}')">
+                                    
+                                    <!-- Fallback: Google Drive Viewer (iframe) -->
+                                    <iframe id="iframe-viewer-main"
+                                            src="https://drive.google.com/file/d/{{ $fileId }}/preview" 
+                                            class="w-full h-96"
+                                            style="display: none; border: none;"
+                                            allow="autoplay"></iframe>
+                                </div>
+                            @elseif($isDirectImage)
+                                <!-- Direct Image URL -->
+                                <div class="relative rounded-lg overflow-hidden border border-gray-300 bg-gray-50">
+                                    <img src="{{ $imageUrl }}" 
+                                         alt="Foto {{ $riab->nama }}"
+                                         class="w-full h-auto max-h-96 object-contain mx-auto"
+                                         onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-96 text-gray-500\'><div class=\'text-center\'><svg class=\'w-16 h-16 mx-auto mb-4 text-gray-400\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\'></path></svg><p class=\'text-sm\'>Gambar tidak dapat dimuat</p><p class=\'text-xs text-gray-400 mt-1\'>URL gambar mungkin tidak valid atau tidak dapat diakses</p></div></div>';">
+                                </div>
+                            @else
+                                <!-- URL tidak dikenali atau format tidak didukung -->
+                                <div class="relative rounded-lg overflow-hidden border border-gray-300 bg-gray-50 p-10">
+                                    <div class="text-center text-gray-500">
+                                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                                        </svg>
+                                        <p class="font-medium">Format link tidak didukung</p>
+                                        <p class="text-sm mt-1">Silakan gunakan link Google Drive atau URL gambar langsung</p>
+                                    </div>
+                                </div>
+                            @endif
+                            
+                            <!-- Link to original -->
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <a href="{{ $riab->link_foto }}" target="_blank" 
+                                   class="inline-flex items-center text-blue-600 hover:text-blue-800 transition">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                                    </svg>
+                                    @if($isGoogleDrive)
+                                        Buka di Google Drive
+                                    @else
+                                        Buka Gambar Asli
+                                    @endif
+                                </a>
+                                
+                                @if($fileId)
+                                <a href="https://drive.google.com/uc?export=download&id={{ $fileId }}" 
+                                   target="_blank"
+                                   class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Download
+                                </a>
+                                @elseif($isDirectImage)
+                                <a href="{{ $imageUrl }}" 
+                                   download
+                                   target="_blank"
+                                   class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Download
+                                </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                         </a>
                     </div>
                     @endif
@@ -381,6 +489,24 @@
                                 <p class="text-sm text-gray-300">LPJ Bantuan</p>
                                 <p class="font-medium">{{ $riab->riabdetail->lpj_bantuan ?? '-' }}</p>
                             </div>
+                            @if($riab->riabdetail->foto_sebelum_bantuan)
+                            <div>
+                                <p class="text-sm text-gray-300">Foto sebelum bantuan</p>
+                                <a class="font-medium" href="{{ $riab->riabdetail->foto_sebelum_bantuan }}" target="_blank" class="text-blue-600 hover:underline">Lihat foto sebelum bantuan</p>
+                            </div>
+                            @endif
+                            @if($riab->riabdetail->foto_setelah_bantuan)
+                            <div>
+                                <p class="text-sm text-gray-300">Foto setelah Bantuan</p>
+                                <a class="font-medium" href="{{ $riab->riabdetail->foto_setelah_bantuan }}" target="_blank" class="text-blue-600 hover:underline">Lihat foto setelah bantuan</p>
+                            </div>
+                            @endif
+                            @if($riab->riabdetail->link_berita_acara_nonaktif)
+                            <div>
+                                <p class="text-sm text-gray-300">Link Berita Acara Penonaktifan</p>
+                                <a class="font-medium" href="{{ $riab->riabdetail->link_berita_acara_nonaktif }}" class="text-blue-600 hover:underline">Lihat Berita Acara →</p>
+                            </div>
+                            @endif
                         </div>
                     </div>
                     @endif
@@ -390,4 +516,20 @@
             </div>
         </div>
     </div>
+    <!-- JavaScript untuk Fallback Image Viewer -->
+    <script>
+        function showIframeViewer(imageId, iframeId, fileId) {
+            // Sembunyikan gambar yang error
+            const imgElement = document.getElementById(imageId);
+            if (imgElement) {
+                imgElement.style.display = 'none';
+            }
+            
+            // Tampilkan iframe viewer sebagai fallback
+            const iframeElement = document.getElementById(iframeId);
+            if (iframeElement) {
+                iframeElement.style.display = 'block';
+            }
+        }
+    </script>
 </x-app-layout>

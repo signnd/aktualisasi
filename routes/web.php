@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\RiabController;
+use App\Http\Controllers\OkbController;
 use App\Http\Controllers\KabupatenController;
 use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\YayasanBuddhaController;
+use App\Http\Controllers\MajelisController;
 
 
 Route::get('/', function () {
@@ -37,6 +40,9 @@ Route::middleware(['auth'])->group(function () {
 
 //Route::resource('riab', RiabController::class)->middleware(['auth', 'verified']);
 Route::resource('riab', RiabController::class);
+Route::resource('okb', OkbController::class);
+Route::resource('yayasan', YayasanBuddhaController::class);
+Route::resource('majelis', MajelisController::class);
 Route::prefix('master')->group(function () {
     Route::resource('kabupaten', KabupatenController::class);
     Route::resource('kecamatan', KecamatanController::class);

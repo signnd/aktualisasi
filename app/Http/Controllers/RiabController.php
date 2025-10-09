@@ -39,7 +39,7 @@ class RiabController extends Controller
             // Informasi umum
             'no_registrasi' => 'nullable|string|max:255',
             'nama' => 'required|string|max:255',
-            'alamat' => 'required|string|max:500',
+            'alamat' => 'required|string|max:1000',
             'kabupaten_id' => 'required|exists:kabupaten,id',
             'kecamatan_id' => 'required|exists:kecamatan,id',
             'kelurahan' => 'nullable|string|max:255',
@@ -151,55 +151,12 @@ class RiabController extends Controller
             'link_berita_acara_nonaktif' => $request->link_berita_acara_nonaktif,
         ];
 
-        Riab::create($validated);
+        $riab = Riab::create($validated);
 
         $riab->riabdetail()->updateOrCreate(
             ['riab_id' => $riab->id],
             $detailData
-        );
-
-        // Simpan detail
-        $riab->riabdetail()->create($request->only([
-            'update_sisfo',
-            'terdaftar_siori',
-            'status_tanah',
-            'th_menerima_sertifikasi',
-            'th_menerima_rehabilitasi',
-            'th_menerima_bersih_sehat',
-            'th_menerima_kek',
-            'th_menerima_bantuan_bangun',
-            'th_menerima_bpriab_perpus',
-            'luas_tanah',
-            'luas_bangunan',
-            'kondisi_geografis',
-            'peta_rawan_bencana',
-            'sertifikasi_tanah',
-            'lahan_parkir',
-            'toilet_disable',
-            'kursi_roda',
-            'jalur_kursi_roda',
-            'fasilitas_jalur_kursi_roda',
-            'tempat_bermain',
-            'toilet_anak',
-            'wastafel_anak',
-            'ruang_ac',
-            'ruang_belajar_anak',
-            'perpustakaan',
-            'pengelola_perpustakaan',
-            'alas_duduk',
-            'sound_system',
-            'lcd_proyektor',
-            'ruang_laktasi',
-            'jumlah_pengelola_perpustakaan',
-            'jumlah_pengelola_riab',
-            'jumlah_kitab_suci',
-            'jumlah_buku_keagamaan',
-            'lpj_bantuan',
-            'listrik',
-            'foto_sebelum_bantuan',
-            'foto_setelah_bantuan',
-        ]));
-    
+        );    
 
         return redirect()->route('riab.index')->with('success', 'Data RIAB berhasil disimpan.');
     }

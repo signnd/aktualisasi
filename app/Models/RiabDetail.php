@@ -34,7 +34,7 @@ class RiabDetail extends Model
     
     public function riab()
     {
-        return $this->belongsTo(Riab::class);
+        return $this->belongsTo(Riab::class, 'riab_id');
     }
         
 }

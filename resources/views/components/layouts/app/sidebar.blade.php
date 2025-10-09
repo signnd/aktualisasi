@@ -18,8 +18,10 @@
             </flux:navlist>
 
             <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('RIAB')" class="grid">
+                <flux:navlist.group :heading="__('Urusan Agama')" class="grid">
                     <flux:navlist.item icon="home-modern" :href="route('riab.index')" :current="request()->routeIs('riab.index')" wire:navigate>{{ __('Daftar RIAB') }}</flux:navlist.item>
+                    <flux:navlist.item icon="user-group" :href="route('okb.index')" :current="request()->routeIs('okb.index')" wire:navigate>{{ __('Daftar OKB') }}</flux:navlist.item>
+                    <flux:navlist.item icon="shield-check" :href="route('yayasan.index')" :current="request()->routeIs('yayasan.index')" wire:navigate>{{ __('Daftar Yayasan Keagamaan') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 

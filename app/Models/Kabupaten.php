@@ -22,4 +22,15 @@ class Kabupaten extends Model
         return $this->hasMany(Riab::class);
     }
 
+    public function okbs()
+    {
+        return $this->hasMany(Okb::class);
+    }
+
+    //public function yayasans()
+    //{
+    //    return $this->hasMany(YayasanBuddha::class);
+    //}
+
+
 }

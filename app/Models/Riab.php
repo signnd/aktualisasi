@@ -36,6 +36,6 @@ class Riab extends Model
     }
 
     public function riabdetail(){
-        return $this->hasOne(RiabDetail::class, 'riab_id');
+        return $this->hasOne(RiabDetail::class, 'riab_id', 'id');
     }
 }
