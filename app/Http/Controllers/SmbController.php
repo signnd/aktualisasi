@@ -1,0 +1,146 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Smb;
+use App\Models\Kabupaten;
+use Illuminate\Http\Request;
+
+class SmbController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $smbs = Smb::with('kabupaten')->paginate(20);
+        return view('smb.index', compact('smbs'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $kabupaten = Kabupaten::all();
+        return view('smb.create', compact('kabupaten'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'nama_smb' => 'required|string|max:400',
+            'alamat' => 'nullable|string|max:800',
+            'didirikan' => 'nullable|string|max:50',
+            'izop_1' => 'nullable|string|max:100',            
+            'ppjg_1' => 'nullable|string|max:100',            
+            'ppjg_2' => 'nullable|string|max:100',            
+            'nssmb' => 'nullable|string|max:100',            
+            'tgl_izop' => 'nullable|date',            
+            'masa_izop' => 'nullable|string|max:100',            
+            'bapen' => 'nullable|string|max:100',            
+            'alamat_bapen' => 'nullable|string|max:1000',            
+            'kabupaten_id' => 'required|exists:kabupaten,id',
+            'nama_pic' => 'nullable|string|max:100',            
+            'no_telp' => 'nullable|string|max:100',            
+            'jumlah_siswa' => 'nullable|string|max:100',            
+            'status' => 'nullable|string|in:Disetujui,Ditolak,Pending',     
+            'eksisting' => 'nullable|string|in:Aktif,Tidak Aktif',       
+            'link_berita_acara_nonaktif' => 'nullable|string|max:100',            
+            'kondisi' => 'nullable|string|in:Sangat Baik,Baik,Rusak Ringan,Rusak Sedang,Rusak Berat',            
+            'link_foto' => 'nullable|string|max:100',            
+            'tgl_update' => 'nullable|date',            
+            'status_verifikasi' => 'nullable|string|in:TRUE,FALSE',            
+            'deksripsi' => 'nullable|string|max:2000',            
+            'email' => 'nullable|string|max:100',            
+            'media_sosial' => 'nullable|string|max:100',   
+            'user_id' => 'required|exists:users,id',          
+        ]);
+
+        Smb::create($validated);
+
+        return redirect()->route('smb.index')
+                         ->with('success', 'Sekolah Minggu berhasil ditambahkan');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Smb $smb)
+    {
+        //$smb->load(['kabupaten', 'siswa.kabupaten']);
+        // Preload semua relasi yang dibutuhkan sekaligus
+        $smb->load([
+            'kabupaten:id,kabupaten',          // hanya ambil kolom yang dibutuhkan
+            'siswasmb' => function ($query) {
+                $query->with('kabupaten:id,kabupaten')
+                      ->orderBy('nama_siswa', 'asc')
+                      ->paginate(20);
+            }
+        ]);
+        return view('smb.show', compact('smb'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Smb $smb)
+    {
+        $kabupaten = Kabupaten::all();
+        return view('smb.edit', compact('smb', 'kabupaten'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Smb $smb)
+    {
+        $validated = $request->validate([
+            'nama_smb' => 'required|string|max:400',
+            'alamat' => 'nullable|string|max:800',
+            'didirikan' => 'nullable|string|max:50',
+            'izop_1' => 'nullable|string|max:100',            
+            'ppjg_1' => 'nullable|string|max:100',            
+            'ppjg_2' => 'nullable|string|max:100',            
+            'nssmb' => 'nullable|string|max:100',            
+            'tgl_izop' => 'nullable|date',            
+            'masa_izop' => 'nullable|string|max:100',            
+            'bapen' => 'nullable|string|max:100',            
+            'alamat_bapen' => 'nullable|string|max:1000',            
+            'kabupaten_id' => 'required|exists:kabupaten,id',
+            'nama_pic' => 'nullable|string|max:100',            
+            'no_telp' => 'nullable|string|max:100',            
+            'jumlah_siswa' => 'nullable|string|max:100',            
+            'status' => 'nullable|string|in:Disetujui,Ditolak,Pending',           
+            'eksisting' => 'nullable|string|in:Aktif,Tidak Aktif',           
+            'link_berita_acara_nonaktif' => 'nullable|string|max:100',            
+            'kondisi' => 'nullable|string|in:Sangat Baik,Baik,Rusak Ringan,Rusak Sedang,Rusak Berat',            
+            'link_foto' => 'nullable|string|max:100',            
+            'tgl_update' => 'nullable|date',            
+            'status_verifikasi' => 'nullable|string|in:TRUE,FALSE',            
+            'deksripsi' => 'nullable|string|max:2000',            
+            'email' => 'nullable|string|max:100',            
+            'media_sosial' => 'nullable|string|max:100',   
+            'user_id' => 'required|exists:users,id',          
+        ]);
+
+        $smb->update($validated);
+
+        return redirect()->route('smb.index')
+                         ->with('success', 'Sekolah Minggu berhasil diperbarui');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Smb $smb)
+    {
+        $smb->delete();
+
+        return redirect()->route('smb.index')
+                         ->with('success', 'Data Sekolah Minggu berhasil dihapus.');
+    }
+}

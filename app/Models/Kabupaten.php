@@ -32,5 +32,12 @@ class Kabupaten extends Model
     //    return $this->hasMany(YayasanBuddha::class);
     //}
 
+    public function smb() {
+        return $this->hasMany(Smb::class);
+    }
+
+    public function siswaSmb () {
+        return $this->hasMany(SiswaSmb::class);
+    }
 
 }

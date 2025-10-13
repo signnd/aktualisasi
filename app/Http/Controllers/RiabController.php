@@ -45,7 +45,7 @@ class RiabController extends Controller
             'kelurahan' => 'nullable|string|max:255',
             'kategori_3t' => 'nullable|in:3T,Non 3T',
             'ketua' => 'nullable|string|max:255',
-            'thn_berdiri' => 'nullable|integer|min:1900|max:' . date('Y'),
+            'thn_berdiri' => 'nullable|integer|min:1000|max:' . date('Y'),
             'tgl_tanda_daftar' => 'nullable|date',
             'jenis_riab' => 'nullable|string|max:255',
             'status' => 'nullable|string|in:Disetujui,Ditolak,Pending',

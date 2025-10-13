@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
-            {{ __('Daftar majelis') }}
+            {{ __('Daftar Sekolah Minggu Buddha') }}
         </h2>
     </x-slot>
 
@@ -54,13 +54,13 @@
 
             <!-- Header dengan Tombol Tambah -->
             <div class="mb-6 flex justify-between items-center">
-                <h3 class="text-2xl font-bold">Data Majelis Agama Buddha di Bali</h3>
-                <a href="{{ route('majelis.create') }}" 
+                <h3 class="text-2xl font-bold">Data Sekolah Minggu Buddha</h3>
+                <a href="{{ route('smb.create') }}" 
                    class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 flex items-center shadow-lg">
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
                     </svg>
-                    Tambah majelis
+                    Tambah SMB
                 </a>
             </div>
 
@@ -72,48 +72,49 @@
                         <thead class="bg-gray-200 dark:bg-zinc-700">
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">No</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama majelis</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Sekte</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Binaan</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Ketua</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama SMB</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Alamat</th>
+                                <!--<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"></th> -->
+                                <!--<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Status</th> -->
                                 <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white dark:bg-zinc-800 divide-y divide-zinc-500">
-                            @forelse($majelis as $item)
+                            @forelse($smbs as $index => $smb)
                                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                        {{ $loop->iteration + $majelis->firstItem() - 1 }}
+                                        {{ $smbs->firstItem() + $index }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $item->nama_majelis }}</div>
-                                        <!--<div class="text-sm text-gray-500 dark:text-white">{{ $majelis->no_registrasi ?? '-' }}</div>-->
+                                        <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $smb->nama_smb }}</div>
+                                        <div class="text-sm text-gray-500 dark:text-white">{{ $smb->izop_1 }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                        {{ $item->sekte }}
+                                        {{ $smb->kabupaten->kabupaten ?? '-' }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                        {{ $item->binaan }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                        {{ $item->ketua ?? '-' }}
-                                    </td>
+                                    <!-- <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                            {{ $smb->status == 'Disetujui' ? 'bg-green-100 text-green-800' : 
+                                               ($smb->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800') }}">
+                                            {{ $smb->status ?? 'Pending' }}
+                                        </span>
+                                    </td> -->
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                         <div class="flex justify-center space-x-2">
-                                            <a href="{{ route('majelis.show', $item) }}" 
+                                            <a href="{{ route('smb.show', $smb) }}" 
                                                class="text-blue-600 hover:text-blue-900 transition" title="Detail">
                                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                                                     <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('majelis.edit', $item) }}" 
+                                            <a href="{{ route('smb.edit', $smb) }}" 
                                                class="text-green-600 hover:text-green-900 transition" title="Edit">
                                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                                     <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
                                                 </svg>
                                             </a>
-                                            <form action="{{ route('majelis.destroy', $item) }}" method="POST" 
+                                            <form action="{{ route('smb.destroy', $smb) }}" method="POST" 
                                                   onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" class="inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -128,13 +129,13 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="px-6 py-10 text-center">
+                                    <td colspan="6" class="px-6 py-10 text-center">
                                         <div class="flex flex-col items-center justify-center text-gray-500">
                                             <svg class="w-16 h-16 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                                             </svg>
-                                            <p class="text-lg font-medium">Belum ada data Majelis Agama Buddha</p>
-                                            <p class="text-sm mt-1">Klik tombol "Tambah majelis" untuk menambahkan data baru</p>
+                                            <p class="text-lg font-medium">Belum ada data SMB</p>
+                                            <p class="text-sm mt-1">Klik tombol "Tambah SMB" untuk menambahkan data baru</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -144,9 +145,9 @@
                 </div>
 
                 <!-- Pagination -->
-                @if($majelis->hasPages())
+                @if($smbs->hasPages())
                     <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
-                        {{ $majelis->links() }}
+                        {{ $smb->links() }}
                     </div>
                 @endif
             </div>

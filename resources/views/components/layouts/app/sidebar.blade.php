@@ -21,7 +21,14 @@
                 <flux:navlist.group :heading="__('Urusan Agama')" class="grid">
                     <flux:navlist.item icon="home-modern" :href="route('riab.index')" :current="request()->routeIs('riab.index')" wire:navigate>{{ __('Daftar RIAB') }}</flux:navlist.item>
                     <flux:navlist.item icon="user-group" :href="route('okb.index')" :current="request()->routeIs('okb.index')" wire:navigate>{{ __('Daftar OKB') }}</flux:navlist.item>
-                    <flux:navlist.item icon="shield-check" :href="route('yayasan.index')" :current="request()->routeIs('yayasan.index')" wire:navigate>{{ __('Daftar Yayasan Keagamaan') }}</flux:navlist.item>
+                    <flux:navlist.item icon="building-office" :href="route('yayasan.index')" :current="request()->routeIs('yayasan.index')" wire:navigate>{{ __('Daftar Yayasan Keagamaan') }}</flux:navlist.item>
+                    <flux:navlist.item icon="star" :href="route('majelis.index')" :current="request()->routeIs('majelis.index')" wire:navigate>{{ __('Daftar Majelis Keagamaan') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Pendidikan Agama')" class="grid">
+                    <flux:navlist.item icon="book-open" :href="route('smb.index')" :current="request()->routeIs('smb.index')" wire:navigate>{{ __('Daftar SMB') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
