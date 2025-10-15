@@ -24,8 +24,9 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
-        'role',
-        'wilayah'
+        'user_role',
+        'satuan_kerja',
+        'kabupaten_id',
     ];
 
     /**
@@ -65,5 +66,13 @@ class User extends Authenticatable
 
     public function riab() {
         return $this->hasMany(Riab::class);
+    }
+
+    public function okb() {
+        return $this->hasMany(Okbb::class);
+    }
+
+    public function gurupenda() {
+        return $this->hasMany(GuruPenda::class);
     }
 }

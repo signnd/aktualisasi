@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\YayasanBuddha;
 use App\Models\Kabupaten;
 use App\Models\Kecamatan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class YayasanBuddhaController extends Controller
@@ -56,7 +57,7 @@ class YayasanBuddhaController extends Controller
     public function show(YayasanBuddha $yayasan)
     {
         $yayasan->load(['user']);
-        return view('yayasan.show',compact('yayasan','user'));
+        return view('yayasan.show',compact('yayasan'));
     }
 
     /**

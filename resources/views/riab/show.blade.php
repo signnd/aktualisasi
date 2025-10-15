@@ -475,7 +475,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <p class="text-sm text-gray-300">Terdaftar SIORI</p>
-                                <p class="font-medium">{{ $riab->riabdetail->terdaftar_siori ?? '-' }}</p>
+                                <p class="font-medium">
+                                        {{ $riab->riabdetail->terdaftar_siori == 'sudah' ? 'Sudah' : 'Belum' }}
+                                    </span>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-300">Periode Update SISFO</p>

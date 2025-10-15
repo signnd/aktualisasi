@@ -11,12 +11,14 @@ use App\Http\Controllers\YayasanBuddhaController;
 use App\Http\Controllers\MajelisController;
 use App\Http\Controllers\SmbController;
 use App\Http\Controllers\SiswaSmbController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuruPendaController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
+Route::get('dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
@@ -43,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('majelis', MajelisController::class)->parameters(['majelis' => 'majelis']);
     Route::resource('smb', SmbController::class);
     Route::resource('smb.siswa', SiswaSmbController::class);
+    Route::resource('guru-penda', GuruPendaController::class);
     Route::prefix('smb/{smb}')->name('smb.')->group(function () {
         Route::post('/siswa', [SiswaSMBController::class, 'store'])->name('siswa.store');
         Route::put('/siswa/{siswa}', [SiswaSMBController::class, 'update'])->name('siswa.update');
