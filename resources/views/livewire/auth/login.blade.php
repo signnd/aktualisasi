@@ -12,6 +12,7 @@ use Laravel\Fortify\Features;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
+use App\Enums\UserRole;
 
 new #[Layout('components.layouts.auth')] class extends Component {
     #[Validate('required|string|email')]
@@ -25,7 +26,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
     /**
      * Handle an incoming authentication request.
      */
-    public function login(): void
+    public function login()
     {
         $this->validate();
 
@@ -49,7 +50,15 @@ new #[Layout('components.layouts.auth')] class extends Component {
         RateLimiter::clear($this->throttleKey());
         Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        if(auth()->user()->user_role === 'admin') {
+            return redirect()->route('admin.dashboard')->with("success", "Logged in successfully.");
+        }
+
+        if(auth()->user()->user_role ==='user') {
+            return redirect()->route('users.dashboard')->with("success", "User logged in successfully.");
+        }
+
+        //$this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
     }
 
     /**

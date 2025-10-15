@@ -13,6 +13,9 @@ use App\Http\Controllers\SmbController;
 use App\Http\Controllers\SiswaSmbController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruPendaController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +24,14 @@ Route::get('/', function () {
 Route::get('dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/users/dashboard', [UserController::class, 'index'])->name('users.dashboard');
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
