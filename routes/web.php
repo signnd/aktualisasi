@@ -26,11 +26,15 @@ Route::get('dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/users/dashboard', [UserController::class, 'index'])->name('users.dashboard');
+    Route::get('/users/dashboard', [UserController::class, 'index'])->name('dashboard');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    //Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::prefix('master')->group(function () {
+        Route::resource('kabupaten', KabupatenController::class);
+        Route::resource('kecamatan', KecamatanController::class);
+    });
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -61,10 +65,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/siswa', [SiswaSMBController::class, 'store'])->name('siswa.store');
         Route::put('/siswa/{siswa}', [SiswaSMBController::class, 'update'])->name('siswa.update');
         Route::delete('/siswa/{siswa}', [SiswaSMBController::class, 'destroy'])->name('siswa.destroy');
-    });
-    Route::prefix('master')->group(function () {
-        Route::resource('kabupaten', KabupatenController::class);
-        Route::resource('kecamatan', KecamatanController::class);
     });
 
 });

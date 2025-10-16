@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\GuruPenda;
 use App\Models\Kabupaten;
 use Illuminate\Http\Request;
@@ -101,6 +102,10 @@ class GuruPendaController extends Controller
      */
     public function edit(GuruPenda $guruPenda)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $guruPenda->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $kabupaten = Kabupaten::all();
         return view('guru-penda.edit', compact('guruPenda','kabupaten'));
     }
@@ -110,6 +115,10 @@ class GuruPendaController extends Controller
      */
     public function update(Request $request, GuruPenda $guruPenda)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $guruPenda->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $validated = $request->validate([
             'kabupaten_id' => 'required|exists:kabupaten,id',
             'nama_guru' => 'required|string|max:400',
@@ -171,6 +180,10 @@ class GuruPendaController extends Controller
      */
     public function destroy(GuruPenda $guruPenda)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $guruPenda->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $guruPenda->delete();
         return redirect()->route('guru-penda.index')->with('success', 'Guru Pendidikan Agama berhasil dihapus');
     }

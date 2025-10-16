@@ -25,8 +25,8 @@ class RedirectAfterLogin
         $user = $event->user;
         
         if($user->user_role === 'admin') {
-            session(['redirect.intended' => route('admin.dashboard')]);
-        } else {
+            session(['redirect.intended' => route('dashboard')]);
+        } else if($user->user_role === 'user') {
             session(['redirect.intended' => route('users.dashboard')]);
         }
     }

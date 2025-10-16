@@ -73,7 +73,7 @@
                             <tr>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">No</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama SMB</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Alamat</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kabupaten/Kota</th>
                                 <!--<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider"></th> -->
                                 <!--<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Status</th> -->
                                 <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
@@ -85,9 +85,9 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                         {{ $smbs->firstItem() + $index }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-6 py-4 whitespace">
                                         <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $smb->nama_smb }}</div>
-                                        <div class="text-sm text-gray-500 dark:text-white">{{ $smb->izop_1 }}</div>
+                                        <div class="text-sm text-gray-500 dark:text-white">IZOP: {{ $smb->izop_1 }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                         {{ $smb->kabupaten->kabupaten ?? '-' }}
@@ -108,6 +108,7 @@
                                                     <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
                                                 </svg>
                                             </a>
+                                            @if(auth()->user()->kabupaten_id === $smb->kabupaten_id || auth()->user()->user_role === 'admin')
                                             <a href="{{ route('smb.edit', $smb) }}" 
                                                class="text-green-600 hover:text-green-900 transition" title="Edit">
                                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -124,6 +125,7 @@
                                                     </svg>
                                                 </button>
                                             </form>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>

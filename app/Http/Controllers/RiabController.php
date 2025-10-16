@@ -7,6 +7,7 @@ use App\Models\Kabupaten;
 use App\Models\Kecamatan;
 use App\Models\RiabDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RiabController extends Controller
 {
@@ -175,6 +176,10 @@ class RiabController extends Controller
      */
     public function edit(Riab $riab)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $riab->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $riab->load('riabdetail');
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
@@ -186,6 +191,10 @@ class RiabController extends Controller
      */
     public function update(Request $request, Riab $riab)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $riab->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+    
         // Informasi umum
         $validated = $request->validate([
             'no_registrasi' => 'nullable|string|max:255',
@@ -318,6 +327,10 @@ class RiabController extends Controller
      */
     public function destroy(Riab $riab)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $riab->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk menghapus data kabupaten ini.');
+        }
+
         $riab->delete();
         return redirect()->route('riab.index')->with('success', 'Data RIAB berhasil dihapus.');
     }

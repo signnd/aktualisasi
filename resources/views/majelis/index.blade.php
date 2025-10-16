@@ -85,17 +85,17 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                         {{ $loop->iteration + $majelis->firstItem() - 1 }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-6 py-4 whitespace
                                         <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $item->nama_majelis }}</div>
                                         <!--<div class="text-sm text-gray-500 dark:text-white">{{ $majelis->no_registrasi ?? '-' }}</div>-->
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                         {{ $item->sekte }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                                    <td class="px-6 py-4 whitespace text-sm text-gray-900 dark:text-white">
                                         {{ $item->binaan }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                                    <td class="px-6 py-4 whitespace text-sm text-gray-900 dark:text-white">
                                         {{ $item->ketua ?? '-' }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">

@@ -7,23 +7,23 @@
         <h1 class="text-2xl font-bold mb-4">Daftar Kabupaten/Kota</h3>
     </div>
     <!-- Card Tabel Kabupaten -->
-    <div class="rounded-lg shadow p-6">
-        <table class="min-w-full text-sm border overflow-hidden">
-            <thead class="bg-gray-600">
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-200 dark:bg-zinc-700">
                 <tr>
-                    <th class="px-4 py-2 w-2">ID</th>
-                    <th class="px-4 py-2">Kode Kabupaten</th>
-                    <th class="px-4 py-2">Nama Kabupaten</th>
-                    <th class="px-4 py-2">Aksi</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider w-2">ID</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kode Kabupaten</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama Kabupaten</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
             <tbody>
             @forelse ($kabupaten as $k)
-            <tr x-data="{ editing: false }">
-                <td class="px-4 py-2">{{ $k->id }}</td>
+            <tr x-data="{ editing: false }" class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $k->id }}</td>
     
                 <!-- Kolom kode_kab -->
-                <td class="px-4 py-2">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                     <span x-show="!editing">{{ $k->kode_kab }}</span>
                     <form x-show="editing" action="{{ route('kabupaten.update', $k) }}" method="POST" class="flex space-x-2">
                         @csrf
@@ -32,12 +32,12 @@
                                class="border rounded px-2 py-1 w-24 text-sm">
                 </td>
                 <!-- Kolom nama kabupaten -->
-                <td class="px-4 py-2">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                     <span x-show="!editing">{{ $k->kabupaten }}</span>
                     <input x-show="editing" type="text" name="kabupaten" value="{{ $k->kabupaten }}"
                            class="border rounded px-2 py-1 w-full text-sm">
                 </td>
-                <td class="px-4 py-2 space-x-2">
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white space-x-2">
                     <button type="button" @click="editing = true" x-show="!editing"
                             class="text-blue-600 hover:underline">Edit</button>
                     <!-- Tombol simpan & batal -->

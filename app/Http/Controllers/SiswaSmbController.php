@@ -6,6 +6,7 @@ use App\Models\Smb;
 use App\Models\SiswaSmb;
 use App\Models\Kabupaten;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SiswaSmbController extends Controller
 {
@@ -55,7 +56,7 @@ class SiswaSmbController extends Controller
         $dataToCreate = array_merge($validated, [
         // Ambil kabupaten_id dari relasi Smb jika siswa tidak mengisinya (opsional)
             'kabupaten_id' => $smb->kabupaten_id, 
-            'user_id' => auth()->id(), // Asumsi Anda menggunakan Auth::id()
+            //'user_id' => auth()->id(), // Asumsi Anda menggunakan Auth::id()
         ]);
 //
         // Cukup satu kali penyimpanan menggunakan relasi
@@ -88,6 +89,10 @@ class SiswaSmbController extends Controller
      */
     public function update(Request $request, Smb $smb, SiswaSmb $siswaSmb)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $siswaSmb->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $validated = $request->validate([
             'kabupaten_id' => 'required|exists:kabupaten,id',
             'smb_id' => 'required|exists:smb,id',
@@ -124,6 +129,10 @@ class SiswaSmbController extends Controller
      */
 public function destroy(Smb $smb, SiswaSmb $siswa)
 {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $siswa->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
        try {
             $siswa->delete(); 
 

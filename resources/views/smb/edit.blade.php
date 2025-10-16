@@ -25,6 +25,10 @@
                     </ul>
                 </div>
             @endif
+            
+            @if(!auth()->user()->kabupaten_id === $yayasan->kabupaten_id || auth()->user()->user_role === 'admin')
+            <x-error-modal />
+            @endif
 
             <div class="bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 

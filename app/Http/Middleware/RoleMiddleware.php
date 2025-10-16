@@ -20,7 +20,7 @@ class RoleMiddleware
             return redirect()->route('login');
         }
 
-        if(Auth::user()->user_role !== $role) {
+        if(Auth::user()->user_role !== 'admin') {
             abort(403, 'Unauthorized');
         }
 

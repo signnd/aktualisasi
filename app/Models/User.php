@@ -50,8 +50,17 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'role' == UserRole::class
+            'user_role' == UserRole::class
         ];
+    }
+
+    public function hasRole(string|UserRole $role): bool
+    {
+        if ($role instanceof UserRole) {
+            return $this->user_role === $role;
+        }
+        
+        return $this->user_role === UserRole::from($role);
     }
 
     /**

@@ -14,10 +14,11 @@
                        class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
                         ← Kembali
                     </a>
-                    <a href="{{ route('yayasan.edit', $yayasan) }}" 
+                    @if(auth()->user()->kabupaten_id === $yayasan->kabupaten_id || auth()->user()->user_role === 'admin')                    <a href="{{ route('yayasan.edit', $yayasan) }}" 
                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
                         Edit Data
                     </a>
+                    @endif
                 </div>
             <div class="border border-gray-200 rounded-lg overflow-hidden">
                 <!-- Header Section -->

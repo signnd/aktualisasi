@@ -29,7 +29,7 @@
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
-                    <h3 class="text-2xl font-bold">Tambah Yayasan Agama Buddha</h3>
+                    <h3 class="text-2xl font-bold">Edit Yayasan Agama Buddha</h3>
                 </div>
 
                 <form action="{{ route('yayasan.update', $yayasan->id) }}" method="POST" class="p-6">

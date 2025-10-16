@@ -6,6 +6,7 @@ use App\Models\Okb;
 use App\Models\Kabupaten;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OkbController extends Controller
 {
@@ -79,6 +80,10 @@ class OkbController extends Controller
     public function edit(Okb $okb)
     {
         //$okb = Okb::all();
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $okb->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
         return view('okb.edit', compact('okb', 'kabupaten','kecamatan'));
@@ -89,6 +94,10 @@ class OkbController extends Controller
      */
     public function update(Request $request, Okb $okb)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $okb->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $validated = $request->validate([
             'kabupaten_id' => 'required|exists:kabupaten,id',
             'kecamatan_id' => 'required|exists:kabupaten,id',
@@ -124,6 +133,10 @@ class OkbController extends Controller
      */
     public function destroy(Okb $okb)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $okb->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk menghapus data kabupaten ini.');
+        }
+
         $okb->delete();
         return redirect()->route('okb.index')->with('success', 'Data OKB berhasil dihapus');
     }

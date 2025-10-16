@@ -21,7 +21,9 @@ class Authenticate
             if(Auth::guard($guard)->check()) {
                 $user = Auth::user();
                 if($user->user_role === 'admin') {
-                    return redirect()->route('admin.dashboard');
+                    return redirect()->route('dashboard');
+                } else {
+                    return redirect()->route('dashboard');
                 }
             }
         }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Smb;
 use App\Models\Kabupaten;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SmbController extends Controller
 {
@@ -89,6 +90,10 @@ class SmbController extends Controller
      */
     public function edit(Smb $smb)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $smb->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $kabupaten = Kabupaten::all();
         return view('smb.edit', compact('smb', 'kabupaten'));
     }
@@ -98,6 +103,10 @@ class SmbController extends Controller
      */
     public function update(Request $request, Smb $smb)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $smb->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $validated = $request->validate([
             'nama_smb' => 'required|string|max:400',
             'alamat' => 'nullable|string|max:800',
@@ -138,6 +147,10 @@ class SmbController extends Controller
      */
     public function destroy(Smb $smb)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $smb->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk menghapus data kabupaten ini.');
+        }
+
         $smb->delete();
 
         return redirect()->route('smb.index')

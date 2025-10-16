@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\YayasanBuddha;
 use App\Models\Kabupaten;
 use App\Models\Kecamatan;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class YayasanBuddhaController extends Controller
@@ -66,10 +66,13 @@ class YayasanBuddhaController extends Controller
     public function edit(YayasanBuddha $yayasan)
     {
         //$yayasan = YayasanBuddha::all();
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $yayasan->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
         return view('yayasan.edit', compact('yayasan','kabupaten','kecamatan'));
-
     }
 
     /**
@@ -77,6 +80,10 @@ class YayasanBuddhaController extends Controller
      */
     public function update(Request $request, YayasanBuddha $yayasan)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $yayasan->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
         $validated = $request->validate([
             'kabupaten_id' => 'exists:kabupaten,id',
             'kecamatan_id' => 'exists:kecamatan,id',
@@ -99,6 +106,10 @@ class YayasanBuddhaController extends Controller
      */
     public function destroy(YayasanBuddha $yayasan)
     {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $yayasan->kabupaten_id) {
+            abort(403, 'Anda tidak memiliki akses untuk menghapus data kabupaten ini.');
+        }
+
         $yayasan->delete();
         return redirect()->route('yayasan.index')->with('success', 'Data Yayasan berhasil dihapus');
     }

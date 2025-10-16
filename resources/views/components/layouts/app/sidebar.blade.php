@@ -33,12 +33,14 @@
                 </flux:navlist.group>
             </flux:navlist>
 
+            @if(auth()->user()->user_role === 'admin')
             <flux:navlist variant="outline">
                 <flux:navlist.group :heading="__('Master data')" class="grid">
                     <flux:navlist.item icon="globe-asia-australia" :href="route('kabupaten.index')" :current="request()->routeIs('kabupaten.index')" wire:navigate>{{ __('Kabupaten') }}</flux:navlist.item>
                     <flux:navlist.item icon="map-pin" :href="route('kecamatan.index')" :current="request()->routeIs('kecamatan.index')" wire:navigate>{{ __('Kecamatan') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+            @endif
 
             <flux:spacer />
 
@@ -75,7 +77,7 @@
 
                                 <div class="grid flex-1 text-start text-sm leading-tight">
                                     <span class="truncate font-semibold">{{ auth()->user()->name }}</span>
-                                    <span class="truncate text-xs">{{ auth()->user()->email }}</span>
+                                    <span class="truncate text-xs">{{ auth()->user()->satuan_kerja }}</span>
                                 </div>
                             </div>
                         </div>

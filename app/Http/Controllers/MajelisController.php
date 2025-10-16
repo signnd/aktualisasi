@@ -73,6 +73,7 @@ class MajelisController extends Controller
     {
         $validated = $request->validate([
             'nama_majelis' => 'required|string|max:255',
+            //'kabupaten_id' => 'required|exists:kabupaten,id',
             'sekte' => 'nullable|string', 
             'binaan' => 'nullable|string|max:1000',
             'ketua' => 'nullable|string|max:255',

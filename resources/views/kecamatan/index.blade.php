@@ -7,28 +7,28 @@
             <h1 class="text-2xl font-bold mb-4">Daftar Kecamatan</h3>
         </div>
         <!-- Tabel daftar kecamatan -->
-        <div class="rounded-lg shadow p-6">
-            <table class="min-w-full text-sm border">
-                <thead class="bg-gray-600">
-                    <tr>
-                        <th class="px-4 py-2 w-2">ID</th>
-                        <th class="px-4 py-2">Nama Kecamatan</th>
-                        <th class="px-4 py-2">Kabupaten</th>
-                        <th class="px-4 py-2">Aksi</th>
-                    </tr>
-                </thead>
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-200 dark:bg-zinc-700">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider w-2">ID</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama Kecamatan</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kabupaten</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
+                </tr>
+            </thead>
                 <tbody>
                     @forelse ($kecamatan as $kc)
-                        <tr x-data="{ editing: false }">
-                            <td class="px-4 py-2">{{ $kc->id }}</td>
-                            <td class="px-4 py-2">
+                        <tr x-data="{ editing: false }"  class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{{ $kc->id }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                 <span x-show="!editing">{{ $kc->kecamatan }}</span>
                                 <form x-show="editing" action="{{ route('kecamatan.update',$kc) }}" method="POST" class="flex space-x-2">
                                     @csrf @method('PUT')
                                     <input type="text" name="kecamatan" value="{{ $kc->kecamatan }}"
                                            class="border rounded px-2 py-1 w-full">
                             </td>
-                            <td class="px-4 py-2">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                 <span x-show="!editing">{{ $kc->kabupaten->kabupaten ?? '-' }}</span>
                                 <select x-show="editing" name="kabupaten_id" class="border rounded px-2 py-1">
                                     @foreach($kabupaten as $k)

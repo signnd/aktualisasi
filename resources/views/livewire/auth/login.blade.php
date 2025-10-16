@@ -51,11 +51,11 @@ new #[Layout('components.layouts.auth')] class extends Component {
         Session::regenerate();
 
         if(auth()->user()->user_role === 'admin') {
-            return redirect()->route('admin.dashboard')->with("success", "Logged in successfully.");
+            return redirect()->route('dashboard')->with("success", "Admin logged in successfully.");
         }
 
         if(auth()->user()->user_role ==='user') {
-            return redirect()->route('users.dashboard')->with("success", "User logged in successfully.");
+            return redirect()->route('dashboard')->with("success", "User logged in successfully.");
         }
 
         //$this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);

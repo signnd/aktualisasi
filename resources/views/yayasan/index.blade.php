@@ -74,8 +74,8 @@
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">No</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama Yayasan</th>
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Alamat</th>
+                                <!-- <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kabupaten/Kota</th> -->
                                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Ketua</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Tanggal Terdaftar</th>
                                 <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
                             </tr>
                         </thead>
@@ -85,18 +85,18 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                         {{ $yayasans->firstItem() + $index }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-6 py-4 whitespace">
                                         <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $yayasan->nama_yayasan }}</div>
                                         <!--<div class="text-sm text-gray-500 dark:text-white">{{ $yayasan->no_registrasi ?? '-' }}</div>-->
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                                    <td class="px-6 py-4 whitespace text-sm text-gray-900 dark:text-white">
                                         {{ $yayasan->alamat }}
                                     </td>
+                                    <!--<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                                        {{ $yayasan->kabupaten->kabupaten ?? '-' }}
+                                    </td>-->
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                         {{ $yayasan->ketua ?? '-' }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                        {{ $yayasan->tgl_terdaftar ?? '-' }}
                                     </td>
 
                                     <!-- <td class="px-6 py-4 whitespace-nowrap">
@@ -115,6 +115,7 @@
                                                     <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
                                                 </svg>
                                             </a>
+                                            @if(auth()->user()->kabupaten_id === $yayasan->kabupaten_id || auth()->user()->user_role === 'admin')
                                             <a href="{{ route('yayasan.edit', $yayasan) }}" 
                                                class="text-green-600 hover:text-green-900 transition" title="Edit">
                                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -131,6 +132,7 @@
                                                     </svg>
                                                 </button>
                                             </form>
+                                            @endif
                                         </div>
                                     </td>
                                 </tr>
