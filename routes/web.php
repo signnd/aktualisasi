@@ -14,28 +14,39 @@ use App\Http\Controllers\SiswaSmbController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruPendaController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RegisteredUsersController;
+use App\Http\Controllers\WelcomeController;
 
+//Route::get('/', function () {
+//    return view('welcome');
+//})->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
 
 Route::get('dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/users/dashboard', [UserController::class, 'index'])->name('dashboard');
-});
+// Route::middleware(['auth', 'role:user'])->group(function () {
+//     Route::get('/users/dashboard', [UserController::class, 'index'])->name('dashboard');
+// });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     //Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::prefix('master')->group(function () {
         Route::resource('kabupaten', KabupatenController::class);
         Route::resource('kecamatan', KecamatanController::class);
+        Route::get('/registered-users', [RegisteredUsersController::class, 'index'])
+            ->name('registered-users.index');
+        Route::patch('/registered-users/{user}', [RegisteredUsersController::class, 'update'])
+            ->name('registered-users.update');
+        Route::delete('/registered-users/{user}', [RegisteredUsersController::class, 'destroy'])
+            ->name('registered-users.destroy');
     });
 });
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
@@ -65,6 +76,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/siswa', [SiswaSMBController::class, 'store'])->name('siswa.store');
         Route::put('/siswa/{siswa}', [SiswaSMBController::class, 'update'])->name('siswa.update');
         Route::delete('/siswa/{siswa}', [SiswaSMBController::class, 'destroy'])->name('siswa.destroy');
+    Route::get('/riab/by-kabupaten/{id}', [RiabController::class, 'getByKabupaten']);
+
     });
 
 });

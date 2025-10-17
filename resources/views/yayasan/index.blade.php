@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-6">
+    <div class="py-6" x-data="{ kabupatenId: '{{ $selectedKabupatenId ?? '' }}' }">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <!-- Success Message -->
@@ -52,17 +52,65 @@
                 </div>
             @endif
 
-            <!-- Header dengan Tombol Tambah -->
-            <div class="mb-6 flex justify-between items-center">
-                <h3 class="text-2xl font-bold">Data Yayasan Agama Buddha di Bali</h3>
+        <!-- Header dengan Filter dan Tombol Tambah -->
+        <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <h3 class="text-2xl font-bold">Data Yayasan Keagamaan Buddha</h3>
+            
+            <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                <!-- Filter Kabupaten -->
+                <form method="GET" action="{{ route('yayasan.index') }}" class="flex gap-2">
+                    <select 
+                        name="kabupaten_id" 
+                        x-model="kabupatenId"
+                        @change="$refs.submitBtn.click()"
+                        class="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700">
+                        <option value="">Semua Kabupaten</option>
+                        @foreach($kabupatens as $kab)
+                            <option value="{{ $kab->id }}">
+                                {{ $kab->kabupaten }}
+                            </option>
+                        @endforeach
+                    </select>
+                    
+                    <!-- Hidden submit button -->
+                    <button type="submit" x-ref="submitBtn" class="hidden"></button>
+                    
+
+                </form>
+                
+                <!-- Tombol Tambah RIAB -->
                 <a href="{{ route('yayasan.create') }}" 
-                   class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 flex items-center shadow-lg">
+                   class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 flex items-center shadow-lg whitespace-nowrap">
                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
                     </svg>
-                    Tambah Yayasan
+                    Tambah Yayasan Agama Buddha
                 </a>
             </div>
+        </div>
+
+        <!-- Informasi Filter Aktif -->
+        @if($selectedKabupatenId)
+            <div class="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 text-blue-700 rounded">
+                <p class="text-sm">
+                    <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                    Menampilkan RIAB di <strong>{{ $kabupatens->find($selectedKabupatenId)->kabupaten ?? 'Kabupaten Terpilih' }}</strong>
+                    <span class="ml-2 text-gray-600">({{ $yayasans->total() }} data ditemukan)</span>
+                </p>
+            </div>
+        @else
+            <div class="mb-4 p-3 bg-gray-50 border-l-4 border-gray-400 text-gray-700 rounded">
+                <p class="text-sm">
+                    <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                    Menampilkan RIAB dari <strong>Semua Kabupaten</strong>
+                    <span class="ml-2 text-gray-600">({{ $yayasans->total() }} data ditemukan)</span>
+                </p>
+            </div>
+        @endif
 
             <!-- Table Content -->
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
@@ -115,6 +163,7 @@
                                                     <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
                                                 </svg>
                                             </a>
+                                            @auth
                                             @if(auth()->user()->kabupaten_id === $yayasan->kabupaten_id || auth()->user()->user_role === 'admin')
                                             <a href="{{ route('yayasan.edit', $yayasan) }}" 
                                                class="text-green-600 hover:text-green-900 transition" title="Edit">
@@ -133,6 +182,7 @@
                                                 </button>
                                             </form>
                                             @endif
+                                            @endauth
                                         </div>
                                     </td>
                                 </tr>
@@ -143,7 +193,7 @@
                                             <svg class="w-16 h-16 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
                                             </svg>
-                                            <p class="text-lg font-medium">Belum ada data Organisasi Keagamaan Buddha</p>
+                                            <p class="text-lg font-medium">Belum ada data Yayasan Keagamaan Buddha</p>
                                             <p class="text-sm mt-1">Klik tombol "Tambah Yayasan" untuk menambahkan data baru</p>
                                         </div>
                                     </td>

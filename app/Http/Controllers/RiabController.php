@@ -14,11 +14,43 @@ class RiabController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $riabs = Riab::with(['user','kabupaten','kecamatan'])->paginate(10);
-        return view('riab.index', compact('riabs'));
+public function index(Request $request)
+{
+    $query = Riab::with(['kabupaten','kecamatan']);
+    
+    $selectedKabupatenId = null;
+
+    // Tentukan kabupaten_id yang akan digunakan
+    if ($request->has('kabupaten_id')) {
+        // Jika ada parameter kabupaten_id di URL (user sudah memilih dari dropdown)
+        $selectedKabupatenId = $request->input('kabupaten_id');
+        
+        // Filter hanya jika bukan "Semua Kabupaten" (value bukan empty string)
+        if (!empty($selectedKabupatenId)) {
+            $query->where('kabupaten_id', $selectedKabupatenId);
+        }
+        // Jika empty string, tidak ada filter = tampil semua
+    } else {
+        // Pertama kali buka halaman (belum ada parameter)
+        // Set default ke kabupaten user (kecuali admin)
+        if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+            $selectedKabupatenId = auth()->user()->kabupaten_id;
+            $query->where('kabupaten_id', $selectedKabupatenId);
+        }
     }
+    
+    $riabs = $query->paginate(10)->appends($request->query());
+    $kabupatens = Kabupaten::all();
+    
+    return view('riab.index', compact('riabs', 'kabupatens', 'selectedKabupatenId'));
+}
+    // public function getByKabupaten($id)
+    // {
+    //     $data = Riab::where('kabupaten_id', $id)->get();
+
+    //     return response()->json($data);
+    // }
+
 
     /**
      * Show the form for creating a new resource.

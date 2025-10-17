@@ -40,4 +40,8 @@ class Kabupaten extends Model
         return $this->hasMany(SiswaSmb::class);
     }
 
+    public function user() {
+        return $this->hasMany(User::class);
+    }
+
 }

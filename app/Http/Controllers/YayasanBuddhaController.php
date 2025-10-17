@@ -7,16 +7,41 @@ use App\Models\Kabupaten;
 use App\Models\Kecamatan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class YayasanBuddhaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $yayasans = YayasanBuddha::with(['user', 'kabupaten', 'kecamatan'])->paginate(10);
-        return view('yayasan.index', compact('yayasans'));
+        $query = YayasanBuddha::with(['kabupaten','kecamatan']);
+        $selectedKabupatenId = null;
+
+        // Tentukan kabupaten_id yang akan digunakan
+        if ($request->has('kabupaten_id')) {
+            // Jika ada parameter kabupaten_id di URL (user sudah memilih dari dropdown)
+            $selectedKabupatenId = $request->input('kabupaten_id');
+
+            // Filter hanya jika bukan "Semua Kabupaten" (value bukan empty string)
+            if (!empty($selectedKabupatenId)) {
+                $query->where('kabupaten_id', $selectedKabupatenId);
+            }
+            // Jika empty string, tidak ada filter = tampil semua
+        } else {
+            // Pertama kali buka halaman (belum ada parameter)
+            // Set default ke kabupaten user (kecuali admin)
+            if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+                $selectedKabupatenId = auth()->user()->kabupaten_id;
+                $query->where('kabupaten_id', $selectedKabupatenId);
+            }
+        }
+    
+        $yayasans = $query->paginate(10)->appends($request->query());
+        $kabupatens = Kabupaten::all();
+        
+        return view('yayasan.index', compact('yayasans', 'kabupatens', 'selectedKabupatenId'));
     }
 
     /**
@@ -27,7 +52,8 @@ class YayasanBuddhaController extends Controller
         $yayasan = YayasanBuddha::all();
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
-        return view('yayasan.create', compact('kabupaten','kecamatan','yayasan'));
+        $user = User::all();
+        return view('yayasan.create', compact('kabupaten','kecamatan','yayasan', 'user'));
     }
 
     /**

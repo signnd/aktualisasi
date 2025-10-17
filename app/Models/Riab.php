@@ -22,17 +22,17 @@ class Riab extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function kabupaten()
     {
-        return $this->belongsTo(Kabupaten::class);
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
     }
 
     public function kecamatan()
     {
-        return $this->belongsTo(Kecamatan::class);
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
     }
 
     public function riabdetail(){

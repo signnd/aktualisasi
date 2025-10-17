@@ -19,12 +19,12 @@ class GuruPenda extends Model
 
     public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function kabupaten()
     {
-        return $this->belongsTo(Kabupaten::class);
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
     }
 
 }

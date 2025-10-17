@@ -62,7 +62,7 @@
                                     @foreach($kabupaten as $k)
                                         <option value="{{ $k->id }}">
                                             {{ $k->kabupaten }}
-                                        </option>
+                                        </option>w
                                     @endforeach
                                 </select>
                             </div>

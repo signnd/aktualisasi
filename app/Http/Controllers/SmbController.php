@@ -12,10 +12,35 @@ class SmbController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $smbs = Smb::with('kabupaten')->paginate(20);
-        return view('smb.index', compact('smbs'));
+        $query = Smb::with(['kabupaten','kecamatan']);
+        
+        $selectedKabupatenId = null;
+
+        // Tentukan kabupaten_id yang akan digunakan
+        if ($request->has('kabupaten_id')) {
+            // Jika ada parameter kabupaten_id di URL (user sudah memilih dari dropdown)
+            $selectedKabupatenId = $request->input('kabupaten_id');
+
+            // Filter hanya jika bukan "Semua Kabupaten" (value bukan empty string)
+            if (!empty($selectedKabupatenId)) {
+                $query->where('kabupaten_id', $selectedKabupatenId);
+            }
+            // Jika empty string, tidak ada filter = tampil semua
+        } else {
+            // Pertama kali buka halaman (belum ada parameter)
+            // Set default ke kabupaten user (kecuali admin)
+            if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+                $selectedKabupatenId = auth()->user()->kabupaten_id;
+                $query->where('kabupaten_id', $selectedKabupatenId);
+            }
+        }
+
+        $smbs = $query->paginate(10)->appends($request->query());
+        $kabupatens = Kabupaten::all();
+    
+        return view('smb.index', compact('smbs', 'kabupatens', 'selectedKabupatenId'));
     }
 
     /**

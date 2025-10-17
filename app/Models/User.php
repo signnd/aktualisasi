@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use App\Enums\UserRole;
+use App\Models\Kabupaten;
 
 class User extends Authenticatable
 {
@@ -75,15 +76,33 @@ class User extends Authenticatable
             ->implode('');
     }
 
-    public function riab() {
-        return $this->hasMany(Riab::class);
+    public function riabs() {
+        return $this->hasMany(Riab::class, 'user_id');
     }
 
     public function okb() {
-        return $this->hasMany(Okb::class);
+        return $this->hasMany(Okb::class, 'user_id');
     }
 
     public function gurupenda() {
-        return $this->hasMany(GuruPenda::class);
+        return $this->hasMany(GuruPenda::class, 'user_id');
+    }
+
+    public function smb() {
+        return $this->hasMany(Smb::class, 'user_id');
+    }
+
+    public function yayasanBuddha() {
+        return $this->hasMany(YayasanBuddha::class, 'user_id');
+    }
+
+    public function kabupaten()
+    {
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
+    }
+
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
     }
 }
