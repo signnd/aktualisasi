@@ -134,7 +134,11 @@
                                         <span>Non ASN</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_pegawai" value="Nonaktif" class="mr-2 text-gray-600 focus:ring-gray-500
+                                        <input type="radio" name="status_pegawai" value="Nonaktif" class="mr-2 text-gray-600 focus:ring-gray-500">
+                                            <span>Nonaktif</span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -319,6 +323,7 @@
                                 <input type="date" name="tgl_update"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
+                            @if(auth()->user()->user_role === 'admin')
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-2">Status Verifikasi</label>
                                 <div class="flex gap-3">
@@ -334,6 +339,7 @@
                                     </label>
                                 </div>
                             </div>
+                            @endif
                         </div>
                         </div>
                     </div>

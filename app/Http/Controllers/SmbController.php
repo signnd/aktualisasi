@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Smb;
 use App\Models\Kabupaten;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -118,6 +119,14 @@ class SmbController extends Controller
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $smb->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }
+
+        // Filter kecamatan berdasarkan kabupaten user jika bukan admin
+        if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+            $kecamatan = Kecamatan::where('kabupaten_id', auth()->user()->kabupaten_id)->get();
+        } else {
+            $kecamatan = Kecamatan::all();
+        }
+
 
         $kabupaten = Kabupaten::all();
         return view('smb.edit', compact('smb', 'kabupaten'));

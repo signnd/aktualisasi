@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-6" x-data="{ kabupatenId: '{{ $selectedKabupatenId ?? '' }}' }">
+    <div class="py-6" x-data="{ kabupatenId: '{{ $selectedKabupatenId ?? '' }}'}">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <!-- Success Message -->
@@ -57,26 +57,11 @@
             <h3 class="text-2xl font-bold">Data Rumah Ibadah Agama Buddha</h3>
             
             <div class="flex flex-col sm:flex-row gap-3 sm:w-auto">
-                <!-- Filter Kabupaten -->
+                <!-- Filter Kabupaten pindah ke livewire/riab-search.blade.php -->
                 <div>
-                <form method="GET" action="{{ route('riab.index') }}" class="flex gap-2">
-                    <select 
-                        name="kabupaten_id" 
-                        x-model="kabupatenId"
-                        @change="$refs.submitBtn.click()"
-                        class="px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700">
-                        <option value="">Semua Kabupaten</option>
-                        @foreach($kabupatens as $kab)
-                            <option value="{{ $kab->id }}">
-                                {{ $kab->kabupaten }}
-                            </option>
-                        @endforeach
-                    </select>
-
                     <!-- Hidden submit button -->
                     <button type="submit" x-ref="submitBtn" class="hidden"></button>
-                </form>
-            </div>                    
+                </div>                    
                 
                 <!-- Tombol Tambah RIAB -->
                 <a href="{{ route('riab.create') }}" 
@@ -86,13 +71,19 @@
                     </svg>
                     Tambah RIAB
                 </a>
-
             </div>
         </div>
 
-<!-- Informasi Filter Aktif -->
+        <!-- Table Content pindah ke livewire/riab-search.blade.php -->
+
+    <!-- Livewire Component -->
+    @livewire('riab-search')</form>
+
+            </div>
+        </div>
+                <!-- Informasi Filter Aktif -->
 @if(!empty($selectedKabupatenId))
-    <div class="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 text-blue-700 rounded">
+    <!-- <div class="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 text-blue-700 rounded">
         <p class="text-sm flex items-center">
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
@@ -100,9 +91,9 @@
             Menampilkan Rumah Ibadah Agama Buddha di <strong class="mx-1">{{ $kabupatens->find($selectedKabupatenId)->kabupaten ?? 'Kabupaten Terpilih' }}</strong>
             <span class="ml-2 text-gray-600">({{ $riabs->total() }} data)</span>
         </p>
-    </div>
+    </div> -->
 @else
-    <div class="mb-4 p-3 bg-green-50 border-l-4 border-green-500 text-green-700 rounded">
+    <!-- <div class="mb-4 p-3 bg-green-200 border-l-4 border-green-500 text-green-700 rounded">
         <p class="text-sm flex items-center">
             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
@@ -110,101 +101,9 @@
             Menampilkan Rumah Ibadah Agama Buddha dari <strong class="mx-1">Semua Kabupaten</strong>
             <span class="ml-2 text-gray-600">({{ $riabs->total() }} data)</span>
         </p>
-    </div>
+    </div> -->
 @endif
-        <!-- Table Content -->
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                <!-- Konten tabel Anda di sini -->
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-200 dark:bg-zinc-700">
-                            <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">No</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama RIAB</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kabupaten/Kota</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kecamatan</th>
-                                <!--<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Status</th> -->
-                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white dark:bg-zinc-800 divide-y divide-zinc-500">
-                            @forelse($riabs as $index => $riab)
-                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                        {{ $riabs->firstItem() + $index }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace">
-                                        <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $riab->nama }}</div>
-                                        <div class="text-sm text-gray-500 dark:text-white">{{ $riab->no_registrasi ?? '-' }}</div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                        {{ $riab->kabupaten->kabupaten ?? '-' }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                        {{ $riab->kecamatan->kecamatan ?? '-' }}
-                                    </td>
-                                    <!-- <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                            {{ $riab->status == 'Disetujui' ? 'bg-green-100 text-green-800' : 
-                                               ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800') }}">
-                                            {{ $riab->status ?? 'Pending' }}
-                                        </span>
-                                    </td> -->
-                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                                        <div class="flex justify-center space-x-2">
-                                            <a href="{{ route('riab.show', $riab) }}" 
-                                               class="text-blue-600 hover:text-blue-900 transition" title="Detail">
-                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                                                </svg>
-                                            </a>
-                                            @if(auth()->user()->kabupaten_id === $riab->kabupaten_id || auth()->user()->user_role === 'admin')
-                                            <a href="{{ route('riab.edit', $riab) }}" 
-                                               class="text-green-600 hover:text-green-900 transition" title="Edit">
-                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
-                                                </svg>
-                                            </a>
-                                            <form action="{{ route('riab.destroy', $riab) }}" method="POST" 
-                                                  onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');" class="inline">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="text-red-600 hover:text-red-900 transition" title="Hapus">
-                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                            @endif
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="6" class="px-6 py-10 text-center">
-                                        <div class="flex flex-col items-center justify-center text-gray-500">
-                                            <svg class="w-16 h-16 mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
-                                            </svg>
-                                            <p class="text-lg font-medium">Belum ada data RIAB</p>
-                                            <p class="text-sm mt-1">Klik tombol "Tambah RIAB" untuk menambahkan data baru</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                </div>
 
-                <!-- Pagination -->
-                @if($riabs->hasPages())
-                    <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
-                        {{ $riabs->links() }}
-                    </div>
-                @endif
-            </div>
-        </div>
     </div>
 
     <!-- JavaScript untuk Auto-hide Message -->

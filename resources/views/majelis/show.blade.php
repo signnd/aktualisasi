@@ -14,10 +14,12 @@
                        class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
                         ← Kembali
                     </a>
+                    @if(auth()->user()->kabupaten_id === $majelis->kabupaten_id || auth()->user()->user_role === 'admin') 
                     <a href="{{ route('majelis.edit', $majelis) }}" 
                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
                         Edit Data
                     </a>
+                    @endif
                 </div>
             <div class="border border-gray-200 rounded-lg overflow-hidden">
                 <!-- Header Section -->
@@ -36,6 +38,10 @@
                             Informasi Umum
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-300">Kabupaten</p>
+                                <p class="font-medium">{{ $majelis->kabupaten->kabupaten ?? '-' }}</p>
+                            </div>
                             <div>
                                 <p class="text-sm text-gray-300">Tanggal Daftar</p>
                                 <p class="font-medium">{{ $majelis->tgl_terdaftar ? \Carbon\Carbon::parse($majelis->tgl_terdaftar)->format('d M Y') : '-' }}</p>

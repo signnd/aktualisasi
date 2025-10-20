@@ -14,7 +14,7 @@
                        class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
                         ← Kembali
                     </a>
-                    @if(auth()->user()->kabupaten_id === $riab->kabupaten_id)
+                    @if(auth()->user()->kabupaten_id === $riab->kabupaten_id || auth()->user()->user_role === 'admin')
                     <a href="{{ route('riab.edit', $riab) }}" 
                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
                         Edit Data

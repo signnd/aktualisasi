@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Riab;
 use App\Models\Kabupaten;
 use App\Models\Kecamatan;
-use App\Models\RiabDetail;
+//use App\Models\RiabDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,18 +39,12 @@ public function index(Request $request)
         }
     }
     
+
     $riabs = $query->paginate(10)->appends($request->query());
     $kabupatens = Kabupaten::all();
     
     return view('riab.index', compact('riabs', 'kabupatens', 'selectedKabupatenId'));
 }
-    // public function getByKabupaten($id)
-    // {
-    //     $data = Riab::where('kabupaten_id', $id)->get();
-
-    //     return response()->json($data);
-    // }
-
 
     /**
      * Show the form for creating a new resource.
@@ -60,6 +54,14 @@ public function index(Request $request)
         $riab->load('riabdetail');
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
+
+        // Filter kecamatan berdasarkan kabupaten user jika bukan admin
+        if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+            $kecamatan = Kecamatan::where('kabupaten_id', auth()->user()->kabupaten_id)->get();
+        } else {
+            $kecamatan = Kecamatan::all();
+        }
+
         return view('riab.create', compact('kabupaten', 'kecamatan', 'riab'));
     }
 
@@ -199,7 +201,7 @@ public function index(Request $request)
      */
     public function show(Riab $riab)
     {
-        $riab->load(['user','kabupaten','kecamatan', 'riabdetail']);
+        $riab->load(['user','kabupaten','kecamatan','riabdetail']);
         return view('riab.show', compact('riab'));
     }
 
@@ -208,8 +210,16 @@ public function index(Request $request)
      */
     public function edit(Riab $riab)
     {
+        
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $riab->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
+        // Filter kecamatan berdasarkan kabupaten user jika bukan admin
+        if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+            $kecamatan = Kecamatan::where('kabupaten_id', auth()->user()->kabupaten_id)->get();
+        } else {
+            $kecamatan = Kecamatan::all();
         }
 
         $riab->load('riabdetail');

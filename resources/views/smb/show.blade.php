@@ -354,8 +354,10 @@
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Jenis Kelamin</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kelas</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kabupaten</th>
+                                        @if(auth()->user()->kabupaten_id === $smb->kabupaten_id || auth()->user()->user_role === 'admin')
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">No. HP</th>
                                         <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
+                                        @endif
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y dark:bg-zinc-800 divide-gray-200">
@@ -364,15 +366,17 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $index + 1 }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ $siswasmb->nama_siswa }}</div>
+                                            @if(auth()->user()->kabupaten_id === $smb->kabupaten_id || auth()->user()->user_role === 'admin')
                                             <div class="text-sm text-gray-500 dark:text-gray-300">NIK: {{ $siswasmb->nik ?? '-' }}</div>
+                                            @endif
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswasmb->jenis_kelamin ?? '-' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswasmb->kelas ?? '-' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswasmb->kabupaten->kabupaten ?? '-' }}</td>
+                                        @if(auth()->user()->kabupaten_id === $siswasmb->kabupaten_id || auth()->user()->user_role === 'admin')
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswasmb->no_hp ?? '-' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                             <div class="flex justify-center space-x-2">
-                                                @if(auth()->user()->kabupaten_id === $siswasmb->kabupaten_id || auth()->user()->user_role === 'admin')
                                                 <button @click="openEditModal({{ json_encode($siswasmb) }})" 
                                                    class="text-blue-600 hover:text-blue-900 transition" title="Edit">
                                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

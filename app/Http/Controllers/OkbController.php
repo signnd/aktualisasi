@@ -32,15 +32,15 @@ class OkbController extends Controller
         } else {
             // Pertama kali buka halaman (belum ada parameter)
             // Set default ke kabupaten user (kecuali admin)
-            if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) 
-                {
-                    $selectedKabupatenId = auth()->user()->kabupaten_id;
-                    $query->where('kabupaten_id', $selectedKabupatenId);
+            if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+                $selectedKabupatenId = auth()->user()->kabupaten_id;
+                $query->where('kabupaten_id', $selectedKabupatenId);
             }
         }
 
         $okbs = $query->paginate(10)->appends($request->query());
         $kabupatens = Kabupaten::all();
+        
         return view('okb.index', compact('okbs', 'kabupatens', 'selectedKabupatenId'));
     }
 
@@ -49,6 +49,13 @@ class OkbController extends Controller
      */
     public function create(Okb $okb)
     {
+        // Filter kecamatan berdasarkan kabupaten user jika bukan admin
+        if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+            $kecamatan = Kecamatan::where('kabupaten_id', auth()->user()->kabupaten_id)->get();
+        } else {
+            $kecamatan = Kecamatan::all();
+        }
+
         $okb = Okb::all();
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
@@ -63,7 +70,7 @@ class OkbController extends Controller
     {
         $validated = $request->validate([
             'kabupaten_id' => 'required|exists:kabupaten,id',
-            'kecamatan_id' => 'required|exists:kabupaten,id',
+            'kecamatan_id' => 'required|exists:kecamatan,id',
             'kelurahan' => 'nullable|string|max:255',
             'kategori_3t' => 'nullable|in:3T,Non 3T',
             'no_registrasi' => 'nullable|string|max:255',
@@ -104,9 +111,15 @@ class OkbController extends Controller
      */
     public function edit(Okb $okb)
     {
-        //$okb = Okb::all();
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $okb->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+        }
+
+        // Filter kecamatan berdasarkan kabupaten user jika bukan admin
+        if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+            $kecamatan = Kecamatan::where('kabupaten_id', auth()->user()->kabupaten_id)->get();
+        } else {
+            $kecamatan = Kecamatan::all();
         }
 
         $kabupaten = Kabupaten::all();

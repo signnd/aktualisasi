@@ -26,7 +26,7 @@
                 </div>
             @endif
             
-            @if(!auth()->user()->kabupaten_id === $yayasan->kabupaten_id || auth()->user()->user_role === 'admin')
+            @if(!auth()->user()->kabupaten_id === $smb->kabupaten_id || auth()->user()->user_role !== 'admin')
             <x-error-modal />
             @endif
 
@@ -119,7 +119,7 @@
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat_bapen', $smb->alamat_bapen) }}</textarea>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten <span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten/Kota <span class="text-red-500">*</span></label>
                                 <select id="kabupaten_id" name="kabupaten_id" required
                                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                     <option value="">-- Pilih Kabupaten --</option>
@@ -145,7 +145,8 @@
                                 <input type="date" name="tgl_update" value="{{ old('tgl_update', $smb->tgl_update) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                            <!--<div>
+                            @if(auth()->user()->user_role === 'admin')
+                            <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-2">Status</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
@@ -164,7 +165,8 @@
                                         <span>Pending</span>
                                     </label>
                                 </div>
-                            </div> -->
+                            </div>
+                            @endif
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Status Eksisting</label>
                                 <div class="flex gap-3">
@@ -180,6 +182,7 @@
                                     </label>
                                 </div>
                             </div>
+                            @if(auth()->user()->user_role === 'admin')
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Status Verifikasi</label>
                                 <div class="flex gap-3">
@@ -195,6 +198,7 @@
                                     </label>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
                     <!-- Informasi Kondisi SMB -->

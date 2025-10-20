@@ -50,16 +50,33 @@
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten <span class="text-red-500"></span></label>
-                                <select id="kabupaten_id" name="kabupaten_id"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
-                                    <option value="">-- Pilih Kabupaten --</option>
-                                    @foreach($kabupaten as $k)
-                                        <option value="{{ $k->id }}">
-                                            {{ $k->kabupaten }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten/Kota <span class="text-red-500"></span></label>
+                                @if(auth()->user()->user_role === 'admin')
+                                    <!-- Admin bisa pilih semua kabupaten -->
+                                    <select id="kabupaten_id" name="kabupaten_id" required
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                        <option value="">-- Pilih Kabupaten --</option>
+                                        @foreach($kabupaten as $k)
+                                            <option value="{{ $k->id }}">
+                                                {{ $k->kabupaten }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <!-- User non-admin hanya bisa lihat kabupatennya -->
+                                    <select id="kabupaten_id" name="kabupaten_id" required disabled
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-400 text-gray-700 cursor-not-allowed">
+                                        @foreach($kabupaten as $k)
+                                            @if($k->id == auth()->user()->kabupaten_id)
+                                                <option value="{{ $k->id }}" selected>
+                                                    {{ $k->kabupaten }}
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <!-- Hidden input untuk mengirim value karena disabled field tidak terkirim -->
+                                    <input type="hidden" name="kabupaten_id" value="{{ auth()->user()->kabupaten_id }}">
+                                @endif
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Kecamatan <span class="text-red-500"></span></label>
