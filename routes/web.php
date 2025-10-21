@@ -20,6 +20,7 @@ use App\Http\Controllers\Guest\OkbGuestController;
 use App\Http\Controllers\Guest\MajelisGuestController;
 use App\Http\Controllers\Guest\YayasanBuddhaGuestController;
 use App\Http\Controllers\Guest\SmbGuestController;
+use App\Http\Controllers\Guest\GuruPendaGuestController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -53,6 +54,11 @@ Route::prefix('public')->name('guest.')->group(function () {
         return view('guest.smb-index');
     })->name('smb.index');
     Route::get('/smb/{smb}', [SmbGuestController::class, 'show'])->name('smb.show');
+    
+    Route::get('/guru-penda', function () {
+        return view('guest.guru-penda-index');
+    })->name('guru-penda.index');
+    Route::get('/guru-penda/{guruPenda}', [GuruPendaGuestController::class, 'show'])->name('guru-penda.show');
     
 });
 

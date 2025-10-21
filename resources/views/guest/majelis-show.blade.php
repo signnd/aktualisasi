@@ -4,7 +4,7 @@
             <!-- Back Button -->
             <div class="mb-6">
                 <a href="{{ route('guest.majelis.index') }}" 
-                   class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                   class="inline-flex items-center text-sky-600 dark:text-sky-400 hover:underline">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                     </svg>
@@ -15,7 +15,7 @@
             <!-- Detail Card -->
             <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden">
                 <!-- Header -->
-                <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
+                <div class="bg-gradient-to-r from-sky-700 to-sky-800 text-white p-6">
                     <h1 class="text-3xl font-bold">{{ $majelis->nama_majelis }}</h1>
                 </div>
 

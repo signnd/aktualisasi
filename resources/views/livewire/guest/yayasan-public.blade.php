@@ -1,8 +1,8 @@
 <div>
     <!-- Hero Section dengan Statistik -->
-    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-lg p-8 mb-6">
+    <div class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white rounded-lg shadow-lg p-8 mb-6">
         <h1 class="text-3xl font-bold mb-2">Yayasan Keagamaan Buddha</h1>
-        <p class="text-blue-100 mb-6">Database Yayasan Keagamaan Buddha di Provinsi Bali</p>
+        <p class="text-emerald-100 mb-6">Database Yayasan Keagamaan Buddha di Provinsi Bali</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white/10 backdrop-blur rounded-lg p-4">
@@ -11,7 +11,7 @@
                         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
                     </svg>
                     <div>
-                        <p class="text-sm text-blue-100">Total Yayasan Buddha</p>
+                        <p class="text-sm text-emerald-100">Total Yayasan Buddha</p>
                         <p class="text-2xl font-bold">{{ number_format($totalYayasanBuddha) }}</p>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                     </svg>
                     <div>
-                        <p class="text-sm text-blue-100">Kabupaten/Kota</p>
+                        <p class="text-sm text-emerald-100">Kabupaten/Kota</p>
                         <p class="text-2xl font-bold">{{ number_format($totalKabupaten) }}</p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
             <div class="flex flex-wrap items-center gap-2">
                 @if($kabupaten_id || $search)
                     @if($kabupaten_id)
-                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full text-sm">
+                        <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400 rounded-full text-sm">
                             📍 {{ $kabupatens->firstWhere('id', $kabupaten_id)->kabupaten ?? 'N/A' }}
                         </span>
                     @endif
@@ -88,8 +88,8 @@
 
     <!-- Loading Indicator
     <div wire:loading class="mb-4">
-        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
-            <div class="flex items-center text-blue-600 dark:text-blue-400">
+        <div class="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg p-4">
+            <div class="flex items-center text-emerald-600 dark:text-emerald-400">
                 <svg class="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -105,7 +105,7 @@
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-400 dark:hover:bg-zinc-700 transition-shadow duration-300 overflow-hidden">
             <a href="{{ route('guest.yayasan.show', $y) }}" >
             <!-- Header Card -->
-            <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4">
+            <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white p-4">
                 <h3 class="font-bold text-lg truncate" title="{{ $y->nama_yayasan }}">{{ $y->nama_yayasan }}</h3>
             </div>
             

@@ -1,6 +1,6 @@
 <div>
     <!-- Hero Section dengan Statistik -->
-    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-lg p-8 mb-6">
+    <div class="bg-gradient-to-r from-sky-800 to-sky-900 text-white rounded-lg shadow-lg p-8 mb-6">
         <h1 class="text-3xl font-bold mb-2">Majelis Agama Buddha</h1>
         <p class="text-blue-100 mb-6">Daftar Majelis Agama Buddha di Provinsi Bali</p>
         
@@ -93,7 +93,7 @@
             <a href="{{ route('guest.majelis.show', $majelis) }}" >
 
             <!-- Header Card -->
-            <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4">
+            <div class="bg-gradient-to-r from-sky-700 to-sky-800 text-white p-4">
                 <h3 class="font-bold text-lg truncate">{{ $majelis->nama_majelis }}</h3>
             </div>
             

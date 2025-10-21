@@ -4,7 +4,7 @@
             <!-- Back Button -->
             <div class="mb-6">
                 <a href="{{ route('guest.riab.index') }}" 
-                   class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                   class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:underline">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                     </svg>
@@ -15,7 +15,7 @@
             <!-- Detail Card -->
             <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden">
                 <!-- Header -->
-                <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
+                <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white p-6">
                     <h1 class="text-3xl font-bold">{{ $riab->nama }}</h1>
                 </div>
 
@@ -93,7 +93,7 @@
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $riab->kondisi == 'Sangat Baik' ? 'bg-green-100 text-green-800' : 
-                                           ($riab->kondisi == 'Baik' ? 'bg-blue-100 text-blue-800' : 
+                                           ($riab->kondisi == 'Baik' ? 'bg-indigo-100 text-indigo-800' : 
                                            ($riab->kondisi == 'Rusak Ringan' ? 'bg-yellow-100 text-yellow-800' : 
                                            ($riab->kondisi == 'Rusak Sedang' ? 'bg-orange-100 text-orange-800' : 'bg-red-100 text-red-800'))) }}">
                                         {{ $riab->kondisi ?? '-' }}
@@ -152,13 +152,14 @@
                 </div>   
                     <!-- Link Foto -->
                     @if($riab->link_foto)
-                    <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3">Dokumentasi</h4>
-                        <a href="{{ $riab->link_foto }}" target="_blank" class="text-blue-600 hover:underline">
-                            @endif
-                    <!-- Link Foto -->
-                    @if($riab->link_foto)
-                    <div class="border-b pb-4">
+                    <div class="pb-4">
+                        <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                            Foto
+                        </h2>
                         @php
                             // Deteksi jenis URL dan konversi jika perlu
                             $imageUrl = $riab->link_foto;
@@ -178,7 +179,7 @@
                                 
                                 if ($fileId) {
                                     // Gunakan format direct image dari lh3.googleusercontent.com
-                                    $imageUrl = "https://lh3.googleusercontent.com/d/{$fileId}=s300";
+                                    $imageUrl = "https://lh3.googleusercontent.com/d/{$fileId}";
                                 }
                             } 
                             // Cek apakah URL langsung ke gambar (jpg, jpeg, png, gif, webp, svg)
@@ -190,24 +191,17 @@
                         <div class="space-y-3">
                             @if($isGoogleDrive && $fileId)
                                 <!-- Google Drive Image dengan fallback ke iframe -->
-                                <div class="relative rounded-lg overflow-hidden">
-                                    <img id="main-image" 
-                                         src="{{ $imageUrl }}" 
-                                         alt="Foto {{ $riab->nama }}"
-                                         class="w-full h-auto max-h-96 object-contain mx-auto"
-                                         style="display: block;"
-                                         onerror="showIframeViewer('main-image', 'iframe-viewer-main', '{{ $fileId }}')"> 
-                                    
-                                    <!-- Fallback: Google Drive Viewer (iframe) 
-                                    <iframe id="iframe-viewer-main"
+                                <div class="relative rounded-lg overflow-hidden border border-gray-300 bg-gray-50">
+                                    <!-- Fallback: Google Drive Viewer (iframe) -->
+                                    <iframe 
                                             src="https://drive.google.com/file/d/{{ $fileId }}/preview" 
                                             class="w-full h-96"
                                             style="display: none; border: none;"
-                                            allow="autoplay"></iframe> -->
+                                            allow="autoplay"></iframe>
                                 </div>
                             @elseif($isDirectImage)
                                 <!-- Direct Image URL -->
-                                <div class="relative rounded-lg overflow-hidden">
+                                <div class="relative rounded-lg overflow-hidden border border-gray-300 bg-gray-50">
                                     <img src="{{ $imageUrl }}" 
                                          alt="Foto {{ $riab->nama }}"
                                          class="w-full h-auto max-h-96 object-contain mx-auto"
@@ -229,7 +223,7 @@
                             <!-- Link to original -->
                             <div class="flex items-center justify-between flex-wrap gap-2">
                                 <a href="{{ $riab->link_foto }}" target="_blank" 
-                                   class="inline-flex items-center text-blue-600 hover:text-blue-800 transition">
+                                   class="inline-flex items-center text-indigo-600 hover:text-indigo-800 transition">
                                     <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
                                         <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
@@ -239,7 +233,8 @@
                                     @else
                                         Buka Gambar Asli
                                     @endif
-                                </a>
+                                </a>         
+
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,8 @@
 <div>
     <!-- Hero Section dengan Statistik -->
-    <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-lg p-8 mb-6">
+    <div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white rounded-lg shadow-lg p-8 mb-6">
         <h1 class="text-3xl font-bold mb-2">Organisasi Agama & Keagamaan Buddha (OKB)</h1>
-        <p class="text-blue-100 mb-6">Database Organisasi Agama & Keagamaan Buddha di Provinsi Bali</p>
+        <p class="text-teal-100 mb-6">Database Organisasi Agama & Keagamaan Buddha di Provinsi Bali</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white/10 backdrop-blur rounded-lg p-4">
@@ -11,7 +11,7 @@
                         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
                     </svg>
                     <div>
-                        <p class="text-sm text-blue-100">Total Organisasi Agama & Keagamaan Buddha</p>
+                        <p class="text-sm text-teal-100">Total Organisasi Agama & Keagamaan Buddha</p>
                         <p class="text-2xl font-bold">{{ number_format($totalokb) }}</p>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                     </svg>
                     <div>
-                        <p class="text-sm text-blue-100">Kabupaten/Kota</p>
+                        <p class="text-sm text-teal-100">Kabupaten/Kota</p>
                         <p class="text-2xl font-bold">{{ number_format($totalKabupaten) }}</p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
             <div class="flex flex-wrap items-center gap-2">
                 @if($kabupaten_id || $search)
                     @if($kabupaten_id)
-                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full text-sm">
+                        <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-800 dark:text-teal-400 rounded-full text-sm">
                             📍 {{ $kabupatens->firstWhere('id', $kabupaten_id)->kabupaten ?? 'N/A' }}
                         </span>
                     @endif
@@ -92,7 +92,7 @@
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-400 dark:hover:bg-zinc-700 transition-shadow duration-300 overflow-hidden">
             <!-- Header Card -->
             <a href="{{ route('guest.okb.show', $okb) }}" >
-            <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4">
+            <div class="bg-gradient-to-r from-teal-500 to-teal-600 text-white p-4">
                 <h3 class="font-bold text-lg truncate">{{ $okb->nama_okb }}</h3>
             </div>
             

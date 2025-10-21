@@ -175,7 +175,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">SD tempat Mengajar</p>
+                                <p class="text-sm text-gray-300">SMA tempat Mengajar</p>
                                 <p class="font-medium">
                                     @if(!empty($alamat_sekolah_sma))
                                         {{ implode(', ', $alamat_sekolah_sma) }}
