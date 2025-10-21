@@ -13,9 +13,13 @@ use App\Http\Controllers\SmbController;
 use App\Http\Controllers\SiswaSmbController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruPendaController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisteredUsersController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\Guest\RiabGuestController;
+use App\Http\Controllers\Guest\OkbGuestController;
+use App\Http\Controllers\Guest\MajelisGuestController;
+use App\Http\Controllers\Guest\YayasanBuddhaGuestController;
+use App\Http\Controllers\Guest\SmbGuestController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -23,6 +27,34 @@ use App\Http\Controllers\WelcomeController;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
 
+// Guest routes (tanpa middleware auth)
+Route::prefix('public')->name('guest.')->group(function () {
+    Route::get('/riab', function () {
+        return view('guest.riab-index');
+    })->name('riab.index');
+    Route::get('/riab/{riab}', [RiabGuestController::class, 'show'])->name('riab.show');
+
+    Route::get('/okb', function () {
+        return view('guest.okb-index');
+    })->name('okb.index');
+    Route::get('/okb/{okb}', [OkbGuestController::class, 'show'])->name('okb.show');
+
+    Route::get('/majelis', function () {
+        return view('guest.majelis-index');
+    })->name('majelis.index');
+    Route::get('/majelis/{majelis}', [MajelisGuestController::class, 'show'])->name('majelis.show');
+    
+    Route::get('/yayasan', function () {
+        return view('guest.yayasan-index');
+    })->name('yayasan.index');
+    Route::get('/yayasan/{yayasan}', [YayasanBuddhaGuestController::class, 'show'])->name('yayasan.show');
+    
+    Route::get('/smb', function () {
+        return view('guest.smb-index');
+    })->name('smb.index');
+    Route::get('/smb/{smb}', [SmbGuestController::class, 'show'])->name('smb.show');
+    
+});
 
 Route::get('dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])

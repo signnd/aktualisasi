@@ -1,29 +1,19 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Guest;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Riab;
+use App\Models\Majelis;
 use App\Models\Kabupaten;
-use Illuminate\Support\Facades\Auth;
 
-class RiabSearch extends Component
+class MajelisPublic extends Component
 {
     use WithPagination;
 
     public $search = '';
     public $kabupaten_id = '';
 
-    public function mount()
-    {
-        // Set default kabupaten sesuai user yang login (kecuali admin)
-        if (Auth::check() && Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id) {
-            $this->kabupaten_id = Auth::user()->kabupaten_id;
-        }
-    }
-
-    // Reset pagination saat search atau filter berubah
     public function updatingSearch()
     {
         $this->resetPage();
@@ -34,6 +24,7 @@ class RiabSearch extends Component
         $this->resetPage();
     }
 
+    // Method untuk reset semua filter
     public function resetFilters()
     {
         $this->search = '';
@@ -43,9 +34,9 @@ class RiabSearch extends Component
 
     public function render()
     {
-        $query = Riab::with(['user', 'kabupaten', 'kecamatan']);
+        $query = Majelis::with(['kabupaten', 'kecamatan']);
         
-        // Filter berdasarkan kabupaten yang dipilih di combobox
+        // Filter berdasarkan kabupaten yang dipilih
         if ($this->kabupaten_id != '') {
             $query->where('kabupaten_id', $this->kabupaten_id);
         }
@@ -54,9 +45,9 @@ class RiabSearch extends Component
         if ($this->search != '') {
             $search = $this->search;
             $query->where(function($q) use ($search) {
-                $q->where('nama', 'like', "%{$search}%")
-                  ->orWhere('alamat', 'like', "%{$search}%")
-                  ->orWhere('deskripsi', 'like', "%{$search}%")
+                $q->where('nama_majelis', 'like', "%{$search}%")
+                  ->orWhere('sekte', 'like', "%{$search}%")
+                  ->orWhere('binaan', 'like', "%{$search}%")
                   ->orWhereHas('kabupaten', function($q) use ($search) {
                       $q->where('kabupaten', 'like', "%{$search}%");
                   })
@@ -66,12 +57,18 @@ class RiabSearch extends Component
             });
         }
         
-        $riabs = $query->paginate(10);
+        $majeliss = $query->orderBy('nama_majelis')->paginate(12);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
-        return view('livewire.riab-search', [
-            'riabs' => $riabs,
-            'kabupatens' => $kabupatens
+        // Statistik
+        $totalMajelis = Majelis::count();
+        $totalKabupaten = Majelis::distinct('kabupaten_id')->count('kabupaten_id');
+        
+        return view('livewire.guest.majelis-public', [
+            'majeliss' => $majeliss,
+            'kabupatens' => $kabupatens,
+            'totalMajelis' => $totalMajelis,
+            'totalKabupaten' => $totalKabupaten,
         ]);
     }
 }

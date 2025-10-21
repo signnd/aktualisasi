@@ -56,33 +56,43 @@
             <main class="grid auto-rows-min gap-4 md:grid-cols-3">
                 <div class="text-[13px] leading-[20px] flex-1 p-6 lg:p-2 rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-lg">
                     <div class="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg text-center">
-                        <p class="text-2xl font-bold text-blue-600">{{ $counts['riab'] }}</p>
-                        <p class="text-sm text-gray-800 dark:text-gray-300">Rumah Ibadah Agama Buddha</p>
+                            <a href="{{ route('guest.riab.index') }}">
+                            <p class="text-2xl font-bold text-blue-600">{{ $counts['riab'] }}</p>
+                            <p class="text-sm text-gray-800 dark:text-gray-300">Rumah Ibadah Agama Buddha</p>
+                            </a>
                     </div>
                 </div>
                 <div class="text-[13px] leading-[20px] flex-1 p-6 lg:p-2 rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-lg">
                     <div class="bg-red-50 dark:bg-red-900 p-4 rounded-lg text-center">
+                        <a href="{{ route('guest.okb.index') }}">
                         <p class="text-2xl font-bold text-red-600">{{ $counts['okb'] }}</p>
                         <p class="text-sm text-gray-800 dark:text-gray-300">Organisasi Keagamaan Buddha</p>
+                        </a>
                     </div>
                 </div>
                 <div class="text-[13px] leading-[20px] flex-1 p-6 lg:p-2 rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-lg">
                     <div class="bg-yellow-50 dark:bg-yellow-900 p-4 rounded-lg text-center">
+                        <a href="{{ route('guest.majelis.index') }}">
                         <p class="text-2xl font-bold text-yellow-600">{{ $counts['majelis'] }}</p>
                         <p class="text-sm text-gray-800 dark:text-gray-300">Majelis Keagamaan Buddha</p>
+                        </a>
                     </div>
                 </div>
                 <div class="text-[13px] leading-[20px] flex-1 p-6 lg:p-2 rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-lg">
-                        <div class="bg-cyan-50 p-4 dark:bg-cyan-900 rounded-lg text-center">
-                            <p class="text-2xl font-bold text-cyan-600">{{ $counts['yayasan'] }}</p>
-                            <p class="text-sm text-gray-800 dark:text-gray-300">Yayasan Keagamaan Buddha</p>
-                        </div>
+                    <div class="bg-cyan-50 p-4 dark:bg-cyan-900 rounded-lg text-center">
+                        <a href="{{ route('guest.yayasan.index') }}">
+                        <p class="text-2xl font-bold text-cyan-600">{{ $counts['yayasan'] }}</p>
+                        <p class="text-sm text-gray-800 dark:text-gray-300">Yayasan Keagamaan Buddha</p>
+                        </a>
                     </div>
+                </div>
                 <div class="text-[13px] leading-[20px] flex-1 p-6 lg:p-2  rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-lg">
-                        <div class="bg-indigo-50 dark:bg-indigo-900 p-4 rounded-lg text-center">
-                            <p class="text-2xl font-bold text-indigo-600">{{ $counts['smb'] }}</p>
-                            <p class="text-sm text-gray-800 dark:text-gray-300">Sekolah Minggu Buddha</p>
-                        </div>
+                    <a href="{{ route('guest.smb.index') }}">
+                    <div class="bg-indigo-50 dark:bg-indigo-900 p-4 rounded-lg text-center">
+                        <p class="text-2xl font-bold text-indigo-600">{{ $counts['smb'] }}</p>
+                        <p class="text-sm text-gray-800 dark:text-gray-300">Sekolah Minggu Buddha</p>
+                    </div>
+                </a>
                     </div>
                 <div class="text-[13px] leading-[20px] flex-1 p-6 lg:p-2  rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-lg">
                         <div class="bg-emerald-50 dark:bg-emerald-900 p-4 rounded-lg text-center">

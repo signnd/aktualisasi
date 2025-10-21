@@ -268,7 +268,8 @@
                                     @endif
                                 </a>
                                 
-                                @if($fileId)
+                               @if($fileId)
+                               <!-- 
                                 <a href="https://drive.google.com/uc?export=download&id={{ $fileId }}" 
                                    target="_blank"
                                    class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
@@ -276,9 +277,9 @@
                                         <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
                                     </svg>
                                     Download
-                                </a>
+                                </a> -->
                                 @elseif($isDirectImage)
-                                <a href="{{ $imageUrl }}" 
+                                <!-- <a href="{{ $imageUrl }}" 
                                    download
                                    target="_blank"
                                    class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
@@ -286,7 +287,7 @@
                                         <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
                                     </svg>
                                     Download
-                                </a>
+                                </a> -->
                                 @endif
                             </div>
                         </div>
