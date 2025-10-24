@@ -115,11 +115,12 @@
                                 <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['smb'] }}</div>
                                 <div class="text-sm text-gray-200">Sekolah Minggu Buddha (SMB)</div>
                             </a>
-                            <div class="block p-4 border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-md hover:border-[#19140035] dark:hover:border-[#62605b] 
-                                   text-center transition opacity-50 cursor-not-allowed">
-                                <span class="font-medium text-zinc-400">Dhammasekha</span>
-                                <div class="text-sm text-zinc-200 dark:text-[#A1A09A]">(Segera Hadir)</div>
-                            </div>
+                            <a href="{{ route('guest.dhammasekha.index') }}" 
+                            class="block p-4 border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-md hover:border-[#19140035] dark:hover:border-[#62605b] 
+                                   text-center transition bg-green-900 hover:bg-green-900/70">
+                                   <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['smb'] }}</div>
+                                   <div class="text-sm text-gray-200">Dhammasekha</div>
+                            </a>
                         </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-200">
-            {{ __('Edit SMB') }}
+            {{ __('Tambah dhammasekha') }}
         </h2>
     </x-slot>
 
@@ -25,22 +25,18 @@
                     </ul>
                 </div>
             @endif
-            
-            @if(!auth()->user()->kabupaten_id === $smb->kabupaten_id || auth()->user()->user_role !== 'admin')
-            <x-error-modal />
-            @endif
 
             <div class="bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
-                    <h3 class="text-2xl font-bold">Edit Data Sekolah Minggu Buddha</h3>
+                    <h3 class="text-2xl font-bold">Edit Dhammasekha</h3>
                 </div>
 
-                <form action="{{ route('smb.update', $smb->id) }}" method="POST" class="p-6">
+                <form action="{{ route('dhammasekha.update', $dhammasekha->id) }}" method="POST" class="p-6">
                     @csrf
                     @method('PUT')
-                    
+
                     <!-- Informasi Lokasi -->
                     <div class="mb-8">
                         <h4 class="text-lg font-semibold text-gray-200 mb-4 pb-2 border-b-2 border-blue-500 flex items-center">
@@ -51,20 +47,46 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Nama SMB <span class="text-red-500">*</span></label>
-                                <input type="text" name="nama_smb" value="{{ old('nama_smb', $smb->nama_smb) }}" required
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Nama Dhammasekha<span class="text-red-500">*</span></label>
+                                <input type="text" name="nama" required value="{{ old('nama', $dhammasekha->nama) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Alamat Lengkap <span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Jenis Dhammasekha</label>
+                                <div class="flex flex-wrap gap-3">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="jenis" value="Dhammasekha Non Formal"
+                                               class="mr-2 text-green-600 focus:ring-green-500" @checked(old('jenis', $dhammasekha->jenis) == 'Dhammasekha Non Formal')>
+                                        <span>Dhammasekha Non Formal</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="jenis" value="Nava Dhammasekha"
+                                               class="mr-2 text-blue-600 focus:ring-blue-500" @checked(old('jenis', $dhammasekha->jenis) == 'Nava Dhammasekha')>
+                                        <span>Nava Dhammasekha</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="jenis" value="Mula Dhammasekha"
+                                               class="mr-2 text-yellow-600 focus:ring-yellow-500" @checked(old('jenis', $dhammasekha->jenis) == 'Mula Dhammasekha')>
+                                        <span>Mula Dhammasekha</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="jenis" value="Uttama Dhammasekha"
+                                               class="mr-2 text-orange-600 focus:ring-orange-500" @checked(old('jenis', $dhammasekha->jenis) == 'Uttama Dhammasekha')>
+                                        <span>Uttama Dhammasekha</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Alamat<span class="text-red-500">*</span></label>
                                 <textarea name="alamat" rows="2" required
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat', $smb->alamat) }}</textarea>
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                {{ old('alamat', $dhammasekha->alamat) }}</textarea>
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Didirikan</label>
-                                <input type="text" name="didirikan" value="{{ old('didirikan', $smb->didirikan) }}"
-                                       placeholder="Isi tanggal, bulan, tahun didirikan atau tahun saja"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Berdiri</label>
+                                <input type="date" name="tgl_berdiri"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       value="{{ old('tgl_berdiri', $dhammasekha->tgl_berdiri) }}">
                             </div>
                         </div>
                     </div>
@@ -78,55 +100,64 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">IZOP 1</label>
-                                <input type="text" name="izop_1" value="{{ old('izop_1', $smb->izop_1) }}"
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Nomor Izin Operasional</label>
+                                <input type="text" name="no_izop" value="{{ old('no_izop', $dhammasekha->no_izop) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">PPJG 1</label>
-                                <input type="text" name="ppjg_1" value="{{ old('ppjg_1', $smb->ppjg_1) }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">PPJG 2</label>
-                                <input type="text" name="ppjg_2" value="{{ old('ppjg_2', $smb->ppjg_2) }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">NS Sekolah Minggu Buddha</label>
-                                <input type="text" name="nssmb" value="{{ old('nssmb', $smb->nssmb) }}"
+                                <label class="block text-sm font-medium text-gray-100 mb-1">IZOP PPJG</label>
+                                <input type="text" name="izop_ppjg" value="{{ old('izop_ppjg', $dhammasekha->izop_ppjg) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal IZOP</label>
-                                <input type="date" name="tgl_izop" value="{{ old('tgl_izop', $smb->tgl_izop) }}"
+                                <input type="date" name="tgl_izop" value="{{ old('tgl_izop', $dhammasekha->tgl_izop) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Masa IZOP</label>
-                                <input type="text" name="masa_izop" value="{{ old('masa_izop', $smb->masa_izop) }}"
+                                <input type="date" name="masa_izop" value="{{ old('masa_izop', $dhammasekha->masa_izop) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Bapen</label>
-                                <input type="text" name="bapen"
-                                       placeholder="" value="{{ old('bapen', $smb->bapen) }}"
+                                <label class="block text-sm font-medium text-gray-100 mb-1">No Statistik</label>
+                                <input type="text" name="no_statistik" value="{{ old('no_statistik', $dhammasekha->no_statistik) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Alamat Bapen</label>
-                                <textarea name="alamat_bapen" rows="2"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat_bapen', $smb->alamat_bapen) }}</textarea>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">NPYP</label>
+                                <input type="text" name="npyp" value="{{ old('npyp', $dhammasekha->npyp) }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten/Kota <span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">NPSN</label>
+                                <input type="text" name="npsn" value="{{ old('npsn', $dhammasekha->npsn) }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Akreditasi</label>
+                                <input type="text" name="akreditasi" value="{{ old('akreditasi', $dhammasekha->akreditasi) }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Nama Yayasan</label>
+                                <input type="text" name="nama_yayasan" value="{{ old('nama_yayasan', $dhammasekha->nama_yayasan) }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Alamat Yayasan</label>
+                                <textarea name="alamat_yayasan" rows="2"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat_yayasan', $dhammasekha->alamat_yayasan) }}</textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten/Kota<span class="text-red-500">*</span></label>
                                 @if(auth()->user()->user_role === 'admin')
                                     <!-- Admin bisa pilih semua kabupaten -->
                                     <select id="kabupaten_id" name="kabupaten_id" required
                                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                         <option value="">-- Pilih Kabupaten --</option>
                                         @foreach($kabupaten as $k)
-                                            <option value="{{ $k->id }}" @selected(old('kabupaten_id', $smb->kabupaten_id) == $k->id)>
+                                            <option value="{{ $k->id }}"  @selected(old('kabupaten_id', $dhammasekha->kabupaten_id) == $k->id)>
                                                 {{ $k->kabupaten }}
                                             </option>
                                         @endforeach
@@ -149,21 +180,71 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Nama PIC</label>
-                                <input type="text" name="nama_pic" value="{{ old('nama_pic', $smb->nama_pic) }}"
+                                <input type="text" name="nama_pic" value="{{ old('nama_pic', $dhammasekha->nama_pic) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                                <div>
+                            <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">No. Telp/HP/WhatsApp</label>
-                                <input type="text" name="no_telp" value="{{ old('no_telp', $smb->no_telp) }}"
+                                <input type="text" name="no_hp" value="{{ old('no_hp', $dhammasekha->no_hp) }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Email</label>
+                                <input type="text" name="email" value="{{ old('email', $dhammasekha->email) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update</label>
-                                <input type="date" name="tgl_update" value="{{ old('tgl_update', $smb->tgl_update) }}"
+                                <input type="date" name="tgl_update" value="{{ old('tgl_update', $dhammasekha->tgl_update) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                            @if(auth()->user()->user_role === 'admin')
                             <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-2">Naungan Kemenag</label>
+                                <div class="flex flex-wrap gap-3">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="naungan_kemenag" value="Ya" {{ old('naungan_kemenag', $dhammasekha->naungan_kemenag) == 'Ya' ? 'checked' : '' }}
+                                               class="mr-2 text-green-600 focus:ring-green-500">
+                                        <span>Ya</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="naungan_kemenag" value="Tidak" {{ old('naungan_kemenag', $dhammasekha->naungan_kemenag) == 'Tidak' ? 'checked' : '' }}
+                                               class="mr-2 text-red-600 focus:ring-red-500">
+                                        <span>Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-2">Naungan Dinas Pendidikan</label>
+                                <div class="flex flex-wrap gap-3">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="naungan_disdik" value="Ya" {{ old('naungan_disdik', $dhammasekha->naungandisdikg) == 'Ya' ? 'checked' : '' }}
+                                               class="mr-2 text-green-600 focus:ring-green-500">
+                                        <span>Ya</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="naungan_disdik" value="Tidak" {{ old('naungan_disdik', $dhammasekha->naungan_disdik) == 'Tidak' ? 'checked' : '' }}
+                                               class="mr-2 text-red-600 focus:ring-red-500">
+                                        <span>Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-100 mb-2">TK Dinas Pendidikan KB Kemenag</label>
+                                <div class="flex flex-wrap gap-3">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="tk_disdik_kb_kemenag" value="Ya" {{ old('tk_disdik_kb_kemenag', $dhammasekha->tk_disdik_kb_kemenag) == 'Ya' ? 'checked' : '' }}
+                                               class="mr-2 text-green-600 focus:ring-green-500">
+                                        <span>Ya</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="tk_disdik_kb_kemenag" value="Tidak" {{ old('tk_disdik_kb_kemenag', $dhammasekha->naungan_tk_disdik_kb_kemenag) == 'Tidak' ? 'checked' : '' }}
+                                               class="mr-2 text-red-600 focus:ring-red-500">
+                                        <span>Tidak</span>
+                                    </label>
+                                </div>
+                            </div>
+                            @if(auth()->user()->user_role === 'admin')
+                            <!--<div>
                                 <label class="block text-sm font-medium text-gray-100 mb-2">Status</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
@@ -182,18 +263,18 @@
                                         <span>Pending</span>
                                     </label>
                                 </div>
-                            </div>
+                            </div>-->
                             @endif
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Status Eksisting</label>
                                 <div class="flex gap-3">
                                     <label class="flex items-center">
-                                        <input type="radio" name="eksisting" value="Aktif" {{ old('eksisting', $smb->eksisting) == 'Aktif' ? 'checked' : '' }}
+                                        <input type="radio" name="eksisting" value="Aktif" {{ old('eksisting', $dhammasekha->eksisting) == 'Aktif' ? 'checked' : '' }}
                                                class="mr-2 text-green-600 focus:ring-green-500">
                                         <span>Aktif</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="eksisting" value="Tidak Aktif"  {{ old('eksisting', $smb->eksisting) == 'Tidak Aktif' ? 'checked' : '' }}
+                                        <input type="radio" name="eksisting" value="Tidak Aktif" {{ old('eksisting', $dhammasekha->eksisting) == 'Tidak Aktif' ? 'checked' : '' }}
                                                class="mr-2 text-red-600 focus:ring-red-500">
                                         <span>Tidak Aktif</span>
                                     </label>
@@ -204,12 +285,12 @@
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Status Verifikasi</label>
                                 <div class="flex gap-3">
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="TRUE"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'TRUE' ? 'checked' : '' }}
+                                        <input type="radio" name="status_verifikasi" value="TRUE" {{ old('status_verifikasi', $dhammasekha->status_verifikasi) == 'TRUE' ? 'checked' : '' }}
                                                class="mr-2 text-blue-600 focus:ring-blue-500">
                                         <span>Terverifikasi</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="FALSE"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'FALSE' ? 'checked' : '' }}
+                                        <input type="radio" name="status_verifikasi" value="FALSE" {{ old('status_verifikasi', $dhammasekha->status_verifikasi) == 'FALSE' ? 'checked' : '' }}
                                                class="mr-2 text-gray-600 focus:ring-gray-500">
                                         <span>Tidak Terverifikasi</span>
                                     </label>
@@ -218,56 +299,69 @@
                             @endif
                         </div>
                     </div>
-                    <!-- Informasi Kondisi SMB -->
+                    <!-- Informasi Kondisi dhammasekha -->
                     <div class="mb-8">
                         <h4 class="text-lg font-semibold text-gray-200 mb-4 pb-2 border-b-2 border-purple-500 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
                             </svg>
-                            Informasi Kondisi SMB
+                            Informasi Kondisi Dhammasekha
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Kondisi SMB</label>
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Kondisi Dhammasekha</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
-                                        <input type="radio" name="kondisi" value="Sangat Baik" @checked(old('kondisi', $smb->kondisi) == 'Sangat Baik')
+                                        <input type="radio" name="kondisi" value="Sangat Baik" @checked(old('kondisi', $dhammasekha->kondisi) == 'Sangat Baik')
                                                class="mr-2 text-green-600 focus:ring-green-500">
                                         <span>Sangat Baik</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="kondisi" value="Baik"  @checked(old('kondisi', $smb->kondisi) == 'Baik')
+                                        <input type="radio" name="kondisi" value="Baik" @checked(old('kondisi', $dhammasekha->kondisi) == 'Baik')
                                                class="mr-2 text-blue-600 focus:ring-blue-500">
                                         <span>Baik</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="kondisi" value="Rusak Ringan"  @checked(old('kondisi', $smb->kondisi) == 'Rusak Ringan')
+                                        <input type="radio" name="kondisi" value="Rusak Ringan" @checked(old('kondisi', $dhammasekha->kondisi) == 'Rusak Rungan')
                                                class="mr-2 text-yellow-600 focus:ring-yellow-500">
                                         <span>Rusak Ringan</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="kondisi" value="Rusak Sedang"  @checked(old('kondisi', $smb->kondisi) == 'Rusak Sedang')
+                                        <input type="radio" name="kondisi" value="Rusak Sedang" @checked(old('kondisi', $dhammasekha->kondisi) == 'Rusak Sedang')
                                                class="mr-2 text-orange-600 focus:ring-orange-500">
                                         <span>Rusak Sedang</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="kondisi" value="Rusak Berat"  @checked(old('kondisi', $smb->kondisi) == 'Rusak Berat')
+                                        <input type="radio" name="kondisi" value="Rusak Berat" @checked(old('kondisi', $dhammasekha->kondisi) == 'Rusak Berat')
                                                class="mr-2 text-red-600 focus:ring-red-500">
                                         <span>Rusak Berat</span>
                                     </label>
                                 </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 my-2">Link Foto</label>
-                                <input type="url" name="link_foto" 
-                                       placeholder="https://..." value="{{ old('link_foto', $smb->link_foto) }}"
+                                <input type="url" name="foto" 
+                                       placeholder="https://..." value="{{ old('foto', $dhammasekha->foto) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                            <div x-show="eksisting === 'Tidak Aktif'" x-transition>
                                 <label class="block text-sm font-medium text-gray-100 my-2">Jumlah Siswa</label>
-                                <input type="number" name="jumlah_siswa" value="{{ old('jumlah_siswa', $smb->jumlah_siswa) }}"
+                                <input type="number" name="jml_siswa" value="{{ old('jml_siswa', $dhammasekha->jml_siswa) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
+                    </div>
+                        <div class="mb-8">
+                        <h4 class="text-lg font-semibold text-gray-200 mb-4 pb-2 border-b-2 border-gray-500 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                            </svg>
+                            Informasi Lainnya
+                        </h4>
+                            <div x-show="eksisting === 'Tidak Aktif'" x-transition>
+                                <label class="block text-sm font-medium text-gray-100 my-2">Link Berita Acara Penonaktifan</label>
+                                <input type="url" name="link_nonaktif" 
+                                       placeholder="https://..." value="{{ old('link_nonaktif', $dhammasekha->link_nonaktif) }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
                     </div>
                 </div>
 
@@ -289,29 +383,13 @@
                     </div> -->
 
                     <!-- Informasi Lainnya -->
-                    <div class="mb-8">
-                        <h4 class="text-lg font-semibold text-gray-200 mb-4 pb-2 border-b-2 border-gray-500 flex items-center">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                            </svg>
-                            Informasi Lainnya
-                        </h4>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Link Berita Acara Penonaktifan</label>
-                                <input type="url" name="link_berita_acara_nonaktif"
-                                       placeholder="https://..." value="{{ old('link_berita_acara_nonaktif', $smb->link_berita_acara_nonakti) }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Hidden Field -->
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
                     <!-- Action Buttons -->
                     <div class="flex justify-between items-center pt-6 border-t">
-                        <a href="{{ route('smb.index') }}" 
+                        <a href="{{ route('dhammasekha.index') }}" 
                            class="px-6 py-2.5 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200 flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>

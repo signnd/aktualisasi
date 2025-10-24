@@ -1,20 +1,29 @@
 <?php
 
-namespace App\Livewire\Guest;
+namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Smb;
+use App\Models\Dhammasekha;
 use App\Models\Kabupaten;
+use Illuminate\Support\Facades\Auth;
 
-class SmbPublic extends Component
+class DhammasekhaSearch extends Component
 {
-        
     use WithPagination;
 
     public $search = '';
     public $kabupaten_id = '';
 
+    public function mount()
+    {
+        // Set default kabupaten sesuai user yang login (kecuali admin)
+        if (Auth::check() && Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id) {
+            $this->kabupaten_id = Auth::user()->kabupaten_id;
+        }
+    }
+
+    // Reset pagination saat search atau filter berubah
     public function updatingSearch()
     {
         $this->resetPage();
@@ -24,20 +33,19 @@ class SmbPublic extends Component
     {
         $this->resetPage();
     }
-
-    // Method untuk reset semua filter
+    
     public function resetFilters()
     {
         $this->search = '';
         $this->kabupaten_id = '';
         $this->resetPage();
     }
-    
+
     public function render()
     {
-        $query = Smb::with(['kabupaten']);
+        $query = Dhammasekha::with(['kabupaten']);
         
-        // Filter berdasarkan kabupaten yang dipilih
+        // Filter berdasarkan kabupaten yang dipilih di combobox
         if ($this->kabupaten_id != '') {
             $query->where('kabupaten_id', $this->kabupaten_id);
         }
@@ -46,9 +54,11 @@ class SmbPublic extends Component
         if ($this->search != '') {
             $search = $this->search;
             $query->where(function($q) use ($search) {
-                $q->where('nama_smb', 'like', "%{$search}%")
+                $q->where('nama', 'like', "%{$search}%")
                   ->orWhere('alamat', 'like', "%{$search}%")
-                  ->orWhere('nssmb', 'like', "%{$search}%")
+                  ->orWhere('no_izop', 'like', "%{$search}%")
+                  ->orWhere('no_statistik', 'like', "%{$search}%")
+                  ->orWhere('nama_yayasan', 'like', "%{$search}%")
                   ->orWhereHas('kabupaten', function($q) use ($search) {
                       $q->where('kabupaten', 'like', "%{$search}%");
                   });
@@ -58,18 +68,12 @@ class SmbPublic extends Component
             });
         }
         
-        $smbs = $query->orderBy('nama_smb')->paginate(12);
+        $dhammasekhas = $query->paginate(10);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
-        
-        // Statistik
-        $totalSmb = Smb::count();
-        $totalKabupaten = Smb::distinct('kabupaten_id')->count('kabupaten_id');
-        
-        return view('livewire.guest.smb-public', [
-            'smbs' => $smbs,
-            'kabupatens' => $kabupatens,
-            'totalSmb' => $totalSmb,
-            'totalKabupaten' => $totalKabupaten,
+
+        return view('livewire.dhammasekha-search', [
+            'dhammasekhas' => $dhammasekhas,
+            'kabupatens' => $kabupatens
         ]);
     }
 }

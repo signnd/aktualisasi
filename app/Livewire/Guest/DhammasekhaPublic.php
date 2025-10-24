@@ -4,12 +4,11 @@ namespace App\Livewire\Guest;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Smb;
+use App\Models\Dhammasekha;
 use App\Models\Kabupaten;
 
-class SmbPublic extends Component
+class DhammasekhaPublic extends Component
 {
-        
     use WithPagination;
 
     public $search = '';
@@ -35,7 +34,7 @@ class SmbPublic extends Component
     
     public function render()
     {
-        $query = Smb::with(['kabupaten']);
+        $query = Dhammasekha::with(['kabupaten']);
         
         // Filter berdasarkan kabupaten yang dipilih
         if ($this->kabupaten_id != '') {
@@ -46,9 +45,9 @@ class SmbPublic extends Component
         if ($this->search != '') {
             $search = $this->search;
             $query->where(function($q) use ($search) {
-                $q->where('nama_smb', 'like', "%{$search}%")
+                $q->where('nama', 'like', "%{$search}%")
                   ->orWhere('alamat', 'like', "%{$search}%")
-                  ->orWhere('nssmb', 'like', "%{$search}%")
+                  ->orWhere('ketua', 'like', "%{$search}%")
                   ->orWhereHas('kabupaten', function($q) use ($search) {
                       $q->where('kabupaten', 'like', "%{$search}%");
                   });
@@ -58,17 +57,17 @@ class SmbPublic extends Component
             });
         }
         
-        $smbs = $query->orderBy('nama_smb')->paginate(12);
+        $dhammasekhas = $query->orderBy('nama')->paginate(12);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik
-        $totalSmb = Smb::count();
-        $totalKabupaten = Smb::distinct('kabupaten_id')->count('kabupaten_id');
+        $totalDhammasekha = Dhammasekha::count();
+        $totalKabupaten = Dhammasekha::distinct('kabupaten_id')->count('kabupaten_id');
         
-        return view('livewire.guest.smb-public', [
-            'smbs' => $smbs,
+        return view('livewire.guest.dhammasekha-public', [
+            'dhammasekhas' => $dhammasekhas,
             'kabupatens' => $kabupatens,
-            'totalSmb' => $totalSmb,
+            'totalDhammasekha' => $totalDhammasekha,
             'totalKabupaten' => $totalKabupaten,
         ]);
     }

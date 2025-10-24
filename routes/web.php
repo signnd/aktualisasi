@@ -13,6 +13,8 @@ use App\Http\Controllers\SmbController;
 use App\Http\Controllers\SiswaSmbController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruPendaController;
+use App\Http\Controllers\DhammasekhaController;
+use App\Http\Controllers\SiswaDhammasekhaController;
 use App\Http\Controllers\RegisteredUsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Guest\RiabGuestController;
@@ -21,6 +23,8 @@ use App\Http\Controllers\Guest\MajelisGuestController;
 use App\Http\Controllers\Guest\YayasanBuddhaGuestController;
 use App\Http\Controllers\Guest\SmbGuestController;
 use App\Http\Controllers\Guest\GuruPendaGuestController;
+use App\Http\Controllers\Guest\DhammasekhaGuestController;
+use App\Models\Dhammasekha;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -59,6 +63,11 @@ Route::prefix('public')->name('guest.')->group(function () {
         return view('guest.guru-penda-index');
     })->name('guru-penda.index');
     Route::get('/guru-penda/{guruPenda}', [GuruPendaGuestController::class, 'show'])->name('guru-penda.show');
+    
+    Route::get('/dhammasekha', function () {
+        return view('guest.dhammasekha-index');
+    })->name('dhammasekha.index');
+    Route::get('/dhammasekha/{dhammasekha}', [DhammasekhaGuestController::class, 'show'])->name('dhammasekha.show');
     
 });
 
@@ -110,6 +119,14 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('smb', SmbController::class);
     Route::resource('smb.siswa', SiswaSmbController::class);
     Route::resource('guru-penda', GuruPendaController::class);
+    Route::resource('dhammasekha', DhammasekhaController::class);
+    Route::resource('dhammasekha.siswa', DhammasekhaController::class);
+    Route::prefix('dhammasekha/{dhammasekha}')->name('dhammasekha.')->group(function() {
+        Route::post('/siswa', [SiswaDhammasekhaController::class, 'store'])->name('siswa.store');
+        Route::put('/siswa/{siswa}', [SiswaDhammasekhaController::class, 'update'])->name('siswa.update');
+        Route::delete('/siswa/{siswa}', [SiswaDhammasekhaController::class, 'destroy'])->name('siswa.destroy');
+
+    });
     Route::prefix('smb/{smb}')->name('smb.')->group(function () {
         Route::post('/siswa', [SiswaSMBController::class, 'store'])->name('siswa.store');
         Route::put('/siswa/{siswa}', [SiswaSMBController::class, 'update'])->name('siswa.update');
