@@ -18,12 +18,12 @@ return new class extends Migration
         });
 
         Schema::table('guru_penda', function (Blueprint $table) {
-            $table->json('nama_sekolah_sd')->nullable()->after('email');
-            $table->json('nama_sekolah_smp')->nullable();
-            $table->json('nama_sekolah_sma')->nullable();
-            $table->json('alamat_sekolah_sd')->nullable();
-            $table->json('alamat_sekolah_smp')->nullable();
-            $table->json('alamat_sekolah_sma')->nullable();
+            $table->json('nama_sekolah_sd')->nullable()->after('email')->change();
+            $table->json('nama_sekolah_smp')->nullable()->change();
+            $table->json('nama_sekolah_sma')->nullable()->change();
+            $table->json('alamat_sekolah_sd')->nullable()->change();
+            $table->json('alamat_sekolah_smp')->nullable()->change();
+            $table->json('alamat_sekolah_sma')->nullable()->change();
         });
     }
 
