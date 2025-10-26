@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::table('guru_penda', function (Blueprint $table) {
             // Hapus kolom lama jika sudah ada (tipe string)
-            $table->dropColumn('nama_sekolah_1','nama_sekolah_2','nama_sekolah_3','nama_sekolah_4',
-                'alamat_sekolah_1','alamat_sekolah_2','alamat_sekolah_3','alamat_sekolah_4');
+            // $table->dropColumn('nama_sekolah_1','nama_sekolah_2','nama_sekolah_3','nama_sekolah_4',
+            //     'alamat_sekolah_1','alamat_sekolah_2','alamat_sekolah_3','alamat_sekolah_4');
         });
 
         Schema::table('guru_penda', function (Blueprint $table) {
