@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Kabupaten;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +12,9 @@ use Livewire\Volt\Component;
 
 new #[Layout('components.layouts.auth')] class extends Component {
     public string $name = '';
+    public string $username = '';
+    public string $satuan_kerja = '';
+    public ?int $kabupaten_id = null;
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
@@ -22,11 +26,15 @@ new #[Layout('components.layouts.auth')] class extends Component {
     {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:' . User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'satuan_kerja' => ['nullable', 'string', 'max:255'],
+            'kabupaten_id' => ['required', 'exists:kabupaten,id'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
+        $validated['user_role'] = 'user'; // Set default role sebagai user
 
         event(new Registered(($user = User::create($validated))));
 
@@ -35,6 +43,15 @@ new #[Layout('components.layouts.auth')] class extends Component {
         Session::regenerate();
 
         $this->redirectIntended(route('dashboard', absolute: false), navigate: true);
+    }
+
+    public function with(): array
+    {
+        return [
+            'kabupatens' => Kabupaten::where('kabupaten', '!=', 'Provinsi Bali')
+                                      ->orderBy('kabupaten')
+                                      ->get()
+        ];
     }
 }; ?>
 
@@ -56,6 +73,16 @@ new #[Layout('components.layouts.auth')] class extends Component {
             :placeholder="__('Nama Lengkap')"
         />
 
+        <!-- Username -->
+        <flux:input
+            wire:model="username"
+            :label="__('Nama Pengguna')"
+            type="text"
+            required
+            autocomplete="username"
+            :placeholder="__('Nama Pengguna')"
+        />
+
         <!-- Email Address -->
         <flux:input
             wire:model="email"
@@ -64,6 +91,27 @@ new #[Layout('components.layouts.auth')] class extends Component {
             required
             autocomplete="email"
             placeholder="email@example.com"
+        />
+
+        <!-- Kabupaten/Kota -->
+        <flux:select
+            wire:model="kabupaten_id"
+            :label="__('Kabupaten/Kota')"
+            required
+        >
+            <option value="">-- Pilih Kabupaten/Kota --</option>
+            @foreach($kabupatens as $kab)
+                <option value="{{ $kab->id }}">{{ $kab->kabupaten }}</option>
+            @endforeach
+        </flux:select>
+
+        <!-- Satuan Kerja -->
+        <flux:input
+            wire:model="satuan_kerja"
+            :label="__('Satuan Kerja')"
+            type="text"
+            autocomplete="organization"
+            :placeholder="__('Satuan Kerja (Opsional)')"
         />
 
         <!-- Password -->

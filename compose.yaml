@@ -54,7 +54,7 @@ services:
         ports:
             - 8083:8080
         networks:
-            - sail   
+            - sail
 networks:
     sail:
         driver: bridge

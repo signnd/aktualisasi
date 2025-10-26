@@ -24,7 +24,6 @@ use App\Http\Controllers\Guest\YayasanBuddhaGuestController;
 use App\Http\Controllers\Guest\SmbGuestController;
 use App\Http\Controllers\Guest\GuruPendaGuestController;
 use App\Http\Controllers\Guest\DhammasekhaGuestController;
-use App\Models\Dhammasekha;
 
 //Route::get('/', function () {
 //    return view('welcome');

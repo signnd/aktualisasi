@@ -34,10 +34,10 @@
                             </a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}"
+                                <!-- <a href="{{ route('register') }}"
                                    class="inline-block px-5 py-1.5 text-gray-100 border-white hover:border-[#4848454a] border dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
                                     Register
-                                </a>
+                                </a>--> 
                             @endif
                         @endauth
                     </nav>
