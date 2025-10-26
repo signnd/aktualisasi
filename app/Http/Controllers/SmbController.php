@@ -108,7 +108,10 @@ class SmbController extends Controller
                       ->paginate(20);
             }
         ]);
-        return view('smb.show', compact('smb'));
+
+        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        
+        return view('smb.show', compact(['smb', 'kabupatens']));
     }
 
     /**

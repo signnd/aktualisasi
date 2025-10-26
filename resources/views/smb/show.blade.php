@@ -36,9 +36,19 @@
                             <input type="text" name="tempat_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="date" name="tgl_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
-                        <div class="space-y-2">
+                        <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Alamat</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Kabupaten</label>
                             <input type="text" name="alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <select id="kabupaten_id" name="kabupaten_id" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
+                                <option value="">-- Pilih Kabupaten --</option>
+                                @foreach($kabupatens as $k)
+                                    <option value="{{ $k->id }}" @selected(old('kabupaten_id', $smb->kabupaten_id) == $k->id)>
+                                        {{ $k->kabupaten }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">No. HP</label>
@@ -94,9 +104,19 @@
                             <input type="text" name="tempat_lahir" x-model="siswa.tempat_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="date" name="tgl_lahir" x-model="siswa.tgl_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
-                        <div class="space-y-2">
+                        <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Alamat</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Kabupaten</label>
                             <input type="text" name="alamat" x-model="siswa.alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <select id="kabupaten_id" name="kabupaten_id" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
+                                <option value="">-- Pilih Kabupaten --</option>
+                                @foreach($kabupatens as $k)
+                                    <option value="{{ $k->id }}" @selected(old('kabupaten_id', $smb->kabupaten_id) == $k->id)>
+                                        {{ $k->kabupaten }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">No. HP</label>

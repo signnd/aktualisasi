@@ -87,8 +87,10 @@ class SiswaSmbController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Smb $smb, SiswaSmb $siswaSmb)
+    public function update(Request $request, Smb $smb, $siswaSmb)
     {
+        $siswaSmb = SiswaSmb::findOrFail($siswaSmb);
+
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $siswaSmb->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }
@@ -118,7 +120,7 @@ class SiswaSmbController extends Controller
         //]);
         
         //$smb->siswaSmb()->update($validated, $dataToCreate);
-        $smb->siswaSmb()->update($validated);
+        $siswaSmb->update($validated);
 
         return redirect()->route('smb.show', $smb->id)
                          ->with('success', 'Data siswa berhasil diedit');
@@ -127,8 +129,8 @@ class SiswaSmbController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-public function destroy(Smb $smb, SiswaSmb $siswa)
-{
+    public function destroy(Smb $smb, SiswaSmb $siswa)
+    {
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $siswa->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }

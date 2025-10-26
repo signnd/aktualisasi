@@ -90,8 +90,10 @@ class SiswaDhammasekhaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Dhammasekha $dhammasekha, SiswaDhammasekha $siswaDhammasekha)
+    public function update(Request $request, Dhammasekha $dhammasekha, $siswaDhammasekha)
     {
+        $siswaDhammasekha = SiswaDhammasekha::findOrFail($siswaDhammasekha);
+
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $siswaDhammasekha->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }
@@ -126,8 +128,7 @@ class SiswaDhammasekhaController extends Controller
         //    'user_id' => auth()->id(), // Asumsi Anda menggunakan Auth::id()
         //]);
         
-        //$smb->siswaSmb()->update($validated, $dataToCreate);
-        $dhammasekha->siswaDhammasekha()->update($validated);
+        $siswaDhammasekha->update($validated);
 
         return redirect()->route('dhammasekha.show', $dhammasekha->id)
                          ->with('success', 'Data siswa berhasil diedit');
@@ -139,7 +140,7 @@ class SiswaDhammasekhaController extends Controller
      */
     public function destroy(Dhammasekha $dhammasekha, SiswaDhammasekha $siswaDhammasekha)
     {
-        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $siswa->kabupaten_id) {
+        if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $siswaDhammasekha->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }
 
@@ -150,7 +151,7 @@ class SiswaDhammasekhaController extends Controller
                              ->with('success', 'Data siswa berhasil dihapus.');
         } catch (\Exception $e) {
             return redirect()->route('dhammasekha.show', $dhammasekha->id)
-                             ->with('error', 'Gagal menghapus data siswa: ' . $e->getMessage());
+                             ->with('error', 'Gagal menghapus data siswa: ' . $siswaDhammasekha->getMessage());
         }
 
     }

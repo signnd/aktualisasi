@@ -12,7 +12,7 @@ class Dhammasekha extends Model
     protected $table = 'dhammasekha';
 
     protected $fillable = [
-            'kabupaten_id','jenis','nama','tgl_berdiri','no_izop','izop_ppjg','tgl_izop',
+            'kabupaten_id','jenis','nama','alamat','tgl_berdiri','no_izop','izop_ppjg','tgl_izop',
             'masa_izop','no_statistik','nama_yayasan','alamat_yayasan','npyp','npsn',
             'akreditasi','nama_pic','no_hp','email','naungan_kemenag','naungan_disdik', 
             'tk_disdik_kb_kemenag', 'jml_siswa', 'eksisting', 'link_nonaktif','kondisi',

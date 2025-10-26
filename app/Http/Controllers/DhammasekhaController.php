@@ -111,7 +111,10 @@ class DhammasekhaController extends Controller
                       ->paginate(20);
             }
         ]);
-        return view('dhammasekha.show', compact('dhammasekha'));
+
+        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+
+        return view('dhammasekha.show', compact('dhammasekha','kabupatens'));
 
     }
 

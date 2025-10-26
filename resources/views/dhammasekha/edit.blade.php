@@ -79,8 +79,7 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Alamat<span class="text-red-500">*</span></label>
                                 <textarea name="alamat" rows="2" required
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                {{ old('alamat', $dhammasekha->alamat) }}</textarea>
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat', $dhammasekha->alamat) }}</textarea>
                             </div>
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Berdiri</label>
