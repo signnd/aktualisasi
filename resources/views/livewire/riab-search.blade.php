@@ -57,7 +57,7 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">No</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama RIAB</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kabupaten/Kota</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Kecamatan</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Alamat</th>
                         @if(auth()->user()->user_role === 'admin')
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Status</th>
                         @endif
@@ -77,8 +77,8 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                 {{ $riab->kabupaten->kabupaten ?? '-' }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                                {{ $riab->kecamatan->kecamatan ?? '-' }}
+                            <td class="px-6 py-4 whitespace text-sm text-gray-900 dark:text-white">
+                                {{ $riab->alamat ?? '-' }}
                             </td>
                             @if(auth()->user()->user_role === 'admin')
                             <td class="px-6 py-4 whitespace-nowrap">

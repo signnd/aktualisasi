@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-200">
+        <h2 class="text-xl font-semibold leading-tight text-gray-900 dark:text-gray-200">
             {{ __('Tambah Majelis') }}
         </h2>
     </x-slot>
@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <div class="bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gray-100 dark:bg-gray-900 border border-gray-800 dark:border-gray-800 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
@@ -37,7 +37,7 @@
                     
                     <!-- Informasi Lokasi -->
                     <div class="mb-8">
-                        <h4 class="text-lg font-semibold text-gray-200 mb-4 pb-2 border-b-2 border-blue-500 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4 pb-2 border-b-2 border-blue-500 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                             </svg>
@@ -45,39 +45,39 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Nama Majelis Agama Buddha<span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama Majelis Agama Buddha<span class="text-red-500">*</span></label>
                                 <input type="text" name="nama_majelis" required
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-3">
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Sekte</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Sekte</label>
                                 <input type="text" name="sekte"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Binaan</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Binaan</label>
                                 <input type="text" name="binaan"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Ketua</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Ketua</label>
                                 <input type="text" name="ketua"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Keterangan</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Keterangan</label>
                                 <textarea name="keterangan" rows="4"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten/Kota/Provinsi<span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kabupaten/Kota/Provinsi<span class="text-red-500">*</span></label>
                                 @if(auth()->user()->user_role === 'admin')
                                     <!-- Admin bisa pilih semua kabupaten -->
                                     <select id="kabupaten_id" name="kabupaten_id" required
-                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                         <option value="">-- Pilih Kabupaten --</option>
                                         @foreach($kabupaten as $k)
                                             <option value="{{ $k->id }}">
@@ -88,7 +88,7 @@
                                 @else
                                     <!-- User non-admin hanya bisa lihat kabupatennya -->
                                     <select id="kabupaten_id" name="kabupaten_id" required disabled
-                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-400 text-gray-700 cursor-not-allowed">
+                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg bg-gray-400 text-gray-700 cursor-not-allowed">
                                         @foreach($kabupaten as $k)
                                             @if($k->id == auth()->user()->kabupaten_id)
                                                 <option value="{{ $k->id }}" selected>
@@ -102,15 +102,15 @@
                                 @endif
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Terdaftar</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Terdaftar</label>
                                 <input type="date" name="tgl_terdaftar"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                             <div class="flex flex-wrap py-2">
-                            <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update</label>
-                                <input type="date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') : '-' }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700">
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
+                                <input type="date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-800 rounded-lg bg-gray-200 dark:bg-gray-700">
                             </div>
 
                     </div>

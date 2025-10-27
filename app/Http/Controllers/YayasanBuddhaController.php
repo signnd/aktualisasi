@@ -82,7 +82,7 @@ class YayasanBuddhaController extends Controller
      */
     public function show(YayasanBuddha $yayasan)
     {
-        $yayasan->load(['user']);
+        $yayasan->load(['users']);
         return view('yayasan.show',compact('yayasan'));
     }
 

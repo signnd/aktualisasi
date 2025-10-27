@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-100">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-100">
             {{ __('Detail Dhammasekha') }}
         </h2>
 </x-slot>
@@ -15,12 +15,12 @@
                     @csrf
                     <div class="space-y-2">
                         <input type="hidden" name="dhammasekha_id" value="{{ $dhammasekha->id }}">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Nama Siswa</label>
+                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Siswa</label>
                         <input type="text" name="nama_siswa"
-                            class="w-full p-1 text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
+                            class="w-full p-1 text-gray-800 dark:text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
                     </div>
                     <div class="space-y-2">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Jenis Kelamin</label>
+                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Jenis Kelamin</label>
                             <span><input type="radio" name="jenis_kelamin" value="Laki-laki"
                                    class="mr-1 text-green-600 focus:ring-green-500">
                             Laki-laki
@@ -28,20 +28,20 @@
                                    class="mx-1 text-green-600 focus:ring-green-500">
                             Perempuan</span>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">NIK</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">NISN</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">NIK</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">NISN</label>
                             <input type="text" name="nik" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="nisn" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100">Tempat Lahir</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100">Tanggal Lahir</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100">Tempat Lahir</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100">Tanggal Lahir</label>
                             <input type="text" name="tempat_lahir" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="date" name="tgl_lahir" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Alamat</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Kabupaten</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Alamat</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Kabupaten</label>
                             <input type="text" name="alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <select id="kabupaten_id" name="kabupaten_id" required
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
@@ -54,21 +54,21 @@
                             </select>
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">No. HP</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Agama</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">No. HP</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Agama</label>
                             <input type="text" name="no_hp" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="agama" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Nama Ibu</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Nama Ayah</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Ibu</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Ayah</label>
                             <input type="text" name="nama_ibu" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="nama_ayah" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-3 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Pendidikan</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Kelas</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Tahun Ajaran</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Pendidikan</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Kelas</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Tahun Ajaran</label>
                             <input type="text" name="pendidikan" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="kelas" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="tahun_ajaran" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
@@ -95,12 +95,12 @@
                     @method('PUT')
                     <div class="space-y-2">
                         <input type="hidden" name="dhammasekha_id" value="{{ $dhammasekha->id }}">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Nama Siswa</label>
+                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Siswa</label>
                         <input type="text" name="nama_siswa" x-model="siswa.nama_siswa"
-                            class="w-full p-1 text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
+                            class="w-full p-1 text-gray-800 dark:text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
                     </div>
                     <div class="space-y-2">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Jenis Kelamin</label>
+                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Jenis Kelamin</label>
                             <span><input type="radio" name="jenis_kelamin" value="Laki-laki" x-model="siswa.jenis_kelamin"
                                    class="mr-1 text-green-600 focus:ring-green-500">
                             Laki-laki</span>
@@ -108,20 +108,20 @@
                                    class="mx-1 text-green-600 focus:ring-green-500">
                             Perempuan</span>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">NIK</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">NISN</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">NIK</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">NISN</label>
                             <input type="text" name="nik" x-model="siswa.nik" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="nisn" x-model="siswa.nisn" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100">Tempat Lahir</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100">Tanggal Lahir</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100">Tempat Lahir</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100">Tanggal Lahir</label>
                             <input type="text" name="tempat_lahir" x-model="siswa.tempat_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="date" name="tgl_lahir" x-model="siswa.tgl_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Alamat</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Kabupaten</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Alamat</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Kabupaten</label>
                             <input type="text" name="alamat" x-model="siswa.alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <select id="kabupaten_id" name="kabupaten_id" required
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
@@ -135,21 +135,21 @@
                         </div>
                         
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">No. HP</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Agama</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">No. HP</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Agama</label>
                             <input type="text" name="no_hp" x-model="siswa.no_hp" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="agama" x-model="siswa.agama" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Nama Ibu</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Nama Ayah</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Ibu</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Ayah</label>
                             <input type="text" name="nama_ibu" x-model="siswa.nama_ibu" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="nama_ayah" x-model="siswa.nama_ayah" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-3 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Pendidikan</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Kelas</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-1">Tahun Ajaran</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Pendidikan</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Kelas</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Tahun Ajaran</label>
                             <input type="text" x-model="siswa.pendidikan" name="pendidikan" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" x-model="siswa.kelas" name="kelas" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" x-model="siswa.tahun_ajaran" name="tahun_ajaran" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
@@ -171,7 +171,7 @@
             class="fixed inset-0 bg-gray-900 bg-opacity-900 flex items-center justify-center z-50">
             <div @click.away="closeModal()" class="bg-white dark:bg-gray-600 rounded-lg shadow-lg w-full max-w-sm p-6 transform transition-all">
                 <h2 class="text-xl font-semibold mb-4 text-red-600">Konfirmasi Hapus</h2>
-                <p class="mb-4 text-gray-700 dark:text-gray-100">
+                <p class="mb-4 text-gray-700 dark:text-gray-800 dark:text-gray-100">
                     Apakah Anda yakin ingin menghapus data siswa: 
                     <strong x-text="siswaToDelete.nama_siswa"></strong>?
                 </p>
@@ -218,7 +218,7 @@
             <div class="p-6 space-y-6"> <!-- informasi -->
                 <!-- Informasi Lokasi 
                 <div class="border-b pb-4">
-                    <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                         </svg>
@@ -230,7 +230,7 @@
 
                 <!-- Informasi Umum -->
                 <div class="border-b pb-4">
-                    <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                         </svg>
@@ -238,72 +238,72 @@
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <p class="text-sm text-gray-300">Jenis</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Jenis</p>
                             <p class="font-medium">{{ $dhammasekha->jenis ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Alamat Lengkap</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Alamat Lengkap</p>
                             <p class="font-medium">{{ $dhammasekha->alamat ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Kabupaten</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Kabupaten</p>
                             <p class="font-medium">{{ $dhammasekha->kabupaten->kabupaten ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Tanggal Berdiri</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Tanggal Berdiri</p>
                             <p class="font-medium">{{ $dhammasekha->tgl_berdiri ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">No. Izin Operasional</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">No. Izin Operasional</p>
                             <p class="font-medium">{{ $dhammasekha->no_izop ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">IZOP PPJG</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">IZOP PPJG</p>
                             <p class="font-medium">{{ $dhammasekha->izop_ppjg ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Masa IZOP</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Masa IZOP</p>
                             <p class="font-medium">{{ $dhammasekha->masa_izop ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Tanggal IZOP</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Tanggal IZOP</p>
                             <p class="font-medium">{{ $dhammasekha->tgl_izop ? \Carbon\Carbon::parse($dhammasekha->tgl_izop)->format('d M Y') : '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Masa IZOP</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Masa IZOP</p>
                             <p class="font-medium">{{ $dhammasekha->masa_izop ? \Carbon\Carbon::parse($dhammasekha->masa_izop)->format('d M Y') : '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">No. Statistik</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">No. Statistik</p>
                             <p class="font-medium">{{ $dhammasekha->no_statistik ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Nama Yayasan</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Nama Yayasan</p>
                             <p class="font-medium">{{ $dhammasekha->nama_yayasan ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Alamat Yayasan</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Alamat Yayasan</p>
                             <p class="font-medium">{{ $dhammasekha->alamat_yayasan ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">NPYP</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">NPYP</p>
                             <p class="font-medium">{{ $dhammasekha->npyp ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">NPSN</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">NPSN</p>
                             <p class="font-medium">{{ $dhammasekha->npsn ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Akreditasi</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Akreditasi</p>
                             <p class="font-medium">{{ $dhammasekha->akreditasi ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Jumlah Siswa</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Jumlah Siswa</p>
                             <p class="font-medium">{{ $dhammasekha->siswadhammasekha->count() }} orang</p>
                         </div>
                         @if($dhammasekha->jenis !== 'Dhammasekha Non Formal')
                         <div>
-                            <p class="text-sm text-gray-300">Naungan Kemenag</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Naungan Kemenag</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->naungan_kemenag == 'Ya' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $dhammasekha->naungan_kemenag ?? '-' }}
@@ -311,7 +311,7 @@
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Naungan Dinas Pendidikan</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Naungan Dinas Pendidikan</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->naungan_disdik == 'Ya' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $dhammasekha->naungan_disdik ?? '-' }}
@@ -319,7 +319,7 @@
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">TK Dinas Pendidikan KB Kemenag</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">TK Dinas Pendidikan KB Kemenag</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->tk_disdik_kb_kemenag == 'Ya' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $dhammasekha->tk_disdik_kb_kemenag ?? '-' }}
@@ -328,7 +328,7 @@
                         </div>
                         @endif
                         <div>
-                            <p class="text-sm text-gray-300">Kondisi Bangunan</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Kondisi Bangunan</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm 
                                     {{ $dhammasekha->kondisi == 'Sangat Baik' ? 'bg-green-100 text-green-800' : 
@@ -340,7 +340,7 @@
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Status Eksisting</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Status Eksisting</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $dhammasekha->eksisting ?? '-' }}
@@ -348,15 +348,15 @@
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Status Verifikasi</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Status Verifikasi</p>
                             <p class="font-medium">
-                                <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-100' }}">
+                                <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800 dark:text-gray-100' }}">
                                     {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                 </span>
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Tanggal Update</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Tanggal Update</p>
                             <p class="font-medium">{{ $dhammasekha->tgl_update ? \Carbon\Carbon::parse($dhammasekha->tgl_update)->format('d M Y') : '-' }}</p>
                         </div>
                     </div>
@@ -364,7 +364,7 @@
 
                 <!-- Informasi Kontak -->
                 <div class="border-b pb-4">
-                    <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
@@ -373,15 +373,15 @@
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <p class="text-sm text-gray-300">Nama PIC</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Nama PIC</p>
                             <p class="font-medium">{{ $dhammasekha->nama_pic ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">No. Telp/HP/WhatsApp</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">No. Telp/HP/WhatsApp</p>
                             <p class="font-medium">{{ $dhammasekha->no_hp ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-300">Email</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Email</p>
                             <p class="font-medium">{{ $dhammasekha->email ?? '-' }}</p>
                         </div>
                     </div>
@@ -420,7 +420,7 @@
 
                     <div class="mt-8">
                     <div class="flex justify-between items-center mb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                             </svg>
@@ -457,18 +457,18 @@
                                 <tbody class="bg-white divide-y dark:bg-zinc-800 divide-gray-200">
                                     @foreach($dhammasekha->siswadhammasekha as $index => $siswadhammasekha)
                                     <tr class="hover:bg-gray-50 dark:hover:bg-zinc-500 transition">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $index + 1 }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $index + 1 }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->nama_siswa }}</div>
+                                            <div class="text-sm font-medium text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->nama_siswa }}</div>
                                             @if(auth()->user()->kabupaten_id === $dhammasekha->kabupaten_id || auth()->user()->user_role === 'admin')
-                                            <div class="text-sm text-gray-500 dark:text-gray-300">NIK: {{ $siswadhammasekha->nik ?? '-' }}</div>
+                                            <div class="text-sm text-gray-500 dark:text-gray-600 dark:text-gray-300">NIK: {{ $siswadhammasekha->nik ?? '-' }}</div>
                                             @endif
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->jenis_kelamin ?? '-' }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->kelas ?? '-' }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->kabupaten->kabupaten ?? '-' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->jenis_kelamin ?? '-' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->kelas ?? '-' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->kabupaten->kabupaten ?? '-' }}</td>
                                         @if(auth()->user()->kabupaten_id === $siswadhammasekha->kabupaten_id || auth()->user()->user_role === 'admin')
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->no_hp ?? '-' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->no_hp ?? '-' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                             <div class="flex justify-center space-x-2">
                                                 <button @click="openEditModal({{ json_encode($siswadhammasekha) }})" 

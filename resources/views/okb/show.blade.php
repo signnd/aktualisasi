@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-100">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-100">
             {{ __('Detail okb') }}
         </h2>
     </x-slot>
@@ -32,7 +32,7 @@
                     
                     <!-- Informasi Lokasi -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                             </svg>
@@ -40,19 +40,19 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Kabupaten</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Kabupaten</p>
                                 <p class="font-medium">{{ $okb->kabupaten->kabupaten ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kecamatan</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Kecamatan</p>
                                 <p class="font-medium">{{ $okb->kecamatan->kecamatan ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kelurahan/Desa</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Kelurahan/Desa</p>
                                 <p class="font-medium">{{ $okb->kelurahan ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kategori 3T</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Kategori 3T</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $okb->kategori_3t == '3T' ? 'bg-orange-100 text-orange-800' : 'bg-green-100 text-green-800' }}">
                                         {{ $okb->kategori_3t ?? '-' }}
@@ -60,7 +60,7 @@
                                 </p>
                             </div>
                             <div class="md:col-span-2">
-                                <p class="text-sm text-gray-300">Alamat Lengkap</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Alamat Lengkap</p>
                                 <p class="font-medium">{{ $okb->alamat ?? '-' }}</p>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
 
                     <!-- Informasi Umum -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                             </svg>
@@ -76,23 +76,23 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Ketua</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Ketua</p>
                                 <p class="font-medium">{{ $okb->ketua ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Berdiri</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Tahun Berdiri</p>
                                 <p class="font-medium">{{ $okb->thn_berdiri ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Penerbitan Tanda Daftar</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Tanggal Penerbitan Tanda Daftar</p>
                                 <p class="font-medium">{{ $okb->tgl_tanda_daftar ? \Carbon\Carbon::parse($okb->tgl_tanda_daftar)->format('d M Y') : '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Jenis Kelembagaan</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Jenis Kelembagaan</p>
                                 <p class="font-medium">{{ $okb->jenis_kelembagaan ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Status</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $okb->status == 'disetujui' ? 'bg-green-100 text-green-800' : 
@@ -102,7 +102,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status Eksisting</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Status Eksisting</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $okb->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $okb->eksisting ?? '-' }}
@@ -110,15 +110,15 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status Verifikasi</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Status Verifikasi</p>
                                 <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $okb->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-100' }}">
+                                    <span class="px-2 py-1 rounded text-sm {{ $okb->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800 dark:text-gray-100' }}">
                                         {{ $okb->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                     </span>
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Update</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Tanggal Update</p>
                                 <p class="font-medium">{{ $okb->tgl_update ? \Carbon\Carbon::parse($okb->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
 
                     <!-- Informasi Kontak -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
@@ -135,15 +135,15 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Email</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Email</p>
                                 <p class="font-medium">{{ $okb->email ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">No. Telp/HP/WhatsApp</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">No. Telp/HP/WhatsApp</p>
                                 <p class="font-medium">{{ $okb->no_telp ?? '-' }}</p>
                             </div>
                             <div class="md:col-span-2">
-                                <p class="text-sm text-gray-300">Media Sosial</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Media Sosial</p>
                                 <p class="font-medium">{{ $okb->media_sosial ?? '-' }}</p>
                             </div>
                         </div>
@@ -258,7 +258,7 @@
                         </div>
                     </div>
                     @endif                            <div>
-                                <p class="text-sm text-gray-300">Periode Update SISFO</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Periode Update SISFO</p>
                                 <p class="font-medium">{{ $okb->update_sisfo ?? '-' }}</p>
                             </div>
                         </div>

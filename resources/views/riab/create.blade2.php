@@ -36,7 +36,7 @@
                                class="border-2 border-gray-700 mt-2 px-2 py-1 block w-full rounded-lg shadow-sm">
                     </div>
 
-<div>
+                    <div>
                         <label class="block text-sm font-medium">Kabupaten</label>
                         <select id="kabupaten_id" name="kabupaten_id" 
                             class="border-2 border-gray-700 text-black bg-white mt-2 px-2 py-1 block w-full rounded-md shadow-sm">

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-100">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-100">
             {{ __('Detail Yayasan Agama Buddha') }}
         </h2>
     </x-slot>
@@ -30,7 +30,7 @@
                     
                     <!-- Informasi Lokasi -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                             </svg>
@@ -38,15 +38,15 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Kabupaten</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Kabupaten</p>
                                 <p class="font-medium">{{ $yayasan->kabupaten->kabupaten ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kecamatan</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Kecamatan</p>
                                 <p class="font-medium">{{ $yayasan->kecamatan->kecamatan ?? '-' }}</p>
                             </div>
                             <div class="md:col-span-2">
-                                <p class="text-sm text-gray-300">Alamat Lengkap</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Alamat Lengkap</p>
                                 <p class="font-medium">{{ $yayasan->alamat ?? '-' }}</p>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
 
                     <!-- Informasi Umum -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                             </svg>
@@ -62,15 +62,15 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Ketua</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Ketua</p>
                                 <p class="font-medium">{{ $yayasan->ketua ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Penerbitan Tanda Daftar</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Tanggal Penerbitan Tanda Daftar</p>
                                 <p class="font-medium">{{ $yayasan->tgl_terdaftar ? \Carbon\Carbon::parse($yayasan->tgl_terdaftar)->format('d M Y') : '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Keterangan</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Keterangan</p>
                                 <p class="font-medium">{{ $yayasan->keterangan ?? '-' }}</p>
                             </div>
                         </div>

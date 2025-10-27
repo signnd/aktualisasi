@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-100">
+        <h2 class="text-xl font-semibold leading-tight text-gray-950 dark:text-gray-100">
             {{ __('Detail RIAB') }}
         </h2>
     </x-slot>
@@ -32,7 +32,7 @@
                     
                     <!-- Informasi Lokasi -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                             </svg>
@@ -40,19 +40,19 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Kabupaten</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Kabupaten</p>
                                 <p class="font-medium">{{ $riab->kabupaten->kabupaten ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kecamatan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Kecamatan</p>
                                 <p class="font-medium">{{ $riab->kecamatan->kecamatan ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kelurahan/Desa</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Kelurahan/Desa</p>
                                 <p class="font-medium">{{ $riab->kelurahan ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kategori 3T</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Kategori 3T</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $riab->kategori_3t == '3T' ? 'bg-orange-100 text-orange-800' : 'bg-green-100 text-green-800' }}">
                                         {{ $riab->kategori_3t ?? '-' }}
@@ -60,11 +60,11 @@
                                 </p>
                             </div>
                             <div class="md:col-span-2">
-                                <p class="text-sm text-gray-300">Alamat Lengkap</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Alamat Lengkap</p>
                                 <p class="font-medium">{{ $riab->alamat ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Koordinat (Lat, Long)</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Koordinat (Lat, Long)</p>
                                 <p class="font-medium">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</p>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
 
                     <!-- Informasi Umum -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                             </svg>
@@ -80,27 +80,27 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Ketua</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Ketua</p>
                                 <p class="font-medium">{{ $riab->ketua ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Berdiri</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Berdiri</p>
                                 <p class="font-medium">{{ $riab->thn_berdiri ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Penerbitan Tanda Daftar</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tanggal Penerbitan Tanda Daftar</p>
                                 <p class="font-medium">{{ $riab->tgl_tanda_daftar ? \Carbon\Carbon::parse($riab->tgl_tanda_daftar)->format('d M Y') : '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Jenis RIAB</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Jenis RIAB</p>
                                 <p class="font-medium">{{ $riab->jenis_riab ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Jumlah Umat</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Jumlah Umat</p>
                                 <p class="font-medium">{{ $riab->jumlah_umat ? number_format($riab->jumlah_umat) . ' orang' : '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kondisi Bangunan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Kondisi Bangunan</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $riab->kondisi == 'Sangat Baik' ? 'bg-green-100 text-green-800' : 
@@ -112,17 +112,17 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Status</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $riab->status == 'Disetujui' ? 'bg-green-100 text-green-800' : 
-                                           ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-100') }}">
+                                           ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-950 dark:text-gray-100') }}">
                                         {{ $riab->status ?? '-' }}
                                     </span>
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status Eksisting</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Status Eksisting</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $riab->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $riab->eksisting ?? '-' }}
@@ -130,15 +130,15 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status Verifikasi</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Status Verifikasi</p>
                                 <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-100' }}">
+                                    <span class="px-2 py-1 rounded text-sm {{ $riab->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-950 dark:text-gray-100' }}">
                                         {{ $riab->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                     </span>
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Update</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tanggal Update</p>
                                 <p class="font-medium">{{ $riab->tgl_update ? \Carbon\Carbon::parse($riab->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
 
                     <!-- Informasi Kontak -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
@@ -155,15 +155,15 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Email</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Email</p>
                                 <p class="font-medium">{{ $riab->email ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">No. Telp/HP/WhatsApp</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">No. Telp/HP/WhatsApp</p>
                                 <p class="font-medium">{{ $riab->no_telp ?? '-' }}</p>
                             </div>
                             <div class="md:col-span-2">
-                                <p class="text-sm text-gray-300">Media Sosial</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Media Sosial</p>
                                 <p class="font-medium">{{ $riab->media_sosial ?? '-' }}</p>
                             </div>
                         </div>
@@ -172,15 +172,15 @@
                     <!-- Deskripsi -->
                     @if($riab->deskripsi)
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3">Deskripsi</h4>
-                        <p class="text-gray-300 leading-relaxed">{{ $riab->deskripsi }}</p>
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3">Deskripsi</h4>
+                        <p class="text-gray-800 dark:text-gray-300 leading-relaxed">{{ $riab->deskripsi }}</p>
                     </div>
                     @endif
 
                     <!-- Link Foto -->
                     @if($riab->link_foto)
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3">Dokumentasi</h4>
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3">Dokumentasi</h4>
                         <a href="{{ $riab->link_foto }}" target="_blank" class="text-blue-600 hover:underline">
                             @endif
                     <!-- Link Foto -->
@@ -299,7 +299,7 @@
                     @if($riab->riabdetail)
                     <!-- Informasi Detail Tanah & Bangunan -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
                             </svg>
@@ -307,11 +307,11 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Status Tanah</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Status Tanah</p>
                                 <p class="font-medium">{{ $riab->riabdetail->status_tanah ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Sertifikasi Tanah</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Sertifikasi Tanah</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
                                         {{ $riab->riabdetail->sertifikasi_tanah ?? '-' }}
@@ -319,11 +319,11 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Luas Tanah</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Luas Tanah</p>
                                 <p class="font-medium">{{ $riab->riabdetail->luas_tanah ? $riab->riabdetail->luas_tanah . ' m²' : '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Luas Bangunan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Luas Bangunan</p>
                                 <p class="font-medium">{{ $riab->riabdetail->luas_bangunan ? $riab->riabdetail->luas_bangunan . ' m²' : '-' }}</p>
                             </div>
                             @php
@@ -339,7 +339,7 @@
                                         : []);
                             @endphp
                             <div>
-                                <p class="text-sm text-gray-300">Kondisi Geografis</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Kondisi Geografis</p>
                                 <p class="font-medium">
                                     @if(!empty($kondisiGeo))
                                         {{ implode(', ', $kondisiGeo) }}
@@ -349,7 +349,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Peta Rawan Bencana</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Peta Rawan Bencana</p>
                                 <p class="font-medium">
                                     @if(!empty($petaRawan))
                                         {{ implode(', ', $petaRawan) }}
@@ -363,7 +363,7 @@
 
                     <!-- Riwayat Bantuan -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
                                 <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
@@ -372,27 +372,27 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Sertifikasi Tanah RIAB</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Sertifikasi Tanah RIAB</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_sertifikasi ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Rehabilitasi/Renovasi RIAB</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Rehabilitasi/Renovasi RIAB</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_rehabilitasi ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan RIAB Bersih & Sehat</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan RIAB Bersih & Sehat</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_bersih_sehat ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Pemberdayaan RIAB Subsidi Kelompok Ekonomi Kreatif</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Pemberdayaan RIAB Subsidi Kelompok Ekonomi Kreatif</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_kek ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Pembangunan RIAB</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Pembangunan RIAB</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_bantuan_bangun ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Menerima Bantuan Pemberdayaan RIAB Perpustakaan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Pemberdayaan RIAB Perpustakaan</p>
                                 <p class="font-medium">{{ $riab->riabdetail->th_menerima_bpriab_perpus ?? '-' }}</p>
                             </div>
                         </div>
@@ -400,7 +400,7 @@
 
                     <!-- Fasilitas -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
                             </svg>
@@ -446,7 +446,7 @@
 
                     <!-- Statistik -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
                             </svg>
@@ -474,41 +474,41 @@
 
                     <!-- Informasi Lainnya -->
                     <div>
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3">Informasi Lainnya</h4>
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3">Informasi Lainnya</h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Terdaftar SIORI</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Terdaftar SIORI</p>
                                 <p class="font-medium">
                                         {{ $riab->riabdetail->terdaftar_siori == 'sudah' ? 'Sudah' : 'Belum' }}
                                     </span>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Periode Update SISFO</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Periode Update SISFO</p>
                                 <p class="font-medium">{{ $riab->riabdetail->update_sisfo ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Listrik</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Listrik</p>
                                 <p class="font-medium">{{ $riab->riabdetail->listrik ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">LPJ Bantuan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">LPJ Bantuan</p>
                                 <p class="font-medium">{{ $riab->riabdetail->lpj_bantuan ?? '-' }}</p>
                             </div>
                             @if($riab->riabdetail->foto_sebelum_bantuan)
                             <div>
-                                <p class="text-sm text-gray-300">Foto sebelum bantuan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Foto sebelum bantuan</p>
                                 <a class="font-medium" href="{{ $riab->riabdetail->foto_sebelum_bantuan }}" target="_blank" class="text-blue-600 hover:underline">Lihat foto sebelum bantuan</p>
                             </div>
                             @endif
                             @if($riab->riabdetail->foto_setelah_bantuan)
                             <div>
-                                <p class="text-sm text-gray-300">Foto setelah Bantuan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Foto setelah Bantuan</p>
                                 <a class="font-medium" href="{{ $riab->riabdetail->foto_setelah_bantuan }}" target="_blank" class="text-blue-600 hover:underline">Lihat foto setelah bantuan</p>
                             </div>
                             @endif
                             @if($riab->riabdetail->link_berita_acara_nonaktif)
                             <div>
-                                <p class="text-sm text-gray-300">Link Berita Acara Penonaktifan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Link Berita Acara Penonaktifan</p>
                                 <a class="font-medium" href="{{ $riab->riabdetail->link_berita_acara_nonaktif }}" class="text-blue-600 hover:underline">Lihat Berita Acara →</p>
                             </div>
                             @endif
