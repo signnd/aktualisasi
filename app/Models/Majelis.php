@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 
 class Majelis extends Model
 {
@@ -14,6 +15,22 @@ class Majelis extends Model
     protected $fillable = ['kabupaten_id', 'kecamatan_id', 'nama_majelis', 
         'sekte', 'binaan', 'ketua', 'keterangan'
     ];
+
+    // Event Listeners
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Saat data dibuat
+        static::creating(function ($majelis) {
+            $majelis->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+
+        // Saat data diupdate
+        static::updating(function ($majelis) {
+            $majelis->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+    }
 
 
     public function user()

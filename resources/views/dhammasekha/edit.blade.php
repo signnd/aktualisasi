@@ -321,7 +321,7 @@
                             </div>
                             <div class="flex flex-wrap py-2">
                             <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update Terakhir</label>
-                                <input type="date" value="{{ $dhammasekha->tgl_update ? \Carbon\Carbon::now()->format('Y-m-d') : '-' }}"
+                                <input type="date" name="tgl_update" value="{{ $dhammasekha->tgl_update ? \Carbon\Carbon::now()->format('Y-m-d') : '-' }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700"
                                 >
                             </div>

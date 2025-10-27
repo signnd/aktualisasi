@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 
 class Smb extends Model
 {
@@ -17,6 +18,22 @@ class Smb extends Model
             'no_telp','jumlah_siswa','status','eksisting','link_berita_acara_nonaktif','kondisi',
             'tgl_update','status_verifikasi','deskripsi','email','media_sosial','user_id',
     ];
+
+    // Event Listeners
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Saat data dibuat
+        static::creating(function ($smb) {
+            $smb->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+
+        // Saat data diupdate
+        static::updating(function ($smb) {
+            $smb->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+    }
 
     public function kabupaten() {
         return $this->belongsTo(Kabupaten::class, 'kabupaten_id');

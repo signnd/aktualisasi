@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 
 class GuruPenda extends Model
 {
@@ -16,6 +17,22 @@ class GuruPenda extends Model
         'tgl_sertifikasi','mapel_sertifikasi','pendidikan_terakhir','link_sertifikasi','foto','jml_siswa','tgl_update',
         'status_verifikasi','user_id'
     ];
+
+    // Event Listeners
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Saat data dibuat
+        static::creating(function ($guruPenda) {
+            $guruPenda->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+
+        // Saat data diupdate
+        static::updating(function ($guruPenda) {
+            $guruPenda->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+    }
 
     public function users()
     {

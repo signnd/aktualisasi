@@ -159,8 +159,8 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update</label>
-                                <input type="date" name="tgl_update" value="{{ old('tgl_update', $smb->tgl_update) }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <input type="date" value="{{ $smb->tgl_update ? \Carbon\Carbon::now()->format('Y-m-d') : '-' }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700">
                             </div>
                             @if(auth()->user()->user_role === 'admin')
                             <div>
