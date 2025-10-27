@@ -239,9 +239,147 @@
                         </div>
                     </div>
                         </a>
+                    @endif
+                @if($riab->riabdetail)
+                    <!-- Informasi Detail Tanah & Bangunan -->
+                    <div class="border-b pb-4">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
+                            </svg>
+                            Informasi Tanah & Bangunan
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Status Tanah</p>
+                                <p class="font-medium">{{ $riab->riabdetail->status_tanah ?? '-' }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Sertifikasi Tanah</p>
+                                <p class="font-medium">
+                                    <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
+                                        {{ $riab->riabdetail->sertifikasi_tanah ?? '-' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Luas Tanah</p>
+                                <p class="font-medium">{{ $riab->riabdetail->luas_tanah ? $riab->riabdetail->luas_tanah . ' m²' : '-' }}</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Luas Bangunan</p>
+                                <p class="font-medium">{{ $riab->riabdetail->luas_bangunan ? $riab->riabdetail->luas_bangunan . ' m²' : '-' }}</p>
+                            </div>
+                            @php
+                                $kondisiGeo = is_array($riab->riabdetail->kondisi_geografis) 
+                                    ? $riab->riabdetail->kondisi_geografis 
+                                    : (is_string($riab->riabdetail->kondisi_geografis) 
+                                        ? json_decode($riab->riabdetail->kondisi_geografis, true) ?? [] 
+                                        : []);
+                                $petaRawan = is_array($riab->riabdetail->peta_rawan_bencana) 
+                                    ? $riab->riabdetail->peta_rawan_bencana 
+                                    : (is_string($riab->riabdetail->peta_rawan_bencana) 
+                                        ? json_decode($riab->riabdetail->peta_rawan_bencana, true) ?? [] 
+                                        : []);
+                            @endphp
+                            <div>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Kondisi Geografis</p>
+                                <p class="font-medium">
+                                    @if(!empty($kondisiGeo))
+                                        {{ implode(', ', $kondisiGeo) }}
+                                    @else
+                                        -
+                                    @endif
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-800 dark:text-gray-300">Peta Rawan Bencana</p>
+                                <p class="font-medium">
+                                    @if(!empty($petaRawan))
+                                        {{ implode(', ', $petaRawan) }}
+                                    @else
+                                        -
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
                     </div>
+                                        <!-- Fasilitas -->
+                    <div class="border-b pb-4">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
+                            </svg>
+                            Fasilitas & Kelengkapan
+                        </h4>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            @php
+                                $fasilitas = [
+                                    'lahan_parkir' => 'Lahan Parkir',
+                                    'toilet_disable' => 'Toilet Difabel',
+                                    'kursi_roda' => 'Kursi Roda',
+                                    'jalur_kursi_roda' => 'Jalur Kursi Roda',
+                                    'fasilitas_jalur_kursi_roda' => 'Fasilitas Jalur Kursi Roda',
+                                    'lift' => 'Sarana Lift',
+                                    'tempat_bermain' => 'Tempat Bermain',
+                                    'toilet_anak' => 'Toilet Anak',
+                                    'wastafel_anak' => 'Wastafel Anak',
+                                    'ruang_ac' => 'Ruang AC',
+                                    'tempat_duduk_lansia' => 'Tempat Duduk Ramah Lansia',
+                                    'perpustakaan' => 'Perpustakaan',
+                                    'alas_duduk' => 'Alas Duduk',
+                                    'sound_system' => 'Sound System',
+                                    'lcd_proyektor' => 'LCD Proyektor',
+                                    'ruang_laktasi' => 'Ruang Laktasi',
+                                ];
+                            @endphp
+                            @foreach($fasilitas as $key => $label)
+                                <div class="flex items-center space-x-2">
+                                    @if($riab->riabdetail->$key == 'Ada')
+                                        <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                        </svg>
+                                    @else
+                                        <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                        </svg>
+                                    @endif
+                                    <span class="text-sm">{{ $label }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <!-- Statistik -->
+                    <div class="border-b pb-4">
+                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                            </svg>
+                            Statistik & Data Pengelolaan
+                        </h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-blue-600">{{ $riab->riabdetail->jumlah_pengelola_riab ?? 0 }}</p>
+                                <p class="text-sm text-gray-800">Pengelola RIAB</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-green-600">{{ $riab->riabdetail->jumlah_pengelola_perpustakaan ?? 0 }}</p>
+                                <p class="text-sm text-gray-800">Pengelola Perpustakaan</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-purple-600">{{ $riab->riabdetail->jumlah_kitab_suci ?? 0 }}</p>
+                                <p class="text-sm text-gray-800">Kitab Suci</p>
+                            </div>
+                            <div class="bg-orange-50 p-4 rounded-lg text-center">
+                                <p class="text-2xl font-bold text-orange-600">{{ $riab->riabdetail->jumlah_buku_keagamaan ?? 0 }}</p>
+                                <p class="text-sm text-gray-800">Buku Keagamaan</p>
+                            </div>
+                        </div>
+
                     @endif
                 </div>
+            </div>
             </div>
         </div>
     </div>
