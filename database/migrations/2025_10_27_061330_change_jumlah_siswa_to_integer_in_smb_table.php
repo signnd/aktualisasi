@@ -16,7 +16,7 @@ return new class extends Migration
             ->update(['jumlah_siswa' => 0]);
 
         // Step 2: Update data yang berisi string non-numeric menjadi 0
-        DB::statement("UPDATE smb SET jml_siswa = 0 WHERE jumlah_siswa REGEXP '[^0-9]'");
+        DB::statement("UPDATE smb SET jumlah_siswa = 0 WHERE jumlah_siswa REGEXP '[^0-9]'");
 
         // Step 3: Ubah tipe kolom menjadi integer
         Schema::table('smb', function (Blueprint $table) {
