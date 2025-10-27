@@ -20,14 +20,14 @@ return new class extends Migration
 
         // Step 3: Ubah tipe kolom menjadi integer
         Schema::table('smb', function (Blueprint $table) {
-            $table->integer('jml_siswa')->default(0)->change();
+            $table->integer('jumlah_siswa')->default(0)->change();
         });
     }
 
     public function down()
     {
         Schema::table('smb', function (Blueprint $table) {
-            $table->string('jml_siswa', 100)->nullable()->change();
+            $table->string('jumlah_siswa', 100)->nullable()->change();
         });
     }
 };
