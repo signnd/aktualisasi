@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 
 class Dhammasekha extends Model
 {
@@ -21,6 +22,22 @@ class Dhammasekha extends Model
 
     public function kabupaten() {
         return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
+    }
+
+    // Event Listeners
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Saat data dibuat
+        static::creating(function ($dhammasekha) {
+            $dhammasekha->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+
+        // Saat data diupdate
+        static::updating(function ($dhammasekha) {
+            $dhammasekha->tgl_update = Carbon::now()->format('Y-m-d');
+        });
     }
     
     // public function kecamatan() {

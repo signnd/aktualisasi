@@ -262,11 +262,11 @@
                                        placeholder="https://..." value="{{ old('link_foto', $smb->link_foto) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                            <div x-show="eksisting === 'Tidak Aktif'" x-transition>
+                            <!--<div>
                                 <label class="block text-sm font-medium text-gray-100 my-2">Jumlah Siswa</label>
                                 <input type="number" name="jumlah_siswa" value="{{ old('jumlah_siswa', $smb->jumlah_siswa) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

@@ -316,12 +316,12 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 my-2">Link Foto</label>
                                 <input type="url" name="foto" 
-                                       placeholder="https://..."
+                                       placeholder="Paste link Google Drive atau link ke gambar di sini..."
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                                <label class="block text-sm font-medium text-gray-100 my-2">Jumlah Siswa</label>
+                                <!--<label class="block text-sm font-medium text-gray-100 my-2">Jumlah Siswa</label>
                                 <input type="number" name="jml_siswa"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">-->
                             </div>
                         </div>
                     </div>
@@ -332,18 +332,40 @@
                             </svg>
                             Informasi Lainnya
                         </h4>
-                            <div x-show="eksisting === 'Tidak Aktif'" x-transition>
+                            <div classs="flex flex-wrap gap-3">
                                 <label class="block text-sm font-medium text-gray-100 my-2">Link Berita Acara Penonaktifan</label>
                                 <input type="url" name="link_nonaktif" 
                                        placeholder="https://..."
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update</label>
-                                <input type="date" name="tgl_update"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <div class="flex flex-wrap gap-3">
+                                <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update Terakhir</label>
+                                    <input type="date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700">
                             </div>
+                            <div class="my-3">
                             @if(auth()->user()->user_role === 'admin')
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-100 mb-2">Status</label>
+                                    <div class="flex flex-wrap gap-3">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="status" value="Disetujui"
+                                                   class="mr-2 text-green-600 focus:ring-green-500">
+                                            <span>Disetujui</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="status" value="Ditolak"
+                                                   class="mr-2 text-red-600 focus:ring-red-500">
+                                            <span>Ditolak</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="status" value="Pending"
+                                                   class="mr-2 text-gray-600 focus:ring-gray-500">
+                                            <span>Pending</span>
+                                        </label>
+                                    </div>
+                                </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Status Verifikasi</label>
                                 <div class="flex gap-3">
@@ -360,6 +382,7 @@
                                 </div>
                             </div>
                             @endif
+                        </div>
                     </div>
                 </div>
 

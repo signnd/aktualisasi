@@ -299,7 +299,7 @@
                         </div>
                         <div>
                             <p class="text-sm text-gray-300">Jumlah Siswa</p>
-                            <p class="font-medium">{{ $dhammasekha->jumlah_siswa ? number_format($dhammasekha->jumlah_siswa) . ' orang' : '-' }}</p>
+                            <p class="font-medium">{{ $dhammasekha->siswadhammasekha->count() }} orang</p>
                         </div>
                         @if($dhammasekha->jenis !== 'Dhammasekha Non Formal')
                         <div>

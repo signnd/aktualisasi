@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 
 class SiswaDhammasekha extends Model
 {
@@ -46,6 +47,40 @@ class SiswaDhammasekha extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Event Listeners
+    protected static function boot()
+    {
+        parent::boot();
+        // Saat siswa dibuat
+        static::creating(function ($siswa) {
+            $siswa->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+
+        // Saat siswa diupdate
+        static::updating(function ($siswa) {
+            $siswa->tgl_update = Carbon::now()->format('Y-m-d');
+        });
+
+        // Saat siswa dibuat (created)
+        static::created(function ($siswa) {
+            $siswa->updateJumlahSiswa();
+        });
+
+        // Saat siswa dihapus (deleted)
+        static::deleted(function ($siswa) {
+            $siswa->updateJumlahSiswa();
+        });
+    }
+
+    // Method untuk update jumlah siswa di tabel dhammasekha
+    protected function updateJumlahSiswa()
+    {
+        if ($this->dhammasekha) {
+            $jumlah = SiswaDhammasekha::where('dhammasekha_id', $this->dhammasekha_id)->count();
+            $this->dhammasekha->update(['jml_siswa' => $jumlah]);
+        }
     }
 
 }

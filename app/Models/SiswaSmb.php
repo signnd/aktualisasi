@@ -30,6 +30,32 @@ class SiswaSmb extends Model
             'user_id',
     ];
 
+
+    // Event Listeners
+    protected static function boot()
+    {
+        parent::boot();
+
+        // Saat siswa dibuat (created)
+        static::created(function ($siswa) {
+            $siswa->updateJumlahSiswa();
+        });
+
+        // Saat siswa dihapus (deleted)
+        static::deleted(function ($siswa) {
+            $siswa->updateJumlahSiswa();
+        });
+    }
+
+    // Method untuk update jumlah siswa di tabel dhammasekha
+    protected function updateJumlahSiswa()
+    {
+        if ($this->dhammasekha) {
+            $jumlah = SiswaDhammasekha::where('dhammasekha_id', $this->dhammasekha_id)->count();
+            $this->dhammasekha->update(['jml_siswa' => $jumlah]);
+        }
+    }
+
     public function smb() {
         return $this->belongsTo(Smb::class, 'smb_id');
     }

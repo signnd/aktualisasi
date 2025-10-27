@@ -193,11 +193,6 @@
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update</label>
-                                <input type="date" name="tgl_update" value="{{ old('tgl_update', $dhammasekha->tgl_update) }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-2">Naungan Kemenag</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
@@ -242,28 +237,6 @@
                                     </label>
                                 </div>
                             </div>
-                            @if(auth()->user()->user_role === 'admin')
-                            <!--<div>
-                                <label class="block text-sm font-medium text-gray-100 mb-2">Status</label>
-                                <div class="flex flex-wrap gap-3">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Disetujui"
-                                               class="mr-2 text-green-600 focus:ring-green-500">
-                                        <span>Disetujui</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Ditolak"
-                                               class="mr-2 text-red-600 focus:ring-red-500">
-                                        <span>Ditolak</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Pending"
-                                               class="mr-2 text-gray-600 focus:ring-gray-500">
-                                        <span>Pending</span>
-                                    </label>
-                                </div>
-                            </div>-->
-                            @endif
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 mb-1">Status Eksisting</label>
                                 <div class="flex gap-3">
@@ -279,23 +252,6 @@
                                     </label>
                                 </div>
                             </div>
-                            @if(auth()->user()->user_role === 'admin')
-                            <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Status Verifikasi</label>
-                                <div class="flex gap-3">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="TRUE" {{ old('status_verifikasi', $dhammasekha->status_verifikasi) == 'TRUE' ? 'checked' : '' }}
-                                               class="mr-2 text-blue-600 focus:ring-blue-500">
-                                        <span>Terverifikasi</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="FALSE" {{ old('status_verifikasi', $dhammasekha->status_verifikasi) == 'FALSE' ? 'checked' : '' }}
-                                               class="mr-2 text-gray-600 focus:ring-gray-500">
-                                        <span>Tidak Terverifikasi</span>
-                                    </label>
-                                </div>
-                            </div>
-                            @endif
                         </div>
                     </div>
                     <!-- Informasi Kondisi dhammasekha -->
@@ -339,28 +295,77 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-100 my-2">Link Foto</label>
                                 <input type="url" name="foto" 
-                                       placeholder="https://..." value="{{ old('foto', $dhammasekha->foto) }}"
+                                       placeholder="Paste link Google Drive atau link ke gambar di sini..." value="{{ old('foto', $dhammasekha->foto) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                                <label class="block text-sm font-medium text-gray-100 my-2">Jumlah Siswa</label>
-                                <input type="number" name="jml_siswa" value="{{ old('jml_siswa', $dhammasekha->jml_siswa) }}"
-                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <!--<label class="block text-sm font-medium text-gray-100 my-2">Jumlah Siswa</label>
+                                <input type="number" name="jml_siswa" value="{{ $dhammasekha->jml_siswa ?? 0 }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700 cursor-not-allowed"
+                                readonly>
+                                <p class="text-xs text-gray-400 mt-1">Jumlah siswa akan otomatis terupdate saat menambah/menghapus siswa</p> -->
                             </div>
                         </div>
                     </div>
-                        <div class="mb-8">
+                        <div class="my-8">
                         <h4 class="text-lg font-semibold text-gray-200 mb-4 pb-2 border-b-2 border-gray-500 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
                             </svg>
                             Informasi Lainnya
                         </h4>
-                            <div x-show="eksisting === 'Tidak Aktif'" x-transition>
+                            <div class="flex flex-wrap">
                                 <label class="block text-sm font-medium text-gray-100 my-2">Link Berita Acara Penonaktifan</label>
                                 <input type="url" name="link_nonaktif" 
                                        placeholder="https://..." value="{{ old('link_nonaktif', $dhammasekha->link_nonaktif) }}"
                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
+                            <div class="flex flex-wrap py-2">
+                            <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update Terakhir</label>
+                                <input type="date" value="{{ $dhammasekha->tgl_update ? \Carbon\Carbon::now()->format('Y-m-d') : '-' }}"
+                                       class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700"
+                                >
+                            </div>
+                            <div class="my-3">
+                            @if(auth()->user()->user_role === 'admin')
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-100 mb-2">Status</label>
+                                    <div class="flex flex-wrap gap-3">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="status" value="Disetujui"
+                                                   class="mr-2 text-green-600 focus:ring-green-500">
+                                            <span>Disetujui</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="status" value="Ditolak"
+                                                   class="mr-2 text-red-600 focus:ring-red-500">
+                                            <span>Ditolak</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="status" value="Pending"
+                                                   class="mr-2 text-gray-600 focus:ring-gray-500">
+                                            <span>Pending</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-100 mb-1">Status Verifikasi</label>
+                                    <div class="flex flex-wrap gap-3">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="status_verifikasi" value="TRUE" {{ old('status_verifikasi', $dhammasekha->status_verifikasi) == 'TRUE' ? 'checked' : '' }}
+                                                   class="mr-2 text-blue-600 focus:ring-blue-500">
+                                            <span>Terverifikasi</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="status_verifikasi" value="FALSE" {{ old('status_verifikasi', $dhammasekha->status_verifikasi) == 'FALSE' ? 'checked' : '' }}
+                                                   class="mr-2 text-gray-600 focus:ring-gray-500">
+                                            <span>Tidak Terverifikasi</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                            @endif
                     </div>
                 </div>
 

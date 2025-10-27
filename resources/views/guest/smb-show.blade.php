@@ -104,7 +104,7 @@
                             @endif
                             <div>
                                 <p class="text-sm text-gray-300">Jumlah Siswa</p>
-                                <p class="font-medium">{{ $smb->jumlah_siswa ? number_format($smb->jumlah_siswa) . ' siswa' : '-' }}</p>
+                                <p class="font-medium">{{ $smb->siswasmb->count() }} orang</p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-300">Status Eksisting</p>
