@@ -138,14 +138,14 @@ class SiswaDhammasekhaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Dhammasekha $dhammasekha, SiswaDhammasekha $siswaDhammasekha)
+    public function destroy(Dhammasekha $dhammasekha, SiswaDhammasekha $siswa)
     {
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $siswaDhammasekha->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }
 
        try {
-            $siswaDhammasekha->delete(); 
+            $siswa->delete(); 
 
             return redirect()->route('dhammasekha.show', $dhammasekha->id)
                              ->with('success', 'Data siswa berhasil dihapus.');

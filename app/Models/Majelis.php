@@ -17,20 +17,20 @@ class Majelis extends Model
     ];
 
     // Event Listeners
-    protected static function boot()
-    {
-        parent::boot();
+    // protected static function boot()
+    // {
+    //     parent::boot();
 
-        // Saat data dibuat
-        static::creating(function ($majelis) {
-            $majelis->tgl_update = Carbon::now()->format('Y-m-d');
-        });
+    //     // Saat data dibuat
+    //     static::creating(function ($majelis) {
+    //         $majelis->tgl_update = Carbon::now()->format('Y-m-d');
+    //     });
 
-        // Saat data diupdate
-        static::updating(function ($majelis) {
-            $majelis->tgl_update = Carbon::now()->format('Y-m-d');
-        });
-    }
+    //     // Saat data diupdate
+    //     static::updating(function ($majelis) {
+    //         $majelis->tgl_update = Carbon::now()->format('Y-m-d');
+    //     });
+    // }
 
 
     public function user()

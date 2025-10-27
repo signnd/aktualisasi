@@ -15,12 +15,12 @@
                     @csrf
                     <div class="space-y-2">
                         <input type="hidden" name="dhammasekha_id" value="{{ $dhammasekha->id }}">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Siswa</label>
+                        <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Siswa</label>
                         <input type="text" name="nama_siswa"
-                            class="w-full p-1 text-gray-800 dark:text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
+                            class="w-full p-1 text-gray-800  dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
                     </div>
                     <div class="space-y-2">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Jenis Kelamin</label>
+                        <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Jenis Kelamin</label>
                             <span><input type="radio" name="jenis_kelamin" value="Laki-laki"
                                    class="mr-1 text-green-600 focus:ring-green-500">
                             Laki-laki
@@ -28,20 +28,20 @@
                                    class="mx-1 text-green-600 focus:ring-green-500">
                             Perempuan</span>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">NIK</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">NISN</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">NIK</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">NISN</label>
                             <input type="text" name="nik" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="nisn" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100">Tempat Lahir</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100">Tanggal Lahir</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100">Tempat Lahir</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100">Tanggal Lahir</label>
                             <input type="text" name="tempat_lahir" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="date" name="tgl_lahir" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Alamat</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Kabupaten</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Alamat</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kabupaten</label>
                             <input type="text" name="alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <select id="kabupaten_id" name="kabupaten_id" required
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
@@ -54,21 +54,21 @@
                             </select>
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">No. HP</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Agama</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">No. HP</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Agama</label>
                             <input type="text" name="no_hp" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="agama" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Ibu</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Ayah</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Ibu</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Ayah</label>
                             <input type="text" name="nama_ibu" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="nama_ayah" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-3 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Pendidikan</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Kelas</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Tahun Ajaran</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Pendidikan</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kelas</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Tahun Ajaran</label>
                             <input type="text" name="pendidikan" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="kelas" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="tahun_ajaran" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
@@ -95,12 +95,12 @@
                     @method('PUT')
                     <div class="space-y-2">
                         <input type="hidden" name="dhammasekha_id" value="{{ $dhammasekha->id }}">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Siswa</label>
+                        <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Siswa</label>
                         <input type="text" name="nama_siswa" x-model="siswa.nama_siswa"
-                            class="w-full p-1 text-gray-800 dark:text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
+                            class="w-full p-1 text-gray-800  dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
                     </div>
                     <div class="space-y-2">
-                        <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Jenis Kelamin</label>
+                        <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Jenis Kelamin</label>
                             <span><input type="radio" name="jenis_kelamin" value="Laki-laki" x-model="siswa.jenis_kelamin"
                                    class="mr-1 text-green-600 focus:ring-green-500">
                             Laki-laki</span>
@@ -108,20 +108,20 @@
                                    class="mx-1 text-green-600 focus:ring-green-500">
                             Perempuan</span>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">NIK</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">NISN</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">NIK</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">NISN</label>
                             <input type="text" name="nik" x-model="siswa.nik" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="nisn" x-model="siswa.nisn" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100">Tempat Lahir</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100">Tanggal Lahir</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100">Tempat Lahir</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100">Tanggal Lahir</label>
                             <input type="text" name="tempat_lahir" x-model="siswa.tempat_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="date" name="tgl_lahir" x-model="siswa.tgl_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Alamat</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Kabupaten</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Alamat</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kabupaten</label>
                             <input type="text" name="alamat" x-model="siswa.alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <select id="kabupaten_id" name="kabupaten_id" required
                                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
@@ -135,21 +135,21 @@
                         </div>
                         
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">No. HP</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Agama</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">No. HP</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Agama</label>
                             <input type="text" name="no_hp" x-model="siswa.no_hp" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="agama" x-model="siswa.agama" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Ibu</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Nama Ayah</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Ibu</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Ayah</label>
                             <input type="text" name="nama_ibu" x-model="siswa.nama_ibu" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" name="nama_ayah" x-model="siswa.nama_ayah" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-3 gap-1">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Pendidikan</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Kelas</label>
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-800 dark:text-gray-100 my-1">Tahun Ajaran</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Pendidikan</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kelas</label>
+                            <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Tahun Ajaran</label>
                             <input type="text" x-model="siswa.pendidikan" name="pendidikan" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" x-model="siswa.kelas" name="kelas" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <input type="text" x-model="siswa.tahun_ajaran" name="tahun_ajaran" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
@@ -171,7 +171,7 @@
             class="fixed inset-0 bg-gray-900 bg-opacity-900 flex items-center justify-center z-50">
             <div @click.away="closeModal()" class="bg-white dark:bg-gray-600 rounded-lg shadow-lg w-full max-w-sm p-6 transform transition-all">
                 <h2 class="text-xl font-semibold mb-4 text-red-600">Konfirmasi Hapus</h2>
-                <p class="mb-4 text-gray-700 dark:text-gray-800 dark:text-gray-100">
+                <p class="mb-4 text-gray-700  dark:text-gray-100">
                     Apakah Anda yakin ingin menghapus data siswa: 
                     <strong x-text="siswaToDelete.nama_siswa"></strong>?
                 </p>
@@ -457,18 +457,18 @@
                                 <tbody class="bg-white divide-y dark:bg-zinc-800 divide-gray-200">
                                     @foreach($dhammasekha->siswadhammasekha as $index => $siswadhammasekha)
                                     <tr class="hover:bg-gray-50 dark:hover:bg-zinc-500 transition">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $index + 1 }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $index + 1 }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm font-medium text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->nama_siswa }}</div>
+                                            <div class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->nama_siswa }}</div>
                                             @if(auth()->user()->kabupaten_id === $dhammasekha->kabupaten_id || auth()->user()->user_role === 'admin')
-                                            <div class="text-sm text-gray-500 dark:text-gray-600 dark:text-gray-300">NIK: {{ $siswadhammasekha->nik ?? '-' }}</div>
+                                            <div class="text-sm text-gray-500 dark:text-gray-300">NIK: {{ $siswadhammasekha->nik ?? '-' }}</div>
                                             @endif
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->jenis_kelamin ?? '-' }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->kelas ?? '-' }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->kabupaten->kabupaten ?? '-' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->jenis_kelamin ?? '-' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->kelas ?? '-' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->kabupaten->kabupaten ?? '-' }}</td>
                                         @if(auth()->user()->kabupaten_id === $siswadhammasekha->kabupaten_id || auth()->user()->user_role === 'admin')
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-800 dark:text-gray-100">{{ $siswadhammasekha->no_hp ?? '-' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->no_hp ?? '-' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                             <div class="flex justify-center space-x-2">
                                                 <button @click="openEditModal({{ json_encode($siswadhammasekha) }})" 
