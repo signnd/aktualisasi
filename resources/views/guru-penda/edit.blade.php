@@ -77,7 +77,7 @@
                                     </label>
                                     <label class="flex items-center">
                                         <input type="radio" name="jenis_kelamin" value="Perempuan"
-                                               class="mr-2 text-blue-600 focus:ring-blue-500" {{ old('jenis_kelamin', $guruPenda->jenis_kelamin) == 'Perempuan' ? 'checked' : '' }}>>
+                                               class="mr-2 text-blue-600 focus:ring-blue-500" {{ old('jenis_kelamin', $guruPenda->jenis_kelamin) == 'Perempuan' ? 'checked' : '' }}>
                                         <span>Perempuan</span>
                                     </label>
                                 </div>

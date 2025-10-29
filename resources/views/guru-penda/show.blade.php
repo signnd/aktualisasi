@@ -9,7 +9,7 @@
 
 
     <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-gray-100 shadow-lg overflow-hidden">
+        <div class="bg-gray- shadow-lg overflow-hidden">
             <!-- Action Buttons -->
             <div class="px-6 py-4 flex justify-between items-center">
                 <a href="{{ route('guru-penda.index') }}" 
@@ -40,8 +40,7 @@
                         Informasi Umum
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                        <div>
+                        <div">
                             <p class="text-sm text-gray-600 dark:text-gray-300">NIP</p>
                             <p class="font-medium">{{ $guruPenda->nip ?? '-' }}</p>
                         </div>
@@ -80,8 +79,6 @@
                         <p class="text-sm text-gray-600 dark:text-gray-300">Email</p>
                         <p class="font-medium">{{ $guruPenda->email ?? '-' }}</p>
                     </div>
-                </div>
-            </div>
 
                 <!-- Informasi Sekolah -->
                 <div class="border-b pb-4">
@@ -253,7 +250,7 @@
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Status Verifikasi</p>
                             <p class="font-medium">
-                                <span class="px-2 py-1 rounded text-sm {{ $guruPenda->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800 dark:text-gray-100' }}">
+                                <span class="px-2 py-1 rounded text-sm {{ $guruPenda->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800 dark:text-gray-800' }}">
                                     {{ $guruPenda->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                 </span>
                             </p>
@@ -263,6 +260,8 @@
                             <p class="font-medium">{{ $guruPenda->tgl_update ? \Carbon\Carbon::parse($guruPenda->tgl_update)->format('d M Y') : '-' }}</p>
                         </div>
                     </div>
+                </div>
+            </div>
 
 
 
