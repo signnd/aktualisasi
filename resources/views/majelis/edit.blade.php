@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight h4: text-gray-900 dark:text-gray-900 dark:text-gray-200">
+        <h2 class="text-xl font-semibold leading-tight h4: text-gray-900 dark:text-gray-900 ">
             {{ __('Tambah Majelis') }}
         </h2>
     </x-slot>
@@ -36,7 +36,7 @@
                     @method('PUT')
                     <!-- Informasi Lokasi -->
                     <div class="mb-8">
-                        <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-900 dark:text-gray-200 mb-4 pb-2 border-b-2 border-blue-500 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-900  mb-4 pb-2 border-b-2 border-blue-500 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                             </svg>
