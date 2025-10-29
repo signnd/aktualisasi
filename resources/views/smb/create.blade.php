@@ -213,7 +213,6 @@
                             </div>
                             @endif
                         </div>
-                    </div>
                     <!-- Informasi Kondisi SMB -->
                     <div class="mb-8">
                         <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4 pb-2 border-b-2 border-purple-500 flex items-center">
@@ -323,6 +322,8 @@
                         </button>
                     </div>
                 </form>
+                                    </div>
+
             </div>
         </div>
     </div>
