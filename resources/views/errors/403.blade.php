@@ -1,11 +1,6 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <x-error-modal 
-                code="403"
-                title="Akses Ditolak"
-                :message="$exception->getMessage() ?: 'Anda tidak memiliki akses untuk melakukan tindakan ini.'"
-            />
         </div>
     </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

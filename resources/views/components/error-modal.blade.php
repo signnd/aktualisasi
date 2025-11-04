@@ -65,6 +65,6 @@
     </div>
 </div>
 
-<style>
+<style>e
     [x-cloak] { display: none; }
 </style>

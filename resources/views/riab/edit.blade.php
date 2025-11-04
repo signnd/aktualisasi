@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl font-semibold leading-tight text-gray-950 dark:text-gray-100>
+        <h2 class="text-xl font-semibold leading-tight text-gray-950 dark:text-gray-100">
             {{ __('Edit RIAB') }}
         </h2>
     </x-slot>
@@ -30,6 +30,7 @@
     }
     // Jika riabdetail tidak ada, $kondisiGeo dan $petaRawan sudah diinisialisasi sebagai array kosong
 @endphp
+
 
     <div class="py-6">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">

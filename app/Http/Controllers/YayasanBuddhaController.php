@@ -63,7 +63,7 @@ class YayasanBuddhaController extends Controller
     {
         $validated = $request->validate([
             'kabupaten_id' => 'exists:kabupaten,id',
-            'kecamatan_id' => 'exists:kecamatan,id',
+            'kecamatan_id' => 'nullable|exists:kecamatan,id',
             'nama_yayasan' => 'required|string|max:255',
             'ketua' => 'nullable|string', 
             'alamat' => 'nullable|string|max:1000',
