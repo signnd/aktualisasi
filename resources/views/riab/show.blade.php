@@ -10,7 +10,7 @@
             <div class="bg-gray- shadow-lg overflow-hidden">
                 <!-- Action Buttons -->
                 <div class="px-6 py-4 flex justify-between items-center">
-                    <a href="{{ route('riab.index') }}" 
+                    <a href="{{ route('riab.index', ['page' => session('riab_page', 1)]) }}" 
                        class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
                         ← Kembali
                     </a>

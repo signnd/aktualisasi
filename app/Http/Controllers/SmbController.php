@@ -173,7 +173,9 @@ class SmbController extends Controller
 
         $smb->update($validated);
 
-        return redirect()->route('smb.index')
+        $page = session('smb_page', 1);
+
+        return redirect()->route('smb.index', ['page' => $page])
                          ->with('success', 'Sekolah Minggu berhasil diperbarui');
     }
 
@@ -188,7 +190,9 @@ class SmbController extends Controller
 
         $smb->delete();
 
-        return redirect()->route('smb.index')
+        $page = session('smb_page', 1);
+
+        return redirect()->route('smb.index', ['page' => $page])
                          ->with('success', 'Data Sekolah Minggu berhasil dihapus.');
     }
 }

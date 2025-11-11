@@ -16,7 +16,7 @@
                         <input type="hidden" name="smb_id" value="{{ $smb->id }}">
                         <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Siswa</label>
                         <input type="text" name="nama_siswa"
-                            class="w-full p-1 text-gray-800  dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
+                            class="w-full p-1 text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
                     </div>
                     <div class="space-y-2">
                         <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Jenis Kelamin</label>
@@ -74,7 +74,7 @@
         </div>
         <div x-show="showEditModal" x-transition style="display:none"
         class="fixed inset-0 bg-gray-900 bg-opacity-900 flex items-center justify-center z-50">
-            <div @click.away="closeModal()" class=" transform transition-all">
+            <div @click.away="closeModal()" class="transform transition-all">
             <div class="bg-white dark:bg-gray-600 rounded-lg shadow-lg w-full max-w-lg p-6">
                 <h2 class="text-lg font-semibold mb-4 dark:text-white">Edit Siswa</h2>
                 <form :action="'/smb/{{ $smb->id }}/siswa/' + siswa.id" method="POST">
@@ -171,7 +171,7 @@
         <div class="bg-gray- shadow-lg overflow-hidden">
             <!-- Action Buttons -->
             <div class="px-6 py-4 flex justify-between items-center">
-                <a href="{{ route('smb.index') }}" 
+                <a href="{{ route('smb.index', ['page' => session('smb_page', 1)]) }}" 
                    class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
                     ← Kembali
                 </a>

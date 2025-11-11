@@ -4,9 +4,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Url;
 use App\Models\YayasanBuddha;
 use App\Models\Kabupaten;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class YayasanSearch extends Component
 {
@@ -14,6 +16,7 @@ class YayasanSearch extends Component
 
     public $search = '';
     public $kabupaten_id = '';
+    public $currentPage = 1;
 
     public function mount()
     {
@@ -21,7 +24,9 @@ class YayasanSearch extends Component
         if (Auth::check() && Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id) {
             $this->kabupaten_id = Auth::user()->kabupaten_id;
         }
+        // $this->currentPage = request()->get('page', 1);
     }
+    
 
     // Reset pagination saat search atau filter berubah
     public function updatingSearch()
@@ -34,7 +39,12 @@ class YayasanSearch extends Component
         $this->resetPage();
     }
 
-    public function render()
+    public function updatingPaginators($page, $pageName)
+    {
+        $this->currentPage = $page;
+    }
+
+    public function render(Request $request)
     {
         $query = YayasanBuddha::with(['kabupaten', 'kecamatan']);
         
@@ -61,6 +71,10 @@ class YayasanSearch extends Component
         
         $yayasans = $query->paginate(10);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+
+        // Simpan current page ke session
+        session(['yayasan_page' => $yayasans->currentPage()]);
+
         
         return view('livewire.yayasan-search', [
             'yayasans' => $yayasans,

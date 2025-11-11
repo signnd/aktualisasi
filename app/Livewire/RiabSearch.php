@@ -68,6 +68,8 @@ class RiabSearch extends Component
         
         $riabs = $query->paginate(10);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+
+        session(['riab_page' => $riabs->currentPage()]);
         
         return view('livewire.riab-search', [
             'riabs' => $riabs,

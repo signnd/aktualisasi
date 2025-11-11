@@ -129,7 +129,7 @@
 
                     <!-- Action Buttons -->
                     <div class="flex justify-between items-center pt-6 border-t">
-                        <a href="{{ route('yayasan.index') }}" 
+                        <a href="{{ route('yayasan.index', ['page' => session('yayasan_page', 1)]) }}" 
                            class="px-6 py-2.5 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200 flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"/>

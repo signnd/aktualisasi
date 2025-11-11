@@ -361,7 +361,9 @@ public function index(Request $request)
             $detailData
         );
 
-        return redirect()->route('riab.index')->with('success', 'Data RIAB berhasil diperbarui.');
+        $page = session('riab_page', 1);
+
+        return redirect()->route('riab.index', ['page' => $page])->with('success', 'Data RIAB berhasil diperbarui.');
     }
 
     /**
@@ -374,6 +376,8 @@ public function index(Request $request)
         }
 
         $riab->delete();
-        return redirect()->route('riab.index')->with('success', 'Data RIAB berhasil dihapus.');
+
+        $page = session('riab_page', 1);
+        return redirect()->route('riab.index', ['page' => $page])->with('success', 'Data RIAB berhasil dihapus.');
     }
 }

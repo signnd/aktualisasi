@@ -62,6 +62,9 @@ class MajelisSearch extends Component
         
         $majeliss = $query->paginate(10);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+
+        session(['majelis_page' => $majeliss->currentPage()]);
+
         return view('livewire.majelis-search', [
             'majeliss' => $majeliss,
             'kabupatens' => $kabupatens

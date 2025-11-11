@@ -37,11 +37,16 @@ class YayasanBuddhaController extends Controller
                 $query->where('kabupaten_id', $selectedKabupatenId);
             }
         }
-    
+
+        // Simpan current page ke session
+        if ($request->has('page')) {
+            session(['yayasan_page' => $request->input('page')]);
+        }
+
         $yayasans = $query->paginate(10)->appends($request->query());
         $kabupatens = Kabupaten::all();
         
-        return view('yayasan.index', compact('yayasans', 'kabupatens', 'selectedKabupatenId'));
+        return view('yayasan.index', compact('yayasans', 'kabupatens','selectedKabupatenId'));
     }
 
     /**
@@ -53,7 +58,7 @@ class YayasanBuddhaController extends Controller
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
         $user = User::all();
-        return view('yayasan.create', compact('kabupaten','kecamatan','yayasan', 'user'));
+        return view('yayasan.create', compact('kabupaten','kecamatan','yayasan','user'));
     }
 
     /**
@@ -80,16 +85,20 @@ class YayasanBuddhaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(YayasanBuddha $yayasan)
+    public function show(Request $request, YayasanBuddha $yayasan)
     {
         $yayasan->load(['users']);
-        return view('yayasan.show',compact('yayasan'));
+
+        //$kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $page = $request->query('page', 1);
+
+        return view('yayasan.show',compact('yayasan', 'page'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(YayasanBuddha $yayasan)
+    public function edit(Request $request, YayasanBuddha $yayasan)
     {
         //$yayasan = YayasanBuddha::all();
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $yayasan->kabupaten_id) {
@@ -103,6 +112,8 @@ class YayasanBuddhaController extends Controller
             $kecamatan = Kecamatan::all();
         }
 
+        // Ambil page dari request atau session
+        // $page = $request->query('page', 1);
 
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
@@ -131,7 +142,10 @@ class YayasanBuddhaController extends Controller
 
         $yayasan->update($validated);
 
-        return redirect()->route('yayasan.index')->with('success','Data Yayasan Agama Buddha berhasil diperbarui');
+        // Ambil page dari request atau session
+        $page = session('yayasan_page', 1);
+
+        return redirect()->route('yayasan.index', ['page' => $page])->with('success','Data Yayasan Agama Buddha berhasil diperbarui');
 
     }
 
@@ -144,7 +158,10 @@ class YayasanBuddhaController extends Controller
             abort(403, 'Anda tidak memiliki akses untuk menghapus data kabupaten ini.');
         }
 
+        // Ambil page dari request atau session
+        $page = session('yayasan_page', 1);
+
         $yayasan->delete();
-        return redirect()->route('yayasan.index')->with('success', 'Data Yayasan berhasil dihapus');
+        return redirect()->route('yayasan.index', ['page' => $page])->with('success', 'Data Yayasan berhasil dihapus');
     }
 }

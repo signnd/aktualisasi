@@ -131,7 +131,9 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/siswa/{siswa}', [SiswaSMBController::class, 'update'])->name('siswa.update');
         Route::delete('/siswa/{siswa}', [SiswaSMBController::class, 'destroy'])->name('siswa.destroy');
     Route::get('/riab/by-kabupaten/{id}', [RiabController::class, 'getByKabupaten']);
-
+    // Route::prefix('master')->group(function () {
+    //         Route::resource('kecamatan', KecamatanController::class);
+    // });
     });
 
 });

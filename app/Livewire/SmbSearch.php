@@ -66,6 +66,8 @@ class SmbSearch extends Component
         $smbs = $query->paginate(10);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
 
+        session(['smb_page' => $smbs->currentPage()]);
+
         return view('livewire.smb-search', [
             'smbs' => $smbs,
             'kabupatens' => $kabupatens

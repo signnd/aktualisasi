@@ -10,11 +10,12 @@
             <div class="bg-gray- shadow-lg overflow-hidden">
                 <!-- Action Buttons -->
                 <div class="px-6 py-4 flex justify-between items-center">
-                    <a href="{{ route('yayasan.index') }}" 
+                    <a href="{{ route('yayasan.index', ['page' => session('yayasan_page', 1)]) }}" 
                        class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
                         ← Kembali
                     </a>
-                    @if(auth()->user()->kabupaten_id === $yayasan->kabupaten_id || auth()->user()->user_role === 'admin')                    <a href="{{ route('yayasan.edit', $yayasan) }}" 
+                    @if(auth()->user()->kabupaten_id === $yayasan->kabupaten_id || auth()->user()->user_role === 'admin')
+                        <a href="{{ route('yayasan.edit', $yayasan) }}" 
                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200">
                         Edit Data
                     </a>

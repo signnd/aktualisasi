@@ -91,7 +91,7 @@
                             </td> -->
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                 <div class="flex justify-center space-x-2">
-                                    <a href="{{ route('yayasan.show', $yayasan) }}" 
+                                    <a href="{{ route('yayasan.show', $yayasan->id) }}" 
                                        class="text-blue-600 hover:text-blue-900 transition" title="Detail">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
@@ -100,7 +100,7 @@
                                     </a>
                                     @auth
                                     @if(auth()->user()->kabupaten_id === $yayasan->kabupaten_id || auth()->user()->user_role === 'admin')
-                                    <a href="{{ route('yayasan.edit', $yayasan) }}" 
+                                    <a href="{{ route('yayasan.edit', $yayasan->id) }}" 
                                        class="text-green-600 hover:text-green-900 transition" title="Edit">
                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
@@ -140,7 +140,7 @@
 
                 <!-- Pagination -->
                 @if($yayasans->hasPages())
-                    <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
+                    <div class="bg-white dark:bg-zinc-900 px-4 py-3 border-t  border-gray-200 sm:px-6">
                         {{ $yayasans->links() }}
                     </div>
                 @endif

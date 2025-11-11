@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kecamatan;
 use App\Models\Kabupaten;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KecamatanController extends Controller
 {
@@ -13,9 +15,10 @@ class KecamatanController extends Controller
      */
     public function index()
     {
-        $kecamatan = Kecamatan::with('kabupaten')->paginate(20);
+        $kecamatan = Kecamatan::with(['kabupaten','users'])->paginate(20);
         $kabupaten = Kabupaten::all();
-        return view('kecamatan.index', compact('kecamatan', 'kabupaten'));
+        $query = User::with(['kabupaten', 'kecamatan']);
+        return view('kecamatan.index', compact('kecamatan','kabupaten','query'));
     }
 
     /**
@@ -64,6 +67,11 @@ class KecamatanController extends Controller
      */
     public function update(Request $request, Kecamatan $kecamatan)
     {
+        
+    if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $kecamatan->kabupaten_id) {
+        abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
+    }
+
         $request->validate([
             'kecamatan' => 'required|string|max:255',
             'kabupaten_id' => 'required|exists:kabupaten,id'

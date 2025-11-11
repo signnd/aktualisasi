@@ -162,7 +162,8 @@ class OkbController extends Controller
 
         $okb->update($validated);
 
-        return redirect()->route('okb.index')->with('success','Data OKB berhasil diperbarui');
+        $page = session('okb_page', 1);
+        return redirect()->route('okb.index', ['page' => $page])->with('success','Data OKB berhasil diperbarui');
 
     }
 
@@ -176,6 +177,7 @@ class OkbController extends Controller
         }
 
         $okb->delete();
-        return redirect()->route('okb.index')->with('success', 'Data OKB berhasil dihapus');
+        $page = session('okb_page', 1);
+        return redirect()->route('okb.index', ['page' => $page])->with('success', 'Data OKB berhasil dihapus');
     }
 }

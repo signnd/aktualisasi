@@ -21,4 +21,9 @@ class Kecamatan extends Model
     {
         return $this->hasMany(Riab::class);
     }
+
+    public function users() 
+    {
+        return $this->hasMany(User::class,'kabupaten_id');
+    }
 }

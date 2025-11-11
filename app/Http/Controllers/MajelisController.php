@@ -121,7 +121,9 @@ class MajelisController extends Controller
 
         $majelis->update($validated);
 
-        return redirect()->route('majelis.index')->with('success','Data Majelis berhasil diperbarui');
+        $page = session('majelis_page', 1);
+
+        return redirect()->route('majelis.index', ['page' => $page])->with('success','Data Majelis berhasil diperbarui');
 
     }
 
@@ -135,7 +137,9 @@ class MajelisController extends Controller
         }
 
         $majelis->delete();
-        return redirect()->route('majelis.index')->with('success', 'Data Majelis berhasil dihapus');
+
+        $page = session('majelis_page', 1);
+        return redirect()->route('majelis.index', ['page' => $page])->with('success', 'Data Majelis berhasil dihapus');
 
     }
 }

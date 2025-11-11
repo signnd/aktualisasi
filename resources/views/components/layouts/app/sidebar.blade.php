@@ -43,6 +43,13 @@
                     <flux:navlist.item icon="users" :href="route('registered-users.index')" :current="request()->routeIs('registered-users.index')" wire:navigate>{{ __('Pengguna Terdaftar') }}</flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
+            @else
+            <flux:navlist variant="outline">
+                <flux:navlist.group :heading="__('Master data')" class="grid">
+                    <flux:navlist.item icon="map-pin" :href="route('kecamatan.index')" :current="request()->routeIs('kecamatan.index')" wire:navigate>{{ __('Kecamatan') }}</flux:navlist.item>
+                </flux:navlist.group>
+            </flux:navlist>
+
             @endif
 
             <flux:spacer />
