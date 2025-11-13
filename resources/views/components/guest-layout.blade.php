@@ -47,6 +47,10 @@
                            class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.yayasan.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
                             Yayasan
                         </a>
+                        <a href="{{ route('guest.pusdiklat.index') }}" 
+                           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.yayasapusdiklat.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                            Pusdiklat
+                        </a>
                     </div>
                 </div>
             </div>
@@ -72,6 +76,10 @@
                 <a href="{{ route('guest.smb.index') }}" 
                    class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.smb.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
                     SMB
+                </a>
+                <a href="{{ route('guest.pusdiklat.index') }}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.pusdiklat.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                    Pusdiklat
                 </a>
                 </div>
             <div class="p-2 my-auto">

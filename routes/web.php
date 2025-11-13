@@ -15,6 +15,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruPendaController;
 use App\Http\Controllers\DhammasekhaController;
 use App\Http\Controllers\SiswaDhammasekhaController;
+use App\Http\Controllers\PusdiklatController;
 use App\Http\Controllers\RegisteredUsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Guest\RiabGuestController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\Guest\YayasanBuddhaGuestController;
 use App\Http\Controllers\Guest\SmbGuestController;
 use App\Http\Controllers\Guest\GuruPendaGuestController;
 use App\Http\Controllers\Guest\DhammasekhaGuestController;
+use App\Http\Controllers\Guest\PusdiklatGuestController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -68,6 +70,11 @@ Route::prefix('public')->name('guest.')->group(function () {
     })->name('dhammasekha.index');
     Route::get('/dhammasekha/{dhammasekha}', [DhammasekhaGuestController::class, 'show'])->name('dhammasekha.show');
     
+    Route::get('/pusdiklat', function () {
+        return view('guest.pusdiklat-index');
+    })->name('pusdiklat.index');
+    Route::get('/pusdiklat/{pusdiklat}', [PusdiklatGuestController::class, 'show'])->name('pusdiklat.show');
+
 });
 
 Route::get('dashboard', [DashboardController::class, 'index'])
@@ -114,6 +121,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('riab', RiabController::class);
     Route::resource('okb', OkbController::class);
     Route::resource('yayasan', YayasanBuddhaController::class);
+    Route::resource('pusdiklat', PusdiklatController::class);
     Route::resource('majelis', MajelisController::class)->parameters(['majelis' => 'majelis']);
     Route::resource('smb', SmbController::class);
     Route::resource('smb.siswa', SiswaSmbController::class);

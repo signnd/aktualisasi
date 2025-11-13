@@ -44,6 +44,10 @@ class Kabupaten extends Model
         return $this->hasMany(Dhammasekha::class);
     }
 
+    public function pusdiklat() {
+        return $this->hasMany(Pusdiklat::class);
+    }
+
     public function user() {
         return $this->hasMany(User::class);
     }

@@ -7,6 +7,8 @@ use App\Models\Okb;
 use App\Models\Riab;
 use App\Models\Smb;
 use App\Models\YayasanBuddha;
+use App\Models\Dhammasekha;
+use App\Models\Pusdiklat;
 
 use Illuminate\Http\Request;
 
@@ -26,6 +28,8 @@ class WelcomeController extends Controller
             'majelis' => Majelis::count(),
             'yayasan' => YayasanBuddha::count(),
             'smb' => Smb::count(),
+            'dhammasekha' => Dhammasekha::count(),
+            'pusdiklat' => Pusdiklat::count(),
             'gurupenda' => GuruPenda::count(),
         ];
 

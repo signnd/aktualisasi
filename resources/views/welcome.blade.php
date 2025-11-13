@@ -108,7 +108,7 @@
                     <div class="mb-8">
                         <h3 class="text-lg font-medium mb-4 text-zinc-50 dark:text-[#A1A09A]">Lembaga Pendidikan</h3>
                         <div class="space-y-3">
-                            <div class="grid grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <a href="{{ route('guest.smb.index') }}" 
                                class="block p-4 border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-md hover:border-[#19140035] dark:hover:border-[#62605b] 
                                    text-center transition bg-lime-900 hover:bg-lime-900/70">
@@ -118,9 +118,16 @@
                             <a href="{{ route('guest.dhammasekha.index') }}" 
                             class="block p-4 border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-md hover:border-[#19140035] dark:hover:border-[#62605b] 
                                    text-center transition bg-green-900 hover:bg-green-900/70">
-                                   <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['smb'] }}</div>
+                                   <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['dhammasekha'] }}</div>
                                    <div class="text-sm text-gray-200">Dhammasekha</div>
                             </a>
+                            <a href="{{ route('guest.pusdiklat.index') }}" 
+                               class="block p-4 border border-[#e3e3e0] dark:border-[#3E3E3A] rounded-md hover:border-[#19140035] dark:hover:border-[#62605b] 
+                                   text-center transition bg-emerald-900 hover:bg-emerald-900/70">
+                                <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['pusdiklat'] }}</div>
+                                <div class="text-sm text-gray-200">Pusdiklat</div>
+                            </a>
+
                         </div>
                         </div>
                     </div>
