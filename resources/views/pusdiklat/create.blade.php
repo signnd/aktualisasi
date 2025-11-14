@@ -26,7 +26,7 @@
                 </div>
             @endif
 
-            <div class="bg-gray-100 dark:bg-gray-900 border border-gray-600 dark:border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-white dark:bg-gray-900 border border-gray-600 dark:border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
@@ -123,7 +123,7 @@
                                 @if(auth()->user()->user_role === 'admin')
                                     <!-- Admin bisa pilih semua kabupaten -->
                                     <select id="kabupaten_id" name="kabupaten_id" required
-                                        class="w-full px-3 py-2 border border-gray-600 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                        class="w-full px-3 py-2 border border-gray-600 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-white">
                                         <option value="">-- Pilih Kabupaten --</option>
                                         @foreach($kabupaten as $k)
                                             <option value="{{ $k->id }}">

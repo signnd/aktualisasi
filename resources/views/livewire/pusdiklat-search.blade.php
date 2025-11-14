@@ -72,9 +72,7 @@
                                     <td class="px-6 py-4 whitespace">
                                         <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $pusdiklat->nama }}</div>
                                         @if($pusdiklat->no_statistik)
-                                            <div class="text-xs text-gray-300 dark:text-white">No. Statistik: {{ $pusdiklat->no_statistik }}</div>
-                                        @else
-                                            <div class="text-sm text-gray-500 dark:text-white">No. Statistik: -</div>
+                                            <div class="text-xs text-gray-500 dark:text-white">No. Statistik: {{ $pusdiklat->no_statistik }}</div>
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">

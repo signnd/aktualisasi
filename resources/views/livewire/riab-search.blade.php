@@ -140,7 +140,7 @@
             </table>
         </div>
         <!-- Pagination -->
-        <div class="mt-4">
+        <div class="bg-white dark:bg-zinc-900 px-4 py-3 border-t  border-gray-200 sm:px-6">
             {{ $riabs->links() }}
         </div>
     </div>

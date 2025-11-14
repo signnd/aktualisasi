@@ -102,7 +102,7 @@
     <!-- Card Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse($smbs as $smb)
-        <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-400 dark:hover:bg-zinc-700 transition-shadow duration-300 overflow-hidden">
+        <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-100 dark:hover:bg-zinc-700 transition-shadow duration-300 overflow-hidden">
             <a href="{{ route('guest.smb.show', $smb) }}" >
             <!-- Header Card -->
             <div class="bg-gradient-to-r from-lime-600 to-lime-800 text-white p-4">

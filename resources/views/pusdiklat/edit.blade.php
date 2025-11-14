@@ -30,7 +30,7 @@
             <x-error-modal />
             @endif
 
-            <div class="bg-gray-100 dark:bg-gray-900 border border-gray-600 dark:border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-white dark:bg-gray-900 border border-gray-600 dark:border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
