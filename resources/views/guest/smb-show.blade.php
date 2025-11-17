@@ -145,6 +145,7 @@
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $smb->alamat_bapen }}</p>
                             </div>
                             @endif
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             @if($smb->nama_pic)
                             <div>
@@ -161,15 +162,14 @@
                         </div>
                         @endif
                     </div>
-                </div>   
                     <!-- Link Foto -->
-                    @if($smb->link_foto)
+                    @if(!empty($smb->link_foto) && $smb->link_foto !== '-')
                     <div class="border-b pb-4">
                         <h4 class="text-lg font-semibold text-gray-100 mb-3">Dokumentasi</h4>
                         <a href="{{ $smb->link_foto }}" target="_blank" class="text-lime-600 hover:underline">
                             @endif
                     <!-- Link Foto -->
-                    @if($smb->link_foto)
+                    @if(!empty($smb->link_foto) && $smb->link_foto !== '-')
                     <div class="border-b pb-4">
                         @php
                             // Deteksi jenis URL dan konversi jika perlu
@@ -261,5 +261,7 @@
                 </div>
             </div>
         </div>
+                        </div>   
+
     </div>
 </x-guest-layout>

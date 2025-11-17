@@ -189,18 +189,7 @@
                 <p class="text-sm mt-1 opacity-90">NSSMB: {{ $smb->nssmb ?? '-' }}</p>
             </div>
 
-            <div class="p-6 space-y-6"> <!-- informasi -->
-                <!-- Informasi Lokasi 
-                <div class="border-b pb-4">
-                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                        </svg>
-                        Informasi Umum
-                    </h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    </div>
-                </div> -->
+            <div class="p-6 space-y-6"> 
 
                 <!-- Informasi Umum -->
                 <div class="border-b pb-4">
@@ -212,7 +201,6 @@
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                        <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Alamat Lengkap</p>
                             <p class="font-medium">{{ $smb->alamat ?? '-' }}</p>
                         </div>
@@ -220,6 +208,7 @@
                             <p class="text-sm text-gray-600 dark:text-gray-300">Kabupaten</p>
                             <p class="font-medium">{{ $smb->kabupaten->kabupaten ?? '-' }}</p>
                         </div>
+                        <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Didirikan</p>
                             <p class="font-medium">{{ $smb->didirikan ?? '-' }}</p>
                         </div>
@@ -312,11 +301,10 @@
                 </div>
 
                 <!-- Link Dokumentasi -->
-                @if($smb->link_foto || $smb->link_berita_acara_nonaktif)
+                @if($smb->link_foto)
                 <div class="border-b pb-4">
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Dokumentasi</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">Dokumentasi</h4>
                     <div class="space-y-2">
-                        @if($smb->link_foto)
                         <div>
                             <a href="{{ $smb->link_foto }}" target="_blank" 
                                class="inline-flex items-center text-blue-600 hover:text-blue-800 transition">
@@ -327,8 +315,8 @@
                             </a>
                         </div>
                         @endif
-                        @if($smb->link_berita_acara_nonaktif)
-                        <div>
+                        @if(!empty($smb->link_berita_acara_nonaktif) || $smb->link_berita_acara_nonaktif != '-')
+                        <!--<div>
                             <a href="{{ $smb->link_berita_acara_nonaktif }}" target="_blank" 
                                class="inline-flex items-center text-blue-600 hover:text-blue-800 transition">
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -336,11 +324,10 @@
                                 </svg>
                                 Lihat Berita Acara Non-Aktif
                             </a>
-                        </div>
+                        </div>-->
                         @endif
                     </div>
                 </div>
-                @endif
 
                 <!-- Data Siswa SMB -->
                 <div class="mt-8">

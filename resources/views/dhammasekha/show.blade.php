@@ -388,13 +388,13 @@
                 </div>
 
                 <!-- Link Dokumentasi -->
-                @if($dhammasekha->link_foto || $dhammasekha->link_berita_acara_nonaktif)
+                @if($dhammasekha->foto || $dhammasekha->link_berita_acara_nonaktif)
                 <div class="border-b pb-4">
-                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Dokumentasi</h4>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">Dokumentasi</h4>
                     <div class="space-y-2">
-                        @if($dhammasekha->link_foto)
+                        @if($dhammasekha->foto)
                         <div>
-                            <a href="{{ $dhammasekha->link_foto }}" target="_blank" 
+                            <a href="{{ $dhammasekha->foto }}" target="_blank" 
                                class="inline-flex items-center text-blue-600 hover:text-blue-800 transition">
                                 <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>

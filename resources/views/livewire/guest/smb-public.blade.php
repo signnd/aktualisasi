@@ -105,12 +105,16 @@
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-100 dark:hover:bg-zinc-700 transition-shadow duration-300 overflow-hidden">
             <a href="{{ route('guest.smb.show', $smb) }}" >
             <!-- Header Card -->
+
             <div class="bg-gradient-to-r from-lime-600 to-lime-800 text-white p-4">
                 <h3 class="font-bold text-lg truncate" title="{{ $smb->nama_smb }}">{{ $smb->nama_smb }}</h3>
+
             </div>
             
             <!-- Content Card -->
             <div class="p-4 space-y-3">
+                
+
                 <!-- Lokasi -->
                 <div class="flex items-start">
                     <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -119,6 +123,7 @@
                     <div class="text-sm">
                         <p class="font-medium text-gray-900 dark:text-white">{{ $smb->kabupaten->kabupaten ?? '-' }}</p>
                     </div>
+
                 </div>
 
                 <!-- Alamat -->
@@ -135,11 +140,17 @@
                 @if($smb->nssmb)
                 <div class="flex items-start">
                     <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                        <path d="M17 1H1c-.6 0-1 .5-1 1v14c0 .6.5 1 1 1h16c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zm-6 4h4c.6 0 1 .5 1 1s-.4 1-1 1h-4c-.6 0-1-.5-1-1s.4-1 1-1zm0 4h4c.6 0 1 .4 1 1s-.4 1-1 1h-4c-.6 0-1-.4-1-1s.4-1 1-1zM3 5c0-1 1-2 2-2s2 1 2 2v1c0 1-1 2-2 2S3 7 3 6V5zm0 10c-.5 0-1-.4-1-1v-2c0-1.7 1.4-3 3-3 1.7 0 3 1.3 3 3v2c0 .6-.5 1-1 1H3zm8 0c-.6 0-1-.4-1-1s.4-1 1-1h4c.6 0 1 .4 1 1s-.4 1-1 1h-4z"></path>
                     </svg>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">{{ $smb->nssmb }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">NSSMB: {{ $smb->nssmb }}</p>
                 </div>
                 @endif
+                            @if($smb->eksisting == 'Tidak Aktif')
+                <span class="px-2 py-1 rounded text-sm bg-red-100 text-red-800">
+                    {{ $smb->eksisting ?? '-' }}
+                </span>
+            @endif
+
             </div>
         </a>
 
