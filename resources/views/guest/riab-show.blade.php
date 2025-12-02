@@ -1,3 +1,5 @@
+@php $pageTitle = $riab->nama ?? config('app.name'); @endphp
+@section('title', $pageTitle)
 <x-guest-layout>
     <div class="py-6">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +48,8 @@
                             @if($riab->latitude && $riab->longitude)
                             <div>
                                 <p class="text-sm text-gray-300">Koordinat (Lat, Long)</p>
-                                <p class="font-medium">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</p>
+                                <p class="font-medium">
+                                    <a href="https://maps.google.com/?q={{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}" target="_blank">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</a></p>
                             </div>
                             @endif
                         </div>
@@ -151,13 +154,13 @@
                     </div>
                 </div>   
                     <!-- Link Foto -->
-                    @if($riab->link_foto)
+                @if(!empty($riab→link_foto) && $riab→link_foto!=='-')
                     <div class="pb-4">
                         <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                            </svg>
+                            </svg>r
                             Foto
                         </h2>
                         @php
@@ -304,7 +307,7 @@
                             </div>
                         </div>
                     </div>
-                                        <!-- Fasilitas -->
+                        <!-- Fasilitas -->
                     <div class="border-b pb-4">
                         <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -376,11 +379,15 @@
                                 <p class="text-sm text-gray-800">Buku Keagamaan</p>
                             </div>
                         </div>
-
                     @endif
                 </div>
             </div>
             </div>
         </div>
     </div>
+    <!-- fallback untuk memastikan tab title ter-update meskipun layout tidak menggunakan section/prop -->
+    <script>
+        // pastikan ini berjalan di client untuk langsung mengubah title di tab
+        document.title = @json($pageTitle) + ' — ' + @json(config('app.name'));
+    </script>
 </x-guest-layout>
