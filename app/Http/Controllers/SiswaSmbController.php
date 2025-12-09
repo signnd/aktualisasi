@@ -15,7 +15,7 @@ class SiswaSmbController extends Controller
      */
     public function index(Smb $smb)
     {
-        //$siswa = $smb->siswasmb()->with('kabupaten')->paginate(20);
+        $siswa = $smb->siswasmb()->with('kabupaten')->paginate(20);
         //$kabupaten = Kabupaten::all();
 //
         //return view('smb.siswa.index', compact('smb', 'siswa', 'kabupaten'));

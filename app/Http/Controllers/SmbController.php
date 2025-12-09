@@ -99,18 +99,18 @@ class SmbController extends Controller
     {
         //$smb->load(['kabupaten', 'siswa.kabupaten']);
         // Preload semua relasi yang dibutuhkan sekaligus
-        $smb->load([
-            'kabupaten:id,kabupaten',          // hanya ambil kolom yang dibutuhkan
-            'siswasmb' => function ($query) {
-                $query->with('kabupaten:id,kabupaten')
-                      ->orderBy('nama_siswa', 'asc')
-                      ->paginate(20);
-            }
-        ]);
+        //$smb->load([
+        //    'kabupaten:id,kabupaten']);
+        $smb->load('kabupaten');
+                      // hanya ambil kolom yang dibutuhkan
+        $siswas = $smb->siswasmb()
+        ->with('kabupaten')
+              ->orderBy('nama_siswa', 'asc')
+              ->paginate(20);
 
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
-        return view('smb.show', compact(['smb', 'kabupatens']));
+        return view('smb.show', compact(['smb', 'kabupatens', 'siswas']));
     }
 
     /**

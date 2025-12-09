@@ -63,10 +63,18 @@
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Alamat Lengkap</p>
                                 <p class="font-medium">{{ $riab->alamat ?? '-' }}</p>
                             </div>
+                            @if($riab->latitude && $riab->longitude)
                             <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Koordinat (Lat, Long)</p>
-                                <p class="font-medium">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</p>
+                                <p class="text-sm text-gray-300">Koordinat (Lat, Long)</p>
+                                <p class="font-medium hover:underline">
+                                    <a href="https://maps.google.com/?q={{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}" target="_blank">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</a></p>
                             </div>
+                            @else
+                            <div>
+                                <p class="text-sm text-gray-300">Koordinat (Lat, Long)</p>
+                                <p class="font-medium">-</p>
+                            </div>
+                            @endif
                         </div>
                     </div>
 
@@ -490,10 +498,23 @@
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Listrik</p>
                                 <p class="font-medium">{{ $riab->riabdetail->listrik ?? '-' }}</p>
                             </div>
+                            @if($riab->riabdetail->lpj_bantuan)
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">LPJ Bantuan</p>
-                                <p class="font-medium">{{ $riab->riabdetail->lpj_bantuan ?? '-' }}</p>
+                                <a href="{{ $riab->riabdetail->lpj_bantuan }}" target="_blank" 
+                                   class="inline-flex items-center text-blue-600 hover:text-blue-800 transition">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                                    </svg>
+                                        Lihat
+                                </a>
+                            @else
+                            <p class="text-sm text-gray-800 dark:text-gray-300">LPJ Bantuan</p>
+                                <p class="font-medium">
+                                    -</p>
                             </div>
+                            @endif
                             @if($riab->riabdetail->foto_sebelum_bantuan)
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Foto sebelum bantuan</p>

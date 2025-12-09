@@ -71,7 +71,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace">
                                         <div class="text-sm font-medium text-gray-900 dark:text-white">{{ $smb->nama_smb }}</div>
-                                        <div class="text-sm text-gray-500 dark:text-white">IZOP: {{ $smb->izop_1 }}</div>
+                                        <div class="text-xs text-gray-500 dark:text-gray-300">IZOP: {{ $smb->izop_1 }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                                         {{ $smb->kabupaten->kabupaten ?? '-' }}

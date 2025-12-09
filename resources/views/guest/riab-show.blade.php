@@ -51,6 +51,11 @@
                                 <p class="font-medium">
                                     <a href="https://maps.google.com/?q={{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}" target="_blank">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</a></p>
                             </div>
+                            @else
+                            <div>
+                                <p class="text-sm text-gray-300">Koordinat (Lat, Long)</p>
+                                <p class="font-medium">-</p>
+                            </div>
                             @endif
                         </div>
                     </div>
