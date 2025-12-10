@@ -3,7 +3,7 @@
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <a class="bg-blue-50 p-4 rounded-lg text-center" href="{{ route('riab.index') }}">
                 <p class="text-2xl font-bold text-blue-600">{{ $counts['riab'] }}</p>
-                <p class="text-sm text-gray-800">Jumlah RIAB</p>
+                <p class="text-sm text-gray-800">Jumlah Rumah Ibadah Agama Buddha</p>
             </a>
             <a class="bg-red-50 p-4 rounded-lg text-center" href={{ route('okb.index') }}>
                 <p class="text-2xl font-bold text-red-600">{{ $counts['okb'] }}</p>

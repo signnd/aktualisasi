@@ -14,6 +14,9 @@ class SmbSearch extends Component
 
     public $search = '';
     public $kabupaten_id = '';
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
+
 
     public function mount()
     {
@@ -33,6 +36,26 @@ class SmbSearch extends Component
     {
         $this->resetPage();
     }
+
+    public function resetFilters()
+    {
+        $this->search = '';
+        $this->kabupaten_id = '';
+        $this->resetPage();
+    }
+
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            // Toggle direction jika field yang sama
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            // Set field baru dengan direction asc
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
 
     public function render()
     {
@@ -62,6 +85,16 @@ class SmbSearch extends Component
                 //   });
             });
         }
+                
+        // Sorting
+        if ($this->sortField === 'kabupaten') {
+            $query->join('kabupaten', 'smb.kabupaten_id', '=', 'kabupaten.id')
+                  ->orderBy('kabupaten.kabupaten', $this->sortDirection)
+                  ->select('smb.*');
+        } else {
+            $query->orderBy($this->sortField, $this->sortDirection);
+        }
+
         
         $smbs = $query->paginate(10);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();

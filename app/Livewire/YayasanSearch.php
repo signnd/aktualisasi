@@ -17,6 +17,8 @@ class YayasanSearch extends Component
     public $search = '';
     public $kabupaten_id = '';
     public $currentPage = 1;
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
 
     public function mount()
     {
@@ -44,6 +46,18 @@ class YayasanSearch extends Component
         $this->currentPage = $page;
     }
 
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            // Toggle direction jika field yang sama
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            // Set field baru dengan direction asc
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
     public function render(Request $request)
     {
         $query = YayasanBuddha::with(['kabupaten', 'kecamatan']);
@@ -67,6 +81,15 @@ class YayasanSearch extends Component
                       $q->where('kecamatan', 'like', "%{$search}%");
                   });
             });
+        }
+        
+        // Sorting
+        if ($this->sortField === 'kabupaten') {
+            $query->join('kabupaten', 'yayasan_buddha.kabupaten_id', '=', 'kabupaten.id')
+                  ->orderBy('kabupaten.kabupaten', $this->sortDirection)
+                  ->select('yayasan_buddha.*');
+        } else {
+            $query->orderBy($this->sortField, $this->sortDirection);
         }
         
         $yayasans = $query->paginate(10);

@@ -14,6 +14,8 @@ class RiabSearch extends Component
 
     public $search = '';
     public $kabupaten_id = '';
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
 
     public function mount()
     {
@@ -41,6 +43,18 @@ class RiabSearch extends Component
         $this->resetPage();
     }
 
+    public function sortBy($field)
+    {
+        if ($this->sortField === $field) {
+            // Toggle direction jika field yang sama
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            // Set field baru dengan direction asc
+            $this->sortField = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
     public function render()
     {
         $query = Riab::with(['user', 'kabupaten', 'kecamatan']);
@@ -66,6 +80,15 @@ class RiabSearch extends Component
             });
         }
         
+        // Sorting
+        if ($this->sortField === 'kabupaten') {
+            $query->join('kabupaten', 'riab.kabupaten_id', '=', 'kabupaten.id')
+                  ->orderBy('kabupaten.kabupaten', $this->sortDirection)
+                  ->select('riab.*');
+        } else {
+            $query->orderBy($this->sortField, $this->sortDirection);
+        }
+
         $riabs = $query->paginate(10);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
 

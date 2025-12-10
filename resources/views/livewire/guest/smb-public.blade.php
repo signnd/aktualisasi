@@ -145,7 +145,7 @@
                     <p class="text-sm text-gray-600 dark:text-gray-400">NSSMB: {{ $smb->nssmb }}</p>
                 </div>
                 @endif
-                            @if($smb->eksisting == 'Tidak Aktif')
+                @if($smb->eksisting == 'Tidak Aktif')
                 <span class="px-2 py-1 rounded text-sm bg-red-100 text-red-800">
                     {{ $smb->eksisting ?? '-' }}
                 </span>
