@@ -1,8 +1,8 @@
 <div>
     <!-- Hero Section dengan Statistik -->
-    <div class="bg-gradient-to-r from-green-600 to-green-800 text-white rounded-lg shadow-lg p-8 mb-6">
-        <h1 class="text-3xl font-bold mb-2">Dhammasekha</h1>
-        <p class="text-green-100 mb-6">Database Dhammasekha di Provinsi Bali</p>
+    <div class="bg-gradient-to-r from-indigo-600 to-indigo-800 text-white rounded-lg shadow-lg p-8 mb-6">
+        <h1 class="text-3xl font-bold mb-2">INI HALAMAN TEST</h1>
+        <p class="text-indigo-100 mb-6">TEST 123</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white/10 backdrop-blur rounded-lg p-4">
@@ -11,8 +11,8 @@
                         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
                     </svg>
                     <div>
-                        <p class="text-sm text-green-100">Total Dhammasekha</p>
-                        <p class="text-2xl font-bold">{{ number_format($totalDhammasekha) }}</p>
+                        <p class="text-sm text-indigo-100">Total RIAB</p>
+                        <p class="text-2xl font-bold">{{ number_format($totalRiab) }}</p>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                         <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                     </svg>
                     <div>
-                        <p class="text-sm text-green-100">Kabupaten/Kota</p>
+                        <p class="text-sm text-indigo-100">Kabupaten/Kota</p>
                         <p class="text-2xl font-bold">{{ number_format($totalKabupaten) }}</p>
                     </div>
                 </div>
@@ -32,16 +32,16 @@
     </div>
 
     <!-- Filter & Search -->
-    <div class="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 mb-6">
+    <div class="bg-0 border-1 border-gray-100 rounded-lg shadow p-6 mb-6">
         <div class="space-y-4">
             <!-- Filter Kabupaten -->
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="flex-1">
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label class="block text-sm font-medium mb-2">
                         Filter Kabupaten
                     </label>
                     <select wire:model.live="kabupaten_id"
-                            class="w-full px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white">
+                            class="w-full px-4 py-2 border rounded-lg">
                         <option value="">Semua Kabupaten/Kota</option>
                         @foreach($kabupatens as $kab)
                             <option value="{{ $kab->id }}">{{ $kab->kabupaten }}</option>
@@ -50,13 +50,13 @@
                 </div>
 
                 <div class="flex-1">
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label class="block text-sm font-medium  mb-2">
                         Pencarian
                     </label>
                     <input type="text" 
                            wire:model.live.debounce.200ms="search"
-                           placeholder="Cari nama dhammasekha..."
-                           class="w-full px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white">
+                           placeholder="Cari nama vihara, alamat, ketua..."
+                           class="w-full px-4 py-2 border rounded-lg">
                 </div>
             </div>
 
@@ -64,21 +64,21 @@
             <div class="flex flex-wrap items-center gap-2">
                 @if($kabupaten_id || $search)
                     @if($kabupaten_id)
-                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 rounded-full text-sm">
+                        <span class="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
                             📍 {{ $kabupatens->firstWhere('id', $kabupaten_id)->kabupaten ?? 'N/A' }}
                         </span>
                     @endif
                     @if($search)
-                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400 rounded-full text-sm">
+                        <span class="px-3 py-1 bg-green-100  text-green-800 rounded-full text-sm">
                             🔍 "{{ $search }}"
                         </span>
                     @endif
                     <button wire:click="resetFilters" 
-                            class="px-3 py-1 bg-gray-200 dark:bg-zinc-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-gray-300 dark:hover:bg-zinc-600">
+                            class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm hover:bg-gray-300">
                         ✕ Reset
                     </button>
                 @else
-                    <span class="text-sm text-gray-500 dark:text-gray-400">
+                    <span class="text-sm text-gray-500">
                         Menampilkan semua data
                     </span>
                 @endif
@@ -88,8 +88,8 @@
 
     <!-- Loading Indicator
     <div wire:loading class="mb-4">
-        <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
-            <div class="flex items-center text-green-600 dark:text-green-400">
+        <div class="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-4">
+            <div class="flex items-center text-indigo-600 dark:text-indigo-400">
                 <svg class="animate-spin h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -101,12 +101,12 @@
 
     <!-- Card Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @forelse($dhammasekhas as $d)
+        @forelse($riabs as $riab)
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-100 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
-            <a href="{{ route('guest.dhammasekha.show', $d) }}" >
+            <a href="{{ route('guest.riab.show', $riab) }}" >
             <!-- Header Card -->
-            <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-4">
-                <h3 class="font-bold text-lg truncate" title="{{ $d->nama }}">{{ $d->nama }}</h3>
+            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white p-4">
+                <div class="text-xl font-bold text-white mb-1 transition-transform truncate" title="{{ $riab->nama }}">{{ $riab->nama }}</div>
             </div>
             
             <!-- Content Card -->
@@ -117,27 +117,29 @@
                         <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                     </svg>
                     <div class="text-sm">
-                        <p class="font-medium text-gray-900 dark:text-white">{{ $d->kabupaten->kabupaten ?? '-' }}</p>
+                        <p class="font-medium text-gray-900 dark:text-white">{{ $riab->kabupaten->kabupaten ?? '-' }}</p>
+                        <p class="text-gray-600 dark:text-gray-400">{{ $riab->kecamatan->kecamatan ?? '-' }}</p>
                     </div>
                 </div>
 
                 <!-- Alamat -->
-                @if($d->alamat)
+                @if($riab->alamat)
                 <div class="flex items-start">
                     <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
                     </svg>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">{{ $d->alamat }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">{{ $riab->alamat }}</p>
                 </div>
                 @endif
 
-                <!-- Jenis -->
-                @if($d->jenis)
+                <!-- No Telp -->
+                @if($riab->no_telp)
                 <div class="flex items-start">
                     <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd" d="M16.5562 12.9062L16.1007 13.359C16.1007 13.359 15.0181 14.4355 12.0631 11.4972C9.10812 8.55901 10.1907 7.48257 10.1907 7.48257L10.4775 7.19738C11.1841 6.49484 11.2507 5.36691 10.6342 4.54348L9.37326 2.85908C8.61028 1.83992 7.13596 1.70529 6.26145 2.57483L4.69185 4.13552C4.25823 4.56668 3.96765 5.12559 4.00289 5.74561C4.09304 7.33182 4.81071 10.7447 8.81536 14.7266C13.0621 18.9492 17.0468 19.117 18.6763 18.9651C19.1917 18.9171 19.6399 18.6546 20.0011 18.2954L21.4217 16.883C22.3806 15.9295 22.1102 14.2949 20.8833 13.628L18.9728 12.5894C18.1672 12.1515 17.1858 12.2801 16.5562 12.9062Z" clip-rule="evenodd"/>
+                    
                     </svg>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">{{ $d->jenis }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">{{ $riab->no_telp }}</p>
                 </div>
                 @endif
             </div>
@@ -157,7 +159,7 @@
                     @if($search || $kabupaten_id)
                         Coba ubah filter atau kata kunci pencarian
                     @else
-                        Belum ada data Dhammasekha
+                        Belum ada data rumah ibadah
                     @endif
                 </p>
             </div>
@@ -167,6 +169,6 @@
 
     <!-- Pagination -->
     <div class="mt-6">
-        {{ $dhammasekhas->links() }}
+        {{ $riabs->links() }}
     </div>
 </div>

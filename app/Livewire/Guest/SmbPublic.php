@@ -58,7 +58,7 @@ class SmbPublic extends Component
             });
         }
         
-        $smbs = $query->orderBy('nama_smb')->paginate(12);
+        $smbs = $query->orderBy('nama_smb')->paginate(15);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik

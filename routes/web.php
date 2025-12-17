@@ -32,12 +32,18 @@ use App\Http\Controllers\Guest\PusdiklatGuestController;
 //})->name('home');
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/test', [WelcomeController::class, 'index3'])->name('welcome3');
 
 // Guest routes (tanpa middleware auth)
 Route::prefix('public')->name('guest.')->group(function () {
     Route::get('/riab', function () {
         return view('guest.riab-index');
     })->name('riab.index');
+    
+    Route::get('/riab-test', function () {
+        return view('guest.riab-test-index');
+    })->name('riab.test-index');
+
     Route::get('/riab/{riab}', [RiabGuestController::class, 'show'])->name('riab.show');
 
     Route::get('/okb', function () {

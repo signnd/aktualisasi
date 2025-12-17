@@ -89,7 +89,7 @@
     <!-- Card Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse($majeliss as $majelis)
-        <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-100 dark:hover:bg-zinc-700 transition-shadow duration-300 overflow-hidden">
+        <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-100 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
             <a href="{{ route('guest.majelis.show', $majelis) }}" >
 
             <!-- Header Card -->
@@ -110,23 +110,24 @@
                     </div>
                 </div>
 
-                <!-- Alamat -->
-                @if($majelis->alamat)
+                <!-- Sekte -->
+                @if($majelis->sekte)
                 <div class="flex items-start">
-                    <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
-                    </svg>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">{{ $majelis->sekte }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">Sekte: {{ $majelis->sekte }}</p>
+                </div>
+                @endif
+
+                <!-- Binaan -->
+                @if($majelis->binaan)
+                <div class="flex items-start">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Binaan: {{ $majelis->binaan }}</p>
                 </div>
                 @endif
 
                 <!-- Ketua -->
                 @if($majelis->ketua)
                 <div class="flex items-start">
-                    <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                    </svg>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">{{ $majelis->binaan }}</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Ketua: {{ $majelis->ketua }}</p>
                 </div>
                 @endif
             </div>

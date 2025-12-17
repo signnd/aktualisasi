@@ -57,7 +57,7 @@ class okbPublic extends Component
             });
         }
         
-        $okbs = $query->orderBy('nama_okb')->paginate(12);
+        $okbs = $query->orderBy('nama_okb')->paginate(15);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik

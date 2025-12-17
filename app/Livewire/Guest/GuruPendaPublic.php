@@ -59,7 +59,7 @@ class GuruPendaPublic extends Component
             });
         }
         
-        $guruPendas = $query->orderBy('nama_guru')->paginate(12);
+        $guruPendas = $query->orderBy('nama_guru')->paginate(15);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik

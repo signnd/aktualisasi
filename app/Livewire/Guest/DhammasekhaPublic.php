@@ -57,7 +57,7 @@ class DhammasekhaPublic extends Component
             });
         }
         
-        $dhammasekhas = $query->orderBy('nama')->paginate(12);
+        $dhammasekhas = $query->orderBy('nama')->paginate(15);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik

@@ -4,12 +4,12 @@ namespace App\Livewire\Guest;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\YayasanBuddha;
+use App\Models\Riab;
 use App\Models\Kabupaten;
 
-class YayasanPublic extends Component
+class RiabTestPublic extends Component
 {
-use WithPagination;
+    use WithPagination;
 
     public $search = '';
     public $kabupaten_id = '';
@@ -31,10 +31,10 @@ use WithPagination;
         $this->kabupaten_id = '';
         $this->resetPage();
     }
-
+    
     public function render()
     {
-        $query = YayasanBuddha::with(['kabupaten', 'kecamatan']);
+        $query = Riab::with(['kabupaten', 'kecamatan']);
         
         // Filter berdasarkan kabupaten yang dipilih
         if ($this->kabupaten_id != '') {
@@ -45,7 +45,7 @@ use WithPagination;
         if ($this->search != '') {
             $search = $this->search;
             $query->where(function($q) use ($search) {
-                $q->where('nama_yayasan', 'like', "%{$search}%")
+                $q->where('nama', 'like', "%{$search}%")
                   ->orWhere('alamat', 'like', "%{$search}%")
                   ->orWhere('ketua', 'like', "%{$search}%")
                   ->orWhereHas('kabupaten', function($q) use ($search) {
@@ -57,17 +57,17 @@ use WithPagination;
             });
         }
         
-        $yayasanBuddhas = $query->orderBy('nama_yayasan')->paginate(15);
+        $riabs = $query->orderBy('nama')->paginate(12);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik
-        $totalYayasanBuddha = YayasanBuddha::count();
-        $totalKabupaten = YayasanBuddha::distinct('kabupaten_id')->count('kabupaten_id');
+        $totalRiab = Riab::count();
+        $totalKabupaten = Riab::distinct('kabupaten_id')->count('kabupaten_id');
         
-        return view('livewire.guest.yayasan-public', [
-            'yayasanBuddhas' => $yayasanBuddhas,
+        return view('livewire.guest.riab-test-public', [
+            'riabs' => $riabs,
             'kabupatens' => $kabupatens,
-            'totalYayasanBuddha' => $totalYayasanBuddha,
+            'totalRiab' => $totalRiab,
             'totalKabupaten' => $totalKabupaten,
         ]);
     }

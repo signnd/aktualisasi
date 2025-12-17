@@ -57,7 +57,7 @@ class RiabPublic extends Component
             });
         }
         
-        $riabs = $query->orderBy('nama')->paginate(12);
+        $riabs = $query->orderBy('nama')->paginate(15);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik

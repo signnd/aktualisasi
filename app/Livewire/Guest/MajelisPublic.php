@@ -57,7 +57,7 @@ class MajelisPublic extends Component
             });
         }
         
-        $majeliss = $query->orderBy('nama_majelis')->paginate(12);
+        $majeliss = $query->orderBy('nama_majelis')->paginate(30);
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik
