@@ -1,6 +1,7 @@
 /vendor
 /venv
 /node_modules
+/resources/js
 /tests
 /storage/framework/cache
 /storage/framework/sessions
