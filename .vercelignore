@@ -1,2 +1,13 @@
 /vendor
 /venv
+/node_modules
+/resources/js
+/resources/css
+/tests
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/views
+/storage/app/public
+.git
+.github
+/api
