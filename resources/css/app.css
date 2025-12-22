@@ -35,6 +35,11 @@
     }
 }
 
+@media (min-width: 1024px) {
+  /* Only hide mobile header on desktop when Flux didn't initialize properly */
+  .flux-not-initialized flux\:header { display: none !important; }
+}
+
 @layer base {
 
     *,
