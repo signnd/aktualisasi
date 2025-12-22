@@ -5,7 +5,6 @@
         "api/index.php": { 
             "runtime": "vercel-php@0.7.4",
             "excludeFiles": "{*.cache,node_modules,public,app,venv}/**",
-            "buildCommand": "composer install --no-dev --optimize-autoloader --classmap-authoritative && npm install && npm run build"
         }
     },
     "routes": [{
