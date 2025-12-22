@@ -40,6 +40,30 @@
   .flux-not-initialized flux\:header { display: none !important; }
 }
 
+@media (min-width: 1024px) {
+  /* Grid layout: place the Flux sidebar and main side-by-side */
+  .flux-layout {
+    display: grid;
+    grid-template-columns: 256px minmax(0, 1fr);
+    grid-template-areas: "sidebar main";
+    gap: 1rem;
+    align-items: start;
+  }
+
+  /* Map Flux components to grid areas */
+  .flux-layout .\[grid-area\:sidebar\],
+  .flux-layout ui-sidebar,
+  .flux-layout [data-flux-sidebar] {
+    grid-area: sidebar;
+  }
+
+  .flux-layout .\[grid-area\:main\],
+  .flux-layout flux\:main,
+  .flux-layout [data-flux-main] {
+    grid-area: main;
+  }
+}
+
 @layer base {
 
     *,
