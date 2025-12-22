@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_rVjc4vvjotrkzsDEN5O1I4C9Kz0k",
+  "orgId": "team_XwKXIIySHYpgWnCYm4M2LuaA",
+  "projectName": "simadha",
+  "settings": {
+    "createdAt": 1766109372790,
+    "framework": null,
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": "public",
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}
