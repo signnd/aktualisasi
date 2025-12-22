@@ -1,5 +1,4 @@
 // App entry
-console.log('app.js loaded');
 
 // Flux initialization watcher: if Flux runtime never initializes, add a fallback
 // class so CSS can hide mobile-only header elements on desktop to avoid layout shift.
