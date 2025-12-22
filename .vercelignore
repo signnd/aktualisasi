@@ -1,7 +1,5 @@
-/vendor
 /venv
 /node_modules
-/resources/js
 /tests
 /storage/framework/cache
 /storage/framework/sessions
@@ -9,3 +7,17 @@
 /storage/app/public
 .git
 .github
+/storage/*.key
+/vendor/**/*.md
+/vendor/**/*.txt
+/vendor/**/test
+/vendor/**/tests
+/vendor/**/Tests
+/vendor/**/docs
+/vendor/**/examples
+/node_modules
+.git
+.env
+*.log
+/storage/logs
+/bootstrap/cache
