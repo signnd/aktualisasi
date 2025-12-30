@@ -16,6 +16,7 @@ use App\Http\Controllers\GuruPendaController;
 use App\Http\Controllers\DhammasekhaController;
 use App\Http\Controllers\SiswaDhammasekhaController;
 use App\Http\Controllers\PusdiklatController;
+use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\RegisteredUsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Guest\RiabGuestController;
@@ -26,6 +27,7 @@ use App\Http\Controllers\Guest\SmbGuestController;
 use App\Http\Controllers\Guest\GuruPendaGuestController;
 use App\Http\Controllers\Guest\DhammasekhaGuestController;
 use App\Http\Controllers\Guest\PusdiklatGuestController;
+use App\Http\Controllers\Guest\InformasiGuestController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -80,6 +82,11 @@ Route::prefix('public')->name('guest.')->group(function () {
         return view('guest.pusdiklat-index');
     })->name('pusdiklat.index');
     Route::get('/pusdiklat/{pusdiklat}', [PusdiklatGuestController::class, 'show'])->name('pusdiklat.show');
+    
+    Route::get('/informasi', function () {
+        return view('guest.informasi-index');
+    })->name('informasi.index');
+    // Route::get('/informasi/{informasi}', [InformasiGuestController::class, 'show'])->name('informasi.show');
 
 });
 
@@ -132,6 +139,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('smb', SmbController::class);
     Route::resource('smb.siswa', SiswaSmbController::class);
     Route::resource('guru-penda', GuruPendaController::class);
+    Route::resource('informasi', InformasiController::class);
     Route::resource('dhammasekha', DhammasekhaController::class);
     Route::resource('dhammasekha.siswa', DhammasekhaController::class);
     Route::prefix('dhammasekha/{dhammasekha}')->name('dhammasekha.')->group(function() {
@@ -144,7 +152,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/siswa', [SiswaSMBController::class, 'store'])->name('siswa.store');
         Route::put('/siswa/{siswa}', [SiswaSMBController::class, 'update'])->name('siswa.update');
         Route::delete('/siswa/{siswa}', [SiswaSMBController::class, 'destroy'])->name('siswa.destroy');
-    Route::get('/riab/by-kabupaten/{id}', [RiabController::class, 'getByKabupaten']);
+    
+        Route::get('/riab/by-kabupaten/{id}', [RiabController::class, 'getByKabupaten']);
     // Route::prefix('master')->group(function () {
     //         Route::resource('kecamatan', KecamatanController::class);
     // });

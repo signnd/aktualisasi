@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-100">
-            {{ __('Detail GUru Pendidikan Agama') }}
+            {{ __('Detail Guru Pendidikan Agama') }}
         </h2>
 </x-slot>
 
@@ -57,7 +57,7 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-600 dark:text-gray-300">Tempat/Tanggal Lahir</p>
-                        <p class="font-medium">{{ $guruPenda->temepat_lahir ?? '-' }}, {{ $guruPenda->tgl_lahir ? \Carbon\Carbon::parse($guruPenda->tgl_lahir)->format('d M Y') : '-' }}</p>
+                        <p class="font-medium">{{ $guruPenda->tempat_lahir ?? '-' }}, {{ $guruPenda->tgl_lahir ? \Carbon\Carbon::parse($guruPenda->tgl_lahir)->format('d M Y') : '-' }}</p>
                     </div>
                     <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Status Pegawai</p>
@@ -89,105 +89,105 @@
                         Informasi Sekolah
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            @php
-                                $nama_sekolah_sd = is_array($guruPenda->nama_sekolah_sd) 
-                                    ? $guruPenda->nama_sekolah_sd 
-                                    : (is_string($guruPenda->nama_sekolah_sd) 
-                                        ? json_decode($guruPenda->nama_sekolah_sd, true) ?? [] 
-                                        : []);
-                                $alamat_sekolah_sd = is_array($guruPenda->alamat_sekolah_sd) 
-                                    ? $guruPenda->alamat_sekolah_sd 
-                                    : (is_string($guruPenda->alamat_sekolah_sd) 
-                                        ? json_decode($guruPenda->alamat_sekolah_sd, true) ?? [] 
-                                        : []);
-                                $nama_sekolah_smp = is_array($guruPenda->nama_sekolah_smp) 
-                                    ? $guruPenda->nama_sekolah_smp 
-                                    : (is_string($guruPenda->nama_sekolah_smp) 
-                                        ? json_decode($guruPenda->nama_sekolah_smp, true) ?? [] 
-                                        : []);
-                                $alamat_sekolah_smp = is_array($guruPenda->alamat_sekolah_smp) 
-                                    ? $guruPenda->alamat_sekolah_smp 
-                                    : (is_string($guruPenda->alamat_sekolah_smp) 
-                                        ? json_decode($guruPenda->alamat_sekolah_smp, true) ?? [] 
-                                        : []);
-                                $nama_sekolah_sma = is_array($guruPenda->nama_sekolah_sma) 
-                                    ? $guruPenda->nama_sekolah_sma 
-                                    : (is_string($guruPenda->nama_sekolah_sma) 
-                                        ? json_decode($guruPenda->nama_sekolah_sma, true) ?? [] 
-                                        : []);
-                                $alamat_sekolah_sma = is_array($guruPenda->alamat_sekolah_sma) 
-                                    ? $guruPenda->alamat_sekolah_sma 
-                                    : (is_string($guruPenda->alamat_sekolah_sma) 
-                                        ? json_decode($guruPenda->alamat_sekolah_sma, true) ?? [] 
-                                        : []);
-                            @endphp
-                            <div>
-                                <p class="text-sm text-gray-600 dark:text-gray-300">SD tempat Mengajar</p>
-                                <p class="font-medium">
-                                    @if(!empty($nama_sekolah_sd))
-                                        {{ implode(', ', $nama_sekolah_sd) }}
-                                    @else
-                                        -
-                                    @endif
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600 dark:text-gray-300">Alamat SD tempat Mengajar</p>
-                                <p class="font-medium">
-                                    @if(!empty($alamat_sekolah_sd))
-                                        {{ implode(', ', $alamat_sekolah_sd) }}
-                                    @else
-                                        -
-                                    @endif
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600 dark:text-gray-300">SMP tempat Mengajar</p>
-                                <p class="font-medium">
-                                    @if(!empty($nama_sekolah_smp))
-                                        {{ implode(', ', $nama_sekolah_smp) }}
-                                    @else
-                                        -
-                                    @endif
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600 dark:text-gray-300">Alamat SMP tempat Mengajar</p>
-                                <p class="font-medium">
-                                    @if(!empty($alamat_sekolah_smp))
-                                        {{ implode(', ', $alamat_sekolah_smp) }}
-                                    @else
-                                        -
-                                    @endif
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600 dark:text-gray-300">SMA/SMK tempat Mengajar</p>
-                                <p class="font-medium">
-                                    @if(!empty($nama_sekolah_sma))
-                                        {{ implode(', ', $nama_sekolah_sma) }}
-                                    @else
-                                        -
-                                    @endif
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-600 dark:text-gray-300">SMA tempat Mengajar</p>
-                                <p class="font-medium">
-                                    @if(!empty($alamat_sekolah_sma))
-                                        {{ implode(', ', $alamat_sekolah_sma) }}
-                                    @else
-                                        -
-                                    @endif
-                                </p>
-                            </div>
+                        @php
+                            $nama_sekolah_sd = is_array($guruPenda->nama_sekolah_sd) 
+                                ? $guruPenda->nama_sekolah_sd 
+                                : (is_string($guruPenda->nama_sekolah_sd) 
+                                    ? json_decode($guruPenda->nama_sekolah_sd, true) ?? [] 
+                                    : []);
+                            $alamat_sekolah_sd = is_array($guruPenda->alamat_sekolah_sd) 
+                                ? $guruPenda->alamat_sekolah_sd 
+                                : (is_string($guruPenda->alamat_sekolah_sd) 
+                                    ? json_decode($guruPenda->alamat_sekolah_sd, true) ?? [] 
+                                    : []);
+                            $nama_sekolah_smp = is_array($guruPenda->nama_sekolah_smp) 
+                                ? $guruPenda->nama_sekolah_smp 
+                                : (is_string($guruPenda->nama_sekolah_smp) 
+                                    ? json_decode($guruPenda->nama_sekolah_smp, true) ?? [] 
+                                    : []);
+                            $alamat_sekolah_smp = is_array($guruPenda->alamat_sekolah_smp) 
+                                ? $guruPenda->alamat_sekolah_smp 
+                                : (is_string($guruPenda->alamat_sekolah_smp) 
+                                    ? json_decode($guruPenda->alamat_sekolah_smp, true) ?? [] 
+                                    : []);
+                            $nama_sekolah_sma = is_array($guruPenda->nama_sekolah_sma) 
+                                ? $guruPenda->nama_sekolah_sma 
+                                : (is_string($guruPenda->nama_sekolah_sma) 
+                                    ? json_decode($guruPenda->nama_sekolah_sma, true) ?? [] 
+                                    : []);
+                            $alamat_sekolah_sma = is_array($guruPenda->alamat_sekolah_sma) 
+                                ? $guruPenda->alamat_sekolah_sma 
+                                : (is_string($guruPenda->alamat_sekolah_sma) 
+                                    ? json_decode($guruPenda->alamat_sekolah_sma, true) ?? [] 
+                                    : []);
+                        @endphp
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">SD tempat Mengajar</p>
+                            <p class="font-medium">
+                                @if(!empty($nama_sekolah_sd))
+                                    {{ implode(', ', $nama_sekolah_sd) }}
+                                @else
+                                    -
+                                @endif
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Alamat SD tempat Mengajar</p>
+                            <p class="font-medium">
+                                @if(!empty($alamat_sekolah_sd))
+                                    {{ implode(', ', $alamat_sekolah_sd) }}
+                                @else
+                                    -
+                                @endif
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">SMP tempat Mengajar</p>
+                            <p class="font-medium">
+                                @if(!empty($nama_sekolah_smp))
+                                    {{ implode(', ', $nama_sekolah_smp) }}
+                                @else
+                                    -
+                                @endif
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Alamat SMP tempat Mengajar</p>
+                            <p class="font-medium">
+                                @if(!empty($alamat_sekolah_smp))
+                                    {{ implode(', ', $alamat_sekolah_smp) }}
+                                @else
+                                    -
+                                @endif
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">SMA/SMK tempat Mengajar</p>
+                            <p class="font-medium">
+                                @if(!empty($nama_sekolah_sma))
+                                    {{ implode(', ', $nama_sekolah_sma) }}
+                                @else
+                                    -
+                                @endif
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">SMA tempat Mengajar</p>
+                            <p class="font-medium">
+                                @if(!empty($alamat_sekolah_sma))
+                                    {{ implode(', ', $alamat_sekolah_sma) }}
+                                @else
+                                    -
+                                @endif
+                            </p>
+                        </div>
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Sertifikasi</p>
                             <p class="font-medium">{{ $guruPenda->sertifikasi ?? '-' }}</p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Tanggal Sertifikasi</p>
-                            <p class="font-medium">{{ $guruPenda->tgl_sertifikasii ?? '-' }}</p>
+                            <p class="font-medium">{{ $guruPenda->tgl_sertifikasi ?? '-' }}</p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Mata Pelajaran yang Tersertifikasi</p>

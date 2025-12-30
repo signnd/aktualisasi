@@ -37,7 +37,7 @@
 
 @media (min-width: 1024px) {
   /* Only hide mobile header on desktop when Flux didn't initialize properly */
-  .flux-not-initialized flux\:header { display: none !important; }
+a  .flux-not-initialized flux\:header { display: none !important; }
 }
 
 @media (min-width: 1024px) {

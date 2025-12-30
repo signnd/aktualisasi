@@ -9,6 +9,7 @@ use App\Models\Smb;
 use App\Models\YayasanBuddha;
 use App\Models\Dhammasekha;
 use App\Models\Pusdiklat;
+use App\Models\Informasi;
 
 use Illuminate\Http\Request;
 
@@ -55,7 +56,13 @@ class WelcomeController extends Controller
             'gurupenda' => GuruPenda::count(),
         ];
 
-        return view('welcome3', compact('counts'));
+        $informasiPublik = Informasi::where('kategori', 'Informasi Publik')
+            ->latest()
+            ->take(3)
+            ->get();
+
+
+        return view('welcome3', compact('counts', 'informasiPublik'));
     }
 
 }

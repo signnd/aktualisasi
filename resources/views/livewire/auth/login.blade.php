@@ -74,7 +74,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'login' => __('Email/Username atau password salah'),
+                'login' => __('Email/Username atau kata sandi salah'),
             ]);
         }
 
@@ -143,7 +143,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
 
             @if (Route::has('password.request'))
                 <flux:link class="absolute top-0 text-sm end-0" :href="route('password.request')" wire:navigate>
-                    {{ __('Lupa password?') }}
+                    {{ __('Lupa kata sandi?') }}
                 </flux:link>
             @endif
         </div>

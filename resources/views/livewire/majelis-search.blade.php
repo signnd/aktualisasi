@@ -10,11 +10,11 @@
                     <option value="{{ $kab->id }}">{{ $kab->kabupaten }}</option>
                 @endforeach
             </select>
-                <input type="text" 
-                   wire:model.live.debounce.100ms="search"
-                   placeholder="Cari nama majelis, alamat..."
-                   class="flex flex-1 px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
-                   autofocus>
+            <input type="text" 
+               wire:model.live.debounce.100ms="search"
+               placeholder="Cari nama majelis, alamat..."
+               class="flex flex-1 px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
+               autofocus>
         </div>
 
         <!-- Info Filter Aktif -->

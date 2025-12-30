@@ -16,23 +16,6 @@ class Majelis extends Model
         'sekte', 'binaan', 'ketua', 'keterangan'
     ];
 
-    // Event Listeners
-    // protected static function boot()
-    // {
-    //     parent::boot();
-
-    //     // Saat data dibuat
-    //     static::creating(function ($majelis) {
-    //         $majelis->tgl_update = Carbon::now()->format('Y-m-d');
-    //     });
-
-    //     // Saat data diupdate
-    //     static::updating(function ($majelis) {
-    //         $majelis->tgl_update = Carbon::now()->format('Y-m-d');
-    //     });
-    // }
-
-
     public function user()
     {
         return $this->belongsTo(User::class);

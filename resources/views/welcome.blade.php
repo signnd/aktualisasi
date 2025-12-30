@@ -135,7 +135,7 @@
 
         <!-- Footer -->
         <footer class="border-0">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 bg-zinc-800">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 dark:bg-zinc-800">
                 <p class="text-center text-sm dark:text-[#A1A09A]">
                     &copy; {{ date('Y') }} SIMADHA - Sistem Informasi Keagamaan Buddha di Bali
                 </p>
