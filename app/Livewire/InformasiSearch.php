@@ -35,7 +35,7 @@ class InformasiSearch extends Component
 
     public function render()
     {
-        $query = Informasi::with(['user']);
+        $query = Informasi::with(['users']);
         
         // Filter berdasarkan kategori jika dipilih
         if ($this->kategori != '') {

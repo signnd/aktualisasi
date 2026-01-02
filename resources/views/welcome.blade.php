@@ -130,6 +130,26 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="bg-gray-100 transition hover:shadow-xl motion-reduce:transition-none text-gray-60 rounded-lg p-8 shadow-lg flex ">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <h3 class="text-xl font-semibold">Informasi Publik</h3>
+            <div class="flex justify-end">
+                <a href="{{ route('guest.informasi.index') }}" 
+                   class="px-8 py-2.5 bg-blue-600/85 text-white rounded-lg hover:bg-blue-700 flex items-center shadow-lg whitespace-nowrap">
+                    Lihat Informasi
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 20 20">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+
+                </a>
+            </div>
+                </a>
+            </div>
+        </div>
+
+        </div>
+    </div>
 
     </main>
 

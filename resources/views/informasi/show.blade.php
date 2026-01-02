@@ -29,6 +29,64 @@
                 <h3 class="text-2xl font-bold">{{ $informasi->judul }}</h3>
                 <p class="font-medium">{{ $informasi->ringkasan ?? '-' }}</p>
             </div>
+                @if($informasi->foto)
+                    <div class="border-b p-4">
+                        <a href="{{ $informasi->link_foto }}" target="_blank" class="text-blue-600 hover:underline">
+                    @endif
+                    <!-- Link Foto -->
+                    @if($informasi->foto)
+                    <div class="border-b pb-4">
+                        @php
+                            // Deteksi jenis URL dan konversi jika perlu
+                            $imageUrl = $informasi->foto;
+                            $fileId = null;
+                            $isGoogleDrive = false;
+                            $isDirectImage = false;
+                            
+                            // Cek apakah URL dari Google Drive
+                            if (strpos($imageUrl, 'drive.google.com') !== false) {
+                                $isGoogleDrive = true;
+                                // Extract file ID dari berbagai format URL Google Drive
+                                if (preg_match('/\/d\/([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
+                                    $fileId = $matches[1];
+                                } elseif (preg_match('/id=([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
+                                    $fileId = $matches[1];
+                                }
+                                
+                                if ($fileId) {
+                                    // Gunakan format direct image dari lh3.googleusercontent.com
+                                    $imageUrl = "https://lh3.googleusercontent.com/d/{$fileId}";
+                                }
+                            } 
+                            // Cek apakah URL langsung ke gambar (jpg, jpeg, png, gif, webp, svg)
+                            elseif (preg_match('/\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i', $imageUrl)) {
+                                $isDirectImage = true;
+                            }
+                        @endphp
+                        
+                        <div class="space-y-3">
+                            @if($isGoogleDrive && $fileId)
+                                <!-- Google Drive Image dengan fallback ke iframe -->
+                                <div class="relative rounded-lg overflow-hidden bg-gray-100/0">
+                                    <img id="main-image" 
+                                         src="{{ $imageUrl }}" 
+                                         alt="Foto {{ $informasi->judul }}"
+                                         class="w-full h-auto max-h-96 object-contain mx-auto"
+                                         style="display: block;"
+                                         onerror="showIframeViewer('main-image', 'iframe-viewer-main', '{{ $fileId }}')">
+                                    
+                                    <!-- Fallback: Google Drive Viewer (iframe) -->
+                                    <iframe id="iframe-viewer-main"
+                                            src="https://drive.google.com/file/d/{{ $fileId }}/preview" 
+                                            class="w-full h-96"
+                                            style="display: none; border: none;"
+                                            allow="autoplay"></iframe>
+                                </div></a>
+                            @else
+                                <!-- URL tidak dikenali atau format tidak didukung -->
+                            @endif
+                        @else
+                        @endif
 
             <div class="p-6 space-y-6"> <!-- informasi -->
 
@@ -46,7 +104,7 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-600 dark:text-gray-300">Penulis</p>
-                        <p class="font-medium">{{ $informasi->user->name ?? '-' }}</p>
+                        <p class="font-medium">{{ $informasi->users->name ?? '-' }}</p>
                     </div>
                     <div>
                         <p class="text-sm text-gray-600 dark:text-gray-300">Pertama dibuat</p>
@@ -56,22 +114,7 @@
                         <p class="text-sm text-gray-600 dark:text-gray-300">Terakhir diperbarui</p>
                         <p class="font-medium">{{ $informasi->updated_at ? \Carbon\Carbon::parse($informasi->updated_at)->format('d M Y H:m') : '-' }}</p>
                     </div>
-                    <div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300">Link Foto</p>
-                        @if($informasi->foto)
-                        <div>
-                            <a href="{{ $informasi->foto }}" target="_blank" 
-                               class="inline-flex items-center text-blue-600 hover:text-blue-800 transition">
-                                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/>
-                                </svg>
-                                Lihat Foto
-                            </a>
-                        </div>
-                        @else
-                        <p class="font-medium">Tidak ada</p>
-                        @endif
-                    </div>
+                </div>
                 </div>
             </div>
 

@@ -15,7 +15,7 @@ class Informasi extends Model
         'judul', 'ringkasan', 'kategori', 'foto', 'teks', 'user_id',
     ];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo(User::class, 'user_id');
     }

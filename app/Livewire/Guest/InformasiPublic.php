@@ -5,9 +5,8 @@ namespace App\Livewire\Guest;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Informasi;
-use App\Models\Kabupaten;
 
-class RiabPublic extends Component
+class InformasiPublic extends Component
 {
     use WithPagination;
 
@@ -25,40 +24,29 @@ class RiabPublic extends Component
     }
 
     // Method untuk reset semua filter
-    // public function resetFilters()
-    // {
-    //     $this->search = '';
+    public function resetFilters()
+    {
+        $this->search = '';
     //     $this->kategori = '';
-    //     $this->resetPage();
-    // }
+        $this->resetPage();
+    }
     
     public function render()
     {
-        $informasis = Informasi::where('kategori', 'Informasi Publik')
-            ->latest()
-            ->take(3)
-            ->get();;
-        
-        // Filter berdasarkan kabupaten yang dipilih
-        // if ($this->kategori != '') {
-        //     $query->where('kabupaten_id', $this->kabupaten_id);
-        // }
-        
+        $query = Informasi::with(['users'])->where('kategori', 'Informasi Publik');
+                
         // Search functionality
         if ($this->search != '') {
-            $search = $this->search;
-            $informasis->where(function($q) use ($search) {
-                $q->where('judul', 'like', "%{$search}%")
-                  ->orWhere('ringkasan', 'like', "%{$search}%")
-                  ->orWhere('teks', 'like', "%{$search}%");
-            });
-        }
+            $s = $this->search;
+            $query->where(fn($q) =>
+                $q->where('judul', 'like', "%{$s}%")
+                  ->orWhere('ringkasan', 'like', "%{$s}%")
+                  ->orWhere('teks', 'like', "%{$s}%"));
+            }
         
-        // $informasis = $query;
+        $informasis = $query->latest()->paginate(9);
         
         
-        return view('livewire.guest.informasi-public', [
-            'informasis' => $informasis,
-        ]);
+        return view('livewire.guest.informasi-public', compact('informasis'));
     }
 }

@@ -8,17 +8,15 @@
     <!-- Filter & Search -->
     <div class="bg-white dark:bg-zinc-800 rounded-lg shadow p-6 mb-6">
         <div class="space-y-4">
-            <!-- Filter Kabupaten -->
             <div class="flex flex-col md:flex-row gap-4">
-
                 <div class="flex-1">
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Pencarian
                     </label>
                     <input type="text" 
-                           wire:model.live.debounce.200ms="search"
-                           placeholder="Cari informasi..."
-                           class="w-full px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white">
+                        wire:model.live.debounce.200ms="search"
+                        placeholder="Cari informasi..."
+                        class="w-full px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white">
                 </div>
             </div>
 
@@ -29,12 +27,12 @@
 
     <!-- Card Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @forelse($informasis as $info)
-        <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-400 dark:hover:bg-zinc-700 transition-shadow duration-300 overflow-hidden">
-            <a href="{{ route('guest.informasi.show', $informasi) }}" >
+        @forelse(($informasis ?? collect()) as $info)
+        <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-md hover:bg-gray-100 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
+            <a href="{{ route('guest.informasi.show', $info) }}" >
             <!-- Header Card -->
             <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4">
-                <h3 class="font-bold text-lg truncate" title="{{ $informasi->judul }}">{{ $informasi->judul }}</h3>
+                <h3 class="font-bold text-lg truncate" title="{{ $info->judul }}">{{ $info->judul }}</h3>
             </div>
             
             <!-- Content Card -->
@@ -42,8 +40,10 @@
                 <!-- Lokasi -->
                 <div class="flex items-start">
                     <div class="text-sm">
-                        <p class="font-medium text-gray-900 dark:text-white">{{ $informasi->ringkasan ?? '-' }}</p>
+                        <p class="font-medium text-gray-900 dark:text-white">{{ $info->ringkasan ?? '-' }}</p>
+                        <p class="text-sm font-medium text-gray-400/80 dark:text-gray-200">{{ $info->updated_at ? \Carbon\Carbon::parse($info->updated_at)->format('d M Y') : '-' }}</p>
                     </div>
+
                 </div>
 
             </div>
@@ -60,11 +60,7 @@
                     Tidak ada informasi yang ditemukan
                 </p>
                 <p class="text-gray-400 dark:text-gray-500 text-sm">
-                    @if($search)
-                        Cek kembali di lain waktu
-                    @else
-                        Belum ada informasi publik
-                    @endif
+                    Belum ada informasi publik
                 </p>
             </div>
         </div>
@@ -73,6 +69,8 @@
 
     <!-- Pagination -->
     <div class="mt-6">
-        {{ $informasis->links() }}
+        @if(isset($informasis) && method_exists($informasis, 'links'))
+            {{ $informasis->links() }}
+        @endif
     </div>
 </div>

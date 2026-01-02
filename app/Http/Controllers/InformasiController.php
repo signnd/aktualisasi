@@ -12,7 +12,7 @@ class InformasiController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Informasi::with(['user']);
+        $query = Informasi::with(['users']);
 
         $selectedCategoryId = null;
 
@@ -58,7 +58,7 @@ class InformasiController extends Controller
      */
     public function show(Informasi $informasi)
     {
-        $informasi->load(['user']);
+        $informasi->load(['users']);
 
         return view('informasi.show', compact('informasi'));
     }

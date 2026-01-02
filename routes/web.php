@@ -86,7 +86,7 @@ Route::prefix('public')->name('guest.')->group(function () {
     Route::get('/informasi', function () {
         return view('guest.informasi-index');
     })->name('informasi.index');
-    // Route::get('/informasi/{informasi}', [InformasiGuestController::class, 'show'])->name('informasi.show');
+    Route::get('/informasi/{informasi}', [InformasiGuestController::class, 'show'])->name('informasi.show');
 
 });
 

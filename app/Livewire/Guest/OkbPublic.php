@@ -7,7 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Okb;
 use App\Models\Kabupaten;
 
-class okbPublic extends Component
+class OkbPublic extends Component
 {
     use WithPagination;
 
@@ -34,7 +34,7 @@ class okbPublic extends Component
 
     public function render()
     {
-        $query = okb::with(['kabupaten', 'kecamatan']);
+        $query = Okb::with(['kabupaten', 'kecamatan']);
         
         // Filter berdasarkan kabupaten yang dipilih
         if ($this->kabupaten_id != '') {
@@ -61,8 +61,8 @@ class okbPublic extends Component
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
         
         // Statistik
-        $totalokb = okb::count();
-        $totalKabupaten = okb::distinct('kabupaten_id')->count('kabupaten_id');
+        $totalokb = Okb::count();
+        $totalKabupaten = Okb::distinct('kabupaten_id')->count('kabupaten_id');
         
         return view('livewire.guest.okb-public', [
             'okbs' => $okbs,
