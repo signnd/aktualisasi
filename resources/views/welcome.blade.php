@@ -11,12 +11,14 @@
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
         <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <style>
           html, body {
-            font-family: 'albert-sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Arimo', system-ui, -apple-system, 'Open Sans', Roboto, 'Helvetica Neue', Arial, sans-serif;
           }
         </style>
     </head>
@@ -131,23 +133,30 @@
                 </div>
             </div>
         </div>
-        <div class="bg-gray-100 transition hover:shadow-xl motion-reduce:transition-none text-gray-60 rounded-lg p-8 shadow-lg flex ">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <h3 class="text-xl font-semibold">Informasi Publik</h3>
-            <div class="flex justify-end">
-                <a href="{{ route('guest.informasi.index') }}" 
-                   class="px-8 py-2.5 bg-blue-600/85 text-white rounded-lg hover:bg-blue-700 flex items-center shadow-lg whitespace-nowrap">
-                    Lihat Informasi
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 20 20">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                    </svg>
-
+        <div class="bg-gray-100 transition hover:shadow-xl motion-reduce:transition-none text-gray-60 rounded-lg px-6 py-4 shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Informasi Publik</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @forelse(($informasiPublik ?? collect()) as $info)
+                    <a href="{{ route('guest.informasi.show', $info) }}" class="block p-4 bg-gray-50 hover:bg-gray-200 dark:bg-zinc-800 rounded-lg transition hover:shadow-xl">
+                        <h3 class="font-semibold text-gray-900 dark:text-white">{{ \Illuminate\Support\Str::limit($info->judul, 60) }}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">{{ $info->ringkasan ?? \Illuminate\Support\Str::limit($info->ringkasan, 120) }}</p>
+                    </a>
+                @empty
+                    <p class="text-sm text-gray-500">Belum ada Informasi Publik.</p>
+                @endforelse
+            </div>
+            <div class="py-5">
+                <div class="flex justify-end">
+                    <a href="{{ route('guest.informasi.index') }}"
+                   class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition motion-reduce:transition-none duration-200 shadow-md">
+                    Lihat informasi publik lainnya
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block ml-2" fill="none" viewBox="0 0 28 28" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6l6 6-6 6" />
+                </svg>
                 </a>
             </div>
-                </a>
-            </div>
+            </a>
         </div>
-
         </div>
     </div>
 

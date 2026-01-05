@@ -16,12 +16,6 @@ use Illuminate\Http\Request;
 class WelcomeController extends Controller
 {
     public function index() {
-        //$yayasans = YayasanBuddha::with(['kabupaten', 'kecamatan'])
-        //    ->latest()
-        //    ->take(5) // hanya tampilkan 5 data terbaru
-        //    ->get();
-//
-        //return view('welcome', compact('yayasans'));
 
         $counts = [
             'riab' => Riab::count(),
@@ -34,16 +28,15 @@ class WelcomeController extends Controller
             'gurupenda' => GuruPenda::count(),
         ];
 
-        return view('welcome', compact('counts'));
+    $informasiPublik = Informasi::where('kategori', 'Informasi Publik')
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('welcome', compact('counts', 'informasiPublik'));
     }
 
         public function index3() {
-        //$yayasans = YayasanBuddha::with(['kabupaten', 'kecamatan'])
-        //    ->latest()
-        //    ->take(5) // hanya tampilkan 5 data terbaru
-        //    ->get();
-//
-        //return view('welcome', compact('yayasans'));
 
         $counts = [
             'riab' => Riab::count(),
@@ -61,7 +54,7 @@ class WelcomeController extends Controller
             ->take(3)
             ->get();
 
-        return view('welcome3', compact('counts', 'informasiPublik'));
+        return view('welcome', compact('counts', 'informasiPublik'));
     }
 
 }

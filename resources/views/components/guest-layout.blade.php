@@ -3,6 +3,15 @@
 <head>
     @include('partials.head')
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <style>
+          html, body {
+            font-family: 'albert-sans', system-ui, -apple-system, 'Arimo', 'Open Sans', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          }
+        </style>
+
 </head>
 <body class="min-h-screen bg-gray-50 dark:bg-zinc-900">
     <!-- Navbar -->
