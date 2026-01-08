@@ -67,7 +67,7 @@ class GuruPendaSearch extends Component
         }
         
         $guruPendas = $query->paginate(10);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('livewire.guru-penda-search', [
             'guruPendas' => $guruPendas,
             'kabupatens' => $kabupatens

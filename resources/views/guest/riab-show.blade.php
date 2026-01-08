@@ -5,7 +5,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Back Button -->
             <div class="mb-6">
-                <a href="{{ route('guest.riab.index') }}" 
+                <a href="{{ route('guest.riab.index', request()->only('search','kabupaten_id','page')) }}" 
                    class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:underline">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -47,13 +47,13 @@
                             @endif
                             @if($riab->latitude && $riab->longitude)
                             <div>
-                                <p class="text-sm text-gray-300">Koordinat (Lat, Long)</p>
+                                <p class="text-sm text-gray-500">Koordinat (Lat, Long)</p>
                                 <p class="font-medium">
                                     <a href="https://maps.google.com/?q={{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}" target="_blank">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</a></p>
                             </div>
                             @else
                             <div>
-                                <p class="text-sm text-gray-300">Koordinat (Lat, Long)</p>
+                                <p class="text-sm text-gray-500">Koordinat (Lat, Long)</p>
                                 <p class="font-medium">-</p>
                             </div>
                             @endif
@@ -89,15 +89,15 @@
                             </div>
                             @endif
                                                         <div>
-                                <p class="text-sm text-gray-300">Jenis RIAB</p>
+                                <p class="text-sm text-gray-500">Jenis RIAB</p>
                                 <p class="font-medium">{{ $riab->jenis_riab ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Jumlah Umat</p>
+                                <p class="text-sm text-gray-500">Jumlah Umat</p>
                                 <p class="font-medium">{{ $riab->jumlah_umat ? number_format($riab->jumlah_umat) . ' orang' : '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Kondisi Bangunan</p>
+                                <p class="text-sm text-gray-500">Kondisi Bangunan</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $riab->kondisi == 'Sangat Baik' ? 'bg-green-100 text-green-800' : 
@@ -109,7 +109,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status Eksisting</p>
+                                <p class="text-sm text-gray-500">Status Eksisting</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $riab->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $riab->eksisting ?? '-' }}
@@ -117,7 +117,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Update</p>
+                                <p class="text-sm text-gray-500">Tanggal Update</p>
                                 <p class="font-medium">{{ $riab->tgl_update ? \Carbon\Carbon::parse($riab->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                         </div>
@@ -259,11 +259,11 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Status Tanah</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-500">Status Tanah</p>
                                 <p class="font-medium">{{ $riab->riabdetail->status_tanah ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Sertifikasi Tanah</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-500">Sertifikasi Tanah</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
                                         {{ $riab->riabdetail->sertifikasi_tanah ?? '-' }}
@@ -271,11 +271,11 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Luas Tanah</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-500">Luas Tanah</p>
                                 <p class="font-medium">{{ $riab->riabdetail->luas_tanah ? $riab->riabdetail->luas_tanah . ' m²' : '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Luas Bangunan</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-500">Luas Bangunan</p>
                                 <p class="font-medium">{{ $riab->riabdetail->luas_bangunan ? $riab->riabdetail->luas_bangunan . ' m²' : '-' }}</p>
                             </div>
                             @php
@@ -291,7 +291,7 @@
                                         : []);
                             @endphp
                             <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Kondisi Geografis</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-500">Kondisi Geografis</p>
                                 <p class="font-medium">
                                     @if(!empty($kondisiGeo))
                                         {{ implode(', ', $kondisiGeo) }}
@@ -301,7 +301,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Peta Rawan Bencana</p>
+                                <p class="text-sm text-gray-800 dark:text-gray-500">Peta Rawan Bencana</p>
                                 <p class="font-medium">
                                     @if(!empty($petaRawan))
                                         {{ implode(', ', $petaRawan) }}

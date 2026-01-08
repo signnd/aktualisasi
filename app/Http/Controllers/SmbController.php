@@ -39,7 +39,7 @@ class SmbController extends Controller
         }
 
         $smbs = $query->paginate(10)->appends($request->query());
-        $kabupatens = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
     
         return view('smb.index', compact('smbs', 'kabupatens', 'selectedKabupatenId'));
     }
@@ -49,7 +49,7 @@ class SmbController extends Controller
      */
     public function create()
     {
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('smb.create', compact('kabupaten'));
     }
 
@@ -108,7 +108,7 @@ class SmbController extends Controller
               ->orderBy('nama_siswa', 'asc')
               ->paginate(20);
 
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
         return view('smb.show', compact(['smb', 'kabupatens', 'siswas']));
     }
@@ -130,7 +130,7 @@ class SmbController extends Controller
         }
 
 
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('smb.edit', compact('smb', 'kabupaten'));
     }
 

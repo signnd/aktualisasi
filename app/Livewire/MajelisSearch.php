@@ -97,7 +97,7 @@ class MajelisSearch extends Component
 
         
         $majeliss = $query->paginate(10);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
 
         session(['majelis_page' => $majeliss->currentPage()]);
 

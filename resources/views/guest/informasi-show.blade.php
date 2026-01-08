@@ -88,15 +88,15 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Penulis</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-500">Penulis</p>
                             <p class="font-medium">{{ $informasi->users->name ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Dibuat</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-500">Dibuat</p>
                             <p class="font-medium">{{ $informasi->created_at ? \Carbon\Carbon::parse($informasi->created_at)->format('d M Y H:m') : '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Terakhir diperbarui</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-500">Terakhir diperbarui</p>
                             <p class="font-medium">{{ $informasi->updated_at ? \Carbon\Carbon::parse($informasi->updated_at)->format('d M Y H:m') : '-' }}</p>
                         </div>
                     </div>

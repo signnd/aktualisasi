@@ -38,7 +38,7 @@ class GuruPendaController extends Controller
         }
 
         $guruPenda = $query->paginate(10)->appends($request->query());
-        $kabupatens = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
 
         return view('guru-penda.index', compact('guruPenda', 'kabupatens', 'selectedKabupatenId'));
     }
@@ -48,7 +48,7 @@ class GuruPendaController extends Controller
      */
     public function create()
     {
-        $kabupaten = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('guru-penda.create', compact('kabupaten'));
     }
 
@@ -131,7 +131,7 @@ class GuruPendaController extends Controller
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }
 
-        $kabupaten = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('guru-penda.edit', compact('guruPenda','kabupaten'));
     }
 

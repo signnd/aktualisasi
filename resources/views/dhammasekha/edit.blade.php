@@ -47,12 +47,12 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Nama Dhammasekha<span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama Dhammasekha<span class="text-red-500">*</span></label>
                                 <input type="text" name="nama" required value="{{ old('nama', $dhammasekha->nama) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Jenis Dhammasekha</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jenis Dhammasekha</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
                                         <input type="radio" name="jenis" value="Dhammasekha Non Formal"
@@ -77,12 +77,12 @@
                                 </div>
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Alamat<span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat<span class="text-red-500">*</span></label>
                                 <textarea name="alamat" rows="2" required
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat', $dhammasekha->alamat) }}</textarea>
                             </div>
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Berdiri</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Berdiri</label>
                                 <input type="date" name="tgl_berdiri"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                        value="{{ old('tgl_berdiri', $dhammasekha->tgl_berdiri) }}">
@@ -99,57 +99,57 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Nomor Izin Operasional</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nomor Izin Operasional</label>
                                 <input type="text" name="no_izop" value="{{ old('no_izop', $dhammasekha->no_izop) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">IZOP PPJG</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">IZOP PPJG</label>
                                 <input type="text" name="izop_ppjg" value="{{ old('izop_ppjg', $dhammasekha->izop_ppjg) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal IZOP</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal IZOP</label>
                                 <input type="date" name="tgl_izop" value="{{ old('tgl_izop', $dhammasekha->tgl_izop) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Masa IZOP</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Masa IZOP</label>
                                 <input type="date" name="masa_izop" value="{{ old('masa_izop', $dhammasekha->masa_izop) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">No Statistik</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">No Statistik</label>
                                 <input type="text" name="no_statistik" value="{{ old('no_statistik', $dhammasekha->no_statistik) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">NPYP</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">NPYP</label>
                                 <input type="text" name="npyp" value="{{ old('npyp', $dhammasekha->npyp) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">NPSN</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">NPSN</label>
                                 <input type="text" name="npsn" value="{{ old('npsn', $dhammasekha->npsn) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Akreditasi</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Akreditasi</label>
                                 <input type="text" name="akreditasi" value="{{ old('akreditasi', $dhammasekha->akreditasi) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Nama Yayasan</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama Yayasan</label>
                                 <input type="text" name="nama_yayasan" value="{{ old('nama_yayasan', $dhammasekha->nama_yayasan) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Alamat Yayasan</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat Yayasan</label>
                                 <textarea name="alamat_yayasan" rows="2"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat_yayasan', $dhammasekha->alamat_yayasan) }}</textarea>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Kabupaten/Kota<span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kabupaten/Kota<span class="text-red-500">*</span></label>
                                 @if(auth()->user()->user_role === 'admin')
                                     <!-- Admin bisa pilih semua kabupaten -->
                                     <select id="kabupaten_id" name="kabupaten_id" required
@@ -178,22 +178,22 @@
                                 @endif
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Nama PIC</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama PIC</label>
                                 <input type="text" name="nama_pic" value="{{ old('nama_pic', $dhammasekha->nama_pic) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">No. Telp/HP/WhatsApp</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">No. Telp/HP/WhatsApp</label>
                                 <input type="text" name="no_hp" value="{{ old('no_hp', $dhammasekha->no_hp) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Email</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Email</label>
                                 <input type="text" name="email" value="{{ old('email', $dhammasekha->email) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-2">Naungan Kemenag</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Naungan Kemenag</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
                                         <input type="radio" name="naungan_kemenag" value="Ya" {{ old('naungan_kemenag', $dhammasekha->naungan_kemenag) == 'Ya' ? 'checked' : '' }}
@@ -208,7 +208,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-2">Naungan Dinas Pendidikan</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Naungan Dinas Pendidikan</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
                                         <input type="radio" name="naungan_disdik" value="Ya" {{ old('naungan_disdik', $dhammasekha->naungandisdikg) == 'Ya' ? 'checked' : '' }}
@@ -223,7 +223,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-2">TK Dinas Pendidikan KB Kemenag</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">TK Dinas Pendidikan KB Kemenag</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
                                         <input type="radio" name="tk_disdik_kb_kemenag" value="Ya" {{ old('tk_disdik_kb_kemenag', $dhammasekha->tk_disdik_kb_kemenag) == 'Ya' ? 'checked' : '' }}
@@ -238,7 +238,7 @@
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Status Eksisting</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status Eksisting</label>
                                 <div class="flex gap-3">
                                     <label class="flex items-center">
                                         <input type="radio" name="eksisting" value="Aktif" {{ old('eksisting', $dhammasekha->eksisting) == 'Aktif' ? 'checked' : '' }}
@@ -264,7 +264,7 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Kondisi Dhammasekha</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kondisi Dhammasekha</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
                                         <input type="radio" name="kondisi" value="Sangat Baik" @checked(old('kondisi', $dhammasekha->kondisi) == 'Sangat Baik')
@@ -293,12 +293,12 @@
                                     </label>
                                 </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 my-2">Link Foto</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-2">Link Foto</label>
                                 <input type="url" name="foto" 
                                        placeholder="Paste link Google Drive atau link ke gambar di sini..." value="{{ old('foto', $dhammasekha->foto) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                                <!--<label class="block text-sm font-medium text-gray-100 my-2">Jumlah Siswa</label>
+                                <!--<label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-2">Jumlah Siswa</label>
                                 <input type="number" name="jml_siswa" value="{{ $dhammasekha->jml_siswa ?? 0 }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700 cursor-not-allowed"
                                 readonly>
@@ -314,13 +314,13 @@
                             Informasi Lainnya
                         </h4>
                             <div class="flex flex-wrap">
-                                <label class="block text-sm font-medium text-gray-100 my-2">Link Berita Acara Penonaktifan</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-2">Link Berita Acara Penonaktifan</label>
                                 <input type="url" name="link_nonaktif" 
                                        placeholder="https://..." value="{{ old('link_nonaktif', $dhammasekha->link_nonaktif) }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="flex flex-wrap py-2">
-                            <label class="block text-sm font-medium text-gray-100 mb-1">Tanggal Update Terakhir</label>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update Terakhir</label>
                                 <input type="date" name="" value="{{ $dhammasekha->tgl_update ? \Carbon\Carbon::now()->format('Y-m-d') : '-' }}"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700"
                                 >
@@ -329,7 +329,7 @@
                             @if(auth()->user()->user_role === 'admin')
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-100 mb-2">Status</label>
+                                    <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status</label>
                                     <div class="flex flex-wrap gap-3">
                                         <label class="flex items-center">
                                             <input type="radio" name="status" value="Disetujui"
@@ -349,7 +349,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-100 mb-1">Status Verifikasi</label>
+                                    <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status Verifikasi</label>
                                     <div class="flex flex-wrap gap-3">
                                         <label class="flex items-center">
                                             <input type="radio" name="status_verifikasi" value="TRUE" {{ old('status_verifikasi', $dhammasekha->status_verifikasi) == 'TRUE' ? 'checked' : '' }}
@@ -379,7 +379,7 @@
                         </h4>
                         <div class="space-y-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-100 mb-1">Deskripsi</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Deskripsi</label>
                                 <textarea name="deskripsi" rows="4"
                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                             </div>

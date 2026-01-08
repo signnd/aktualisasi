@@ -3,7 +3,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Back Button -->
             <div class="mb-6">
-                <a href="{{ route('guest.majelis.index') }}" 
+                <a href="{{ route('guest.majelis.index', request()->only('search','kabupaten_id','page')) }}" 
                    class="inline-flex items-center text-sky-600 dark:text-sky-400 hover:underline">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -41,7 +41,7 @@
                             @endif
                             @if($majelis->latitude && $majelis->longitude)
                             <div>
-                                <p class="text-sm text-gray-300">Koordinat (Lat, Long)</p>
+                                <p class="text-sm text-gray-500">Koordinat (Lat, Long)</p>
                                 <p class="font-medium">{{ $majelis->latitude ?? '-' }}, {{ $majelis->longitude ?? '-' }}</p>
                             </div>
                             @endif
@@ -77,7 +77,7 @@
                             </div>
                             @endif
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Terdaftar</p>
+                                <p class="text-sm text-gray-500">Tanggal Terdaftar</p>
                                 <p class="font-medium">{{ $majelis->tgl_terdaftar ? \Carbon\Carbon::parse($majelis->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                             @if($majelis->keterangan)

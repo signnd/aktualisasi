@@ -38,7 +38,7 @@ class PusdiklatController extends Controller
         }
 
         $pusdiklats = $query->paginate(10)->appends($request->query());
-        $kabupatens = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
     
         return view('pusdiklat.index', compact('pusdiklats', 'kabupatens', 'selectedKabupatenId'));
 
@@ -49,7 +49,7 @@ class PusdiklatController extends Controller
      */
     public function create()
     {
-        $kabupaten = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('pusdiklat.create', compact('kabupaten'));
     }
 
@@ -129,7 +129,7 @@ class PusdiklatController extends Controller
         // }
 
 
-        $kabupaten = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('pusdiklat.edit', compact('pusdiklat', 'kabupaten'));
     }
 

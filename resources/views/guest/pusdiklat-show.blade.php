@@ -68,40 +68,40 @@
                             @endif
                             @if($pusdiklat->ppjg_1)
                             <div>
-                                <p class="text-sm text-gray-300">PPJG 1</p>
+                                <p class="text-sm text-gray-500">PPJG 1</p>
                                 <p class="font-medium">{{ $pusdiklat->ppjg_1 ?? '-' }}</p>
                             </div>
                             @endif
                             @if($pusdiklat->ppjg_2)
                             <div>
-                                <p class="text-sm text-gray-300">PPJG 2</p>
+                                <p class="text-sm text-gray-500">PPJG 2</p>
                                 <p class="font-medium">{{ $pusdiklat->ppjg_2 ?? '-' }}</p>
                             </div>
                             @endif
                             @if($pusdiklat->no_statistik)
                             <div>
-                                <p class="text-sm text-gray-300">No. Statistik</p>
+                                <p class="text-sm text-gray-500">No. Statistik</p>
                                 <p class="font-medium">{{ $pusdiklat->no_statistik ?? '-' }}</p>
                             </div>
                             @endif
                             @if($pusdiklat->tgl_izop)
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Izin Operasional</p>
+                                <p class="text-sm text-gray-500">Tanggal Izin Operasional</p>
                                 <p class="font-medium">{{ $pusdiklat->tgl_izop ? \Carbon\Carbon::parse($pusdiklat->tgl_izop)->format('d M Y') : '-' }}</p>
                             </div>
                             @endif
                             @if($pusdiklat->masa_izop)
                             <div>
-                                <p class="text-sm text-gray-300">Masa Izin Operasional</p>
+                                <p class="text-sm text-gray-500">Masa Izin Operasional</p>
                                 <p class="font-medium">{{ $pusdiklat->masa_izop ?? '-' }}</p>
                             </div>
                             @endif
                             <div>
-                                <p class="text-sm text-gray-300">Jumlah Siswa</p>
+                                <p class="text-sm text-gray-500">Jumlah Siswa</p>
                                 <p class="font-medium">{{ $pusdiklat->jml_siswa ?? 'Belum ada' }} siswa</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status Eksisting</p>
+                                <p class="text-sm text-gray-500">Status Eksisting</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $pusdiklat->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $pusdiklat->eksisting ?? '-' }}
@@ -109,7 +109,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Update</p>
+                                <p class="text-sm text-gray-500">Tanggal Update</p>
                                 <p class="font-medium">{{ $pusdiklat->tgl_update ? \Carbon\Carbon::parse($pusdiklat->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                         </div>

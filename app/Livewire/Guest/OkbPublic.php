@@ -11,8 +11,25 @@ class OkbPublic extends Component
 {
     use WithPagination;
 
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'kabupaten_id' => ['except' => ''],
+        'page' => ['except' => 1],
+    ];
+
     public $search = '';
     public $kabupaten_id = '';
+    public $sortField = 'id';
+    public $sortDirection = 'asc';
+
+    public function mount()
+    {
+        // Restore the previous page from session when no page query param is present
+        if (!request()->query('page') && session()->has('okb_page')) {
+            $this->page = session('okb_page');
+        }
+    }
+
 
     public function updatingSearch()
     {
@@ -58,8 +75,10 @@ class OkbPublic extends Component
         }
         
         $okbs = $query->orderBy('nama_okb')->paginate(15);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
+        session(['okb_page' => $okbs->currentPage()]);
+
         // Statistik
         $totalokb = Okb::count();
         $totalKabupaten = Okb::distinct('kabupaten_id')->count('kabupaten_id');

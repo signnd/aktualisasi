@@ -9,11 +9,26 @@ use App\Models\Kabupaten;
 
 class SmbPublic extends Component
 {
-        
     use WithPagination;
+    
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'kabupaten_id' => ['except' => ''],
+        'page' => ['except' => 1],
+    ];
 
     public $search = '';
-    public $kabupaten_id = '';
+    public $kabupaten_id = '';    public $sortField = 'id';
+    public $sortDirection = 'asc';
+
+    public function mount()
+    {
+        // Restore the previous page from session when no page query param is present
+        if (!request()->query('page') && session()->has('smb_page')) {
+            $this->page = session('smb_page');
+        }
+    }
+
 
     public function updatingSearch()
     {
@@ -59,8 +74,10 @@ class SmbPublic extends Component
         }
         
         $smbs = $query->orderBy('nama_smb')->paginate(15);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
+        session(['smb_page' => $smbs->currentPage()]);
+
         // Statistik
         $totalSmb = Smb::count();
         $totalKabupaten = Smb::distinct('kabupaten_id')->count('kabupaten_id');

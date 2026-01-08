@@ -11,8 +11,23 @@ class DhammasekhaPublic extends Component
 {
     use WithPagination;
 
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'kabupaten_id' => ['except' => ''],
+        'page' => ['except' => 1],
+    ];
+
     public $search = '';
     public $kabupaten_id = '';
+    
+    public function mount()
+    {
+        // Restore the previous page from session when no page query param is present
+        if (!request()->query('page') && session()->has('dhammasekha_page')) {
+            $this->page = session('dhammasekha_page');
+        }
+    }
+
 
     public function updatingSearch()
     {
@@ -58,8 +73,10 @@ class DhammasekhaPublic extends Component
         }
         
         $dhammasekhas = $query->orderBy('nama')->paginate(15);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
+        session(['dhammasekha_page' => $dhammasekhas->currentPage()]);
+
         // Statistik
         $totalDhammasekha = Dhammasekha::count();
         $totalKabupaten = Dhammasekha::distinct('kabupaten_id')->count('kabupaten_id');

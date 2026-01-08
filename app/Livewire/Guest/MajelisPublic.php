@@ -11,8 +11,24 @@ class MajelisPublic extends Component
 {
     use WithPagination;
 
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'kabupaten_id' => ['except' => ''],
+        'page' => ['except' => 1],
+    ];
+
     public $search = '';
-    public $kabupaten_id = '';
+    public $kabupaten_id = '';    public $sortField = 'id';
+    public $sortDirection = 'asc';
+
+    public function mount()
+    {
+        // Restore the previous page from session when no page query param is present
+        if (!request()->query('page') && session()->has('majelis_page')) {
+            $this->page = session('majelis_page');
+        }
+    }
+
 
     public function updatingSearch()
     {
@@ -58,8 +74,10 @@ class MajelisPublic extends Component
         }
         
         $majeliss = $query->orderBy('nama_majelis')->paginate(30);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
+        session(['majelis_page' => $majeliss->currentPage()]);
+
         // Statistik
         $totalMajelis = Majelis::count();
         $totalKabupaten = Majelis::distinct('kabupaten_id')->count('kabupaten_id');

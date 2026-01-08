@@ -103,7 +103,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse($yayasanBuddhas as $y)
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-100 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
-            <a href="{{ route('guest.yayasan.show', $y) }}" >
+            <a href="{{ route('guest.yayasan.show', $y) }}{{ request()->getQueryString() ? ('?' . request()->getQueryString()) : '' }}" >
             <!-- Header Card -->
             <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white p-4">
                 <h3 class="font-bold text-lg truncate" title="{{ $y->nama_yayasan }}">{{ $y->nama_yayasan }}</h3>

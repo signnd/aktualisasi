@@ -38,7 +38,7 @@ class DhammasekhaController extends Controller
         }
 
         $dhammasekhas = $query->paginate(10)->appends($request->query());
-        $kabupatens = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
     
         return view('dhammasekha.index', compact('dhammasekhas', 'kabupatens', 'selectedKabupatenId'));
 
@@ -49,7 +49,7 @@ class DhammasekhaController extends Controller
      */
     public function create()
     {
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('dhammasekha.create', compact('kabupaten'));
     }
 
@@ -133,7 +133,7 @@ class DhammasekhaController extends Controller
         //     $kecamatan = Kecamatan::all();
         // }
 
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('dhammasekha.edit', compact('dhammasekha', 'kabupaten'));
 
     }

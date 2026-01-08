@@ -86,7 +86,7 @@ class OkbSearch extends Component
 
         
         $okbs = $query->paginate(10);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
 
         session(['okb_page' => $okbs->currentPage()]);
         

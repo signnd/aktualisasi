@@ -91,7 +91,7 @@
         @forelse($okbs as $okb)
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-100 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
             <!-- Header Card -->
-            <a href="{{ route('guest.okb.show', $okb) }}" >
+            <a href="{{ route('guest.okb.show', $okb) }}{{ request()->getQueryString() ? ('?' . request()->getQueryString()) : '' }}" >
             <div class="bg-gradient-to-r from-teal-500 to-teal-600 text-white p-4">
                 <h3 class="font-bold text-lg truncate">{{ $okb->nama_okb }}</h3>
             </div>

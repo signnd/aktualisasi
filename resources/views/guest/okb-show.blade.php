@@ -3,7 +3,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Back Button -->
             <div class="mb-6">
-                <a href="{{ route('guest.okb.index') }}" 
+                <a href="{{ route('guest.okb.index', request()->only('search','kabupaten_id','page')) }} "  
                    class="inline-flex items-center text-teal-600 dark:text-teal-400 hover:underline">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -45,7 +45,7 @@
                             @endif
                             @if($okb->kelurahan)
                             <div>
-                                <p class="text-sm text-gray-300">Kelurahan</p>
+                                <p class="text-sm text-gray-500">Kelurahan</p>
                                 <p class="font-medium">{{ $okb->kelurahan ?? '-' }}</p>
                             </div>
                         </div>
@@ -81,11 +81,11 @@
                             @endif
                             @if($okb->thn_berdiri)
                             <div>
-                                <p class="text-sm text-gray-300">Tahun Berdiri</p>
+                                <p class="text-sm text-gray-500">Tahun Berdiri</p>
                                 <p class="font-medium">{{ $okb->thn_berdiri }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status Eksisting</p>
+                                <p class="text-sm text-gray-500">Status Eksisting</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $okb->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $okb->eksisting ?? '-' }}
@@ -93,7 +93,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Update</p>
+                                <p class="text-sm text-gray-500">Tanggal Update</p>
                                 <p class="font-medium">{{ $okb->tgl_update ? \Carbon\Carbon::parse($okb->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                         </div>

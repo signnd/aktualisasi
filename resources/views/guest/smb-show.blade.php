@@ -3,7 +3,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Back Button -->
             <div class="mb-6">
-                <a href="{{ route('guest.smb.index') }}" 
+                <a href="{{ route('guest.smb.index', request()->only('search','kabupaten_id','page')) }}" 
                    class="inline-flex items-center text-lime-600 dark:text-lime-400 hover:underline">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -74,40 +74,40 @@
                             @endif
                             @if($smb->ppjg_1)
                             <div>
-                                <p class="text-sm text-gray-300">PPJG 1</p>
+                                <p class="text-sm text-gray-500">PPJG 1</p>
                                 <p class="font-medium">{{ $smb->ppjg_1 ?? '-' }}</p>
                             </div>
                             @endif
                             @if($smb->ppjg_2)
                             <div>
-                                <p class="text-sm text-gray-300">PPJG 2</p>
+                                <p class="text-sm text-gray-500">PPJG 2</p>
                                 <p class="font-medium">{{ $smb->ppjg_2 ?? '-' }}</p>
                             </div>
                             @endif
                             @if($smb->nssmb)
                             <div>
-                                <p class="text-sm text-gray-300">NSSMB</p>
+                                <p class="text-sm text-gray-500">NSSMB</p>
                                 <p class="font-medium">{{ $smb->nssmb ?? '-' }}</p>
                             </div>
                             @endif
                             @if($smb->tgl_izop)
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Izin Operasional</p>
+                                <p class="text-sm text-gray-500">Tanggal Izin Operasional</p>
                                 <p class="font-medium">{{ $smb->tgl_izop ? \Carbon\Carbon::parse($smb->tgl_izop)->format('d M Y') : '-' }}</p>
                             </div>
                             @endif
                             @if($smb->masa_izop)
                             <div>
-                                <p class="text-sm text-gray-300">Masa Izin Operasional</p>
+                                <p class="text-sm text-gray-500">Masa Izin Operasional</p>
                                 <p class="font-medium">{{ $smb->masa_izop ?? '-' }}</p>
                             </div>
                             @endif
                             <div>
-                                <p class="text-sm text-gray-300">Jumlah Siswa</p>
+                                <p class="text-sm text-gray-500">Jumlah Siswa</p>
                                 <p class="font-medium">{{ $smb->siswasmb->count() }} orang</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Status Eksisting</p>
+                                <p class="text-sm text-gray-500">Status Eksisting</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $smb->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $smb->eksisting ?? '-' }}
@@ -115,7 +115,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Update</p>
+                                <p class="text-sm text-gray-500">Tanggal Update</p>
                                 <p class="font-medium">{{ $smb->tgl_update ? \Carbon\Carbon::parse($smb->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                         </div>

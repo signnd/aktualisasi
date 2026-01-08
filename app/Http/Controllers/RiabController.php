@@ -41,7 +41,7 @@ public function index(Request $request)
     
 
     $riabs = $query->paginate(10)->appends($request->query());
-    $kabupatens = Kabupaten::all();
+    $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
     
     return view('riab.index', compact('riabs', 'kabupatens', 'selectedKabupatenId'));
 }
@@ -52,7 +52,7 @@ public function index(Request $request)
     public function create(Riab $riab)
     {
         $riab->load('riabdetail');
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         $kecamatan = Kecamatan::all();
 
         // Filter kecamatan berdasarkan kabupaten user jika bukan admin
@@ -223,7 +223,7 @@ public function index(Request $request)
         }
 
         $riab->load('riabdetail');
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         $kecamatan = Kecamatan::all();
         return view('riab.edit', compact('riab', 'kabupaten', 'kecamatan'));
     }

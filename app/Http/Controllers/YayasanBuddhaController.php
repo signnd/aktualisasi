@@ -44,7 +44,7 @@ class YayasanBuddhaController extends Controller
         }
 
         $yayasans = $query->paginate(10)->appends($request->query());
-        $kabupatens = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
         return view('yayasan.index', compact('yayasans', 'kabupatens','selectedKabupatenId'));
     }
@@ -55,7 +55,7 @@ class YayasanBuddhaController extends Controller
     public function create()
     {
         $yayasan = YayasanBuddha::all();
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         $kecamatan = Kecamatan::all();
         $user = User::all();
         return view('yayasan.create', compact('kabupaten','kecamatan','yayasan','user'));
@@ -115,7 +115,7 @@ class YayasanBuddhaController extends Controller
         // Ambil page dari request atau session
         // $page = $request->query('page', 1);
 
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         $kecamatan = Kecamatan::all();
         return view('yayasan.edit', compact('yayasan','kabupaten','kecamatan'));
     }

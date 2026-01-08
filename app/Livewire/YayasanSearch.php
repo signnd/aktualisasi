@@ -93,7 +93,7 @@ class YayasanSearch extends Component
         }
         
         $yayasans = $query->paginate(10);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
 
         // Simpan current page ke session
         session(['yayasan_page' => $yayasans->currentPage()]);

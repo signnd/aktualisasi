@@ -57,7 +57,7 @@ class OkbController extends Controller
         }
 
         $okb = Okb::all();
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         $kecamatan = Kecamatan::all();
         return view('okb.create', compact('kabupaten', 'kecamatan', 'okb'));
 
@@ -122,7 +122,7 @@ class OkbController extends Controller
             $kecamatan = Kecamatan::all();
         }
 
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         $kecamatan = Kecamatan::all();
         return view('okb.edit', compact('okb', 'kabupaten','kecamatan'));
     }

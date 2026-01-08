@@ -11,7 +11,6 @@
             font-family: 'albert-sans', system-ui, -apple-system, 'Arimo', 'Open Sans', Roboto, 'Helvetica Neue', Arial, sans-serif;
           }
         </style>
-
 </head>
 <body class="min-h-screen bg-gray-50 dark:bg-zinc-900">
     <!-- Navbar -->
@@ -101,6 +100,10 @@
                 <a href="{{ route('guest.pusdiklat.index') }}" 
                     class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.pusdiklat.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
                     Pusdiklat
+                </a>
+                <a href="{{ route('guest.informasi.index') }}" 
+                    class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.informasi.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                    Informasi
                 </a>
                 </div>
             <div class="p-2 my-auto">

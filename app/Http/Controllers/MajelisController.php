@@ -39,7 +39,7 @@ class MajelisController extends Controller
         }
 
         $majelis = $query->paginate(10)->appends($request->query());
-        $kabupatens = Kabupaten::all();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
         return view('majelis.index', compact('majelis', 'kabupatens', 'selectedKabupatenId'));
     }
@@ -50,7 +50,7 @@ class MajelisController extends Controller
     public function create()
     {
         $majelis = Majelis::all();
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('majelis.create', compact('majelis', 'kabupaten'));
 
     }
@@ -95,7 +95,7 @@ class MajelisController extends Controller
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }
 
-        $kabupaten = Kabupaten::all();
+        $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         return view('majelis.edit', compact('majelis','kabupaten'));
     }
 

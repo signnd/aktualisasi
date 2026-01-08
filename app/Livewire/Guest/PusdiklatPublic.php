@@ -59,7 +59,7 @@ class PusdiklatPublic extends Component
         }
         
         $pusdiklats = $query->orderBy('nama')->paginate(12);
-        $kabupatens = Kabupaten::orderBy('kabupaten')->get();
+        $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
         // Statistik
         $totalPusdiklat = Pusdiklat::count();
