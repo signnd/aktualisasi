@@ -9,6 +9,8 @@
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <style>
+        </style>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,20 +25,24 @@
         </style>
     </head>
     
-    <body>
+    <body class="antialiased text-gray-900 bg-gray-100 dark:bg-gray-900">
+        <!-- Background Image with Opacity -->
+        <div class="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat" 
+             style="background-image: url('/images/welcome-bg.png'); opacity: 0.1;">
+        </div>
 
         <!-- Main Content -->
         <main class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
             <!-- Hero Section -->
             <div class="text-center mb-16">
-                <h1 class="text-4xl font-semibold mb-4 text-gray-900/90">Selamat datang di SIMADHA</h1>
+                <h1 class="text-4xl font-semibold mb-4 text-gray-900">Selamat datang di SIMADHA</h1>
                 <h3 class="text-xl ">Sistem Informasi Keagamaan Buddha di Bali</h3>
             </div>
 
             <!-- Main Categories -->
             <div class="grid md:grid-cols-2 gap-8 mb-12">
                 <!-- Urusan Agama Buddha -->
-                <div class="bg-gray-200 transition hover:shadow-xl motion-reduce:transition-none text-gray-50 rounded-lg p-8 shadow-lg">
+                <div class="bg-gray-200/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-50 rounded-lg p-8 border-1 border-gray-500">
                     <h2 class="text-2xl font-semibold mb-6 text-gray-950">Urusan Agama Buddha</h2>
                     
                     <!-- Lembaga Keagamaan -->
@@ -46,19 +52,19 @@
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <a href="{{ route('guest.majelis.index') }}" 
                                    class="block p-4 rounded-md
-                                   text-center bg-sky-800/70 hover:bg-sky-800/90 transition hover:shadow-lg motion-reduce:transition-none">
+                                   text-center bg-sky-700 hover:bg-sky-800 transition hover:shadow-lg motion-reduce:transition-none">
                                     <div class="text-3xl font-semibold mb-2">{{ $counts['majelis'] }}</div>
                                     <div class="text-sm text-gray-200">Majelis Keagamaan</div>
                                 </a>
                                 <a href="{{ route('guest.yayasan.index') }}" 
                                    class="block p-4 rounded-md 
-                                   text-center bg-emerald-800/70 hover:bg-emerald-800/90 transition hover:shadow-lg motion-reduce:transition-none">
+                                   text-center bg-emerald-700 hover:bg-emerald-800 transition hover:shadow-lg motion-reduce:transition-none">
                                     <div class="text-3xl font-semibold mb-2">{{ $counts['yayasan'] }}</div>
                                     <div class="text-sm text-gray-200">Yayasan Keagamaan</div>
                                 </a>
                                 <a href="{{ route('guest.okb.index') }}" 
                                    class="block p-4 rounded-md 
-                                   text-center bg-teal-800/70 hover:bg-teal-800/90 transition hover:shadow-lg motion-reduce:transition-none">
+                                   text-center bg-teal-700 hover:bg-teal-800 transition hover:shadow-lg motion-reduce:transition-none">
                                     <div class="text-3xl font-semibold mb-2">{{ $counts['okb'] }}</div>
                                     <div class="text-sm text-gray-200">Organisasi Keagamaan</div>
                                 </a>
@@ -72,7 +78,7 @@
                         <div class="space-y-3">
                             <a href="{{ route('guest.riab.index') }}" 
                                class="block p-4 rounded-md 
-                                transition bg-indigo-700/70 hover:bg-indigo-700/90 hover:shadow-lg motion-reduce:transition-none">
+                                transition bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg motion-reduce:transition-none">
                         <div class="text-3xl font-semibold mb-2">{{ $counts['riab'] }}</div>
                         <span class="text-sm text-gray-200">Rumah Ibadah Agama Buddha (Vihara, Cetiya, TITD)</span>
                             </a>
@@ -81,7 +87,7 @@
                 </div>
 
                 <!-- Pendidikan Agama Buddha -->
-                <div class="bg-gray-200 transition hover:shadow-xl motion-reduce:transition-none text-gray-50 rounded-lg p-8 shadow-lg">
+                <div class="bg-gray-200/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-50 rounded-lg p-8 border-1 border-gray-500">
                     <h2 class="text-2xl font-semibold mb-6 text-gray-950">Pendidikan Agama Buddha</h2>
                     
                     <!-- Lembaga Pendidikan -->
@@ -91,19 +97,19 @@
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <a href="{{ route('guest.smb.index') }}" 
                                class="block p-4 rounded-md 
-                                   text-center transition bg-lime-900 hover:bg-lime-900/70 hover:shadow-lg motion-reduce:transition-none">
+                                   text-center transition bg-lime-700 hover:bg-lime-900 hover:shadow-lg motion-reduce:transition-none">
                                 <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['smb'] }}</div>
                                 <div class="text-sm text-gray-200">Sekolah Minggu Buddha (SMB)</div>
                             </a>
                             <a href="{{ route('guest.dhammasekha.index') }}" 
                             class="block p-4 rounded-md 
-                                   text-center transition bg-green-900 hover:bg-green-900/70 hover:shadow-lg motion-reduce:transition-none">
+                                   text-center transition bg-green-700 hover:bg-green-900 hover:shadow-lg motion-reduce:transition-none">
                                    <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['dhammasekha'] }}</div>
                                    <div class="text-sm text-gray-200">Dhammasekha</div>
                             </a>
                             <a href="{{ route('guest.pusdiklat.index') }}" 
                                class="block p-4 rounded-md 
-                                   text-center transition bg-emerald-900 hover:bg-emeraldp-900/70 hover:shadow-lg motion-reduce:transition-none">
+                                   text-center transition bg-emerald-700 hover:bg-emerald-900 hover:shadow-lg motion-reduce:transition-none">
                                 <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['pusdiklat'] }}</div>
                                 <div class="text-sm text-gray-200">Pusdiklat</div>
                             </a>
@@ -119,7 +125,7 @@
                             <div class="grid grid-cols-2 gap-4">
                             <a href="{{ route('guest.guru-penda.index') }}" 
                                class="block p-4 rounded-md 
-                                   text-center transition bg-violet-900 hover:bg-violet-900/70">
+                                   text-center transition bg-violet-700 hover:bg-violet-900">
                                 <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['gurupenda'] }}</div>
                                 <div class="text-sm text-gray-200">Guru Pendidikan Agama</div>
                             </a>
@@ -133,7 +139,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-gray-100 transition hover:shadow-xl motion-reduce:transition-none text-gray-60 rounded-lg px-6 py-4 shadow-lg">
+        <div class="bg-gray-100/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-60 rounded-lg px-6 py-4 border-1 border-gray-500">
             <h2 class="text-xl font-semibold mb-4">Informasi Publik</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse(($informasiPublik ?? collect()) as $info)
