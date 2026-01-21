@@ -83,7 +83,7 @@
                     <!-- Informasi -->
                     <div class="border-b pb-4 dark:border-zinc-700">
                         <div>
-                            <p class="font-medium text-gray-900 dark:text-white">{{ $informasi->teks ?? '-' }}</p>
+                            <p class="font-normal text-gray-900 dark:text-white">{{ $informasi->teks ?? '-' }}</p>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">

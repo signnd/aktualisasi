@@ -94,7 +94,7 @@
                 <div class="border-b pb-4">
                     <div>
                         <p class="text-md text-gray-600 dark:text-gray-300"></p>
-                        <p class="font-medium">{{ $informasi->teks ?? '-' }}</p>
+                        <p class="font-normal">{{ $informasi->teks ?? '-' }}</p>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
