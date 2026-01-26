@@ -44,4 +44,26 @@ class GuruPenda extends Model
         return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
     }
 
+    public function getDirectFotoUrlAttribute()
+    {
+        if (empty($this->foto)) {
+            return null;
+        }
+
+        // Handle Google Drive links
+        if (preg_match('/\/d\/(.*?)\//', $this->foto, $matches)) {
+            $fileId = $matches[1];
+            return "https://drive.google.com/uc?export=view&id={$fileId}";
+        }
+
+        // Handle direct view links or other patterns if necessary
+        if (str_contains($this->foto, 'drive.google.com/file/d/')) {
+            $parts = explode('/d/', $this->foto);
+            $idPart = explode('/', $parts[1])[0];
+            return "https://drive.google.com/uc?export=view&id={$idPart}";
+        }
+
+        return $this->foto;
+    }
+
 }
