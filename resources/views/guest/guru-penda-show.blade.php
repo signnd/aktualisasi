@@ -96,10 +96,10 @@
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">NIP</p>
                                             <p class="text-gray-900 dark:text-gray-100 font-medium">{{ $guruPenda->nip ?? '-' }}</p>
                                         </div>
-                                        <div>
+                                        <!--<div>
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">NIK</p>
                                             <p class="text-gray-900 dark:text-gray-100 font-medium">{{ $guruPenda->nik ?? '-' }}</p>
-                                        </div>
+                                        </div>-->
                                         <div>
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">NRG</p>
                                             <p class="text-gray-900 dark:text-gray-100 font-medium">{{ $guruPenda->nrg ?? '-' }}</p>
