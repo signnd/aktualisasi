@@ -14,7 +14,6 @@ class DhammasekhaPublic extends Component
     protected $queryString = [
         'search' => ['except' => ''],
         'kabupaten_id' => ['except' => ''],
-        'page' => ['except' => 1],
     ];
 
     public $search = '';
@@ -24,7 +23,7 @@ class DhammasekhaPublic extends Component
     {
         // Restore the previous page from session when no page query param is present
         if (!request()->query('page') && session()->has('dhammasekha_page')) {
-            $this->page = session('dhammasekha_page');
+            $this->setPage(session('dhammasekha_page'));
         }
     }
 

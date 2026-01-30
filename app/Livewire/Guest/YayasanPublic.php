@@ -14,7 +14,6 @@ class YayasanPublic extends Component
     protected $queryString = [
         'search' => ['except' => ''],
         'kabupaten_id' => ['except' => ''],
-        'page' => ['except' => 1],
     ];
 
     public $search = '';
@@ -25,7 +24,7 @@ class YayasanPublic extends Component
     {
         // Restore the previous page from session when no page query param is present
         if (!request()->query('page') && session()->has('yayasanBuddha_page')) {
-            $this->page = session('yayasanBuddha_page');
+            $this->setPage(session('yayasanBuddha_page'));
         }
     }
 

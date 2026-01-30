@@ -36,6 +36,9 @@
                     @csrf
                     @method('PUT')
 
+                    <!-- Tambahkan hidden input ini -->
+                    <input type="hidden" name="page" value="{{ $page ?? 1 }}">
+                    
                     <!-- Informasi Lokasi -->
                     <div class="mb-8">
                         <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4 pb-2 border-b-2 border-green-500 flex items-center">
@@ -133,7 +136,7 @@
                                         <span>PPPK</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_pegawai" value="Non ASN" {{ old('status_pegawai', $guruPenda->status_pegawai) == 'Non ASN' ? 'checked' : '' }}
+                                        <input type="radio" name="status_pegawai" value="Non ASN" {{ old('status_pegawai', $guruPenda->status_pegawai) == 'Non ASN'|| old('status_pegawai', $guruPenda->status_pegawai) == 'NON ASN' ? 'checked' : '' }}
                                                class="mr-2 text-gray-600 focus:ring-gray-500">
                                         <span>Non ASN</span>
                                     </label>
@@ -162,118 +165,128 @@
                         </svg>
                         Informasi Sekolah
                     </h4>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <!-- SD -->
-                        <div class="border border-gray-600 rounded-lg p-4">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-3">Sekolah SD Tempat Mengajar</label>
-                            
-                            <template x-for="(sekolah, index) in sekolahSD" :key="index">
-                                <div class="flex flex-col space-y-2 mb-3">
-                                    <div>
-                                        <input type="text" 
-                                               :name="`nama_sekolah_sd[${index}]`" 
-                                               x-model="sekolahSD[index]"
-                                               placeholder="Nama SD" 
-                                               class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                    </div>
-                                    <input type="text" 
-                                           :name="`alamat_sekolah_sd[${index}]`" 
-                                           x-model="alamatSD[index]"
-                                           placeholder="Alamat SD" 
-                                           class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                            <button type="button" 
+                    <div class="space-y-6">
+                        <!-- SD Section -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start pb-4 border-b border-gray-200 dark:border-gray-700">
+                            <div class="md:col-span-1">
+                                <label class="block text-sm font-semibold text-gray-800 dark:text-gray-100">SD Tempat Mengajar</label>
+                            </div>
+                            <div class="md:col-span-3 space-y-3">
+                                <template x-for="(sekolah, index) in sekolahSD" :key="index">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                            <input type="text" 
+                                                   :name="`nama_sekolah_sd[${index}]`" 
+                                                   x-model="sekolahSD[index]"
+                                                   placeholder="Nama SD" 
+                                                   class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            <input type="text" 
+                                                   :name="`alamat_sekolah_sd[${index}]`" 
+                                                   x-model="alamatSD[index]"
+                                                   placeholder="Alamat SD" 
+                                                   class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        </div>
+                                        <button type="button" 
                                                 @click="sekolahSD.splice(index, 1); alamatSD.splice(index, 1)"
-                                                class="px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-                                                x-show="sekolahSD.length > 1"> X
+                                                class="p-2 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none transition-colors"
+                                                x-show="sekolahSD.length > 1">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
                                         </button>
-                                </div>
-                            </template>
-                
+                                    </div>
+                                </template>
                                 <button type="button" 
-                                    @click="sekolahSD.push(''); alamatSD.push('')"
-                                    class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
-                                </svg>
-                                Tambah SD
-                            </button>
+                                        @click="sekolahSD.push(''); alamatSD.push('')"
+                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Tambah Sekolah
+                                </button>
+                            </div>
                         </div>
-                
-                        <!-- SMP -->
-                        <div class="border border-gray-600 rounded-lg p-4">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-3">Sekolah SMP Tempat Mengajar</label>
-                            
-                            <template x-for="(sekolah, index) in sekolahSMP" :key="index">
-                                <div class="flex flex-col space-y-2 mb-3">
-                                    <div>
-                                        <input type="text" 
-                                               :name="`nama_sekolah_smp[${index}]`" 
-                                               x-model="sekolahSMP[index]"
-                                               placeholder="Nama SMP" 
-                                               class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+
+                        <!-- SMP Section -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start pb-4 border-b border-gray-200 dark:border-gray-700">
+                            <div class="md:col-span-1">
+                                <label class="block text-sm font-semibold text-gray-800 dark:text-gray-100">SMP Tempat Mengajar</label>
+                            </div>
+                            <div class="md:col-span-3 space-y-3">
+                                <template x-for="(sekolah, index) in sekolahSMP" :key="index">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                            <input type="text" 
+                                                   :name="`nama_sekolah_smp[${index}]`" 
+                                                   x-model="sekolahSMP[index]"
+                                                   placeholder="Nama SMP" 
+                                                   class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            <input type="text" 
+                                                   :name="`alamat_sekolah_smp[${index}]`" 
+                                                   x-model="alamatSMP[index]"
+                                                   placeholder="Alamat SMP" 
+                                                   class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        </div>
                                         <button type="button" 
                                                 @click="sekolahSMP.splice(index, 1); alamatSMP.splice(index, 1)"
-                                                class="px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                                                class="p-2 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none transition-colors"
                                                 x-show="sekolahSMP.length > 1">
-                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
                                         </button>
                                     </div>
-                                    <input type="text" 
-                                           :name="`alamat_sekolah_smp[${index}]`" 
-                                           x-model="alamatSMP[index]"
-                                           placeholder="Alamat SMP" 
-                                           class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                            </template>
-                
-                                    <button type="button" 
-                                    @click="sekolahSMP.push(''); alamatSMP.push('')"
-                                    class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
-                                </svg>
-                                Tambah SMP
-                            </button>
+                                </template>
+                                <button type="button" 
+                                        @click="sekolahSMP.push(''); alamatSMP.push('')"
+                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Tambah Sekolah
+                                </button>
+                            </div>
                         </div>
-                
-                        <!-- SMA -->
-                        <div class="border border-gray-600 rounded-lg p-4">
-                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-3">Sekolah SMA Tempat Mengajar</label>
-                            <template x-for="(sekolah, index) in sekolahSMA" :key="index">
-                                <div class="flex flex-col space-y-2 mb-3">
-                                    <div>
-                                        <input type="text" 
-                                               :name="`nama_sekolah_sma[${index}]`" 
-                                               x-model="sekolahSMA[index]"
-                                               placeholder="Nama SMA/SMK" 
-                                               class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+
+                        <!-- SMA Section -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start pb-4 border-b border-gray-200 dark:border-gray-700">
+                            <div class="md:col-span-1">
+                                <label class="block text-sm font-semibold text-gray-800 dark:text-gray-100">SMA Tempat Mengajar</label>
+                            </div>
+                            <div class="md:col-span-3 space-y-3">
+                                <template x-for="(sekolah, index) in sekolahSMA" :key="index">
+                                    <div class="flex items-center space-x-2">
+                                        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                            <input type="text" 
+                                                   :name="`nama_sekolah_sma[${index}]`" 
+                                                   x-model="sekolahSMA[index]"
+                                                   placeholder="Nama SMA/SMK" 
+                                                   class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            <input type="text" 
+                                                   :name="`alamat_sekolah_sma[${index}]`" 
+                                                   x-model="alamatSMA[index]"
+                                                   placeholder="Alamat SMA/SMK" 
+                                                   class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        </div>
                                         <button type="button" 
                                                 @click="sekolahSMA.splice(index, 1); alamatSMA.splice(index, 1)"
-                                                class="px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                                                class="p-2 bg-red-500 text-white rounded-full hover:bg-red-600 focus:outline-none transition-colors"
                                                 x-show="sekolahSMA.length > 1">
-                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                             </svg>
                                         </button>
                                     </div>
-                                    <input type="text" 
-                                           :name="`alamat_sekolah_sma[${index}]`" 
-                                           x-model="alamatSMA[index]"
-                                           placeholder="Alamat SMA/SMK" 
-                                           class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                            </template>
-                
+                                </template>
                                 <button type="button" 
-                                    @click="sekolahSMA.push(''); alamatSMA.push('')"
-                                    class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
-                                </svg>
-                                Tambah SMA
-                            </button>
+                                        @click="sekolahSMA.push(''); alamatSMA.push('')"
+                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
+                                    </svg>
+                                    Tambah Sekolah
+                                </button>
+                            </div>
                         </div>
                     </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-2">

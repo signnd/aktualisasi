@@ -36,7 +36,11 @@ class GuruPendaController extends Controller
                 $query->where('kabupaten_id', $selectedKabupatenId);
             }
         }
-
+        // Simpan current page ke session
+        if ($request->has('page')) {
+            session(['guru_penda_page' => $request->input('page')]);
+        }
+        
         $guruPenda = $query->paginate(10)->appends($request->query());
         $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
 
@@ -119,6 +123,7 @@ class GuruPendaController extends Controller
     public function show(GuruPenda $guruPenda)
     {
         $guruPenda->load(['kabupaten']);
+        $page = $request->input('page', session('guru_penda_page', 1));
         return view('guru-penda.show', compact('guruPenda'));
     }
 
@@ -132,6 +137,7 @@ class GuruPendaController extends Controller
         }
 
         $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
+        $page = $request->input('page', session('guru_penda_page', 1));
         return view('guru-penda.edit', compact('guruPenda','kabupaten'));
     }
 
@@ -195,8 +201,10 @@ class GuruPendaController extends Controller
         $validated['alamat_sekolah_sma'] = !empty($alamatSMA) ? json_encode(array_values($alamatSMA)) : null;
 
         $guruPenda->update($validated);
+                
+        $page = session('guru_penda_page', 1);
 
-        return redirect()->route('guru-penda.index')
+        return redirect()->route('guru-penda.index', ['page' => $page])
                          ->with('success', 'Guru Pendidikan Agama berhasil diedit');
     }
 

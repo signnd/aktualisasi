@@ -14,7 +14,6 @@ class GuruPendaPublic extends Component
     protected $queryString = [
         'search' => ['except' => ''],
         'kabupaten_id' => ['except' => ''],
-        'page' => ['except' => 1],
     ];
 
     public $search = '';
@@ -25,8 +24,8 @@ class GuruPendaPublic extends Component
     public function mount()
     {
         // Restore the previous page from session when no page query param is present
-        if (!request()->query('page') && session()->has('riab_page')) {
-            $this->page = session('riab_page');
+        if (!request()->query('page') && session()->has('guru_penda_page')) {
+            $this->setPage(session('guru_penda_page'));
         }
     }
 
@@ -79,6 +78,8 @@ class GuruPendaPublic extends Component
         $guruPendas = $query->orderBy('nama_guru')->paginate(15);
         $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
+        session(['guru_penda_page' => $guruPendas->currentPage()]);
+
         // Statistik
         $totalGuruPenda = GuruPenda::count();
         $totalKabupaten = GuruPenda::distinct('kabupaten_id')->count('kabupaten_id');

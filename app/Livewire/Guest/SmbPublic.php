@@ -14,18 +14,18 @@ class SmbPublic extends Component
     protected $queryString = [
         'search' => ['except' => ''],
         'kabupaten_id' => ['except' => ''],
-        'page' => ['except' => 1],
     ];
 
     public $search = '';
-    public $kabupaten_id = '';    public $sortField = 'id';
+    public $kabupaten_id = '';
+    public $sortField = 'id';
     public $sortDirection = 'asc';
 
     public function mount()
     {
         // Restore the previous page from session when no page query param is present
         if (!request()->query('page') && session()->has('smb_page')) {
-            $this->page = session('smb_page');
+            $this->setPage(session('smb_page'));
         }
     }
 

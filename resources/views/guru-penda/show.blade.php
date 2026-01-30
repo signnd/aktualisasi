@@ -10,7 +10,7 @@
             <div class="bg-gray- shadow-lg overflow-hidden">
                 <!-- Action Buttons -->
                 <div class="px-6 py-4 flex justify-between items-center">
-                    <a href="{{ route('guru-penda.index') }}" 
+                    <a href="{{ route('guru-penda.index', ['page' => session('guru_penda_page', 1)]) }}" 
                        class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
                         ← Kembali
                     </a>
@@ -153,21 +153,50 @@
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
                                         @php
                                             $nama_sekolah_sd = is_array($guruPenda->nama_sekolah_sd) ? $guruPenda->nama_sekolah_sd : json_decode($guruPenda->nama_sekolah_sd, true) ?? [];
+                                            $alamat_sekolah_sd = is_array($guruPenda->alamat_sekolah_sd) ? $guruPenda->alamat_sekolah_sd : json_decode($guruPenda->alamat_sekolah_sd, true) ?? [];
+                                            
                                             $nama_sekolah_smp = is_array($guruPenda->nama_sekolah_smp) ? $guruPenda->nama_sekolah_smp : json_decode($guruPenda->nama_sekolah_smp, true) ?? [];
+                                            $alamat_sekolah_smp = is_array($guruPenda->alamat_sekolah_smp) ? $guruPenda->alamat_sekolah_smp : json_decode($guruPenda->alamat_sekolah_smp, true) ?? [];
+                                            
                                             $nama_sekolah_sma = is_array($guruPenda->nama_sekolah_sma) ? $guruPenda->nama_sekolah_sma : json_decode($guruPenda->nama_sekolah_sma, true) ?? [];
+                                            $alamat_sekolah_sma = is_array($guruPenda->alamat_sekolah_sma) ? $guruPenda->alamat_sekolah_sma : json_decode($guruPenda->alamat_sekolah_sma, true) ?? [];
                                         @endphp
                                         
                                         <div>
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">SD tempat Mengajar</p>
-                                            <p class="text-gray-900 dark:text-gray-100 font-medium">{{ !empty($nama_sekolah_sd) ? implode(', ', $nama_sekolah_sd) : '-' }}</p>
+                                            <div class="space-y-1">
+                                                @forelse($nama_sekolah_sd as $idx => $nama)
+                                                    <p class="text-gray-900 dark:text-gray-100 font-medium">
+                                                        {{ $nama }} <span class="text-gray-500 text-xs font-normal">({{ $alamat_sekolah_sd[$idx] ?? '-' }})</span>
+                                                    </p>
+                                                @empty
+                                                    <p class="text-gray-900 dark:text-gray-100 font-medium">-</p>
+                                                @endforelse
+                                            </div>
                                         </div>
                                         <div>
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">SMP tempat Mengajar</p>
-                                            <p class="text-gray-900 dark:text-gray-100 font-medium">{{ !empty($nama_sekolah_smp) ? implode(', ', $nama_sekolah_smp) : '-' }}</p>
+                                            <div class="space-y-1">
+                                                @forelse($nama_sekolah_smp as $idx => $nama)
+                                                    <p class="text-gray-900 dark:text-gray-100 font-medium">
+                                                        {{ $nama }} <span class="text-gray-500 text-xs font-normal">({{ $alamat_sekolah_smp[$idx] ?? '-' }})</span>
+                                                    </p>
+                                                @empty
+                                                    <p class="text-gray-900 dark:text-gray-100 font-medium">-</p>
+                                                @endforelse
+                                            </div>
                                         </div>
                                         <div>
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">SMA/SMK tempat Mengajar</p>
-                                            <p class="text-gray-900 dark:text-gray-100 font-medium">{{ !empty($nama_sekolah_sma) ? implode(', ', $nama_sekolah_sma) : '-' }}</p>
+                                            <div class="space-y-1">
+                                                @forelse($nama_sekolah_sma as $idx => $nama)
+                                                    <p class="text-gray-900 dark:text-gray-100 font-medium">
+                                                        {{ $nama }} <span class="text-gray-500 text-xs font-normal">({{ $alamat_sekolah_sma[$idx] ?? '-' }})</span>
+                                                    </p>
+                                                @empty
+                                                    <p class="text-gray-900 dark:text-gray-100 font-medium">-</p>
+                                                @endforelse
+                                            </div>
                                         </div>
                                         <div>
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Pendidikan Terakhir</p>

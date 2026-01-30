@@ -14,7 +14,6 @@ class MajelisPublic extends Component
     protected $queryString = [
         'search' => ['except' => ''],
         'kabupaten_id' => ['except' => ''],
-        'page' => ['except' => 1],
     ];
 
     public $search = '';
@@ -25,7 +24,7 @@ class MajelisPublic extends Component
     {
         // Restore the previous page from session when no page query param is present
         if (!request()->query('page') && session()->has('majelis_page')) {
-            $this->page = session('majelis_page');
+            $this->setPage(session('majelis_page'));
         }
     }
 

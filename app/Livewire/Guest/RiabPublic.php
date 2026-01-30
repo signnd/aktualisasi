@@ -14,7 +14,6 @@ class RiabPublic extends Component
     protected $queryString = [
         'search' => ['except' => ''],
         'kabupaten_id' => ['except' => ''],
-        'page' => ['except' => 1],
     ];
 
     public $search = '';
@@ -26,7 +25,7 @@ class RiabPublic extends Component
     {
         // Restore the previous page from session when no page query param is present
         if (!request()->query('page') && session()->has('riab_page')) {
-            $this->page = session('riab_page');
+            $this->setPage(session('riab_page'));
         }
     }
 
