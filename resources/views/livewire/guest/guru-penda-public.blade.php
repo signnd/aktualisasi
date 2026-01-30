@@ -111,25 +111,7 @@
                     </div>
                 </div>
 
-                <!-- Alamat -->
-                @if($g->nip)
-                <div class="flex items-start">
-                    <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
-                    </svg>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-3">{{ $g->nip }}</p>
-                </div>
-                @endif
 
-                <!-- Ketua -->
-                <!-- @if($g->ketua)
-                <div class="flex items-start">
-                    <svg class="w-5 h-5 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                    </svg>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">{{ $g->no_telp }}</p>
-                </div> -->
-                @endif
             </div>
         </a>
 
