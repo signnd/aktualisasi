@@ -10,7 +10,7 @@
             <div class="bg-gray- shadow-lg overflow-hidden">
                 <!-- Action Buttons -->
                 <div class="px-6 py-4 flex justify-between items-center">
-                    <a href="{{ route('guru-penda.index', ['page' => session('guru_penda_page', 1)]) }}" 
+                    <a href="{{ route('guru-penda.index', ['page' => $page]) }}" 
                        class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200">
                         ← Kembali
                     </a>

@@ -120,17 +120,17 @@ class GuruPendaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(GuruPenda $guruPenda)
+    public function show(Request $request, GuruPenda $guruPenda)
     {
         $guruPenda->load(['kabupaten']);
         $page = $request->input('page', session('guru_penda_page', 1));
-        return view('guru-penda.show', compact('guruPenda'));
+        return view('guru-penda.show', compact('guruPenda', 'page'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(GuruPenda $guruPenda)
+    public function edit(Request $request, GuruPenda $guruPenda)
     {
         if (Auth::user()->user_role !== 'admin' && Auth::user()->kabupaten_id !== $guruPenda->kabupaten_id) {
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
@@ -138,7 +138,7 @@ class GuruPendaController extends Controller
 
         $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         $page = $request->input('page', session('guru_penda_page', 1));
-        return view('guru-penda.edit', compact('guruPenda','kabupaten'));
+        return view('guru-penda.edit', compact('guruPenda','kabupaten', 'page'));
     }
 
     /**
@@ -202,7 +202,7 @@ class GuruPendaController extends Controller
 
         $guruPenda->update($validated);
                 
-        $page = session('guru_penda_page', 1);
+        $page = $request->input('page', session('guru_penda_page', 1));
 
         return redirect()->route('guru-penda.index', ['page' => $page])
                          ->with('success', 'Guru Pendidikan Agama berhasil diedit');
