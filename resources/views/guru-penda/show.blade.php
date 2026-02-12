@@ -27,7 +27,8 @@
                         <h3 class="text-2xl font-bold">{{ $guruPenda->nama_guru }}</h3>
                     </div>
 
-                    <div class="p-6 bg-gray-50 dark:bg-gray-800"> <!-- informasi -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-8 00">
+                        <!-- informasi -->
                         <div class="flex flex-col xl:flex-row-reverse gap-8">
                             <!-- Unit Foto -->
                             <div class="w-full xl:w-auto flex justify-center xl:block">
@@ -105,7 +106,21 @@
                         </div>
                         <div>
                             <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">NIK</p>
-                            <p class="text-gray-900 dark:text-gray-100 font-medium">{{ $guruPenda->nik ?? '-' }}</p>
+                            <p class="text-gray-900 dark:text-gray-100 font-medium">
+                                {{ $guruPenda->nik ?? '-' }}
+                                @if($guruPenda->tendik && $guruPenda->tendik->lembaga)
+                                    <span class="block text-xs mt-1 text-green-600 font-normal">
+                                        Terdaftar sebagai Tendik di: 
+                                        <a href="{{ route(strtolower(class_basename($guruPenda->tendik->lembaga_type)) . '.show', $guruPenda->tendik->lembaga_id) }}" class="underline font-semibold">
+                                            {{ $guruPenda->tendik->nama_lembaga }}
+                                        </a>
+                                    </span>
+                                @elseif($guruPenda->tendik)
+                                    <span class="block text-xs mt-1 text-gray-500 font-normal">
+                                        Terdaftar sebagai Tendik di: {{ $guruPenda->tendik->nama_lembaga }}
+                                    </span>
+                                @endif
+                            </p>
                         </div>
                         <div>
                             <p class="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">NRG</p>

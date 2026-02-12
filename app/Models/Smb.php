@@ -47,6 +47,10 @@ class Smb extends Model
         return $this->hasMany(SiswaSmb::class, 'smb_id');
     }
 
+    public function tendiks() {
+        return $this->morphMany(Tendik::class, 'lembaga');
+    }
+
     public function users() {
         return $this->belongsTo(User::class, 'user_id');
     }

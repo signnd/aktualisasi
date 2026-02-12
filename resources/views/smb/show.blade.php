@@ -297,8 +297,6 @@
                             <p class="text-sm text-gray-600 dark:text-gray-300">No. Telp/HP/WhatsApp</p>
                             <p class="font-medium">{{ $smb->no_telp ?? '-' }}</p>
                         </div>
-                    </div>
-                </div>
 
                 <!-- Link Dokumentasi -->
                 @if($smb->link_foto)
@@ -330,7 +328,7 @@
                 </div>
 
                 <!-- Data Siswa SMB -->
-                <div class="mt-8">
+                <div class="mt-8 col-span-2">
                     <div class="flex justify-between items-center mb-4">
                         <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -417,7 +415,51 @@
                             <p class="text-sm text-gray-500 mb-4">Klik tombol "Tambah Siswa" untuk menambahkan data siswa</p>
                         </div>
                         @endif
-                </div> <!-- end data siswa -->
+                    </div>
+                <!-- Data Tendik -->
+                <div class="mt-8 pt-8 border-t">
+                    <div class="flex justify-between items-center mb-4">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+                            </svg>
+                            Tenaga Kependidikan ({{ $smb->tendiks->count() }} orang)
+                        </h4>
+                    </div>
+
+                    @if($smb->tendiks->count() > 0)
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-100 dark:bg-zinc-600">
+                                    <tr>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama Tendik</th>
+                                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y dark:bg-zinc-800 divide-gray-200">
+                                    @foreach($smb->tendiks as $tendik)
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-zinc-500 transition">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100 font-medium">{{ $tendik->nama_tendik }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                                            <a href="{{ route('tendik.show', $tendik->id) }}" class="text-blue-600 hover:text-blue-900">Detail</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @else
+                    <div class="bg-gray-50 dark:bg-gray-800 rounded-lg border border-dashed border-gray-300 p-6 text-center">
+                        <p class="text-gray-500">Belum ada data tenaga kependidikan untuk lembaga ini.</p>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            </div>
+                </div>
+
             </div> <!-- end informasi -->
         </div> <!-- end container informasi --> 
     </div> <!-- end container keseluruhan halaman termasuk tombol kembali & edit -->

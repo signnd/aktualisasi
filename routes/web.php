@@ -17,6 +17,7 @@ use App\Http\Controllers\DhammasekhaController;
 use App\Http\Controllers\SiswaDhammasekhaController;
 use App\Http\Controllers\PusdiklatController;
 use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\TendikController;
 use App\Http\Controllers\RegisteredUsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Guest\RiabGuestController;
@@ -139,6 +140,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('smb', SmbController::class);
     Route::resource('smb.siswa', SiswaSmbController::class);
     Route::resource('guru-penda', GuruPendaController::class);
+    Route::resource('tendik', TendikController::class);
     Route::resource('informasi', InformasiController::class);
     Route::resource('dhammasekha', DhammasekhaController::class);
     Route::resource('dhammasekha.siswa', DhammasekhaController::class);

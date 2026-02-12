@@ -39,6 +39,11 @@ class GuruPenda extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function tendik()
+    {
+        return $this->hasOne(Tendik::class, 'nik', 'nik');
+    }
+
     public function kabupaten()
     {
         return $this->belongsTo(Kabupaten::class, 'kabupaten_id');

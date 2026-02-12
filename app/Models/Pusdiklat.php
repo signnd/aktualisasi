@@ -20,6 +20,11 @@ class Pusdiklat extends Model
     ];
 
 
+    public function tendiks()
+    {
+        return $this->morphMany(Tendik::class, 'lembaga');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

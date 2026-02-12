@@ -48,6 +48,10 @@ class Dhammasekha extends Model
         return $this->hasMany(SiswaDhammasekha::class, 'dhammasekha_id');
     }
 
+    public function tendiks() {
+        return $this->morphMany(Tendik::class, 'lembaga');
+    }
+
     public function users() {
         return $this->belongsTo(User::class, 'user_id');
     }

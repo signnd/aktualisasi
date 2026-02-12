@@ -24,6 +24,7 @@
         <flux:navlist.group :heading="__('Pendidikan Agama')" class="grid">
             <flux:navlist.item icon="book-open" :href="route('smb.index')" :current="request()->routeIs('smb.index')" wire:navigate>{{ __('Sekolah Minggu') }}</flux:navlist.item>
             <flux:navlist.item icon="user-circle" :href="route('guru-penda.index')" :current="request()->routeIs('guru-penda.index')" wire:navigate>{{ __('Guru Agama Buddha') }}</flux:navlist.item>
+            <flux:navlist.item icon="user-group" :href="route('tendik.index')" :current="request()->routeIs('tendik.index')" wire:navigate>{{ __('Tenaga Pendidikan') }}</flux:navlist.item>
             <flux:navlist.item icon="academic-cap" :href="route('dhammasekha.index')" :current="request()->routeIs('dhammasekha.index')" wire:navigate>{{ __('Dhammasekha') }}</flux:navlist.item>
             <flux:navlist.item icon="building-library" :href="route('pusdiklat.index')" :current="request()->routeIs('pusdiklat.index')" wire:navigate>{{ __('Pusdiklat') }}</flux:navlist.item>
         </flux:navlist.group>
