@@ -129,11 +129,12 @@
                                 <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['gurupenda'] }}</div>
                                 <div class="text-sm text-gray-200">Guru Pendidikan Agama</div>
                             </a>
-                            <div class="block p-4 rounded-md 
-                                   text-center transition bg-gray-200">
-                                <span class="font-medium text-zinc-700">Tenaga Kependidikan Agama Buddha</span>
-                                <div class="text-sm text-zinc-500">(Segera Hadir)</div>
-                            </div>
+                            <a href="{{ route('guest.tendik.index') }}" 
+                               class="block p-4 rounded-md 
+                                   text-center transition bg-violet-700 hover:bg-violet-900">
+                                <div class="text-3xl font-semibold mb-2 text-gray-50">{{ $counts['tendik'] }}</div>
+                                <div class="text-sm text-gray-200">Tenaga Kependidikan Agama Buddha</div>
+                            </a>
                         </div>
                     </div>
                 </div>

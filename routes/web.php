@@ -29,6 +29,7 @@ use App\Http\Controllers\Guest\GuruPendaGuestController;
 use App\Http\Controllers\Guest\DhammasekhaGuestController;
 use App\Http\Controllers\Guest\PusdiklatGuestController;
 use App\Http\Controllers\Guest\InformasiGuestController;
+use App\Http\Controllers\Guest\TendikGuestController;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -83,6 +84,11 @@ Route::prefix('public')->name('guest.')->group(function () {
         return view('guest.pusdiklat-index');
     })->name('pusdiklat.index');
     Route::get('/pusdiklat/{pusdiklat}', [PusdiklatGuestController::class, 'show'])->name('pusdiklat.show');
+    
+    Route::get('/tendik', function () {
+        return view('guest.tendik-index');
+    })->name('tendik.index');
+    Route::get('/tendik/{tendik}', [TendikGuestController::class, 'show'])->name('tendik.show');
     
     Route::get('/informasi', function () {
         return view('guest.informasi-index');

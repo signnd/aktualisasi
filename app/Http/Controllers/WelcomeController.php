@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\GuruPenda;
+use App\Models\Tendik;
 use App\Models\Majelis;
 use App\Models\Okb;
 use App\Models\Riab;
@@ -26,6 +27,7 @@ class WelcomeController extends Controller
             'dhammasekha' => Dhammasekha::count(),
             'pusdiklat' => Pusdiklat::count(),
             'gurupenda' => GuruPenda::count(),
+            'tendik' => Tendik::count(),
         ];
 
     $informasiPublik = Informasi::where('kategori', 'Informasi Publik')
@@ -47,6 +49,7 @@ class WelcomeController extends Controller
             'dhammasekha' => Dhammasekha::count(),
             'pusdiklat' => Pusdiklat::count(),
             'gurupenda' => GuruPenda::count(),
+            'tendik' => Tendik::count(),
         ];
 
         $informasiPublik = Informasi::where('kategori', 'Informasi Publik')
