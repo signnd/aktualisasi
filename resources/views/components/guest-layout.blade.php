@@ -48,11 +48,11 @@
                             <div class="px-4 py-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Urusan Agama</div>
                             <a href="{{ route('guest.riab.index') }}" 
                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.riab.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                                RIAB
+                                Rumah Ibadah Agama Buddha
                             </a>
                             <a href="{{ route('guest.okb.index') }}" 
                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.okb.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                                OKB
+                                Organisasi Keagamaan
                             </a>
                             <a href="{{ route('guest.majelis.index') }}" 
                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.majelis.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
@@ -69,7 +69,7 @@
                             <div class="px-4 py-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Pendidikan Agama</div>
                             <a href="{{ route('guest.smb.index') }}" 
                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.smb.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                                SMB
+                                Sekolah Minggu Buddha
                             </a>
                             <a href="{{ route('guest.dhammasekha.index') }}" 
                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.dhammasekha.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
@@ -81,11 +81,11 @@
                             </a>
                             <a href="{{ route('guest.guru-penda.index') }}" 
                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.guru-penda.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                                Guru Penda
+                                Guru Pendidikan Agama
                             </a>
                             <a href="{{ route('guest.tendik.index') }}" 
                                class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.tendik.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                                Tendik
+                                Tenaga Kependidikan
                             </a>
                         </div>
 
@@ -118,8 +118,8 @@
                          x-transition:leave-start="opacity-100 transform scale-100"
                          x-transition:leave-end="opacity-0 transform scale-95"
                          class="absolute left-0 mt-0 w-48 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-100 dark:border-zinc-700 py-1 z-50">
-                        <a href="{{ route('guest.riab.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.riab.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">RIAB</a>
-                        <a href="{{ route('guest.okb.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.okb.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">OKB</a>
+                        <a href="{{ route('guest.riab.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.riab.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Rumah Ibadah Agama Buddha</a>
+                        <a href="{{ route('guest.okb.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.okb.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Organisasi Keagamaan</a>
                         <a href="{{ route('guest.majelis.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.majelis.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Majelis</a>
                         <a href="{{ route('guest.yayasan.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.yayasan.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Yayasan</a>
                     </div>
@@ -141,11 +141,11 @@
                          x-transition:leave-start="opacity-100 transform scale-100"
                          x-transition:leave-end="opacity-0 transform scale-95"
                          class="absolute left-0 mt-0 w-48 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-100 dark:border-zinc-700 py-1 z-50">
-                        <a href="{{ route('guest.smb.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.smb.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">SMB</a>
+                        <a href="{{ route('guest.smb.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.smb.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Sekolah Minggu Buddha</a>
                         <a href="{{ route('guest.dhammasekha.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.dhammasekha.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Dhammasekha</a>
                         <a href="{{ route('guest.pusdiklat.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.pusdiklat.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Pusdiklat</a>
-                        <a href="{{ route('guest.guru-penda.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.guru-penda.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Guru Penda</a>
-                        <a href="{{ route('guest.tendik.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.tendik.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Tendik</a>
+                        <a href="{{ route('guest.guru-penda.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.guru-penda.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Guru Pendidikan Agama</a>
+                        <a href="{{ route('guest.tendik.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.tendik.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Tenaga Pendidik</a>
                     </div>
                 </div>
 

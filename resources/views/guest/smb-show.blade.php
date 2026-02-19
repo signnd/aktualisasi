@@ -1,3 +1,5 @@
+@php $pageTitle = $smb->nama_smb ?? config('app.name'); @endphp
+@section('title', $pageTitle)
 <x-guest-layout>
     <div class="py-6">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,7 +1,7 @@
 <div>
     <!-- Hero Section dengan Statistik -->
     <div class="bg-gradient-to-r from-lime-700 to-lime-800 text-white rounded-lg shadow-lg p-8 mb-6">
-        <h1 class="text-3xl font-bold mb-2">Sekolah Minggu (SMB)</h1>
+        <h1 class="text-3xl font-bold mb-2">Sekolah Minggu Buddha (SMB)</h1>
         <p class="text-lime-100 mb-6">Database Sekolah Buddha di Provinsi Bali</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">

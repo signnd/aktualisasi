@@ -50,7 +50,7 @@ class PusdiklatController extends Controller
     public function create()
     {
         $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
-        return view('pusdiklat.create', compact('kabupaten'));
+        return view('pusdiklat.create', compact('kabupatens'));
     }
 
     /**
@@ -130,7 +130,7 @@ class PusdiklatController extends Controller
 
 
         $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
-        return view('pusdiklat.edit', compact('pusdiklat', 'kabupaten'));
+        return view('pusdiklat.edit', compact('pusdiklat', 'kabupatens'));
     }
 
     /**
