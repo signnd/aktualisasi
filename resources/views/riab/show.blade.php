@@ -124,7 +124,7 @@
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $riab->status == 'Disetujui' ? 'bg-green-100 text-green-800' : 
-                                           ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-950 dark:text-gray-100') }}">
+                                           ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-50 text-gray-950 dark:text-gray-100') }}">
                                         {{ $riab->status ?? '-' }}
                                     </span>
                                 </p>
@@ -140,7 +140,7 @@
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Status Verifikasi</p>
                                 <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-950 dark:text-gray-100' }}">
+                                    <span class="px-2 py-1 rounded text-sm {{ $riab->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-950 dark:text-gray-100' }}">
                                         {{ $riab->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                     </span>
                                 </p>
@@ -321,7 +321,7 @@
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Sertifikasi Tanah</p>
                                 <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
+                                    <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-50 text-gray-800' }}">
                                         {{ $riab->riabdetail->sertifikasi_tanah ?? '-' }}
                                     </span>
                                 </p>

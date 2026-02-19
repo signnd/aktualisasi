@@ -25,7 +25,7 @@
                 <!-- Mobile Menu Button -->
                 <div x-data="{ open: false }" class="relative md:hidden">
                     <button @click="open = !open" 
-                            class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700">
+                            class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                             <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -41,68 +41,116 @@
                          x-transition:leave="transition ease-in duration-150"
                          x-transition:leave-start="opacity-100 scale-100"
                          x-transition:leave-end="opacity-0 scale-95"
-                         class="absolute left-0 mt-2 w-48 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 py-2"
+                         class="absolute left-0 mt-2 w-56 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-200 dark:border-zinc-700 py-2 divide-y divide-gray-100 dark:divide-zinc-700"
                          style="display: none;">
-                        <a href="{{ route('guest.riab.index') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.riab.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                            RIAB
-                        </a>
-                        <a href="{{ route('guest.okb.index') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.okb.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                            OKB
-                        </a>
-                        <a href="{{ route('guest.yayasan.index') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.yayasan.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                            Yayasan
-                        </a>
-                        <a href="{{ route('guest.smb.index') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.smb.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                            SMB
-                        </a>
-                        <a href="{{ route('guest.dhammasekha.index') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.dhammasekha.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                            Dhammasekha
-                        </a>
-                        <a href="{{ route('guest.pusdiklat.index') }}" 
-                           class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.pusdiklat.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                            Pusdiklat
-                        </a>
+                        <!-- Urusan Agama Group -->
+                        <div class="py-1">
+                            <div class="px-4 py-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Urusan Agama</div>
+                            <a href="{{ route('guest.riab.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.riab.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                RIAB
+                            </a>
+                            <a href="{{ route('guest.okb.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.okb.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                OKB
+                            </a>
+                            <a href="{{ route('guest.majelis.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.majelis.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                Majelis
+                            </a>
+                            <a href="{{ route('guest.yayasan.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.yayasan.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                Yayasan
+                            </a>
+                        </div>
+                        
+                        <!-- Pendidikan Agama Group -->
+                        <div class="py-1">
+                            <div class="px-4 py-1 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Pendidikan Agama</div>
+                            <a href="{{ route('guest.smb.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.smb.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                SMB
+                            </a>
+                            <a href="{{ route('guest.dhammasekha.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.dhammasekha.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                Dhammasekha
+                            </a>
+                            <a href="{{ route('guest.pusdiklat.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.pusdiklat.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                Pusdiklat
+                            </a>
+                            <a href="{{ route('guest.guru-penda.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.guru-penda.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                Guru Penda
+                            </a>
+                            <a href="{{ route('guest.tendik.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.tendik.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                Tendik
+                            </a>
+                        </div>
+
+                        <!-- Informasi -->
+                        <div class="py-1">
+                            <a href="{{ route('guest.informasi.index') }}" 
+                               class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.informasi.*') ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                                Informasi
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-4">
-                <a href="{{ route('guest.riab.index') }}" 
-                   class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.riab.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                    RIAB
-                </a>
-                <a href="{{ route('guest.okb.index') }}" 
-                   class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.okb.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                    OKB
-                </a>
-                <a href="{{ route('guest.majelis.index') }}" 
-                   class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.majelis.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                    Majelis
-                </a>
-                <a href="{{ route('guest.yayasan.index') }}" 
-                   class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.yayasan.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                    Yayasan
-                </a>
-                <a href="{{ route('guest.smb.index') }}" 
-                   class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.smb.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                    SMB
-                </a>
-                <a href="{{ route('guest.dhammasekha.index') }}" 
-                   class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.dhammasekha.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                    Dhammasekha
-                </a>
-                <a href="{{ route('guest.pusdiklat.index') }}" 
-                    class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.pusdiklat.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
-                    Pusdiklat
-                </a>
+            <div class="hidden md:flex items-center space-x-1">
+                <!-- Urusan Agama Dropdown -->
+                <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.riab.*', 'guest.okb.*', 'guest.majelis.*', 'guest.yayasan.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                        <span>Urusan Agama</span>
+                        <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-100"
+                         x-transition:enter-start="opacity-0 transform scale-95"
+                         x-transition:enter-end="opacity-100 transform scale-100"
+                         x-transition:leave="transition ease-in duration-75"
+                         x-transition:leave-start="opacity-100 transform scale-100"
+                         x-transition:leave-end="opacity-0 transform scale-95"
+                         class="absolute left-0 mt-0 w-48 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-100 dark:border-zinc-700 py-1 z-50">
+                        <a href="{{ route('guest.riab.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.riab.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">RIAB</a>
+                        <a href="{{ route('guest.okb.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.okb.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">OKB</a>
+                        <a href="{{ route('guest.majelis.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.majelis.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Majelis</a>
+                        <a href="{{ route('guest.yayasan.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.yayasan.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Yayasan</a>
+                    </div>
+                </div>
+
+                <!-- Pendidikan Agama Dropdown -->
+                <div x-data="{ open: false }" class="relative" @mouseenter="open = true" @mouseleave="open = false">
+                    <button class="flex items-center text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.smb.*', 'guest.dhammasekha.*', 'guest.pusdiklat.*', 'guest.guru-penda.*', 'guest.tendik.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                        <span>Pendidikan Agama</span>
+                        <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-100"
+                         x-transition:enter-start="opacity-0 transform scale-95"
+                         x-transition:enter-end="opacity-100 transform scale-100"
+                         x-transition:leave="transition ease-in duration-75"
+                         x-transition:leave-start="opacity-100 transform scale-100"
+                         x-transition:leave-end="opacity-0 transform scale-95"
+                         class="absolute left-0 mt-0 w-48 bg-white dark:bg-zinc-800 rounded-lg shadow-lg border border-gray-100 dark:border-zinc-700 py-1 z-50">
+                        <a href="{{ route('guest.smb.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.smb.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">SMB</a>
+                        <a href="{{ route('guest.dhammasekha.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.dhammasekha.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Dhammasekha</a>
+                        <a href="{{ route('guest.pusdiklat.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.pusdiklat.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Pusdiklat</a>
+                        <a href="{{ route('guest.guru-penda.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.guru-penda.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Guru Penda</a>
+                        <a href="{{ route('guest.tendik.index') }}" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 {{ request()->routeIs('guest.tendik.*') ? 'text-blue-600 dark:text-blue-400 font-medium' : '' }}">Tendik</a>
+                    </div>
+                </div>
+
                 <a href="{{ route('guest.informasi.index') }}" 
-                    class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.informasi.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
+                   class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-lg transition {{ request()->routeIs('guest.informasi.*') ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium' : '' }}">
                     Informasi
                 </a>
                 </div>

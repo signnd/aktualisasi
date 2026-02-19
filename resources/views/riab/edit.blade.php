@@ -52,11 +52,11 @@
                 </div>
             @endif
 
-            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-800 dark:border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
-                    <h3 class="text-2xl font-bold">Edit Data RIAB</h3>
+                    <h3 class="text-2xl font-bold">Edit Data Rumah Ibadah Agama Buddha</h3>
                     <p class="text-sm mt-1 opacity-90">{{ $riab->nama }}</p>
                 </div>
 
@@ -76,19 +76,19 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama RIAB <span class="text-red-500">*</span></label>
                                 <input type="text" name="nama" value="{{ old('nama', $riab->nama) }}" required
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">No Registrasi</label>
                                 <input type="text" name="no_registrasi" value="{{ old('no_registrasi', $riab->no_registrasi) }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kabupaten/Kota <span class="text-red-500">*</span></label>
                                 @if(auth()->user()->user_role === 'admin')
                                     <!-- Admin bisa pilih semua kabupaten -->
                                     <select id="kabupaten_id" name="kabupaten_id" required
-                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                         <option value="">-- Pilih Kabupaten --</option>
                                         @foreach($kabupaten as $k)
                                             <option value="{{ $k->id }}" @selected(old('kabupaten_id', $riab->kabupaten_id) == $k->id)>
@@ -99,7 +99,7 @@
                                 @else
                                     <!-- User non-admin hanya bisa lihat kabupatennya -->
                                     <select id="kabupaten_id" name="kabupaten_id" required disabled
-                                        class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg bg-gray-400 text-gray-700 cursor-not-allowed">
+                                        class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
                                         @foreach($kabupaten as $k)
                                             @if($k->id == auth()->user()->kabupaten_id)
                                                 <option value="{{ $k->id }}" selected>
@@ -115,7 +115,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kecamatan <span class="text-red-500">*</span></label>
                                 <select id="kecamatan_id" name="kecamatan_id" required
-                                    class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                    class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                     <option value="">-- Pilih Kecamatan --</option>
                                     @foreach($kecamatan as $kc)
                                         <option value="{{ $kc->id }}" data-kabupaten="{{ $kc->kabupaten_id }}"
@@ -128,7 +128,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kelurahan/Desa</label>
                                 <input type="text" name="kelurahan" value="{{ old('kelurahan', $riab->kelurahan) }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">
@@ -151,19 +151,19 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat Lengkap <span class="text-red-500">*</span></label>
                                 <textarea name="alamat" rows="2" required
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat', $riab->alamat) }}</textarea>
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat', $riab->alamat) }}</textarea>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Latitude</label>
                                 <input type="text" name="latitude" value="{{ old('latitude', $riab->latitude) }}"
                                        placeholder="Contoh: -8.123456"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Longitude</label>
                                 <input type="text" name="longitude" value="{{ old('longitude', $riab->longitude) }}"
                                        placeholder="Contoh: 115.123456"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -180,34 +180,34 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Ketua</label>
                                 <input type="text" name="ketua" value="{{ old('ketua', $riab->ketua) }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Berdiri</label>
                                 <input type="number" name="thn_berdiri" value="{{ old('thn_berdiri', $riab->thn_berdiri) }}"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Penerbitan Tanda Daftar</label>
                                 <input type="date" name="tgl_tanda_daftar" value="{{ old('tgl_tanda_daftar', $riab->tgl_tanda_daftar) }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jenis RIAB</label>
                                 <input type="text" name="jenis_riab" value="{{ old('jenis_riab', $riab->jenis_riab) }}"
                                        placeholder="Contoh: Vihara, TITD, Kelenteng Buddha, Cetiya"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Umat</label>
                                 <input type="number" name="jumlah_umat" value="{{ old('jumlah_umat', $riab->jumlah_umat) }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
                                 <input type="date" name="tgl_update" value="{{ old('tgl_update', $riab->tgl_update) }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             @if(auth()->user()->user_role === 'admin')
                             <div>
@@ -309,18 +309,18 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Email</label>
                                 <input type="email" name="email" value="{{ old('email', $riab->email) }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">No. Telp/HP/WhatsApp</label>
                                 <input type="text" name="no_telp" value="{{ old('no_telp', $riab->no_telp) }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Media Sosial</label>
                                 <input type="text" name="media_sosial" value="{{ old('media_sosial', $riab->media_sosial) }}"
                                        placeholder="Instagram/Facebook/Twitter/YouTube/TikTok"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -337,13 +337,13 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Deskripsi</label>
                                 <textarea name="deskripsi" rows="4"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('deskripsi', $riab->deskripsi) }}</textarea>
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('deskripsi', $riab->deskripsi) }}</textarea>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Link Foto SIORI</label>
                                 <input type="url" name="link_foto" value="{{ old('link_foto', $riab->link_foto) }}"
                                        placeholder="https://..."
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -361,22 +361,22 @@
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status Tanah</label>
                                 <input type="text" name="status_tanah" value="{{ old('status_tanah', $riab->riabdetail->status_tanah ?? '') }}"
                                        placeholder="Contoh: Hak Milik, Sewa"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Luas Tanah (m²)</label>
                                 <input type="number" name="luas_tanah" value="{{ old('luas_tanah', $riab->riabdetail->luas_tanah ?? '') }}"
                                        step="0.01"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Luas Bangunan (m²)</label>
                                 <input type="number" name="luas_bangunan" value="{{ old('luas_bangunan', $riab->riabdetail->luas_bangunan ?? '') }}"
                                        step="0.01"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="flex items-center space-x-2 cursor-pointer p-3 border border-gray-800 dark:border-gray-300 rounded-lg hover:bg-gray-500">
+                                <label class="flex items-center space-x-2 cursor-pointer p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md hover:bg-gray-500">
                                     <input type="checkbox" name="sertifikasi_tanah" value="Ada"
                                         @checked(old('sertifikasi_tanah', $riab->riabdetail->sertifikasi_tanah ?? '') == 'Sudah')
                                         class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
@@ -386,49 +386,49 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Kondisi Geografis Wilayah</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
                                              {{ in_array('Gunung Api', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Gunung Api</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
                                              {{ in_array('Pegunungan', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Pegunungan</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
                                              {{ in_array('Lembah', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Lembah</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
                                              {{ in_array('Bukit', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Bukit</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Tinggi"
                                              {{ in_array('Dataran Tinggi', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Tinggi</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Rendah"
                                              {{ in_array('Dataran Rendah', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Rendah</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Tinggi"
                                              {{ in_array('Pantai', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Pantai</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pesisir"
                                              {{ in_array('Pesisir', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
@@ -439,31 +439,31 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Peta Rawan Bencana</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Banjir"
                                             {{ in_array('Banjir', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Banjir</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Gempa"
                                             {{ in_array('Gempa', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Gempa</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Tsunami"
                                             {{ in_array('Tsunami', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Tsunami</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Tsunami"
                                             {{ in_array('Kekeringan', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Kekeringan</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-500">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Longsor"
                                             {{ in_array('Tanah Longsor', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
@@ -488,37 +488,37 @@
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Sertifikasi Tanah RIAB</label>
                                 <input type="number" name="th_menerima_sertifikasi" value="{{ old('th_menerima_sertifikasi', $riab->riabdetail->th_menerima_sertifikasi ?? '') }}"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Rehabilitasi/Renovasi RIAB</label>
                                 <input type="number" name="th_menerima_rehabilitasi" value="{{ old('th_menerima_rehabilitasi', $riab->riabdetail->th_menerima_rehabilitasi ?? '') }}"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan RIAB Bersih & Sehat</label>
                                 <input type="number" name="th_menerima_bersih_sehat" value="{{ old('th_menerima_bersih_sehat', $riab->riabdetail->th_menerima_bersih_sehat ?? '') }}"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Pemberdayaan RIAB Subsidi Kelompok Ekonomi Kreatif</label>
                                 <input type="number" name="th_menerima_kek" value="{{ old('th_menerima_kek', $riab->riabdetail->th_menerima_kek ?? '') }}"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Pembangunan RIAB</label>
                                 <input type="number" name="th_menerima_bantuan_bangun" value="{{ old('th_menerima_bantuan_bangun', $riab->riabdetail->th_menerima_bantuan_bangun ?? '') }}"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Pemberdayaan RIAB Perpustakaan</label>
                                 <input type="number" name="th_menerima_bpriab_perpus" value="{{ old('th_menerima_bpriab_perpus', $riab->riabdetail->th_menerima_bpriab_perpus ?? '') }}"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -533,109 +533,109 @@
                         </h4>
                         <p class="text-sm pb-2 text-gray-300">(Centang fasilitas yang tersedia di rumah ibadah)</p>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-800">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-800">
                                 <input type="checkbox" name="lahan_parkir" value="Ada"
                                     @checked(old('lahan_parkir', $riab->riabdetail->lahan_parkir ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Lahan Parkir</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="toilet_disable" value="Ada"
                                     @checked(old('toilet_disable', $riab->riabdetail->toilet_disable ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Difabel</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="kursi_roda" value="Ada"
                                     @checked(old('kursi_roda', $riab->riabdetail->kursi_roda ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="jalur_kursi_roda" value="Ada"
                                     @checked(old('jalur_kursi_roda', $riab->riabdetail->jalur_kursi_roda ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Jalur Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="fasilitas_jalur_kursi_roda" value="Ada"
                                     @checked(old('fasilitas_jalur_kursi_roda', $riab->riabdetail->fasilitas_jalur_kursi_roda ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Fasilitas Jalur Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="lift" value="Ada"
                                     @checked(old('lift', $riab->riabdetail->lift ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Sarana Lift</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="tempat_bermain" value="Ada"
                                     @checked(old('tempat_bermain', $riab->riabdetail->tempat_bermain ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Taman/Tempat Bermain</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="toilet_anak" value="Ada"
                                     @checked(old('toilet_anak', $riab->riabdetail->toilet_anak ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Anak</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="wastafel_anak" value="Ada"
                                     @checked(old('wastafel_anak', $riab->riabdetail->wastafel_anak ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Wastafel Anak</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_ac" value="Ada"
                                     @checked(old('ruang_ac', $riab->riabdetail->ruang_ac ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruangan AC</span> 
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_belajar_anak" value="Ada"
                                     @checked(old('ruang_belajar_anak', $riab->riabdetail->ruang_belajar_anak ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruangan Belajar Anak</span> 
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="perpustakaan" value="Ada"
                                     @checked(old('perpustakaan', $riab->riabdetail->perpustakaan ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Perpustakaan</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="pengelola_perpustakaan" value="Ada"
                                     @checked(old('pengelola_perpustakaan', $riab->riabdetail->pengelola_perpustakaan ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Pengelola Perpustakaan</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="alas_duduk" value="Ada"
                                     @checked(old('alas_duduk', $riab->riabdetail->alas_duduk ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Alas Duduk</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="sound_system" value="Ada"
                                     @checked(old('sound_system', $riab->riabdetail->sound_system ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Sound System</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="lcd_proyektor" value="Ada"
                                     @checked(old('lcd_proyektor', $riab->riabdetail->lcd_proyektor ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">LCD Proyektor</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_laktasi" value="Ada"
                                     @checked(old('ruang_laktasi', $riab->riabdetail->ruang_laktasi ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruang Laktasi</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="tempat_duduk_lansia" value="Ada"
                                     @checked(old('tempat_duduk_lansia', $riab->riabdetail->tempat_duduk_lansia ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
@@ -657,25 +657,25 @@
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Pengelola RIAB</label>
                                 <input type="number" name="jumlah_pengelola_riab" value="{{ old('jumlah_pengelola_riab', $riab->riabdetail->jumlah_pengelola_riab ?? '') }}"
                                        min="0"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Pengelola Perpustakaan</label>
                                 <input type="number" name="jumlah_pengelola_perpustakaan" value="{{ old('jumlah_pengelola_perpustakaan', $riab->riabdetail->jumlah_pengelola_perpustakaan ?? '') }}"
                                        min="0"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Kitab Suci</label>
                                 <input type="number" name="jumlah_kitab_suci" value="{{ old('jumlah_kitab_suci', $riab->riabdetail->jumlah_kitab_suci ?? '') }}"
                                        min="0"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Buku Keagamaan</label>
                                 <input type="number" name="jumlah_buku_keagamaan" value="{{ old('jumlah_buku_keagamaan', $riab->riabdetail->jumlah_buku_keagamaan ?? '') }}"
                                        min="0"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -692,7 +692,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Periode Update SISFO</label>
                                 <input type="text" name="update_sisfo" value="{{ old('update_sisfo', $riab->riabdetail->update_sisfo ?? '') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Terdaftar SIORI</label>
@@ -712,31 +712,31 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">LPJ Bantuan</label>
                                 <input type="text" name="lpj_bantuan" value="{{ old('lpj_bantuan', $riab->riabdetail->lpj_bantuan ?? '') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Listrik</label>
                                 <input type="text" name="listrik" value="{{ old('listrik', $riab->riabdetail->listrik ?? '') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                        placeholder="(diisi penyedia listrik)">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Foto Sebelum Bantuan (URL)</label>
                                 <input type="url" name="foto_sebelum_bantuan" value="{{ old('foto_sebelum_bantuan', $riab->riabdetail->foto_sebelum_bantuan ?? '') }}"
                                        placeholder="https://..."
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Foto Setelah Bantuan (URL)</label>
                                 <input type="url" name="foto_setelah_bantuan" value="{{ old('foto_setelah_bantuan', $riab->riabdetail->foto_setelah_bantuan ?? '') }}"
                                        placeholder="https://..."
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Link Berita Acara Penonaktifan</label>
                                 <input type="url" name="link_berita_acara_nonaktif" value="{{ old('link_berita_acara_nonaktif', $riab->riabdetail->link_berita_acara_nonaktif ?? '') }}"
                                        placeholder="https://..."
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>

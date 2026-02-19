@@ -64,7 +64,7 @@
                          <img
                             src="{{ $imageUrl }}" 
                              alt="{{ $guruPenda->nama_guru }}"
-                             class="h-[300px] w-[225px] object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 bg-gray-100 transition-transform duration-300 group-hover:scale-[1.02]"
+                             class="h-[300px] w-[225px] object-contain rounded-xl shadow-lg border-4 border-white dark:border-gray-700 bg-gray-50 transition-transform duration-300 group-hover:scale-[1.02]"
                              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($guruPenda->nama_guru) }}&size=240&background=random&color=fff&font-size=0.33'; this.nextElementSibling.classList.remove('hidden');">
                         <div class="mt-2 text-center">
                             <a href="{{ $guruPenda->foto }}" target="_blank" class="text-xs text-blue-600 hover:text-blue-800 flex items-center justify-center">
@@ -75,7 +75,7 @@
                             </a>
                         </div>
                     @else
-                        <div class="h-[300px] w-[225px] flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-xl border-4 border-dashed border-gray-300 dark:border-gray-600 text-gray-400">
+                        <div class="h-[300px] w-[225px] flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-xl border-4 border-dashed border-gray-300 dark:border-gray-600 text-gray-400">
                             <svg class="w-12 h-12 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>

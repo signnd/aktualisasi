@@ -169,7 +169,7 @@
                         <div>
                             <p class="text-sm text-gray-500">Status Verifikasi</p>
                             <p class="font-medium">
-                                <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-100' }}">
+                                <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-100' }}">
                                     {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                 </span>
                             </p>

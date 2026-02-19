@@ -96,7 +96,7 @@
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $okb->status == 'disetujui' ? 'bg-green-100 text-green-800' : 
-                                           ($okb->status == 'ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800') }}">
+                                           ($okb->status == 'ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-50 text-gray-800') }}">
                                         {{ $okb->status ?? '-' }}
                                     </span>
                                 </p>
@@ -112,7 +112,7 @@
                             <div>
                                 <p class="text-sm text-gray-600 dark:text-gray-300">Status Verifikasi</p>
                                 <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $okb->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800 dark:text-gray-100' }}">
+                                    <span class="px-2 py-1 rounded text-sm {{ $okb->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-800 dark:text-gray-100' }}">
                                         {{ $okb->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                     </span>
                                 </p>

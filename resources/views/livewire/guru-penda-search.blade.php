@@ -4,7 +4,7 @@
         <!-- Filter Kabupaten -->
         <div class="flex flex-col sm:flex-row w-full justify-between gap-4">
             <select wire:model.live="kabupaten_id"
-                    class="px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white">
+                    class="px-4 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700">
                 <option value="">-- Semua Kabupaten --</option>
                 @foreach($kabupatens as $kab)
                     <option value="{{ $kab->id }}">{{ $kab->kabupaten }}</option>
@@ -13,7 +13,7 @@
                 <input type="text" 
                    wire:model.live.debounce.100ms="search"
                    placeholder="Cari nama guru, NIP, alamat, sekolah..."
-                   class="flex flex-1 px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white"
+                   class="flex flex-1 px-4 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700"
                    autofocus>
         </div>
 
@@ -31,7 +31,7 @@
             @endif
             </div>
         @else
-            <span class="px-3 text-center bg-gray-100 dark:bg-gray-800 text-black-800 dark:text-black-100 rounded-full">
+            <span class="px-3 text-center bg-gray-50 dark:bg-gray-800 text-black-800 dark:text-black-100 rounded-full">
                 {{ $guruPendas->total() }} data
             </span>
         @endif
@@ -81,7 +81,7 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
                                     {{ $guru->status_verifikasi == 'TRUE' ? 'bg-green-100 text-green-800' : 
-                                       ($guru->status_verifikasi == 'FALSE' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800') }}">
+                                       ($guru->status_verifikasi == 'FALSE' ? 'bg-red-100 text-red-800' : 'bg-gray-50 text-gray-800') }}">
                                     {{ $guru->status_verifikasi }}
                                 </span>
                             </td>

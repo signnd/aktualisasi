@@ -44,7 +44,7 @@
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kabupaten</label>
                             <input type="text" name="alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <select id="kabupaten_id" name="kabupaten_id" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
+                                class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
                                 <option value="">-- Pilih Kabupaten --</option>
                                 @foreach($kabupatens as $k)
                                     <option value="{{ $k->id }}" @selected(old('kabupaten_id', $dhammasekha->kabupaten_id) == $k->id)>
@@ -124,7 +124,7 @@
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kabupaten</label>
                             <input type="text" name="alamat" x-model="siswa.alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
                             <select id="kabupaten_id" name="kabupaten_id" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
+                                class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
                                 <option value="">-- Pilih Kabupaten --</option>
                                 @foreach($kabupatens as $k)
                                     <option value="{{ $k->id }}" @selected(old('kabupaten_id', $dhammasekha->kabupaten_id) == $k->id)>
@@ -350,7 +350,7 @@
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Status Verifikasi</p>
                             <p class="font-medium">
-                                <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800 dark:text-gray-100' }}">
+                                <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-800 dark:text-gray-100' }}">
                                     {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                 </span>
                             </p>
@@ -441,7 +441,7 @@
                     <div class="bg-gray-50 dark:bg-gray-800/20 rounded-lg overflow-hidden border border-gray-200">
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-100 dark:bg-zinc-600 dark">
+                                <thead class="bg-gray-50 dark:bg-zinc-600 dark">
                                     <tr>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">No</th>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama Siswa</th>
@@ -516,7 +516,7 @@
                     <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200">
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-100 dark:bg-zinc-600">
+                                <thead class="bg-gray-50 dark:bg-zinc-600">
                                     <tr>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama Tendik</th>
                                         <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>

@@ -122,7 +122,7 @@
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Status Verifikasi</p>
                             <p class="font-medium">
-                                <span class="px-2 py-1 rounded text-sm {{ $pusdiklat->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800 dark:text-gray-100' }}">
+                                <span class="px-2 py-1 rounded text-sm {{ $pusdiklat->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-800 dark:text-gray-100' }}">
                                     {{ $pusdiklat->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                 </span>
                             </p>
@@ -299,7 +299,7 @@
                     <div class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200">
                         <div class="overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-100 dark:bg-zinc-600">
+                                <thead class="bg-gray-50 dark:bg-zinc-600">
                                     <tr>
                                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Nama Tendik</th>
                                         <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>

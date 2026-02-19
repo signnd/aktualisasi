@@ -79,7 +79,7 @@
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                     <span x-show="!editing_{{ $user->id }}">
                         @if($user->kabupaten_id && $user->kabupaten)
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-zinc-700 rounded text-xs">
+                            <span class="px-2 py-1 bg-gray-50 dark:bg-zinc-700 rounded text-xs">
                                 {{ $user->kabupaten->kabupaten }}
                             </span>
                         @else

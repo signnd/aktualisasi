@@ -28,7 +28,7 @@
     <!-- Card Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse(($informasis ?? collect()) as $info)
-        <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-md hover:bg-gray-100 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
+        <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-md hover:bg-gray-50 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
             <a href="{{ route('guest.informasi.show', $info) }}" >
             <!-- Header Card -->
             <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4">

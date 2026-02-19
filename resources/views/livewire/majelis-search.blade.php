@@ -31,7 +31,7 @@
             @endif
             </div>
         @else
-            <span class="px-3 text-center bg-gray-100 dark:bg-gray-800 text-black-800 dark:text-black-100 rounded-full">
+            <span class="px-3 text-center bg-gray-50 dark:bg-gray-800 text-black-800 dark:text-black-100 rounded-full">
                 {{ $majeliss->total() }} data
             </span>
         @endif

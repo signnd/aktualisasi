@@ -268,7 +268,7 @@
                             <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Sertifikasi Tanah</p>
                                 <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-100 dark:bg-zinc-700 text-gray-800 dark:text-gray-300' }}">
+                                    <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-50 dark:bg-zinc-700 text-gray-800 dark:text-gray-300' }}">
                                         {{ $riab->riabdetail->sertifikasi_tanah ?? '-' }}
                                     </span>
                                 </p>

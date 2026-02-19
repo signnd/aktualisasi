@@ -67,7 +67,7 @@
                         <div class="space-y-3">
                             @if($isGoogleDrive && $fileId)
                                 <!-- Google Drive Image dengan fallback ke iframe -->
-                                <div class="relative rounded-lg overflow-hidden bg-gray-100/0">
+                                <div class="relative rounded-lg overflow-hidden bg-gray-50/0">
                                     <img id="main-image" 
                                          src="{{ $imageUrl }}" 
                                          alt="Foto {{ $informasi->judul }}"

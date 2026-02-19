@@ -13,12 +13,12 @@
                         @csrf
                         <div class="flex items-start gap-2 w-full">
                             <input type="text" name="kecamatan"
-                                   class="flex-1 py-2 px-2 border border-gray-800 dark:border-gray-300 rounded-lg bg-gray-100 text-gray-700"
+                                   class="flex-1 py-2 px-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-50 text-gray-700"
                                    placeholder="Nama kecamatan" required>
 
                             @if(auth()->user()->user_role === 'admin')
                                 <select id="kabupaten_id" name="kabupaten_id" required
-                                    class="w-48 px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg bg-white text-black">
+                                    class="w-48 px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-white text-black">
                                     <option value="">-- Pilih Kabupaten --</option>
                                     @foreach($kabupaten as $k)
                                         <option value="{{ $k->id }}">{{ $k->kabupaten }}</option>
@@ -26,7 +26,7 @@
                                 </select>
                             @else
                                 <select id="kabupaten_id" name="kabupaten_id" required disabled
-                                    class="w-48 py-2 px-2 border border-gray-800 dark:border-gray-300 rounded-lg bg-gray-400 text-gray-700 cursor-not-allowed">
+                                    class="w-48 py-2 px-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
                                     @foreach($kabupaten as $k)
                                         @if($k->id == auth()->user()->kabupaten_id)
                                             <option value="{{ $k->id }}" selected>{{ $k->kabupaten }}</option>
@@ -54,7 +54,7 @@
                     <input type="text" name="kecamatan" x-model="kec.kecamatan"
                         class="border rounded px-2 py-1 w-full">
                     @if(auth()->user()->user_role === 'admin')
-                        <select x-model.number="kec.kabupaten_id" class="border rounded px-2 py-1 dark:bg-gray-100 dark:text-gray-900">
+                        <select x-model.number="kec.kabupaten_id" class="border rounded px-2 py-1 dark:bg-gray-50 dark:text-gray-900">
                             @foreach($kabupaten as $k)
                                 <option value="{{ $k->id }}" selected>{{ $k->kabupaten }}</option>
                             @endforeach

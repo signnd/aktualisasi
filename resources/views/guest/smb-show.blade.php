@@ -165,7 +165,7 @@
                     <!-- Link Foto -->
                     @if(!empty($smb->link_foto) && $smb->link_foto !== '-')
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3">Dokumentasi</h4>
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Dokumentasi</h4>
                         <a href="{{ $smb->link_foto }}" target="_blank" class="text-lime-600 hover:underline">
                             @endif
                     <!-- Link Foto -->

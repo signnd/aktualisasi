@@ -31,7 +31,7 @@
             @endif
             </div>
         @else
-            <span class="px-3 text-center bg-gray-100 dark:bg-gray-800 text-black-800 dark:text-black-100 rounded-full">
+            <span class="px-3 text-center bg-gray-50 dark:bg-gray-800 text-black-800 dark:text-black-100 rounded-full">
                 {{ $smbs->total() }} data
             </span>
         @endif
@@ -139,7 +139,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
                                         {{ $smb->status == 'Disetujui' ? 'bg-green-100 text-green-800' : 
-                                           ($smb->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-100 text-gray-800') }}">
+                                           ($smb->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-50 text-gray-800') }}">
                                         {{ $smb->status ?? 'Pending' }}
                                     </span>
                                 </td>

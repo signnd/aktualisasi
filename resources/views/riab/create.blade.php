@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-            {{ __('Edit RIAB') }}
+            {{ __('Tambah RIAB') }}
         </h2>
     </x-slot>
 
@@ -49,11 +49,11 @@
                 </div>
             @endif
 
-            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-800 dark:border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
-                    <h3 class="text-2xl font-bold">Tambah Data RIAB</h3>
+                    <h3 class="text-2xl font-bold">Tambah Data Rumah Ibadah Agama Buddha</h3>
                 </div>
 
                 <form action="{{ route('riab.store') }}" method="POST" class="p-6">
@@ -71,19 +71,19 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama RIAB <span class="text-red-500">*</span></label>
                                 <input type="text" name="nama" required
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">No Registrasi</label>
                                 <input type="text" name="no_registrasi"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kabupaten/Kota <span class="text-red-500">*</span></label>
                             @if(auth()->user()->user_role === 'admin')
                                 <!-- Admin bisa pilih semua kabupaten -->
                                 <select id="kabupaten_id" name="kabupaten_id" required
-                                    class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                    class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                     <option value="">-- Pilih Kabupaten --</option>
                                     @foreach($kabupaten as $k)
                                         <option value="{{ $k->id }}">
@@ -94,7 +94,7 @@
                             @else
                                 <!-- User non-admin hanya bisa lihat kabupatennya -->
                                 <select id="kabupaten_id" name="kabupaten_id" required disabled
-                                    class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg bg-gray-400 text-gray-700 cursor-not-allowed">
+                                    class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
                                     @foreach($kabupaten as $k)
                                         @if($k->id == auth()->user()->kabupaten_id)
                                             <option value="{{ $k->id }}" selected>
@@ -110,7 +110,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kecamatan <span class="text-red-500">*</span></label>
                                 <select id="kecamatan_id" name="kecamatan_id" required
-                                    class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                    class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                     <option value="">-- Pilih Kecamatan --</option>
                                     @foreach($kecamatan as $kc)
                                         <option value="{{ $kc->id }}" data-kabupaten="{{ $kc->kabupaten_id }}"
@@ -123,7 +123,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kelurahan/Desa</label>
                                 <input type="text" name="kelurahan"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">
@@ -146,19 +146,19 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat Lengkap <span class="text-red-500">*</span></label>
                                 <textarea name="alamat" rows="2" required
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Latitude</label>
                                 <input type="text" name="latitude"
                                        placeholder="Contoh: -8.123456"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Longitude</label>
                                 <input type="text" name="longitude"
                                        placeholder="Contoh: 115.123456"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -175,34 +175,34 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Ketua</label>
                                 <input type="text" name="ketua"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Berdiri</label>
                                 <input type="number" name="thn_berdiri"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Penerbitan Tanda Daftar</label>
                                 <input type="date" name="tgl_tanda_daftar"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jenis RIAB</label>
                                 <input type="text" name="jenis_riab"
                                        placeholder="Contoh: Vihara, TITD, Kelenteng Buddha, Cetiya"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Umat</label>
                                 <input type="number" name="jumlah_umat"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
                                 <input type="date" name="tgl_update"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             @if(auth()->user()->user_role === 'admin')
                             <div>
@@ -304,18 +304,18 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Email</label>
                                 <input type="email" name="email"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">No. Telp/HP/WhatsApp</label>
                                 <input type="text" name="no_telp"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Media Sosial</label>
                                 <input type="text" name="media_sosial"
                                        placeholder="Instagram/Facebook/Twitter/YouTube/TikTok"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -332,13 +332,13 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Deskripsi</label>
                                 <textarea name="deskripsi" rows="4"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Link Foto SIORI</label>
                                 <input type="url" name="link_foto" 
                                        placeholder="https://..."
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -356,22 +356,22 @@
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status Tanah</label>
                                 <input type="text" name="status_tanah"
                                        placeholder="Contoh: Hak Milik, Sewa"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Luas Tanah (m²)</label>
                                 <input type="number" name="luas_tanah"
                                        step="0.01"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Luas Bangunan (m²)</label>
                                 <input type="number" name="luas_bangunan"
                                        step="0.01"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="flex items-center space-x-2 cursor-pointer p-3 border border-gray-800 dark:border-gray-300 rounded-lg hover:bg-gray-50">
+                                <label class="flex items-center space-x-2 cursor-pointer p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md hover:bg-gray-50">
                                     <input type="checkbox" name="sertifikasi_tanah" value="Sudah"
                                         class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                     <span class="text-sm font-medium text-gray-800 dark:text-gray-100">Memiliki Sertifikasi Tanah</span>
@@ -380,22 +380,22 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Kondisi Geografis Wilayah</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Gunung Api</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Tinggi"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Tinggi</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pesisir"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Pesisir</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Rendah"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Rendah</span>
@@ -405,22 +405,22 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Peta Rawan Bencana</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Banjir"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Banjir</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Gempa"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Gempa</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Tsunami"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Tsunami</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-800 dark:border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Longsor"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Longsor</span>
@@ -444,37 +444,37 @@
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Sertifikasi Tanah RIAB</label>
                                 <input type="number" name="th_menerima_sertifikasi"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Rehabilitasi/Renovasi RIAB</label>
                                 <input type="number" name="th_menerima_rehabilitasi"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan RIAB Bersih & Sehat</label>
                                 <input type="number" name="th_menerima_bersih_sehat"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Pemberdayaan RIAB Subsidi Kelompok Ekonomi Kreatif</label>
                                 <input type="number" name="th_menerima_kek"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Pembangunan RIAB</label>
                                 <input type="number" name="th_menerima_bantuan_bangun"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Menerima Bantuan Pemberdayaan RIAB Perpustakaan</label>
                                 <input type="number" name="th_menerima_bpriab_perpus"
                                        min="1900" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -488,93 +488,93 @@
                             Fasilitas & Kelengkapan
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-800">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-800">
                                 <input type="checkbox" name="lahan_parkir" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Lahan Parkir</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="toilet_disable" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Difabel</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="kursi_roda" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="jalur_kursi_roda" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Jalur Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="fasilitas_jalur_kursi_roda" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Fasilitas Jalur Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="lift" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Sarana Lift</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="tempat_bermain" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Tempat Bermain</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="toilet_anak" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Anak</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="wastafel_anak" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Wastafel Anak</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_ac" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruangan AC</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_belajar_anak" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruangan Belajar Anak</span> 
                             </label>
 
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="perpustakaan" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Perpustakaan</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="pengelola_perpustakaan" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Pengelola Perpustakaan</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="alas_duduk" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Alas Duduk</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="sound_system" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Sound System</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="lcd_proyektor" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">LCD Proyektor</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_laktasi" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruang Laktasi</span>
                             </label>
-                                <label class="flex items-center space-x-2 p-3 border border-gray-800 dark:border-gray-300 rounded-lg cursor-pointer hover:bg-gray-500">
+                                <label class="flex items-center space-x-2 p-3 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
                                 <input type="checkbox" name="tempat_duduk_lansia" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Tempat Duduk Ramah Lansia</span>
@@ -595,24 +595,24 @@
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Pengelola RIAB</label>
                                 <input type="number" name="jumlah_pengelola_riab"
                                        min="0"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Pengelola Perpustakaan</label>
                                 <input type="number" name="jumlah_pengelola_perpustakaan"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Kitab Suci</label>
                                 <input type="number" name="jumlah_kitab_suci"
                                        min="0"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Buku Keagamaan</label>
                                 <input type="number" name="jumlah_buku_keagamaan"
                                        min="0"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>
@@ -629,7 +629,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Periode Update SISFO</label>
                                 <input type="text" name="update_sisfo"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Terdaftar SIORI</label>
@@ -649,31 +649,31 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">LPJ Bantuan</label>
                                 <input type="text" name="lpj_bantuan"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Listrik</label>
                                 <input type="text" name="listrik"
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                        placeholder="(diisi penyedia listrik)">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Foto Sebelum Bantuan (URL)</label>
                                 <input type="url" name="foto_sebelum_bantuan"
                                        placeholder="https://..."
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Foto Setelah Bantuan (URL)</label>
                                 <input type="url" name="foto_setelah_bantuan"
                                        placeholder="https://..."
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Link Berita Acara Penonaktifan</label>
                                 <input type="url" name="link_berita_acara_nonaktif"
                                        placeholder="https://..."
-                                       class="w-full px-3 py-2 border border-gray-800 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
                     </div>

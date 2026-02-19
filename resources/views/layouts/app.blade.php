@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
 </head>
-<body class="bg-gray-100 font-sans antialiased">
+<body class="bg-gray-50 font-sans antialiased">
     <div class="min-h-screen flex flex-col">
 
         <!-- Navbar -->

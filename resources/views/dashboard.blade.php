@@ -48,7 +48,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 @forelse($informasiInternal as $info)
-                    <a href="{{ route('informasi.show', $info) }}" class="block p-4 bg-gray-50 hover:bg-gray-100 dark:bg-zinc-800 rounded-lg">
+                    <a href="{{ route('informasi.show', $info) }}" class="block p-4 bg-gray-50 hover:bg-gray-50 dark:bg-zinc-800 rounded-lg">
                         <h3 class="font-semibold text-gray-900 dark:text-white">{{ \Illuminate\Support\Str::limit($info->judul, 60) }}</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">{{ $info->ringkasan ?? \Illuminate\Support\Str::limit($info->ringkasan, 120) }}</p>
                         <p class="text-xs text-gray-400 mt-3">{{ $info->created_at?->format('d M Y') }}</p>

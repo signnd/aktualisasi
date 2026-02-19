@@ -25,7 +25,7 @@
         </style>
     </head>
     
-    <body class="antialiased text-gray-900 bg-gray-100 dark:bg-gray-900">
+    <body class="antialiased text-gray-900 bg-gray-50 dark:bg-gray-900">
         <!-- Background Image with Opacity -->
         <div class="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat" 
              style="background-image: url('/images/welcome-bg.png'); opacity: 0.1;">
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-gray-100/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-60 rounded-lg px-6 py-4 border-1 border-gray-500">
+        <div class="bg-gray-50/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-60 rounded-lg px-6 py-4 border-1 border-gray-500">
             <h2 class="text-xl font-semibold mb-4">Informasi Publik</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse(($informasiPublik ?? collect()) as $info)
