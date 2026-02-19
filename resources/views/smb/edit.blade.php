@@ -159,25 +159,25 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
-                                <input type="date" value="{{ $smb->tgl_update ? \Carbon\Carbon::now()->format('Y-m-d') : '-' }}"
-                                       class="w-full px-3 py-2 border border-gray-600 dark:border-gray-300 rounded-lg bg-gray-200 dark:bg-gray-700">
+                                <input type="date" name="tgl_update" value="{{ old('tgl_update', $smb->tgl_update ?? \Carbon\Carbon::now()->format('Y-m-d')) }}"
+                                       class="w-full px-3 py-2 border border-gray-600 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             @if(auth()->user()->user_role === 'admin')
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
-                                        <input type="radio" name="status" value="Disetujui"
+                                        <input type="radio" name="status" value="Disetujui" @checked(old('status', $smb->status) == 'Disetujui')
                                                class="mr-2 text-green-600 focus:ring-green-500">
                                         <span>Disetujui</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status" value="Ditolak"
+                                        <input type="radio" name="status" value="Ditolak" @checked(old('status', $smb->status) == 'Ditolak')
                                                class="mr-2 text-red-600 focus:ring-red-500">
                                         <span>Ditolak</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status" value="Pending"
+                                        <input type="radio" name="status" value="Pending" @checked(old('status', $smb->status) == 'Pending')
                                                class="mr-2 text-gray-600 focus:ring-gray-500">
                                         <span>Pending</span>
                                     </label>
@@ -271,7 +271,7 @@
                     </div>
                 </div>
 
-                    <!-- Deskripsi & Dokumentasi
+                    <!-- Deskripsi & Dokumentasi -->
                     <div class="mb-8">
                         <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4 pb-2 border-b-2 border-orange-500 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -283,10 +283,10 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Deskripsi</label>
                                 <textarea name="deskripsi" rows="4"
-                                       class="w-full px-3 py-2 border border-gray-600 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                                       class="w-full px-3 py-2 border border-gray-600 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('deskripsi', $smb->deskripsi) }}</textarea>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
                     <!-- Informasi Lainnya -->
                     <div class="mb-8">
@@ -300,7 +300,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Link Berita Acara Penonaktifan</label>
                                 <input type="url" name="link_berita_acara_nonaktif"
-                                       placeholder="https://..." value="{{ old('link_berita_acara_nonaktif', $smb->link_berita_acara_nonakti) }}"
+                                       placeholder="https://..." value="{{ old('link_berita_acara_nonaktif', $smb->link_berita_acara_nonaktif) }}"
                                        class="w-full px-3 py-2 border border-gray-600 dark:border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>

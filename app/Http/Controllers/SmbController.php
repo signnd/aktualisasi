@@ -165,7 +165,7 @@ class SmbController extends Controller
             'link_foto' => 'nullable|string|max:100',            
             'tgl_update' => 'nullable|date',            
             'status_verifikasi' => 'nullable|string|in:TRUE,FALSE',            
-            'deksripsi' => 'nullable|string|max:2000',            
+            'deskripsi' => 'nullable|string|max:2000',            
             'email' => 'nullable|string|max:100',            
             'media_sosial' => 'nullable|string|max:100',   
             'user_id' => 'required|exists:users,id',          

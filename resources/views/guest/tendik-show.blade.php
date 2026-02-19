@@ -3,7 +3,7 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Back Button -->
             <div class="mb-6">
-                <a href="{{ route('guest.guru-penda.index', array_merge(request()->only('search','kabupaten_id'), ['page' => request('page', session('guru_penda_page', 1))])) }}" 
+                <a href="{{ route('guest.tendik.index', array_merge(request()->only('search','kabupaten_id'), ['page' => request('page', session('guru_penda_page', 1))])) }}" 
                    class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:underline">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -119,7 +119,13 @@
                                         
                                         <div>
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Nama Lembaga</p>
-                                            <p class="text-gray-900 dark:text-gray-100 font-medium">{{ $tendik->nama_lembaga ?? '-' }}</p>
+                                @if($tendik->lembaga)
+                                    <a href="{{ route('guest.' . strtolower(class_basename($tendik->lembaga_type)) . '.show', $tendik->lembaga_id) }}" class="text-blue-600 hover:underline">
+                                        {{ $tendik->nama_lembaga }}
+                                    </a>
+                                @else
+                                    {{ $tendik->nama_lembaga }}
+                                @endif
                                         </div>
                                         <div>
                                             <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">TMT Pendidik</p>
