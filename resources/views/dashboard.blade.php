@@ -1,7 +1,9 @@
 <x-layouts.app :title="__('Dashboard')">
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
         <h1 class="text-2xl font-bold">Selamat Datang</h1>
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
+        <div class="transition hover:shadow-lg motion-reduce:transition-none text-gray-50 rounded-lg p-8 border-1 border-gray-500">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-950">Urusan Agama Buddha</h2>
+        <div class="grid auto-rows-min gap-4 md:grid-cols-4">
             <a class="bg-blue-50 p-4 rounded-lg text-center hover:bg-blue-100" href="{{ route('riab.index') }}">
                 <p class="text-2xl font-bold text-blue-600">{{ $counts['riab'] }}</p>
                 <p class="text-sm text-gray-800">Jumlah Rumah Ibadah Agama Buddha</p>
@@ -14,22 +16,19 @@
                 <p class="text-2xl font-bold text-yellow-600">{{ $counts['majelis'] }}</p>
                 <p class="text-sm text-gray-800">Jumlah Majelis</p>
             </a>
-        </div>
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <a class="bg-cyan-50 p-4 rounded-lg text-center hover:bg-cyan-100" href={{ route('yayasan.index') }}>
                 <p class="text-2xl font-bold text-cyan-600">{{ $counts['yayasan'] }}</p>
                 <p class="text-sm text-gray-800">Jumlah Yayasan</p>
             </a>
+        </div>
+                </div>
+        <div class="transition hover:shadow-lg motion-reduce:transition-none text-gray-50 rounded-lg p-8 border-1 border-gray-500">
+            <h2 class="text-2xl font-semibold mb-6 text-gray-950">Pendidikan Agama Buddha</h2>
+        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <a class="bg-indigo-50 p-4 rounded-lg text-center hover:bg-indigo-100" href={{ route('smb.index') }}>
                 <p class="text-2xl font-bold text-indigo-600">{{ $counts['smb'] }}</p>
                 <p class="text-sm text-gray-800">Jumlah Sekolah Minggu Buddha</p>
             </a>
-            <a class="bg-pink-50 p-4 rounded-lg text-center hover:bg-pink-100" href={{ route('smb.index') }}>
-                <p class="text-2xl font-bold text-pink-600">{{ $counts['siswasmb'] }}</p>
-                <p class="text-sm text-gray-800">Jumlah Siswa Sekolah Minggu</p>
-            </a>
-        </div>
-        <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <a class="bg-lime-50 p-4 rounded-lg text-center hover:bg-lime-100" href={{ route('dhammasekha.index') }}>
                 <p class="text-2xl font-bold text-lime-600">{{ $counts['dhammasekha'] }}</p>
                 <p class="text-sm text-gray-800">Jumlah Dhammasekha</p>
@@ -38,10 +37,22 @@
                 <p class="text-2xl font-bold text-fuchsia-600">{{ $counts['pusdiklat'] }}</p>
                 <p class="text-sm text-gray-800">Jumlah Pusdiklat</p>
             </a>
+        </div>
+        <div class="grid auto-rows-min gap-4 md:grid-cols-3 pt-4">
+            <a class="bg-pink-50 p-4 rounded-lg text-center hover:bg-pink-100" href={{ route('smb.index') }}>
+                <p class="text-2xl font-bold text-pink-600">{{ $counts['siswasmb'] }}</p>
+                <p class="text-sm text-gray-800">Jumlah Siswa Sekolah Minggu</p>
+            </a>
             <a class="bg-emerald-50 p-4 rounded-lg text-center hover:bg-emerald-100" href={{ route('guru-penda.index') }}>
                 <p class="text-2xl font-bold text-emerald-600">{{ $counts['gurupenda'] }}</p>
                 <p class="text-sm text-gray-800">Jumlah Guru Pendidikan Agama Buddha</p>
             </a>
+            <a class="bg-pink-50 p-4 rounded-lg text-center hover:bg-pink-100" href={{ route('tendik.index') }}>
+                <p class="text-2xl font-bold text-pink-600">{{ $counts['tendik'] }}</p>
+                <p class="text-sm text-gray-800">Jumlah Tenaga Kependidikan Agama Buddha</p>
+            </a>
+
+        </div>
         </div>
         <div class="mt-6">
             <h2 class="text-xl font-semibold mb-4">Informasi Internal</h2>

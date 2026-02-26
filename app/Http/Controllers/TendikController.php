@@ -167,7 +167,7 @@ class TendikController extends Controller
 
         $page = $request->input('page', session('tendik_page', 1));
 
-        return redirect()->route('tendik.index', ['page' => $page])->with('success', 'Data Tendik berhasil diperbarui.');
+        return redirect()->route('tendik.index', ['page' => $page])->with('success', 'Data Tenaga Kependidikan berhasil diperbarui.');
     }
 
     /**

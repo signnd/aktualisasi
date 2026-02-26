@@ -13,6 +13,7 @@ use App\Models\Dhammasekha;
 use App\Models\Pusdiklat;
 use App\Models\Okb;
 use App\Models\GuruPenda;
+use App\Models\Tendik;
 use App\Models\Informasi;
 
 class DashboardController extends Controller
@@ -30,6 +31,7 @@ class DashboardController extends Controller
             'dhammasekha' => Dhammasekha::count(),
             'pusdiklat' => Pusdiklat::count(),
             'gurupenda' => GuruPenda::count(),
+            'tendik' => Tendik::count(),
         ];
 
         // Ambil 9 informasi dengan kategori "Informasi Internal"
