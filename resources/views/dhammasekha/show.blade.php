@@ -460,9 +460,9 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $siswadhammasekha->firstItem() + $index }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm font-medium text-gray-900 dark:text-gray-100">{{ $s->nama_siswa }}</div>
-                                            @if(auth()->user()->kabupaten_id === $dhammasekha->kabupaten_id || auth()->user()->user_role === 'admin')
+                                            <!--@if(auth()->user()->kabupaten_id === $dhammasekha->kabupaten_id || auth()->user()->user_role === 'admin')
                                             <div class="text-sm text-gray-500 dark:text-gray-300">NIK: {{ $s->nik ?? '-' }}</div>
-                                            @endif
+                                            @endif-->
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $s->jenis_kelamin ?? '-' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-gray-100">{{ $s->kelas ?? '-' }}</td>
