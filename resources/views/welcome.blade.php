@@ -47,7 +47,7 @@
                     
                     <!-- Lembaga Keagamaan -->
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-20s0">Lembaga Keagamaan</h3>
+                        <h3 class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-200">Lembaga Keagamaan</h3>
                         <div class="space-y-3">
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <a href="{{ route('guest.majelis.index') }}" 
