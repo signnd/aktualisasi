@@ -35,19 +35,19 @@
         <main class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
             <!-- Hero Section -->
             <div class="text-center mb-16">
-                <h1 class="text-4xl font-semibold mb-4 text-gray-900">Selamat datang di SIMADHA</h1>
-                <h3 class="text-xl ">Sistem Informasi Keagamaan Buddha di Bali</h3>
+                <h1 class="text-4xl font-semibold mb-4 text-gray-900 dark:text-gray-50">Selamat datang di SIMADHA</h1>
+                <h3 class="text-xl dark:text-gray-50">Sistem Informasi Keagamaan Buddha di Bali</h3>
             </div>
 
             <!-- Main Categories -->
             <div class="grid md:grid-cols-2 gap-8 mb-12">
                 <!-- Urusan Agama Buddha -->
                 <div class="bg-gray-200/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-50 rounded-lg p-8 border-1 border-gray-500">
-                    <h2 class="text-2xl font-semibold mb-6 text-gray-950">Urusan Agama Buddha</h2>
+                    <h2 class="text-2xl font-semibold mb-6 text-gray-950 dark:text-gray-50">Urusan Agama Buddha</h2>
                     
                     <!-- Lembaga Keagamaan -->
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium mb-4 text-gray-700">Lembaga Keagamaan</h3>
+                        <h3 class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-20s0">Lembaga Keagamaan</h3>
                         <div class="space-y-3">
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <a href="{{ route('guest.majelis.index') }}" 
@@ -74,7 +74,7 @@
 
                     <!-- Rumah Ibadah -->
                     <div>
-                        <h3 class="text-lg font-medium mb-4 text-gray-700">Rumah Ibadah</h3>
+                        <h3 class="text-lg font-medium mb-4 text-gray-700 dark:text-gray-200">Rumah Ibadah</h3>
                         <div class="space-y-3">
                             <a href="{{ route('guest.riab.index') }}" 
                                class="block p-4 rounded-md 
@@ -88,11 +88,11 @@
 
                 <!-- Pendidikan Agama Buddha -->
                 <div class="bg-gray-200/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-50 rounded-lg p-8 border-1 border-gray-500">
-                    <h2 class="text-2xl font-semibold mb-6 text-gray-950">Pendidikan Agama Buddha</h2>
+                    <h2 class="text-2xl font-semibold mb-6 text-gray-950 dark:text-gray-50">Pendidikan Agama Buddha</h2>
                     
                     <!-- Lembaga Pendidikan -->
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium mb-4 text-zinc-700">Lembaga Pendidikan</h3>
+                        <h3 class="text-lg font-medium mb-4 text-zinc-700 dark:text-gray-200">Lembaga Pendidikan</h3>
                         <div class="space-y-3">
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <a href="{{ route('guest.smb.index') }}" 
@@ -120,7 +120,7 @@
 
                     <!-- Guru Pendidikan Agama -->
                     <div>
-                        <h3 class="text-lg font-medium mb-4 text-zinc-700">Tenaga Kependidikan Agama</h3>
+                        <h3 class="text-lg font-medium mb-4 text-zinc-700 dark:text-gray-200">Tenaga Kependidikan Agama</h3>
                         <div class="space-y-3">
                             <div class="grid grid-cols-2 gap-4">
                             <a href="{{ route('guest.guru-penda.index') }}" 
@@ -140,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-gray-50/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-60 rounded-lg px-6 py-4 border-1 border-gray-500">
+        <div class="bg-gray-50/20 transition hover:shadow-xl motion-reduce:transition-none text-gray-600 dark:text-gray-200 rounded-lg px-6 py-4 border-1 border-gray-500">
             <h2 class="text-xl font-semibold mb-4">Informasi Publik</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse(($informasiPublik ?? collect()) as $info)
@@ -172,7 +172,7 @@
         <!-- Footer -->
         <footer class="border-0">
             <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 dark:bg-zinc-800">
-                <p class="text-center text-sm dark:text-[#A1A09A]">
+                <p class="text-center text-sm text-gray-600 dark:text-gray-200">
                     &copy; {{ date('Y') }} SIMADHA - Sistem Informasi Keagamaan Buddha di Bali
                 </p>
             </div>
