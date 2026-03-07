@@ -15,7 +15,7 @@ class SmbController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Smb::with(['kabupaten','kecamatan']);
+        $query = Smb::with(['kabupaten']);
         
         $selectedKabupatenId = null;
 
@@ -102,11 +102,11 @@ class SmbController extends Controller
         //$smb->load([
         //    'kabupaten:id,kabupaten']);
         $smb->load('kabupaten');
-                      // hanya ambil kolom yang dibutuhkan
+        // hanya ambil kolom yang dibutuhkan
         $siswas = $smb->siswasmb()
-        ->with('kabupaten')
-              ->orderBy('nama_siswa', 'asc')
-              ->paginate(20);
+            ->with('kabupaten')
+            ->orderBy('nama_siswa', 'asc')
+            ->paginate(20);
 
         $kabupatens = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();
         
@@ -123,11 +123,11 @@ class SmbController extends Controller
         }
 
         // Filter kecamatan berdasarkan kabupaten user jika bukan admin
-        if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
-            $kecamatan = Kecamatan::where('kabupaten_id', auth()->user()->kabupaten_id)->get();
-        } else {
-            $kecamatan = Kecamatan::all();
-        }
+        // if (auth()->user()->user_role !== 'admin' && auth()->user()->kabupaten_id) {
+        //     $kecamatan = Kecamatan::where('kabupaten_id', auth()->user()->kabupaten_id)->get();
+        // } else {
+        //     $kecamatan = Kecamatan::all();
+        // }
 
 
         $kabupaten = Kabupaten::orderBy('kabupaten')->where('kabupaten', '!=', 'Provinsi Bali')->get();

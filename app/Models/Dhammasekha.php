@@ -40,10 +40,6 @@ class Dhammasekha extends Model
         });
     }
     
-    // public function kecamatan() {
-    //     return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
-    // }
-
     public function siswaDhammasekha() {
         return $this->hasMany(SiswaDhammasekha::class, 'dhammasekha_id');
     }

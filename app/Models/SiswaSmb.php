@@ -12,22 +12,22 @@ class SiswaSmb extends Model
     protected $table = 'siswa_smb';
 
     protected $fillable = [
-            'nama',
-            'kabupaten_id',
-            'smb_id',
-            'nama_siswa',
-            'jenis_kelamin',
-            'nik',
-            'tempat_lahir',
-            'tgl_lahir',
-            'alamat',
-            'no_hp',
-            'email',
-            'kelas',
-            'keterangan',
-            'tgl_update',
-            'status_verifikasi',
-            'user_id',
+        'nama',
+        'kabupaten_id',
+        'smb_id',
+        'nama_siswa',
+        'jenis_kelamin',
+        'nik',
+        'tempat_lahir',
+        'tgl_lahir',
+        'alamat',
+        'no_hp',
+        'email',
+        'kelas',
+        'keterangan',
+        'tgl_update',
+        'status_verifikasi',
+        'user_id',
     ];
 
 
@@ -50,9 +50,9 @@ class SiswaSmb extends Model
     // Method untuk update jumlah siswa di tabel dhammasekha
     protected function updateJumlahSiswa()
     {
-        if ($this->dhammasekha) {
-            $jumlah = SiswaDhammasekha::where('dhammasekha_id', $this->dhammasekha_id)->count();
-            $this->dhammasekha->update(['jml_siswa' => $jumlah]);
+        if ($this->smb) {
+            $jumlah = SiswaSmb::where('smb_id', $this->smb_id)->count();
+            $this->smb->update(['jml_siswa' => $jumlah]);
         }
     }
 

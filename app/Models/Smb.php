@@ -38,10 +38,6 @@ class Smb extends Model
     public function kabupaten() {
         return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
     }
-    
-    public function kecamatan() {
-        return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
-    }
 
     public function siswasmb() {
         return $this->hasMany(SiswaSmb::class, 'smb_id');

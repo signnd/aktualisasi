@@ -102,19 +102,15 @@ class DhammasekhaController extends Controller
      */
     public function show(Dhammasekha $dhammasekha)
     {
-        $dhammasekha->load([
-            'kabupaten:id,kabupaten',          // hanya ambil kolom yang dibutuhkan
-            'siswadhammasekha' => function ($query) {
-                $query->with('kabupaten:id,kabupaten')
-                      ->orderBy('nama_siswa', 'asc')
-                      ->paginate(20);
-            }
-        ]);
+        $dhammasekha->load('kabupaten');
+        $siswadhammasekha = $dhammasekha->siswaDhammasekha()
+            ->with('kabupaten')
+            ->orderBy('nama_siswa', 'asc')
+            ->paginate(20);
 
         $kabupatens = Kabupaten::orderBy('kabupaten')->get();
 
-        return view('dhammasekha.show', compact('dhammasekha','kabupatens'));
-
+        return view('dhammasekha.show', compact(['dhammasekha','kabupatens','siswadhammasekha']));
     }
 
     /**

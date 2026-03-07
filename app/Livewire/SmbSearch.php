@@ -59,7 +59,7 @@ class SmbSearch extends Component
 
     public function render()
     {
-        $query = Smb::with(['kabupaten', 'kecamatan']);
+        $query = Smb::with(['kabupaten']);
         
         // Filter berdasarkan kabupaten yang dipilih di combobox
         if ($this->kabupaten_id != '') {
