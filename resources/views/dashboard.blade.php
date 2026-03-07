@@ -2,7 +2,7 @@
     <div class="flex h-full w-full flex-1 flex-col gap-4 rounded-xl">
         <h1 class="text-2xl font-bold">Selamat Datang</h1>
         <div class="transition hover:shadow-lg motion-reduce:transition-none text-gray-50 rounded-lg p-8 border-1 border-gray-500">
-            <h2 class="text-2xl font-semibold mb-6 text-gray-950">Urusan Agama Buddha</h2>
+            <h2 class="text-2xl font-semibold mb-6 text-gray-950 dark:text-gray-50">Urusan Agama Buddha</h2>
         <div class="grid auto-rows-min gap-4 md:grid-cols-4">
             <a class="bg-blue-50 p-4 rounded-lg text-center hover:bg-blue-100" href="{{ route('riab.index') }}">
                 <p class="text-2xl font-bold text-blue-600">{{ $counts['riab'] }}</p>
@@ -23,7 +23,7 @@
         </div>
                 </div>
         <div class="transition hover:shadow-lg motion-reduce:transition-none text-gray-50 rounded-lg p-8 border-1 border-gray-500">
-            <h2 class="text-2xl font-semibold mb-6 text-gray-950">Pendidikan Agama Buddha</h2>
+            <h2 class="text-2xl font-semibold mb-6 text-gray-950 dark:text-gray-50">Pendidikan Agama Buddha</h2>
         <div class="grid auto-rows-min gap-4 md:grid-cols-3">
             <a class="bg-indigo-50 p-4 rounded-lg text-center hover:bg-indigo-100" href={{ route('smb.index') }}>
                 <p class="text-2xl font-bold text-indigo-600">{{ $counts['smb'] }}</p>
