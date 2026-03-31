@@ -44,6 +44,10 @@ Route::prefix('public')->name('guest.')->group(function () {
         return view('guest.riab-index');
     })->name('riab.index');
     
+    Route::get('/riab-peta', function () {
+        return view('guest.riab-peta-index');
+    })->name('riab.peta');
+    
     Route::get('/riab-test', function () {
         return view('guest.riab-test-index');
     })->name('riab.test-index');

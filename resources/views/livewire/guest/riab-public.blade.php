@@ -4,19 +4,18 @@
         <h1 class="text-3xl font-bold mb-2">Rumah Ibadah Agama Buddha (RIAB)</h1>
         <p class="text-indigo-100 mb-6">Database Rumah ibadah Agama Buddha di Provinsi Bali</p>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-white/10 backdrop-blur rounded-lg p-4">
                 <div class="flex items-center">
                     <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
                     </svg>
                     <div>
-                        <p class="text-sm text-indigo-100">Total RIAB</p>
+                        <p class="text-sm text-indigo-100">Total Rumah Ibadah Agama Buddha</p>
                         <p class="text-2xl font-bold">{{ number_format($totalRiab) }}</p>
                     </div>
                 </div>
             </div>
-            
             <div class="bg-white/10 backdrop-blur rounded-lg p-4">
                 <div class="flex items-center">
                     <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20">
@@ -28,6 +27,22 @@
                     </div>
                 </div>
             </div>
+            <a href="{{ route('guest.riab.peta') }}" class="bg-white/10 backdrop-blur rounded-lg p-4 hover:bg-gray-50/20 transition-all duration-300 overflow-hidden cursor-pointer group">
+                <div class="flex items-center">
+                    <svg class="w-8 h-8 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                    </svg>
+                    <div>
+                        <p class="text-sm text-indigo-100">Lihat Peta</p>
+                        <p class="text-xl font-bold flex items-center gap-2 group-hover:text-indigo-200 transition-colors">
+                            Persebaran Rumah Ibadah 
+                            <svg class="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </p>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 

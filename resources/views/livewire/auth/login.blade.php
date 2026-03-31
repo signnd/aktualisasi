@@ -74,7 +74,7 @@ new #[Layout('components.layouts.auth')] class extends Component {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'login' => __('Email/Username atau kata sandi salah'),
+                'username' => __('Username atau kata sandi salah'),
             ]);
         }
 
