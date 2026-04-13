@@ -79,12 +79,17 @@ class SmbController extends Controller
             'kondisi' => 'nullable|string|in:Sangat Baik,Baik,Rusak Ringan,Rusak Sedang,Rusak Berat',            
             'link_foto' => 'nullable|string|max:100',            
             'tgl_update' => 'nullable|date',            
-            'status_verifikasi' => 'nullable|string|in:TRUE,FALSE',            
+            'status_verifikasi' => 'nullable|string|in:pending,approved,rejected',
             'deskripsi' => 'nullable|string|max:2000',            
             'email' => 'nullable|string|max:100',            
             'media_sosial' => 'nullable|string|max:100',   
-            'user_id' => 'required|exists:users,id',          
+            'user_id' => 'required|exists:users,id',
         ]);
+        if (Auth::user()->user_role !== 'admin') {
+            $validated['status_verifikasi'] = 'pending';
+        } else {
+            $validated['status_verifikasi'] = $request->input('status_verifikasi', 'approved');
+        }
 
         Smb::create($validated);
 
@@ -164,12 +169,18 @@ class SmbController extends Controller
             'kondisi' => 'nullable|string|in:Sangat Baik,Baik,Rusak Ringan,Rusak Sedang,Rusak Berat',            
             'link_foto' => 'nullable|string|max:100',            
             'tgl_update' => 'nullable|date',            
-            'status_verifikasi' => 'nullable|string|in:TRUE,FALSE',            
+            'status_verifikasi' => 'nullable|string|in:pending,approved,rejected',
             'deskripsi' => 'nullable|string|max:2000',            
             'email' => 'nullable|string|max:100',            
             'media_sosial' => 'nullable|string|max:100',   
             'user_id' => 'required|exists:users,id',          
         ]);
+
+        if (Auth::user()->user_role !== 'admin') {
+            $validated['status_verifikasi'] = 'pending';
+        } else {
+            $validated['status_verifikasi'] = $request->input('status_verifikasi', 'approved');
+        }
 
         $smb->update($validated);
 
@@ -195,4 +206,26 @@ class SmbController extends Controller
         return redirect()->route('smb.index', ['page' => $page])
                          ->with('success', 'Data Sekolah Minggu berhasil dihapus.');
     }
+
+    
+    /**
+     * Verify data by superadmin.
+     */
+    public function verify(Request $request, Smb $smb)
+    {
+        if (Auth::user()->user_role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $request->validate([
+            'status_verifikasi' => 'required|in:pending,approved,rejected'
+        ]);
+
+        $smb->update([
+            'status_verifikasi' => $request->status_verifikasi
+        ]);
+
+        return back()->with('success', 'Status verifikasi data SMB berhasil diubah.');
+    }
+
 }

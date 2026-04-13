@@ -31,7 +31,7 @@
 
                     <!-- Informasi Umum -->
                     <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-100 mb-3 flex items-center">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                             </svg>
@@ -39,27 +39,27 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-300">Kabupaten/Kota/Provinsi</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Kabupaten/Kota/Provinsi</p>
                                 <p class="font-medium">{{ $majelis->kabupaten->kabupaten ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Tanggal Daftar</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Tanggal Daftar</p>
                                 <p class="font-medium">{{ $majelis->tgl_terdaftar ? \Carbon\Carbon::parse($majelis->tgl_terdaftar)->format('d M Y') : '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Ketua</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Ketua</p>
                                 <p class="font-medium">{{ $majelis->ketua ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Sekte</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Sekte</p>
                                 <p class="font-medium">{{ $majelis->sekte ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-300">Binaan</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Binaan</p>
                                 <p class="font-medium">{{ $majelis->binaan ?? '-' }}</p>
                             </div>
                             <div class="md:col-span-2">
-                                <p class="text-sm text-gray-300">Keterangan</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Keterangan</p>
                                 <p class="font-medium">{{ $majelis->keterangan ?? '-' }}</p>
                             </div>
                         </div>

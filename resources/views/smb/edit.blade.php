@@ -26,9 +26,7 @@
                 </div>
             @endif
             
-            @if(!auth()->user()->kabupaten_id === $smb->kabupaten_id || auth()->user()->user_role !== 'admin')
-            <x-error-modal />
-            @endif
+
 
             <div class="bg-gray-50 dark:bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
@@ -199,23 +197,28 @@
                                     </label>
                                 </div>
                             </div>
-                            @if(auth()->user()->user_role === 'admin')
                             <div>
+                                @if(auth()->user()->user_role === 'admin')
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status Verifikasi</label>
                                 <div class="flex gap-3">
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="TRUE"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'TRUE' ? 'checked' : '' }}
+                                        <input type="radio" name="status_verifikasi" value="approved"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'approved' ? 'checked' : '' }}
                                                class="mr-2 text-blue-600 focus:ring-blue-500">
-                                        <span>Terverifikasi</span>
+                                        <span>Terverifikasi/Approved</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="FALSE"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'FALSE' ? 'checked' : '' }}
+                                        <input type="radio" name="status_verifikasi" value="pending"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'pending' ? 'checked' : '' }}
                                                class="mr-2 text-gray-600 focus:ring-gray-500">
-                                        <span>Tidak Terverifikasi</span>
+                                        <span>Pending</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status_verifikasi" value="rejected"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'rejected' ? 'checked' : '' }}
+                                               class="mr-2 text-red-600 focus:ring-red-500">
+                                        <span>Ditolak</span>
                                     </label>
                                 </div>
+                                @endif
                             </div>
-                            @endif
                         </div>
                     </div>
                     <!-- Informasi Kondisi SMB -->

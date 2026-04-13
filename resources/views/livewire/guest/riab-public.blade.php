@@ -120,8 +120,13 @@
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-50 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
             <a href="{{ route('guest.riab.show', $riab) }}{{ request()->getQueryString() ? ('?' . request()->getQueryString()) : '' }}" >
             <!-- Header Card -->
-            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white p-4">
-                <h3 class="font-bold text-lg truncate" title="{{ $riab->nama }}">{{ $riab->nama }}</h3>
+            <div class="bg-gradient-to-r from-indigo-500 to-indigo-600 text-white p-4 relative">
+                @if($riab->status_verifikasi === 'pending')
+                    <span class="absolute top-2 right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full whitespace-nowrap shadow" title="Data ini sedang dalam peninjauan">
+                        Sedang Diverifikasi
+                    </span>
+                @endif
+                <h3 class="font-bold text-lg {{ $riab->status_verifikasi === 'pending' ? 'pr-28' : '' }} truncate" title="{{ $riab->nama }}">{{ $riab->nama }}</h3>
             </div>
             
             <!-- Content Card -->

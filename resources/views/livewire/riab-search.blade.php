@@ -114,6 +114,7 @@
                         </button>
                         @if(auth()->user()->user_role === 'admin')
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Verifikasi</th>
                         @endif
                         <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white uppercase tracking-wider">Aksi</th>
                     </tr>
@@ -138,6 +139,29 @@
                                        ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-50 text-gray-800') }}">
                                     {{ $riab->status ?? 'Pending' }}
                                 </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
+                                    {{ $riab->status_verifikasi == 'approved' ? 'bg-green-100 text-green-800' : 
+                                       ($riab->status_verifikasi == 'rejected' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800') }}">
+                                    {{ ucfirst($riab->status_verifikasi ?? 'pending') }}
+                                </span>
+                                @if($riab->status_verifikasi === 'pending')
+                                <div class="flex justify-center space-x-2 mt-2">
+                                    <form action="{{ route('riab.verify', $riab->id) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input type="hidden" name="status_verifikasi" value="approved">
+                                        <button type="submit" class="text-white bg-green-500 hover:bg-green-600 px-2 py-1 text-xs rounded transition" onclick="return confirm('Setujui perubahan data ini?')">Approve</button>
+                                    </form>
+                                    <form action="{{ route('riab.verify', $riab->id) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input type="hidden" name="status_verifikasi" value="rejected">
+                                        <button type="submit" class="text-white bg-red-500 hover:bg-red-600 px-2 py-1 text-xs rounded transition" onclick="return confirm('Tolak perubahan data ini?')">Reject</button>
+                                    </form>
+                                </div>
+                                @endif
                             </td>
                             @endif
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">

@@ -88,9 +88,15 @@ class OkbController extends Controller
             'no_telp' => 'nullable|string|max:100',
             'eksisting' => 'nullable|string|in:Aktif,Tidak Aktif',
             'tgl_update' => 'nullable|date',
-            'status_verifikasi' => 'nullable|string|in:TRUE,FALSE',
+            'status_verifikasi' => 'nullable|string|in:pending,approved,rejected',
             'user_id' => 'required|exists:users,id',
         ]);
+
+        if (Auth::user()->user_role !== 'admin') {
+            $validated['status_verifikasi'] = 'pending';
+        } else {
+            $validated['status_verifikasi'] = $request->input('status_verifikasi', 'approved');
+        }
 
         Okb::create($validated);
 
@@ -156,9 +162,13 @@ class OkbController extends Controller
             'no_telp' => 'nullable|string|max:100',
             'eksisting' => 'nullable|string|in:Aktif,Tidak Aktif',
             'tgl_update' => 'nullable|date',
-            'status_verifikasi' => 'nullable|string|in:TRUE,FALSE',
+            'status_verifikasi' => 'nullable|string|in:pending,approved,rejected',
             'user_id' => 'required|exists:users,id',
         ]);
+
+        if (Auth::user()->user_role !== 'admin') {
+            $validated['status_verifikasi'] = 'pending';
+        }
 
         $okb->update($validated);
 
@@ -179,5 +189,25 @@ class OkbController extends Controller
         $okb->delete();
         $page = session('okb_page', 1);
         return redirect()->route('okb.index', ['page' => $page])->with('success', 'Data OKB berhasil dihapus');
+    }
+
+    /**
+     * Verify data by superadmin.
+     */
+    public function verify(Request $request, Okb $okb)
+    {
+        if (Auth::user()->user_role !== 'admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
+        $request->validate([
+            'status_verifikasi' => 'required|in:pending,approved,rejected'
+        ]);
+
+        $okb->update([
+            'status_verifikasi' => $request->status_verifikasi
+        ]);
+
+        return back()->with('success', 'Status verifikasi data OKB berhasil diubah.');
     }
 }

@@ -15,8 +15,15 @@
             <!-- Detail Card -->
             <div class="bg-white dark:bg-zinc-800 rounded-lg shadow-lg overflow-hidden">
                 <!-- Header -->
-                <div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white p-6">
-                    <h1 class="text-3xl font-bold">{{ $okb->nama_okb }}</h1>
+                <div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white p-6 relative">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+                        <h1 class="text-3xl font-bold">{{ $okb->nama_okb }}</h1>
+                        @if($okb->status_verifikasi === 'pending')
+                            <span class="bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap shadow self-start" title="Data ini sedang dalam peninjauan">
+                                Sedang Diverifikasi
+                            </span>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="p-6 space-y-6">

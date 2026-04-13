@@ -105,10 +105,13 @@
         <div class="bg-white dark:bg-zinc-800 rounded-lg shadow hover:shadow-xl hover:bg-gray-50 dark:hover:bg-zinc-700 transition-all duration-300 overflow-hidden">
             <a href="{{ route('guest.smb.show', $smb) }}{{ request()->getQueryString() ? ('?' . request()->getQueryString()) : '' }}" >
             <!-- Header Card -->
-
-            <div class="bg-gradient-to-r from-lime-600 to-lime-800 text-white p-4">
+            <div class="bg-gradient-to-r from-lime-500 to-lime-600 text-white p-4 relative">
+                @if($smb->status_verifikasi === 'pending')
+                    <span class="absolute top-2 right-2 bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded-full whitespace-nowrap shadow" title="Data ini sedang dalam peninjauan">
+                        Sedang Diverifikasi
+                    </span>
+                @endif
                 <h3 class="font-bold text-lg truncate" title="{{ $smb->nama_smb }}">{{ $smb->nama_smb }}</h3>
-
             </div>
             
             <!-- Content Card -->

@@ -143,12 +143,15 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
     Route::resource('riab', RiabController::class);
+    Route::patch('riab/{riab}/verify', [RiabController::class, 'verify'])->name('riab.verify');
     Route::resource('okb', OkbController::class);
+    Route::patch('okb/{okb}/verify', [OkbController::class, 'verify'])->name('okb.verify');
     Route::resource('yayasan', YayasanBuddhaController::class);
     Route::resource('pusdiklat', PusdiklatController::class);
     Route::resource('majelis', MajelisController::class)->parameters(['majelis' => 'majelis']);
     Route::resource('smb', SmbController::class);
     Route::resource('smb.siswa', SiswaSmbController::class);
+    Route::patch('smb/{smb}/verify', [SmbController::class, 'verify'])->name('smb.verify');
     Route::resource('guru-penda', GuruPendaController::class);
     Route::resource('tendik', TendikController::class);
     Route::resource('informasi', InformasiController::class);
