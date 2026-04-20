@@ -62,7 +62,6 @@
                     <!-- Hidden submit button -->
                     <button type="submit" x-ref="submitBtn" class="hidden"></button>
                 </div>                    
-                
                 <!-- Tombol Tambah RIAB -->
                 <a href="{{ route('riab.create') }}" 
                    class="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center shadow-lg whitespace-nowrap">
@@ -71,6 +70,42 @@
                     </svg>
                     Tambah RIAB
                 </a>
+
+                <!-- Dropdown Menu untuk Export/Import -->
+                <div x-data="{ open: false }" class="relative">
+                    <button @click="open = !open" @click.away="open = false" 
+                            class="p-2.5 bg-gray-200 dark:bg-zinc-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-zinc-600 shadow-none flex items-center justify-center transition-colors" title="Opsi lainnya">
+                        <svg class="w-5 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
+                        </svg>
+                    </button>
+                    
+                    <div x-show="open" x-cloak
+                         x-transition:enter="transition ease-out duration-100"
+                         x-transition:enter-start="transform opacity-0 scale-95"
+                         x-transition:enter-end="transform opacity-100 scale-100"
+                         x-transition:leave="transition ease-in duration-75"
+                         x-transition:leave-start="transform opacity-100 scale-100"
+                         x-transition:leave-end="transform opacity-0 scale-95"
+                         class="absolute right-0 mt-2 w-48 bg-white dark:bg-zinc-800 rounded-md shadow-lg py-1 z-50 ring-1 ring-black ring-opacity-5">
+                        
+                        <a href="{{ route('riab.export') }}" 
+                           class="px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-700 flex items-center transition-colors">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            Export Excel
+                        </a>
+                        
+                        <button type="button" @click="open = false; document.getElementById('importModal').classList.remove('hidden')"
+                                class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-zinc-700 flex items-center transition-colors">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                            </svg>
+                            Import Excel
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -81,29 +116,6 @@
 
             </div>
         </div>
-                <!-- Informasi Filter Aktif -->
-@if(!empty($selectedKabupatenId))
-    <!-- <div class="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 text-blue-700 rounded">
-        <p class="text-sm flex items-center">
-            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-            </svg>
-            Menampilkan Rumah Ibadah Agama Buddha di <strong class="mx-1">{{ $kabupatens->find($selectedKabupatenId)->kabupaten ?? 'Kabupaten Terpilih' }}</strong>
-            <span class="ml-2 text-gray-600">({{ $riabs->total() }} data)</span>
-        </p>
-    </div> -->
-@else
-    <!-- <div class="mb-4 p-3 bg-green-200 border-l-4 border-green-500 text-green-700 rounded">
-        <p class="text-sm flex items-center">
-            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
-            </svg>
-            Menampilkan Rumah Ibadah Agama Buddha dari <strong class="mx-1">Semua Kabupaten</strong>
-            <span class="ml-2 text-gray-600">({{ $riabs->total() }} data)</span>
-        </p>
-    </div> -->
-@endif
-
     </div>
 
     <!-- JavaScript untuk Auto-hide Message -->
@@ -160,4 +172,34 @@
             animation: fade-in 0.3s ease-out;
         }
     </style>
+
+        <!-- Modal Import -->
+        <div id="importModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
+            <div class="relative top-20 mx-auto p-5 border w-11/12 sm:w-96 shadow-lg rounded-md bg-white dark:bg-zinc-800">
+                <div class="mt-3 text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                        <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white mt-4">Import Data RIAB</h3>
+                    <div class="mt-2 text-left">
+                        <form action="{{ route('riab.import') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">File Excel (.xlsx, .xls, .csv)</label>
+                                <input type="file" name="file_excel" accept=".xlsx,.xls,.csv" required 
+                                       class="mt-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-md cursor-pointer bg-gray-50 p-2 dark:text-gray-400 focus:outline-none dark:bg-zinc-700 dark:border-gray-600 dark:placeholder-gray-400">
+                                <p class="text-xs text-gray-500 mt-2">Pastikan kolom header sama persis dengan file hasil Export.</p>
+                            </div>
+                            <div class="flex justify-center gap-3">
+                                <button type="button" onclick="document.getElementById('importModal').classList.add('hidden')"
+                                        class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 transition">Batal</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Upload File</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 </x-app-layout>

@@ -142,6 +142,8 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+    Route::get('riab/export', [RiabController::class, 'export'])->name('riab.export');
+    Route::post('riab/import', [RiabController::class, 'import'])->name('riab.import');
     Route::resource('riab', RiabController::class);
     Route::patch('riab/{riab}/verify', [RiabController::class, 'verify'])->name('riab.verify');
     Route::resource('okb', OkbController::class);

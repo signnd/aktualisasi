@@ -8,6 +8,10 @@ use App\Models\Kecamatan;
 //use App\Models\RiabDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RiabExport;
+use App\Imports\RiabImport;
 
 class RiabController extends Controller
 {
@@ -112,24 +116,7 @@ public function index(Request $request)
             'luas_bangunan' => 'nullable|numeric',
             'kondisi_geografis' => 'nullable|array',
             'peta_rawan_bencana' => 'nullable|array',
-            //'sertifikasi_tanah' => 'nullable|in:Sudah,Belum',
-            //'lahan_parkir' => 'nullable|in:Ada,Tidak ada',
             'lpj_bantuan' => 'nullable|string|max:255',
-            //'toilet_disable' => 'nullable|in:Ada,Tidak ada',
-            //'kursi_roda' => 'nullable|in:Ada,Tidak ada',
-            //'jalur_kursi_roda' => 'nullable|in:Ada,Tidak ada',
-            //'fasilitas_jalur_kursi_roda' => 'nullable|in:Ada,Tidak ada',
-            //'tempat_bermain' => 'nullable|in:Ada,Tidak ada',
-            //'toilet_anak' => 'nullable|in:Ada,Tidak ada',
-            //'wastafel_anak' => 'nullable|in:Ada,Tidak ada',
-            //'ruang_ac' => 'nullable|in:Ada,Tidak ada',
-            //'ruang_belajar_anak' => 'nullable|in:Ada,Tidak ada',
-            //'perpustakaan' => 'nullable|in:Ada,Tidak ada',
-            //'pengelola_perpustakaan' => 'nullable|string|max:255',
-            //'alas_duduk' => 'nullable|in:Ada,Tidak ada',
-            //'sound_system' => 'nullable|in:Ada,Tidak ada',
-            //'lcd_proyektor' => 'nullable|in:Ada,Tidak ada',
-            //'ruang_laktasi' => 'nullable|in:Ada,Tidak ada',
             'jumlah_pengelola_perpustakaan' => 'nullable|integer',
             'jumlah_pengelola_riab' => 'nullable|integer',
             'jumlah_kitab_suci' => 'nullable|integer',
@@ -285,24 +272,7 @@ public function index(Request $request)
             'luas_bangunan' => 'nullable|numeric',
             'kondisi_geografis' => 'nullable|array',
             'peta_rawan_bencana' => 'nullable|array',
-            //'sertifikasi_tanah' => 'nullable|in:Sudah,Belum',
-            //'lahan_parkir' => 'nullable|in:Ada,Tidak ada',
             'lpj_bantuan' => 'nullable|string|max:255',
-            //'toilet_disable' => 'nullable|in:Ada,Tidak ada',
-            //'kursi_roda' => 'nullable|in:Ada,Tidak ada',
-            //'jalur_kursi_roda' => 'nullable|in:Ada,Tidak ada',
-            //'fasilitas_jalur_kursi_roda' => 'nullable|in:Ada,Tidak ada',
-            //'tempat_bermain' => 'nullable|in:Ada,Tidak ada',
-            //'toilet_anak' => 'nullable|in:Ada,Tidak ada',
-            //'wastafel_anak' => 'nullable|in:Ada,Tidak ada',
-            //'ruang_ac' => 'nullable|in:Ada,Tidak ada',
-            //'ruang_belajar_anak' => 'nullable|in:Ada,Tidak ada',
-            //'perpustakaan' => 'nullable|in:Ada,Tidak ada',
-            //'pengelola_perpustakaan' => 'nullable|string|max:255',
-            //'alas_duduk' => 'nullable|in:Ada,Tidak ada',
-            //'sound_system' => 'nullable|in:Ada,Tidak ada',
-            //'lcd_proyektor' => 'nullable|in:Ada,Tidak ada',
-            //'ruang_laktasi' => 'nullable|in:Ada,Tidak ada',
             'jumlah_pengelola_perpustakaan' => 'nullable|integer',
             'jumlah_pengelola_riab' => 'nullable|integer',
             'jumlah_kitab_suci' => 'nullable|integer',
@@ -409,5 +379,30 @@ public function index(Request $request)
         ]);
 
         return back()->with('success', 'Status verifikasi data RIAB berhasil diubah.');
+    }
+
+    /**
+     * Export data to Excel
+     */
+    public function export()
+    {
+        return Excel::download(new RiabExport, 'data_riab.xlsx');
+    }
+
+    /**
+     * Import data from Excel
+     */
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file_excel' => 'required|mimes:xlsx,xls,csv|max:5120'
+        ]);
+
+        try {
+            Excel::import(new RiabImport, $request->file('file_excel'));
+            return redirect()->route('riab.index')->with('success', 'Data RIAB berhasil diimpor.');
+        } catch (\Exception $e) {
+            return redirect()->route('riab.index')->with('error', 'Gagal mengimpor data: ' . $e->getMessage());
+        }
     }
 }
