@@ -23,6 +23,7 @@
             font-family: 'Arimo', system-ui, -apple-system, 'Open Sans', Roboto, 'Helvetica Neue', Arial, sans-serif;
           }
         </style>
+        @livewireStyles
     </head>
     
     <body class="antialiased text-gray-900 bg-gray-50 dark:bg-gray-900">
@@ -36,7 +37,8 @@
             <!-- Hero Section -->
             <div class="text-center mb-16">
                 <h1 class="text-4xl font-semibold mb-4 text-gray-900 dark:text-gray-50">Selamat datang di SIMADHA</h1>
-                <h3 class="text-xl dark:text-gray-50">Sistem Informasi Keagamaan Buddha di Bali</h3>
+                <h3 class="text-xl dark:text-gray-50 mb-8">Sistem Informasi Keagamaan Buddha di Bali</h3>
+                <livewire:global-search />
             </div>
 
             <!-- Main Categories -->
@@ -177,5 +179,6 @@
                 </p>
             </div>
         </footer>
+        @livewireScripts
     </body>
 </html>
