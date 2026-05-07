@@ -134,7 +134,7 @@
                              class="h-[180px] w-[180px] justify-self-center object-contain rounded-full transition-transform duration-300 group-hover:scale-[1.2]"
                              onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name={{ urlencode($t->nama_tendik) }}&size=240&background=random&color=fff&font-size=0.33'; this.nextElementSibling.classList.remove('hidden');">
                     @endif
-                            <h3 class="font-bold text-lg truncate text-gray-800" title="{{ $t->nama_tendik }}">{{ $t->nama_tendik }}</h3>
+                            <h3 class="font-bold text-lg truncate text-gray-800 dark:text-gray-200" title="{{ $t->nama_tendik }}">{{ $t->nama_tendik }}</h3>
                         </div>
                         
                         <!-- Content Card -->

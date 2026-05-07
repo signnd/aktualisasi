@@ -7,7 +7,7 @@
 
     <div class="py-6">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-gray- shadow-lg overflow-hidden">
+            <div class="bg-0 shadow-lg overflow-hidden">
                 <!-- Action Buttons -->
                 <div class="px-6 py-4 flex justify-between items-center">
                     <a href="{{ route('riab.index', ['page' => session('riab_page', 1)]) }}" 
@@ -21,7 +21,7 @@
                     </a>
                     @endif
                 </div>
-            <div class="border border-gray-200 rounded-lg overflow-hidden">
+            <div class="border border-gray-200 dark:border-gray-700 rounded-l overflow-hidden">
                 <!-- Header Section -->
                 <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-6">
                     <h3 class="text-2xl font-bold">{{ $riab->nama }}</h3>
@@ -109,7 +109,7 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Kondisi Bangunan</p>
-                                <p class="font-medium">
+                                <p class="font-medium py-1">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $riab->kondisi == 'Sangat Baik' ? 'bg-green-100 text-green-800' : 
                                            ($riab->kondisi == 'Baik' ? 'bg-blue-100 text-blue-800' : 
@@ -121,7 +121,7 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Status</p>
-                                <p class="font-medium">
+                                <p class="font-medium py-1">
                                     <span class="px-2 py-1 rounded text-sm 
                                         {{ $riab->status == 'Disetujui' ? 'bg-green-100 text-green-800' : 
                                            ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-50 text-gray-950 dark:text-gray-100') }}">
@@ -131,7 +131,7 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Status Eksisting</p>
-                                <p class="font-medium">
+                                <p class="font-medium py-1">
                                     <span class="px-2 py-1 rounded text-sm {{ $riab->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $riab->eksisting ?? '-' }}
                                     </span>
@@ -139,8 +139,8 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Status Verifikasi</p>
-                                <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-950 dark:text-gray-100' }}">
+                                <p class="font-medium py-1">
+                                    <span class="px-2 py-1 rounded text-sm {{ $riab->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-950 dark:text-gray-700' }}">
                                         {{ $riab->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                     </span>
                                 </p>
@@ -193,7 +193,7 @@
                             @endif
                     <!-- Link Foto -->
                     @if($riab->link_foto)
-                    <div class="border-b pb-4">
+                    <div>
                         @php
                             // Deteksi jenis URL dan konversi jika perlu
                             $imageUrl = $riab->link_foto;
@@ -274,33 +274,10 @@
                                     @else
                                         Buka Gambar Asli
                                     @endif
-                                </a>
-                                
-                               @if($fileId)
-                               <!-- 
-                                <a href="https://drive.google.com/uc?export=download&id={{ $fileId }}" 
-                                   target="_blank"
-                                   class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
-                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                                    </svg>
-                                    Download
-                                </a> -->
-                                @elseif($isDirectImage)
-                                <!-- <a href="{{ $imageUrl }}" 
-                                   download
-                                   target="_blank"
-                                   class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition">
-                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                                    </svg>
-                                    Download
-                                </a> -->
-                                @endif
+                                </a>              
                             </div>
                         </div>
                     </div>
-                        </a>
                     </div>
                     @endif
 
@@ -314,18 +291,6 @@
                             Informasi Tanah & Bangunan
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Status Tanah</p>
-                                <p class="font-medium">{{ $riab->riabdetail->status_tanah ?? '-' }}</p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Sertifikasi Tanah</p>
-                                <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->riabdetail->sertifikasi_tanah == 'Sudah' ? 'bg-green-100 text-green-800' : 'bg-gray-50 text-gray-800' }}">
-                                        {{ $riab->riabdetail->sertifikasi_tanah ?? '-' }}
-                                    </span>
-                                </p>
-                            </div>
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Luas Tanah</p>
                                 <p class="font-medium">{{ $riab->riabdetail->luas_tanah ? $riab->riabdetail->luas_tanah . ' m²' : '-' }}</p>
@@ -369,42 +334,6 @@
                         </div>
                     </div>
 
-                    <!-- Riwayat Bantuan -->
-                    <div class="border-b pb-4">
-                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
-                            </svg>
-                            Riwayat Penerimaan Bantuan
-                        </h4>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Sertifikasi Tanah RIAB</p>
-                                <p class="font-medium">{{ $riab->riabdetail->th_menerima_sertifikasi ?? '-' }}</p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Rehabilitasi/Renovasi RIAB</p>
-                                <p class="font-medium">{{ $riab->riabdetail->th_menerima_rehabilitasi ?? '-' }}</p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan RIAB Bersih & Sehat</p>
-                                <p class="font-medium">{{ $riab->riabdetail->th_menerima_bersih_sehat ?? '-' }}</p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Pemberdayaan RIAB Subsidi Kelompok Ekonomi Kreatif</p>
-                                <p class="font-medium">{{ $riab->riabdetail->th_menerima_kek ?? '-' }}</p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Pembangunan RIAB</p>
-                                <p class="font-medium">{{ $riab->riabdetail->th_menerima_bantuan_bangun ?? '-' }}</p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Tahun Menerima Bantuan Pemberdayaan RIAB Perpustakaan</p>
-                                <p class="font-medium">{{ $riab->riabdetail->th_menerima_bpriab_perpus ?? '-' }}</p>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Fasilitas -->
                     <div class="border-b pb-4">
@@ -453,7 +382,7 @@
                     </div>
 
                     <!-- Statistik -->
-                    <div class="border-b pb-4">
+                    <div">
                         <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
@@ -480,61 +409,6 @@
                         </div>
                     </div>
 
-                    <!-- Informasi Lainnya -->
-                    <div>
-                        <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3">Informasi Lainnya</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Terdaftar SIORI</p>
-                                <p class="font-medium">
-                                        {{ $riab->riabdetail->terdaftar_siori == 'sudah' ? 'Sudah' : 'Belum' }}
-                                    </span>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Periode Update SISFO</p>
-                                <p class="font-medium">{{ $riab->riabdetail->update_sisfo ?? '-' }}</p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Listrik</p>
-                                <p class="font-medium">{{ $riab->riabdetail->listrik ?? '-' }}</p>
-                            </div>
-                            @if($riab->riabdetail->lpj_bantuan)
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">LPJ Bantuan</p>
-                                <a href="{{ $riab->riabdetail->lpj_bantuan }}" target="_blank" 
-                                   class="inline-flex items-center text-blue-600 hover:text-blue-800 transition">
-                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                                        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                                    </svg>
-                                        Lihat
-                                </a>
-                            @else
-                            <p class="text-sm text-gray-800 dark:text-gray-300">LPJ Bantuan</p>
-                                <p class="font-medium">
-                                    -</p>
-                            </div>
-                            @endif
-                            @if($riab->riabdetail->foto_sebelum_bantuan)
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Foto sebelum bantuan</p>
-                                <a class="font-medium" href="{{ $riab->riabdetail->foto_sebelum_bantuan }}" target="_blank" class="text-blue-600 hover:underline">Lihat foto sebelum bantuan</p>
-                            </div>
-                            @endif
-                            @if($riab->riabdetail->foto_setelah_bantuan)
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Foto setelah Bantuan</p>
-                                <a class="font-medium" href="{{ $riab->riabdetail->foto_setelah_bantuan }}" target="_blank" class="text-blue-600 hover:underline">Lihat foto setelah bantuan</p>
-                            </div>
-                            @endif
-                            @if($riab->riabdetail->link_berita_acara_nonaktif)
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Link Berita Acara Penonaktifan</p>
-                                <a class="font-medium" href="{{ $riab->riabdetail->link_berita_acara_nonaktif }}" class="text-blue-600 hover:underline">Lihat Berita Acara →</p>
-                            </div>
-                            @endif
-                        </div>
-                    </div>
                     @endif
 
                 </div>
