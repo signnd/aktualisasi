@@ -55,7 +55,7 @@
                     </label>
                     <input type="text" 
                            wire:model.live.debounce.200ms="search"
-                           placeholder="Cari nama yaysan..."
+                           placeholder="Cari nama yayasan..."
                            class="w-full px-4 py-2 border rounded-lg dark:bg-zinc-700 dark:border-zinc-600 dark:text-white">
                 </div>
             </div>
