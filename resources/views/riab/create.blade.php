@@ -180,7 +180,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Berdiri</label>
                                 <input type="number" name="thn_berdiri"
-                                       min="1900" max="{{ date('Y') }}"
+                                       min="1000" max="{{ date('Y') }}"
                                        class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-gray-600/80 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
