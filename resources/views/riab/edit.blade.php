@@ -376,19 +376,19 @@
                                         <span class="text-sm">Gunung Api</span>
                                     </label>
                                     <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
+                                        <input type="checkbox" name="kondisi_geografis[]" value="Pegunungan"
                                              {{ in_array('Pegunungan', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Pegunungan</span>
                                     </label>
                                     <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
+                                        <input type="checkbox" name="kondisi_geografis[]" value="Lembah"
                                              {{ in_array('Lembah', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Lembah</span>
                                     </label>
                                     <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
+                                        <input type="checkbox" name="kondisi_geografis[]" value="Bukit"
                                              {{ in_array('Bukit', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Bukit</span>
@@ -406,7 +406,7 @@
                                         <span class="text-sm">Dataran Rendah</span>
                                     </label>
                                     <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Dataran Tinggi"
+                                        <input type="checkbox" name="kondisi_geografis[]" value="Pantai"
                                              {{ in_array('Pantai', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Pantai</span>
@@ -441,7 +441,7 @@
                                         <span class="text-sm">Tsunami</span>
                                     </label>
                                     <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="peta_rawan_bencana[]" value="Tsunami"
+                                        <input type="checkbox" name="peta_rawan_bencana[]" value="Kekeringan"
                                             {{ in_array('Kekeringan', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Kekeringan</span>
@@ -451,6 +451,12 @@
                                             {{ in_array('Tanah Longsor', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Tanah Longsor</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
+                                        <input type="checkbox" name="peta_rawan_bencana[]" value="Gunung Meletus"
+                                            {{ in_array('Tanah Longsor', $petaRawan) ? 'checked' : '' }}
+                                            class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
+                                        <span class="text-sm">Gunung Meletus</span>
                                     </label>
                                 </div>
                             </div>
