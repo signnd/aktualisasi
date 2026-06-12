@@ -271,23 +271,6 @@
                                     </label>
                                 </div>
                             </div>
-                            @if(auth()->user()->user_role === 'admin')
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Verifikasi</label>
-                                <div class="flex gap-3">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="TRUE"
-                                               class="mr-2 text-gray-50 dark:text-blue-600 focus:ring-blue-500">
-                                        <span>Terverifikasi</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="FALSE"
-                                               class="mr-2 text-gray-600 focus:ring-gray-500">
-                                        <span>Tidak Terverifikasi</span>
-                                    </label>
-                                </div>
-                            </div>
-                            @endif
                         </div>
                     </div>
 
@@ -380,80 +363,50 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Kondisi Geografis Wilayah</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Gunung Api</span>
                                     </label>
-                                        <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Pegunungan"
-                                             class="rounded text-blue-50 dark:text-blue-600 focus:ring-blue-500">
-                                        <span class="text-sm">Pegunungan</span>
-                                    </label>
-                                        <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Lembah"
-                                             class="rounded text-blue-50 dark:text-blue-600 focus:ring-blue-500">
-                                        <span class="text-sm">Lembah</span>
-                                    </label>
-                                        <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Bukit"
-                                             class="rounded text-blue-50 dark:text-blue-600 focus:ring-blue-500">
-                                        <span class="text-sm">Bukit</span>
-                                    </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Tinggi"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Tinggi</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Dataran Rendah"
-                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
-                                        <span class="text-sm">Dataran Rendah</span>
-                                    </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="kondisi_geografis[]" value="Pantai"
-                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
-                                        <span class="text-sm">Pantai</span>
-                                    </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pesisir"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Pesisir</span>
+                                    </label>
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
+                                        <input type="checkbox" name="kondisi_geografis[]" value="Dataran Rendah"
+                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
+                                        <span class="text-sm">Dataran Rendah</span>
                                     </label>
                                 </div>
                             </div>
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Peta Rawan Bencana</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Banjir"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Banjir</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Gempa"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Gempa</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Tsunami"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Tsunami</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="peta_rawan_bencana[]" value="Kekeringan"
-                                            class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
-                                        <span class="text-sm">Kekeringan</span>
-                                    </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-300 rounded cursor-pointer hover:bg-gray-50">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Longsor"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Longsor</span>
-                                    </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer bg-white dark:bg-gray-600/80 hover:shadow-md hover:bg-gray-50">
-                                        <input type="checkbox" name="peta_rawan_bencana[]" value="Gunung Meletus"
-                                            class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
-                                        <span class="text-sm">Gunung Meletus</span>
                                     </label>
                                 </div>
                             </div>
@@ -657,11 +610,6 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Periode Update SISFO</label>
-                                <input type="text" name="update_sisfo"
-                                       class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-gray-600/80 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Terdaftar SIORI</label>
                                     <div class="flex items-center space-x-4 mt-2">
                                     <label class="flex items-center">
@@ -706,6 +654,29 @@
                                        class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-gray-600/80 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
+                                                <div>
+                            @if(auth()->user()->user_role === 'admin')
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-2">Status Verifikasi</label>
+                            <div class="flex gap-3">
+                                <label class="flex items-center">
+                                    <input type="radio" name="status_verifikasi" value="approved" {{ old('status_verifikasi', $riab->status_verifikasi) == 'approved' ? 'checked' : '' }}
+                                           class="mr-2 text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
+                                    <span>Terverifikasi/Approved</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="status_verifikasi" value="pending" {{ old('status_verifikasi', $riab->status_verifikasi) == 'pending' ? 'checked' : '' }}
+                                           class="mr-2 text-gray-600 focus:ring-gray-500">
+                                    <span>Pending</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="status_verifikasi" value="rejected" {{ old('status_verifikasi', $riab->status_verifikasi) == 'rejected' ? 'checked' : '' }}
+                                           class="mr-2 text-red-600 focus:ring-red-500">
+                                    <span>Ditolak</span>
+                                </label>
+                            </div>
+                            @endif
+                        </div>
+
                     </div>
 
                     <!-- Hidden Field -->
