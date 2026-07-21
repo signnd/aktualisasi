@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
@@ -40,12 +40,12 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Judul<span class="text-red-500">*</span></label>
                                 <input type="text" name="judul" required
-                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Ringkasan (Opsional)</label>
                                 <input type="text" name="ringkasan"
-                                       class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">
@@ -73,11 +73,11 @@
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Link Foto</label>
                             <p class="text-sm mb-1">Unggah gambar terkait informasi ini di Google Drive, kemudian bagikan/paste link foto tersebut di bawah ini</p>
                             <input type="url" name="foto"
-                                   class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Teks<span class="text-red-500">*</span></label></label>
-                            <textarea name="teks" required class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            <textarea name="teks" required class="w-full h-40 px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                         </div>
 
                     <!-- Informasi Lainnya -->
@@ -90,8 +90,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
             <!-- Hidden Field -->
                 <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                 <!-- Action Buttons -->

@@ -26,7 +26,7 @@
         @livewireStyles
     </head>
     
-    <body class="antialiased text-gray-900 bg-gray-50 dark:bg-gray-900">
+    <body class="antialiased text-gray-900 bg-gray-50 dark:bg-zinc-900">
         <!-- Background Image with Opacity -->
         <div class="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat" 
              style="background-image: url('/images/welcome-bg.png'); opacity: 0.1;">
@@ -146,7 +146,7 @@
             <h2 class="text-xl font-semibold mb-4">Informasi Publik</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @forelse(($informasiPublik ?? collect()) as $info)
-                    <a href="{{ route('guest.informasi.show', $info) }}" class="block p-4 bg-gray-50 hover:bg-gray-200 dark:bg-zinc-800 rounded-lg transition hover:shadow-xl">
+                    <a href="{{ route('guest.informasi.show', $info) }}" class="block p-4 bg-gray-50 hover:bg-gray-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 rounded-lg transition hover:shadow-xl">
                         <h3 class="font-semibold text-gray-900 dark:text-white">{{ \Illuminate\Support\Str::limit($info->judul, 60) }}</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">{{ $info->ringkasan ?? \Illuminate\Support\Str::limit($info->ringkasan, 120) }}</p>
                     </a>

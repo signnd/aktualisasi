@@ -5,7 +5,7 @@
     <div class="rounded-lg shadow p-6">
         <div x-data="kecModal()" class="relative">
             <!-- Modal overlay -->
-            <div x-show="showAddModal" x-transition x-cloak class="fixed inset-0 bg-gray-200/50 dark:bg-gray-900/50 bg-opacity-75 flex items-center justify-center z-50">
+            <div x-show="showAddModal" x-transition x-cloak class="fixed inset-0 bg-gray-200/50 dark:bg-zinc-900/50 bg-opacity-75 flex items-center justify-center z-50">
                 <div @click.away="closeModal()" class="transform transition-all">
                 <div class="bg-white dark:bg-gray-600 rounded-lg shadow-lg w-full p-6">
                     <h3 class="text-lg font-bold mb-4">Tambah Kecamatan</h3>
@@ -13,12 +13,12 @@
                         @csrf
                         <div class="flex items-start gap-2 w-full">
                             <input type="text" name="kecamatan"
-                                   class="flex-1 py-2 px-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-50 text-gray-700"
+                                   class="flex-1 py-2 px-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-50 text-gray-700"
                                    placeholder="Nama kecamatan" required>
 
                             @if(auth()->user()->user_role === 'admin')
                                 <select id="kabupaten_id" name="kabupaten_id" required
-                                    class="w-48 px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-white text-black">
+                                    class="w-48 px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-white text-black">
                                     <option value="">-- Pilih Kabupaten --</option>
                                     @foreach($kabupaten as $k)
                                         <option value="{{ $k->id }}">{{ $k->kabupaten }}</option>
@@ -26,7 +26,7 @@
                                 </select>
                             @else
                                 <select id="kabupaten_id" name="kabupaten_id" required disabled
-                                    class="w-48 py-2 px-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
+                                    class="w-48 py-2 px-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
                                     @foreach($kabupaten as $k)
                                         @if($k->id == auth()->user()->kabupaten_id)
                                             <option value="{{ $k->id }}" selected>{{ $k->kabupaten }}</option>
@@ -52,16 +52,16 @@
                 <form :action="'/master/kecamatan/' + kecamatan.id" method="POST" class="flex items-center space-x-2">
                     @csrf @method('PUT')
                     <input type="text" name="kecamatan" x-model="kec.kecamatan"
-                        class="border rounded px-2 py-1 w-full">
+                        class="border rounded px-2 py-1 w-full dark:bg-zinc-800 dark:text-white dark:border-zinc-600">
                     @if(auth()->user()->user_role === 'admin')
-                        <select x-model.number="kec.kabupaten_id" class="border rounded px-2 py-1 dark:bg-gray-50 dark:text-gray-900">
+                        <select x-model.number="kec.kabupaten_id" class="border rounded px-2 py-1 dark:bg-zinc-800 dark:text-white dark:border-zinc-600">
                             @foreach($kabupaten as $k)
                                 <option value="{{ $k->id }}" selected>{{ $k->kabupaten }}</option>
                             @endforeach
                         </select>
                     @else
                         <!-- show user's kabupaten only and include hidden input so server receives value -->
-                        <select x-model.number="kec.kabupaten_id" disabled class="border rounded px-2 py-1 bg-gray-500">
+                        <select x-model.number="kec.kabupaten_id" disabled class="border rounded px-2 py-1 bg-gray-500 dark:bg-zinc-800 dark:text-white dark:border-zinc-600">
                             @foreach($kabupaten as $k)
                                 <option value="{{ $k->id }}" selected>{{ $k->kabupaten }}</option>
                             @endforeach

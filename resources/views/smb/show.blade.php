@@ -16,7 +16,7 @@
                         <input type="hidden" name="smb_id" value="{{ $smb->id }}">
                         <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Siswa</label>
                         <input type="text" name="nama_siswa"
-                            class="w-full p-1 text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
+                            class="w-full p-1 text-gray-800 dark:text-gray-100 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800" required>
                     </div>
                     <div class="space-y-2">
                         <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Jenis Kelamin</label>
@@ -28,20 +28,20 @@
                             Perempuan</span>
                         <div class="space-y-2">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">NIK</label>
-                            <input type="text" name="nik" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="nik" class="w-full p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100">Tempat Lahir</label>
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100">Tanggal Lahir</label>
-                            <input type="text" name="tempat_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
-                            <input type="date" name="tgl_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="tempat_lahir" class="p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
+                            <input type="date" name="tgl_lahir" class="p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Alamat</label>
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kabupaten</label>
-                            <input type="text" name="alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="alamat" class="w-full p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                             <select id="kabupaten_id" name="kabupaten_id" required
-                                class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
+                                class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
                                 <option value="">-- Pilih Kabupaten --</option>
                                 @foreach($kabupatens as $k)
                                     <option value="{{ $k->id }}" @selected(old('kabupaten_id', $smb->kabupaten_id) == $k->id)>
@@ -53,12 +53,12 @@
                         <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">No. HP</label>
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kelas</label>
-                            <input type="text" name="no_hp" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
-                            <input type="text" name="kelas" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="no_hp" class="p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
+                            <input type="text" name="kelas" class="p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Keterangan</label>
-                            <input type="text" name="keterangan" placeholder="Keterangan" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="keterangan" placeholder="Keterangan" class="w-full p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                         </div>
                             <input type="hidden" name="kabupaten_id" value="{{ $smb->kabupaten_id }}">
                             <input type="hidden" name="user_id" value="{{ Auth::id() }}">
@@ -84,7 +84,7 @@
                         <input type="hidden" name="smb_id" value="{{ $smb->id }}">
                         <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Nama Siswa</label>
                         <input type="text" name="nama_siswa" x-model="siswa.nama_siswa"
-                            class="w-full p-1 text-gray-800  dark:text-gray-100 focus:ring-blue-500 rounded-md border-2 border-zinc-800" required>
+                            class="w-full p-1 text-gray-800  dark:text-gray-100 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800" required>
                     </div>
                     <div class="space-y-2">
                         <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Jenis Kelamin</label>
@@ -96,20 +96,20 @@
                             Perempuan</span>
                         <div class="space-y-2">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">NIK</label>
-                            <input type="text" name="nik" x-model="siswa.nik" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="nik" x-model="siswa.nik" class="w-full p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100">Tempat Lahir</label>
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100">Tanggal Lahir</label>
-                            <input type="text" name="tempat_lahir" x-model="siswa.tempat_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
-                            <input type="date" name="tgl_lahir" x-model="siswa.tgl_lahir" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="tempat_lahir" x-model="siswa.tempat_lahir" class="p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
+                            <input type="date" name="tgl_lahir" x-model="siswa.tgl_lahir" class="p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                         </div>
                         <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Alamat</label>
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kabupaten</label>
-                            <input type="text" name="alamat" x-model="siswa.alamat" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="alamat" x-model="siswa.alamat" class="w-full p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                             <select id="kabupaten_id" name="kabupaten_id" required
-                                class="w-full px-3 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
+                                class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300/50">
                                 <option value="">-- Pilih Kabupaten --</option>
                                 @foreach($kabupatens as $k)
                                     <option value="{{ $k->id }}" @selected(old('kabupaten_id', $smb->kabupaten_id) == $k->id)>
@@ -121,12 +121,12 @@
                         <div class="grid grid-cols-2 gap-1">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">No. HP</label>
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Kelas</label>
-                            <input type="text" name="no_hp" x-model="siswa.no_hp" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
-                            <input type="text" name="kelas" x-model="siswa.kelas" class="p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="no_hp" x-model="siswa.no_hp" class="p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
+                            <input type="text" name="kelas" x-model="siswa.kelas" class="p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                         </div>
                         <div class="space-y-2">
                             <label class="block text-sm font-medium text-gray-800  dark:text-gray-100 my-1">Keterangan</label>
-                            <input type="text" name="keterangan" x-model="siswa.keterangan" class="w-full p-1 focus:ring-blue-500 rounded-md border-2 border-zinc-800">
+                            <input type="text" name="keterangan" x-model="siswa.keterangan" class="w-full p-1 focus:ring-blue-500 rounded-md dark:bg-zinc-800 dark:border-zinc-600 dark:text-white border-2 border-zinc-800">
                         </div>
                             <input type="hidden" name="kabupaten_id" value="{{ $smb->kabupaten_id }}">
                             <input type="hidden" name="user_id" value="{{ Auth::id() }}">

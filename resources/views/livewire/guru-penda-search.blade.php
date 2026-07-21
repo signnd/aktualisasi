@@ -4,7 +4,7 @@
         <!-- Filter Kabupaten -->
         <div class="flex flex-col sm:flex-row w-full justify-between gap-4">
             <select wire:model.live="kabupaten_id"
-                    class="px-4 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700">
+                    class="px-4 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700">
                 <option value="">-- Semua Kabupaten --</option>
                 @foreach($kabupatens as $kab)
                     <option value="{{ $kab->id }}">{{ $kab->kabupaten }}</option>
@@ -13,7 +13,7 @@
                 <input type="text" 
                    wire:model.live.debounce.100ms="search"
                    placeholder="Cari nama guru, NIP, alamat, sekolah..."
-                   class="flex flex-1 px-4 py-2 border border-gray-400 bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700"
+                   class="flex flex-1 px-4 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white text-gray-700"
                    autofocus>
         </div>
 

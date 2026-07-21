@@ -20,12 +20,12 @@
                     <h3 class="font-medium py-2 text-gray-300">{{ $informasi->ringkasan ?? '-' }}</h3>
                 </div>
                 @if($informasi->foto)
-                    <div class="border-b py-4">
+                    <div>
                         <a href="{{ $informasi->link_foto }}" target="_blank" class="text-blue-600 hover:underline">
                     @endif
                     <!-- Link Foto -->
                     @if($informasi->foto)
-                    <div class="border-b pb-4">
+                    <div>
                         @php
                             // Deteksi jenis URL dan konversi jika perlu
                             $imageUrl = $informasi->foto;
@@ -83,7 +83,7 @@
                     <!-- Informasi -->
                     <div class="border-b pb-4 dark:border-zinc-700">
                         <div>
-                            <p class="font-normal text-gray-900 dark:text-white">{{ $informasi->teks ?? '-' }}</p>
+                            <p class="font-normal text-gray-900 dark:text-white whitespace-pre-wrap">{{ $informasi->teks ?? '-' }}</p>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -100,7 +100,6 @@
                             <p class="font-medium">{{ $informasi->updated_at ? \Carbon\Carbon::parse($informasi->updated_at)->format('d M Y H:m') : '-' }}</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

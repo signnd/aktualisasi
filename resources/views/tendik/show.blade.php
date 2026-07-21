@@ -27,7 +27,7 @@
                         <h3 class="text-2xl font-bold">{{ $tendik->nama_tendik }}</h3>
                     </div>
 
-                    <div class="p-6 bg-gray-50 dark:bg-gray-8 00">
+                    <div class="p-6 bg-gray-50 dark:bg-zinc-800">
                         <!-- informasi -->
                         <div class="flex flex-col xl:flex-row-reverse gap-8">
                             <!-- Unit Foto -->

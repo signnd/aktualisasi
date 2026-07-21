@@ -29,13 +29,13 @@
                         @csrf
                         @method('PUT')
                         <input x-show="editing" type="text" name="kode_kab" value="{{ $k->kode_kab }}"
-                               class="border rounded px-2 py-1 w-24 text-sm">
+                               class="border rounded px-2 py-1 w-24 text-sm dark:bg-zinc-800 dark:text-white dark:border-zinc-600">
                 </td>
                 <!-- Kolom nama kabupaten -->
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
                     <span x-show="!editing">{{ $k->kabupaten }}</span>
                     <input x-show="editing" type="text" name="kabupaten" value="{{ $k->kabupaten }}"
-                           class="border rounded px-2 py-1 w-full text-sm">
+                           class="border rounded px-2 py-1 w-full text-sm dark:bg-zinc-800 dark:text-white dark:border-zinc-600">
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white space-x-2">
                     <button type="button" @click="editing = true" x-show="!editing"
@@ -73,10 +73,10 @@
                 <div>
                     <label class="block text-sm font-medium">
                     <input type="text" name="kode_kab"
-                           class="py-2 px-2 w-60 sm:w-20 md:w-60 border rounded-md shadow-sm"
+                           class="py-2 px-2 w-60 sm:w-20 md:w-60 border rounded-md shadow-sm dark:bg-zinc-800 dark:text-white dark:border-zinc-600"
                            placeholder="Masukkan kode kabupaten" required>
                     <input type="text" name="kabupaten"
-                           class="mx-2 py-2 px-2 w-60 sm:w-20 md:w-60 border rounded-md shadow-sm"
+                           class="mx-2 py-2 px-2 w-60 sm:w-20 md:w-60 border rounded-md shadow-sm dark:bg-zinc-800 dark:text-white dark:border-zinc-600"
                            placeholder="Masukkan nama kabupaten/kota" required>
                     <button type="submit"
                             class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
