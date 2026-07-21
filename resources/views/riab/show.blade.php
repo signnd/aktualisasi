@@ -51,14 +51,6 @@
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Kelurahan/Desa</p>
                                 <p class="font-medium">{{ $riab->kelurahan ?? '-' }}</p>
                             </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Kategori 3T</p>
-                                <p class="font-medium">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->kategori_3t == '3T' ? 'bg-orange-100 text-orange-800' : 'bg-green-100 text-green-800' }}">
-                                        {{ $riab->kategori_3t ?? '-' }}
-                                    </span>
-                                </p>
-                            </div>
                             <div class="md:col-span-2">
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Alamat Lengkap</p>
                                 <p class="font-medium">{{ $riab->alamat ?? '-' }}</p>
@@ -109,45 +101,15 @@
                             </div>
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Kondisi Bangunan</p>
-                                <p class="font-medium py-1">
-                                    <span class="px-2 py-1 rounded text-sm 
-                                        {{ $riab->kondisi == 'Sangat Baik' ? 'bg-green-100 text-green-800' : 
-                                           ($riab->kondisi == 'Baik' ? 'bg-blue-100 text-blue-800' : 
-                                           ($riab->kondisi == 'Rusak Ringan' ? 'bg-yellow-100 text-yellow-800' : 
-                                           ($riab->kondisi == 'Rusak Sedang' ? 'bg-orange-100 text-orange-800' : 'bg-red-100 text-red-800'))) }}">
+                                <p class="font-medium">
                                         {{ $riab->kondisi ?? '-' }}
-                                    </span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Status</p>
-                                <p class="font-medium py-1">
-                                    <span class="px-2 py-1 rounded text-sm 
-                                        {{ $riab->status == 'Disetujui' ? 'bg-green-100 text-green-800' : 
-                                           ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-50 text-gray-950 dark:text-gray-100') }}">
-                                        {{ $riab->status ?? '-' }}
-                                    </span>
                                 </p>
                             </div>
                             <div>
                                 <p class="text-sm text-gray-800 dark:text-gray-300">Status Eksisting</p>
-                                <p class="font-medium py-1">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
-                                        {{ $riab->eksisting ?? '-' }}
-                                    </span>
+                                <p class="font-medium">
+                                    {{ $riab->eksisting ?? '-' }}
                                 </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Status Verifikasi</p>
-                                <p class="font-medium py-1">
-                                    <span class="px-2 py-1 rounded text-sm {{ $riab->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-950 dark:text-gray-700' }}">
-                                        {{ $riab->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
-                                    </span>
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-800 dark:text-gray-300">Tanggal Update</p>
-                                <p class="font-medium">{{ $riab->tgl_update ? \Carbon\Carbon::parse($riab->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                         </div>
                     </div>
@@ -181,7 +143,7 @@
                     @if($riab->deskripsi)
                     <div class="border-b pb-4">
                         <h4 class="text-lg font-semibold text-gray-950 dark:text-gray-100 mb-3">Deskripsi</h4>
-                        <p class="text-gray-800 dark:text-gray-300 leading-relaxed">{{ $riab->deskripsi }}</p>
+                        <p class="text-gray-800 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">{{ $riab->deskripsi }}</p>
                     </div>
                     @endif
 
@@ -407,14 +369,35 @@
                                 <p class="text-sm text-gray-800">Buku Keagamaan</p>
                             </div>
                         </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div>
+                            <p class="text-sm text-gray-800 dark:text-gray-300">Status</p>
+                            <p class="font-medium py-1">
+                                <span class="px-2 py-1 rounded text-sm 
+                                    {{ $riab->status == 'Disetujui' ? 'bg-green-100 text-green-800' : 
+                                       ($riab->status == 'Ditolak' ? 'bg-red-100 text-red-800' : 'bg-gray-50 text-gray-950 dark:text-gray-100') }}">
+                                    {{ $riab->status ?? '-' }}
+                                </span>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-800 dark:text-gray-300">Status Verifikasi</p>
+                            <p class="font-medium py-1">
+                                <span class="px-2 py-1 rounded text-sm {{ $riab->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-950 dark:text-gray-700' }}">
+                                    {{ $riab->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
+                                </span>
+                            </p>
                     </div>
-
+                        <div>
+                            <p class="text-sm text-gray-800 dark:text-gray-300">Tanggal Update</p>
+                            <p class="font-medium">{{ $riab->tgl_update ? \Carbon\Carbon::parse($riab->tgl_update)->format('d M Y') : '-' }}</p>
+                        </div>
                     @endif
 
                 </div>
-</div>
             </div>
         </div>
+    </div>
     </div>
     <!-- JavaScript untuk Fallback Image Viewer -->
     <script>
