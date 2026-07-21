@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
@@ -99,7 +99,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kabupaten <span class="text-red-500">*</span></label>
                                 <select id="kabupaten_id" name="kabupaten_id" required
-                                    class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                    class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                     <option value="">-- Pilih Kabupaten --</option>
                                     @foreach($kabupaten as $k)
                                         <option value="{{ $k->id }}">
@@ -172,12 +172,12 @@
                                                    :name="`nama_sekolah_sd[${index}]`" 
                                                    x-model="sekolahSD[index]"
                                                    placeholder="Nama SD" 
-                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-200 dark:bg-gray-800">
+                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                             <input type="text" 
                                                    :name="`alamat_sekolah_sd[${index}]`" 
                                                    x-model="alamatSD[index]"
                                                    placeholder="Alamat SD" 
-                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-200 dark:bg-gray-800">
+                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                         </div>
                                         <button type="button" 
                                                 @click="sekolahSD.splice(index, 1); alamatSD.splice(index, 1)"
@@ -213,12 +213,12 @@
                                                    :name="`nama_sekolah_smp[${index}]`" 
                                                    x-model="sekolahSMP[index]"
                                                    placeholder="Nama SMP" 
-                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-200 dark:bg-gray-800">
+                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                             <input type="text" 
                                                    :name="`alamat_sekolah_smp[${index}]`" 
                                                    x-model="alamatSMP[index]"
                                                    placeholder="Alamat SMP" 
-                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-200 dark:bg-gray-800">
+                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                         </div>
                                         <button type="button" 
                                                 @click="sekolahSMP.splice(index, 1); alamatSMP.splice(index, 1)"
@@ -254,12 +254,12 @@
                                                    :name="`nama_sekolah_sma[${index}]`" 
                                                    x-model="sekolahSMA[index]"
                                                    placeholder="Nama SMA/SMK" 
-                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-200 dark:bg-gray-800">
+                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                             <input type="text" 
                                                    :name="`alamat_sekolah_sma[${index}]`" 
                                                    x-model="alamatSMA[index]"
                                                    placeholder="Alamat SMA/SMK" 
-                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-200 dark:bg-gray-800">
+                                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                         </div>
                                         <button type="button" 
                                                 @click="sekolahSMA.splice(index, 1); alamatSMA.splice(index, 1)"
@@ -331,7 +331,8 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
                                 <input type="date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-200 dark:bg-gray-700">                            </div>
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md">
+                            </div>
                             @if(auth()->user()->user_role === 'admin')
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Verifikasi</label>
