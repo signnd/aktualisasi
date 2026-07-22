@@ -25,7 +25,7 @@
                 </div>
             @endif
 
-            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gray-50 dark:bg-zinc-900 border border-gray-300 shadow-lg rounded-lg overflow-hidden">
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
@@ -191,11 +191,11 @@
                                 </template>
                                 <button type="button" 
                                         @click="sekolahSD.push(''); alamatSD.push('')"
-                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                        class="mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
                                     </svg>
-                                    + Tambah Sekolah
+                                    Tambah Sekolah
                                 </button>
                             </div>
                         </div>
@@ -232,11 +232,11 @@
                                 </template>
                                 <button type="button" 
                                         @click="sekolahSMP.push(''); alamatSMP.push('')"
-                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                        class="mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
                                     </svg>
-                                    + Tambah Sekolah
+                                    Tambah Sekolah
                                 </button>
                             </div>
                         </div>
@@ -273,11 +273,11 @@
                                 </template>
                                 <button type="button" 
                                         @click="sekolahSMA.push(''); alamatSMA.push('')"
-                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                        class="mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
                                     </svg>
-                                    + Tambah Sekolah
+                                    Tambah Sekolah
                                 </button>
                             </div>
                         </div>

@@ -62,7 +62,7 @@
                             @if(auth()->user()->user_role === 'admin')
                                 <!-- Admin bisa pilih semua kabupaten -->
                                 <select id="kabupaten_id" name="kabupaten_id" required
-                                    class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-gray-700/90 text-black dark:text-gray-100 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                    class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-zinc-800 text-black dark:text-gray-100 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                                     <option value="">-- Pilih Kabupaten --</option>
                                     @foreach($kabupaten as $k)
                                         <option value="{{ $k->id }}">
@@ -73,7 +73,7 @@
                             @else
                                 <!-- User non-admin hanya bisa lihat kabupatennya -->
                                 <select id="kabupaten_id" name="kabupaten_id" required disabled
-                                    class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-gray-700/90 text-black dark:text-gray-100 hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
+                                    class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-zinc-800 text-black dark:text-gray-100 hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
                                     @foreach($kabupaten as $k)
                                         @if($k->id == auth()->user()->kabupaten_id)
                                             <option value="{{ $k->id }}" selected>
@@ -89,7 +89,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kecamatan <span class="text-red-500">*</span></label>
                                 <select id="kecamatan_id" name="kecamatan_id" required
-                                    class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-gray-700/90 text-black dark:text-gray-100 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
+                                    class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-zinc-800 text-black dark:text-gray-100 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-300">
                                     <option value="">-- Pilih Kecamatan --</option>
                                     @foreach($kecamatan as $kc)
                                         <option value="{{ $kc->id }}" data-kabupaten="{{ $kc->kabupaten_id }}"

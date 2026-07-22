@@ -54,7 +54,7 @@
 
         <!-- Header dengan Filter dan Tombol Tambah -->
         <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <h3 class="text-2xl font-bold">Data Pusdiklat</h3>
+            <h3 class="text-2xl font-bold">Data Pusdiklat/Sikkhapana</h3>
             
             <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
                 <!-- Filter Kabupaten pindah ke livewire -->

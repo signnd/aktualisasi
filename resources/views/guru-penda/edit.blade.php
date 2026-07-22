@@ -103,7 +103,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kabupaten <span class="text-red-500">*</span></label>
                                 <select id="kabupaten_id" name="kabupaten_id" required
-                                    class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-50 dark:bg-gray-300">
+                                    class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-gray-50">
                                     <option value="">-- Pilih Kabupaten --</option>
                                     @foreach($kabupaten as $k)
                                         <option value="{{ $k->id }}" @selected(old('kabupaten_id', $guruPenda->kabupaten_id) == $k->id)>
@@ -198,7 +198,7 @@
                                 </template>
                                 <button type="button" 
                                         @click="sekolahSD.push(''); alamatSD.push('')"
-                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                        class="mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
                                     </svg>
@@ -239,7 +239,7 @@
                                 </template>
                                 <button type="button" 
                                         @click="sekolahSMP.push(''); alamatSMP.push('')"
-                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                        class="mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
                                     </svg>
@@ -280,7 +280,7 @@
                                 </template>
                                 <button type="button" 
                                         @click="sekolahSMA.push(''); alamatSMA.push('')"
-                                        class="mt-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
+                                        class="mt-2 px-4 py-2 bg-blue-700 text-white rounded-lg hover:bg-blue-500 transition duration-200 flex items-center text-sm font-medium">
                                     <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"/>
                                     </svg>
@@ -338,7 +338,8 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
                                 <input type="date" value="{{ $guruPenda->tgl_update ? \Carbon\Carbon::now()->format('Y-m-d') : '-' }}"
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-200 dark:bg-gray-700">                            </div>
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md">
+                            </div>
                             @if(auth()->user()->user_role === 'admin')
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Verifikasi</label>

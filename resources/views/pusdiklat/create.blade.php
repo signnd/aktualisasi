@@ -30,7 +30,7 @@
                 
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-green-600 to-green-800 text-white p-6">
-                    <h3 class="text-2xl font-bold">Tambah Pusdiklat</h3>
+                    <h3 class="text-2xl font-bold">Tambah Pusdiklat/Sikkhapana</h3>
                 </div>
 
                 <form action="{{ route('pusdiklat.store') }}" method="POST" class="p-6">
@@ -46,9 +46,9 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama Pusdiklat<span class="text-red-500">*</span></label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama Pusdiklat/Sikkhapana<span class="text-red-500">*</span></label>
                                 <input type="text" name="nama" required
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zndiinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat Lengkap<span class="text-red-500">*</span></label>
@@ -245,11 +245,11 @@
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
                             </svg>
-                            Informasi Kondisi Pusdiklat
+                            Informasi Kondisi Pusdiklat/Sikkhapana
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kondisi Pusdiklat</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kondisi Pusdiklat/Sikkhapana</label>
                                 <div class="flex flex-wrap gap-3">
                                     <label class="flex items-center">
                                         <input type="radio" name="kondisi" value="Sangat Baik"
