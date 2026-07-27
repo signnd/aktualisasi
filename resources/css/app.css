@@ -47,7 +47,7 @@ a  .flux-not-initialized flux\:header { display: none !important; }
     grid-template-columns: 256px minmax(0, 1fr);
     grid-template-areas: "sidebar main";
     gap: 1rem;
-    align-items: start;
+    align-items: stretch;
   }
 
   /* Map Flux components to grid areas */

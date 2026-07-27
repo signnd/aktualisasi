@@ -123,7 +123,7 @@
                                 @if(auth()->user()->user_role === 'admin')
                                     <!-- Admin bisa pilih semua kabupaten -->
                                     <select id="kabupaten_id" name="kabupaten_id" required
-                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-white">
+                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-black bg-white">
                                         <option value="">-- Pilih Kabupaten --</option>
                                         @foreach($kabupatens as $k)
                                             <option value="{{ $k->id }}">
@@ -134,7 +134,7 @@
                                 @else
                                     <!-- User non-admin hanya bisa lihat kabupatennya -->
                                     <select id="kabupaten_id" name="kabupaten_id" required disabled
-                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
+                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-400 text-gray-700 cursor-not-allowed">
                                         @foreach($kabupaten as $k)
                                             @if($k->id == auth()->user()->kabupaten_id)
                                                 <option value="{{ $k->id }}" selected>
@@ -217,7 +217,7 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
                                 <input type="date" name="tgl_update" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-200 dark:bg-gray-700">
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-200">
                             </div>
                         </div>
                             @endif
