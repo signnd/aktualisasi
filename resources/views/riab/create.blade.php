@@ -333,7 +333,7 @@
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="lg:pt-6">
-                                <label class="flex items-center space-x-2 cursor-pointer p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md hover:bg-gray-50 hover:dark:bg-gray-500/80">
+                                <label class="flex items-center space-x-2 cursor-pointer p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md hover:bg-gray-50 dark:hover:bg-gray-500 hover:dark:bg-gray-500/80">
                                     <input type="checkbox" name="sertifikasi_tanah" value="Sudah"
                                         class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                     <span class="text-sm font-medium text-gray-800 dark:text-gray-100">Memiliki Sertifikasi Tanah</span>
@@ -342,42 +342,42 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Kondisi Geografis Wilayah</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Gunung Api</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pegunungan"
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Pegunungan</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Lembah"
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Lembah</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Bukit"
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Bukit</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Tinggi"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Tinggi</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Rendah"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Rendah</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pantai"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Pantai</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pesisir"
                                              class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Pesisir</span>
@@ -388,32 +388,32 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Peta Rawan Bencana</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Banjir"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Banjir</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Gempa"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Gempa</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Tsunami"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Tsunami</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Kekeringan"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Kekeringan</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Tanah Longsor"
                                         class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Tanah Longsor</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Gunung Meletus"
                                             class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                         <span class="text-sm">Gunung Meletus</span>
@@ -481,93 +481,93 @@
                             Fasilitas & Kelengkapan
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="lahan_parkir" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Lahan Parkir</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="toilet_disable" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Difabel</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="kursi_roda" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="jalur_kursi_roda" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Jalur Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="fasilitas_jalur_kursi_roda" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Fasilitas Jalur Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="lift" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Sarana Lift</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="tempat_bermain" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Tempat Bermain</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="toilet_anak" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Anak</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="wastafel_anak" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Wastafel Anak</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_ac" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruangan AC</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_belajar_anak" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruangan Belajar Anak</span> 
                             </label>
 
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="perpustakaan" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Perpustakaan</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="pengelola_perpustakaan" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Pengelola Perpustakaan</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="alas_duduk" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Alas Duduk</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="sound_system" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Sound System</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="lcd_proyektor" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">LCD Proyektor</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="ruang_laktasi" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruang Laktasi</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-500">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-5000">
                                 <input type="checkbox" name="tempat_duduk_lansia" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Tempat Duduk Ramah Lansia</span>

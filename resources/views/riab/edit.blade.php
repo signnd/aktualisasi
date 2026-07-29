@@ -359,7 +359,7 @@
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div class="lg:pt-7">
-                                <label class="flex items-center space-x-2 cursor-pointer p-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md hover:bg-gray-50">
+                                <label class="flex items-center space-x-2 cursor-pointer p-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                     <input type="checkbox" name="sertifikasi_tanah" value="Ada"
                                         @checked(old('sertifikasi_tanah', $riab->riabdetail->sertifikasi_tanah ?? '') == 'Sudah')
                                         class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
@@ -369,49 +369,49 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Kondisi Geografis Wilayah</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Gunung Api"
                                              {{ in_array('Gunung Api', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Gunung Api</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pegunungan"
                                              {{ in_array('Pegunungan', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Pegunungan</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Lembah"
                                              {{ in_array('Lembah', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Lembah</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Bukit"
                                              {{ in_array('Bukit', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Bukit</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Tinggi"
                                              {{ in_array('Dataran Tinggi', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Tinggi</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Dataran Rendah"
                                              {{ in_array('Dataran Rendah', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Dataran Rendah</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pantai"
                                              {{ in_array('Pantai', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Pantai</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="kondisi_geografis[]" value="Pesisir"
                                              {{ in_array('Pesisir', $kondisiGeo) ? 'checked' : '' }}
                                              class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
@@ -422,37 +422,37 @@
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Peta Rawan Bencana</label>
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Banjir"
                                             {{ in_array('Banjir', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Banjir</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Gempa"
                                             {{ in_array('Gempa', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Gempa</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Tsunami"
                                             {{ in_array('Tsunami', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Tsunami</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Kekeringan"
                                             {{ in_array('Kekeringan', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Kekeringan</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Longsor"
                                             {{ in_array('Tanah Longsor', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                         <span class="text-sm">Tanah Longsor</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50">
+                                    <label class="flex items-center space-x-2 p-2 border border-gray-400 rounded cursor-pointer dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500">
                                         <input type="checkbox" name="peta_rawan_bencana[]" value="Gunung Meletus"
                                             {{ in_array('Tanah Longsor', $petaRawan) ? 'checked' : '' }}
                                             class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
@@ -521,109 +521,109 @@
                             Fasilitas & Kelengkapan
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="lahan_parkir" value="Ada"
                                     @checked(old('lahan_parkir', $riab->riabdetail->lahan_parkir ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Lahan Parkir</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer ">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer ">
                                 <input type="checkbox" name="toilet_disable" value="Ada"
                                     @checked(old('toilet_disable', $riab->riabdetail->toilet_disable ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Difabel</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="kursi_roda" value="Ada"
                                     @checked(old('kursi_roda', $riab->riabdetail->kursi_roda ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="jalur_kursi_roda" value="Ada"
                                     @checked(old('jalur_kursi_roda', $riab->riabdetail->jalur_kursi_roda ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Jalur Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="fasilitas_jalur_kursi_roda" value="Ada"
                                     @checked(old('fasilitas_jalur_kursi_roda', $riab->riabdetail->fasilitas_jalur_kursi_roda ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Fasilitas Jalur Kursi Roda</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="lift" value="Ada"
                                     @checked(old('lift', $riab->riabdetail->lift ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Sarana Lift</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="tempat_bermain" value="Ada"
                                     @checked(old('tempat_bermain', $riab->riabdetail->tempat_bermain ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Taman/Tempat Bermain</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="toilet_anak" value="Ada"
                                     @checked(old('toilet_anak', $riab->riabdetail->toilet_anak ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Toilet Anak</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="wastafel_anak" value="Ada"
                                     @checked(old('wastafel_anak', $riab->riabdetail->wastafel_anak ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Wastafel Anak</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="ruang_ac" value="Ada"
                                     @checked(old('ruang_ac', $riab->riabdetail->ruang_ac ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruangan AC</span> 
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="ruang_belajar_anak" value="Ada"
                                     @checked(old('ruang_belajar_anak', $riab->riabdetail->ruang_belajar_anak ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruangan Belajar Anak</span> 
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="perpustakaan" value="Ada"
                                     @checked(old('perpustakaan', $riab->riabdetail->perpustakaan ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Perpustakaan</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="pengelola_perpustakaan" value="Ada"
                                     @checked(old('pengelola_perpustakaan', $riab->riabdetail->pengelola_perpustakaan ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Pengelola Perpustakaan</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="alas_duduk" value="Ada"
                                     @checked(old('alas_duduk', $riab->riabdetail->alas_duduk ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Alas Duduk</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="sound_system" value="Ada"
                                     @checked(old('sound_system', $riab->riabdetail->sound_system ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Sound System</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="lcd_proyektor" value="Ada"
                                     @checked(old('lcd_proyektor', $riab->riabdetail->lcd_proyektor ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">LCD Proyektor</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="ruang_laktasi" value="Ada"
                                     @checked(old('ruang_laktasi', $riab->riabdetail->ruang_laktasi ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruang Laktasi</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 transition motion-reduce:transition-none rounded-md cursor-pointer">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-500 transition motion-reduce:transition-none rounded-md cursor-pointer">
                                 <input type="checkbox" name="tempat_duduk_lansia" value="Ada"
                                     @checked(old('tempat_duduk_lansia', $riab->riabdetail->tempat_duduk_lansia ?? '') == 'Ada')
                                     class="rounded text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
