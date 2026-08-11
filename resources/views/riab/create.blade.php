@@ -152,19 +152,9 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Ketua</label>
-                                <input type="text" name="ketua"
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tahun Berdiri</label>
                                 <input type="number" name="thn_berdiri"
                                        min="1000" max="{{ date('Y') }}"
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Penerbitan Tanda Daftar</label>
-                                <input type="date" name="tgl_tanda_daftar"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
@@ -173,53 +163,18 @@
                                        placeholder="Contoh: Vihara, TITD, Kelenteng Buddha, Cetiya"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Penerbitan Tanda Daftar</label>
+                                <input type="date" name="tgl_tanda_daftar"
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Jumlah Umat</label>
                                 <input type="number" name="jumlah_umat"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
-                                <input type="date" name="tgl_update"
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            @if(auth()->user()->user_role === 'admin')
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status</label>
-                                <div class="flex flex-wrap gap-3">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Disetujui"
-                                               class="mr-2 text-green-600 focus:ring-green-500">
-                                        <span>Disetujui</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Ditolak"
-                                               class="mr-2 text-red-600 focus:ring-red-500">
-                                        <span>Ditolak</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Pending"
-                                               class="mr-2 text-gray-600 focus:ring-gray-500">
-                                        <span>Pending</span>
-                                    </label>
-                                </div>
-                            </div>
-                            @endif
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Eksisting</label>
-                                <div class="flex gap-3">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="eksisting" value="Aktif"
-                                               class="mr-2 text-green-600 focus:ring-green-500">
-                                        <span>Aktif</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="eksisting" value="Tidak Aktif"
-                                               class="mr-2 text-red-600 focus:ring-red-500">
-                                        <span>Tidak Aktif</span>
-                                    </label>
-                                </div>
-                            </div>
+
                             <div class="md:col-span-2">
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Kondisi RIAB</label>
                                 <div class="flex flex-wrap gap-3">
@@ -250,6 +205,22 @@
                                     </label>
                                 </div>
                             </div>
+                                                        <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Eksisting</label>
+                                <div class="flex gap-3">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="eksisting" value="Aktif"
+                                               class="mr-2 text-green-600 focus:ring-green-500">
+                                        <span>Aktif</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="eksisting" value="Tidak Aktif"
+                                               class="mr-2 text-red-600 focus:ring-red-500">
+                                        <span>Tidak Aktif</span>
+                                    </label>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -264,6 +235,12 @@
                         </h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Ketua</label>
+                                <input type="text" name="ketua"
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+
+                            <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Email</label>
                                 <input type="email" name="email"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -273,7 +250,7 @@
                                 <input type="text" name="no_telp"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                            <div class="md:col-span-2">
+                            <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Media Sosial</label>
                                 <input type="text" name="media_sosial"
                                        placeholder="Instagram/Facebook/Twitter/YouTube/TikTok"
@@ -288,7 +265,7 @@
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
                             </svg>
-                            Deskripsi & Dokumentasi
+                            Deskripsi & Foto
                         </h4>
                         <div class="space-y-4">
                             <div>
@@ -423,7 +400,7 @@
                         </div>
                     </div>
 
-                    <!-- Riwayat Bantuan -->
+                    <!-- Riwayat Bantuan
                     <div class="mb-8">
                         <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 pb-2 border-b-2 border-indigo-500 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -470,7 +447,7 @@
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Fasilitas -->
                     <div class="mb-8">
@@ -567,7 +544,7 @@
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Ruang Laktasi</span>
                             </label>
-                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-5000">
+                            <label class="flex items-center space-x-2 p-3 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-500">
                                 <input type="checkbox" name="tempat_duduk_lansia" value="Ada"
                                     class="rounded text-gray-50 dark:text-blue-600 focus:ring-blue-500">
                                 <span class="text-sm">Tempat Duduk Ramah Lansia</span>
@@ -633,8 +610,8 @@
                                         <span>Belum</span>
                                     </label>
                             </div>
-                            </div>
-                            <div>
+                        </div>
+                            <!--<div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">LPJ Bantuan</label>
                                 <input type="text" name="lpj_bantuan"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -656,15 +633,43 @@
                                 <input type="url" name="foto_setelah_bantuan"
                                        placeholder="https://..."
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
+                            </div> -->
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Link Berita Acara Penonaktifan</label>
                                 <input type="url" name="link_berita_acara_nonaktif"
                                        placeholder="https://..."
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
-                        </div>
-                                                <div>
+                        
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
+                                <input type="date" name="tgl_update"
+                                class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                                                        @if(auth()->user()->user_role === 'admin')
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status</label>
+                                <div class="flex flex-wrap gap-3">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status" value="Disetujui"
+                                               class="mr-2 text-green-600 focus:ring-green-500">
+                                        <span>Disetujui</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status" value="Ditolak"
+                                               class="mr-2 text-red-600 focus:ring-red-500">
+                                        <span>Ditolak</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status" value="Pending"
+                                               class="mr-2 text-gray-600 focus:ring-gray-500">
+                                        <span>Pending</span>
+                                    </label>
+                                </div>
+                            </div>
+                            @endif
+
+                        <div>
                             @if(auth()->user()->user_role === 'admin')
                             <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 my-2">Status Verifikasi</label>
                             <div class="flex gap-3">
@@ -693,7 +698,7 @@
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
                     <!-- Action Buttons -->
-                    <div class="flex justify-between items-center pt-6 border-t">
+                    <div class="flex justify-between items-center pt-6">
                         <a href="{{ route('riab.index') }}" 
                            class="px-6 py-2.5 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition duration-200 flex items-center">
                             <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">

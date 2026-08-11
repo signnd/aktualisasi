@@ -74,34 +74,12 @@
             </div>
         </div>
 
-            <!-- Table Content pindah ke livewire -->
+    <!-- Table Content pindah ke livewire -->
     <!-- Livewire Component -->
     @livewire('smb-search')</form>
 
             </div>
         </div>
-                <!-- Informasi Filter Aktif -->
-@if(!empty($selectedKabupatenId))
-    <!-- <div class="mb-4 p-3 bg-blue-50 border-l-4 border-blue-500 text-blue-700 rounded">
-        <p class="text-sm flex items-center">
-            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-            </svg>
-            Menampilkan Rumah Ibadah Agama Buddha di <strong class="mx-1">{{ $kabupatens->find($selectedKabupatenId)->kabupaten ?? 'Kabupaten Terpilih' }}</strong>
-            <span class="ml-2 text-gray-600">({{ $smbs->total() }} data)</span>
-        </p>
-    </div> -->
-@else
-    <!-- <div class="mb-4 p-3 bg-green-200 border-l-4 border-green-500 text-green-700 rounded">
-        <p class="text-sm flex items-center">
-            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/>
-            </svg>
-            Menampilkan Rumah Ibadah Agama Buddha dari <strong class="mx-1">Semua Kabupaten</strong>
-            <span class="ml-2 text-gray-600">({{ $smbs->total() }} data)</span>
-        </p>
-    </div> -->
-@endif
 
     <!-- JavaScript untuk Auto-hide Message -->
     <script>

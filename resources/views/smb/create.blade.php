@@ -93,25 +93,35 @@
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal IZOP</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Izin Operasional</label>
                                 <input type="date" name="tgl_izop"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Masa IZOP</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Masa Izin Operasional</label>
                                 <input type="text" name="masa_izop"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Bapen</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Badan Pendidikan</label>
                                 <input type="text" name="bapen"
                                        placeholder=""
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat Bapen</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat Badan Pendidikan</label>
                                 <textarea name="alamat_bapen" rows="2"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Latitude</label>
+                                <input type="text" name="latitude"
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Longitude</label>
+                                <input type="text" name="longitude"
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kabupaten/Kota<span class="text-red-500">*</span></label>
@@ -143,45 +153,17 @@
                                 @endif
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Nama PIC</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Nama PIC</label>
                                 <input type="text" name="nama_pic"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                                 <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">No. Telp/HP/WhatsApp</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">No. Telp/HP/WhatsApp</label>
                                 <input type="text" name="no_telp"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
-                                <input type="date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md bg-gray-200 dark:bg-gray-700">
-                            </div>
-                            </div>
-                            @if(auth()->user()->user_role === 'admin')
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status</label>
-                                <div class="flex flex-wrap gap-3">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Disetujui"
-                                               class="mr-2 text-green-600 focus:ring-green-500">
-                                        <span>Disetujui</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Ditolak"
-                                               class="mr-2 text-red-600 focus:ring-red-500">
-                                        <span>Ditolak</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status" value="Pending"
-                                               class="mr-2 text-gray-600 focus:ring-gray-500">
-                                        <span>Pending</span>
-                                    </label>
-                                </div>
-                            </div>
-                            @endif
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status Eksisting</label>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Eksisting</label>
                                 <div class="flex gap-3">
                                     <label class="flex items-center">
                                         <input type="radio" name="eksisting" value="Aktif"
@@ -195,24 +177,8 @@
                                     </label>
                                 </div>
                             </div>
-                            @if(auth()->user()->user_role === 'admin')
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Status Verifikasi</label>
-                                <div class="flex gap-3">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="TRUE"
-                                               class="mr-2 text-blue-600 focus:ring-blue-500">
-                                        <span>Terverifikasi</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="FALSE"
-                                               class="mr-2 text-gray-600 focus:ring-gray-500">
-                                        <span>Tidak Terverifikasi</span>
-                                    </label>
-                                </div>
-                            </div>
-                            @endif
                         </div>
+                    </div>
                     <!-- Informasi Kondisi SMB -->
                     <div class="mb-8">
                         <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4 pb-2 border-b-2 border-purple-500 flex items-center">
@@ -295,11 +261,56 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Link Berita Acara Penonaktifan</label>
                                 <input type="url" name="link_berita_acara_nonaktif"
-                                       placeholder="https://..."
+                                       placeholder="Diisi jika tidak aktif"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
+                            @if(auth()->user()->user_role === 'admin')
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status</label>
+                                <div class="flex flex-wrap gap-3">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status" value="Disetujui"
+                                               class="mr-2 text-green-600 focus:ring-green-500">
+                                        <span>Disetujui</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status" value="Ditolak"
+                                               class="mr-2 text-red-600 focus:ring-red-500">
+                                        <span>Ditolak</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status" value="Pending"
+                                               class="mr-2 text-gray-600 focus:ring-gray-500">
+                                        <span>Pending</span>
+                                    </label>
+                                </div>
+                            </div>
+                            @endif
+                        <div>
+                            <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Tanggal Update</label>
+                            <input type="date" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}"
+                                   class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md">
                         </div>
+                            @if(auth()->user()->user_role === 'admin')
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Verifikasi</label>
+                                <div class="flex gap-3">
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status_verifikasi" value="TRUE"
+                                               class="mr-2 text-blue-600 focus:ring-blue-500">
+                                        <span>Terverifikasi</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status_verifikasi" value="FALSE"
+                                               class="mr-2 text-gray-600 focus:ring-gray-500">
+                                        <span>Tidak Terverifikasi</span>
+                                    </label>
+                                </div>
+                            </div>
+                            @endif
                     </div>
+                </div>
+            </div>
 
                     <!-- Hidden Field -->
                     <input type="hidden" name="user_id" value="{{ auth()->id() }}">
