@@ -19,7 +19,7 @@
                 <!-- Header -->
                 <div class="bg-gradient-to-r from-lime-600 to-lime-800 text-white p-6 relative">
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
-                        <h1 class="text-3xl font-bold">{{ $smb->nama }}</h1>
+                        <h1 class="text-3xl font-bold">{{ $smb->nama_smb }}</h1>
                         @if($smb->status_verifikasi === 'pending')
                             <span class="bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap shadow self-start" title="Data ini sedang dalam peninjauan">
                                 Sedang Diverifikasi
@@ -39,7 +39,7 @@
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Kabupaten</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Kabupaten/Kota</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $smb->kabupaten->kabupaten ?? '-' }}</p>
                             </div>
                             @if($smb->alamat)
@@ -65,7 +65,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             @if($smb->didirikan)
                             <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Ketua</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Didirikan</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $smb->didirikan }}</p>
                             </div>
                             @endif
@@ -77,46 +77,46 @@
                             @endif
                             @if($smb->izop_1)
                             <div class="md:col-span-2">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Keterangan</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Izin Operasional 1</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $smb->izop_1 }}</p>
                             </div>
                             @endif
                             @if($smb->ppjg_1)
                             <div>
-                                <p class="text-sm text-gray-500">PPJG 1</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">PPJG 1</p>
                                 <p class="font-medium">{{ $smb->ppjg_1 ?? '-' }}</p>
                             </div>
                             @endif
                             @if($smb->ppjg_2)
                             <div>
-                                <p class="text-sm text-gray-500">PPJG 2</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">PPJG 2</p>
                                 <p class="font-medium">{{ $smb->ppjg_2 ?? '-' }}</p>
                             </div>
                             @endif
                             @if($smb->nssmb)
                             <div>
-                                <p class="text-sm text-gray-500">NSSMB</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">NSSMB</p>
                                 <p class="font-medium">{{ $smb->nssmb ?? '-' }}</p>
                             </div>
                             @endif
                             @if($smb->tgl_izop)
                             <div>
-                                <p class="text-sm text-gray-500">Tanggal Izin Operasional</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Tanggal Izin Operasional</p>
                                 <p class="font-medium">{{ $smb->tgl_izop ? \Carbon\Carbon::parse($smb->tgl_izop)->format('d M Y') : '-' }}</p>
                             </div>
                             @endif
                             @if($smb->masa_izop)
                             <div>
-                                <p class="text-sm text-gray-500">Masa Izin Operasional</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Masa Izin Operasional</p>
                                 <p class="font-medium">{{ $smb->masa_izop ?? '-' }}</p>
                             </div>
                             @endif
                             <div>
-                                <p class="text-sm text-gray-500">Jumlah Siswa</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Jumlah Siswa</p>
                                 <p class="font-medium">{{ $smb->siswasmb->count() }} orang</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-500">Status Eksisting</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Status Eksisting</p>
                                 <p class="font-medium">
                                     <span class="px-2 py-1 rounded text-sm {{ $smb->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                         {{ $smb->eksisting ?? '-' }}
@@ -124,7 +124,7 @@
                                 </p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-500">Tanggal Update</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Tanggal Update</p>
                                 <p class="font-medium">{{ $smb->tgl_update ? \Carbon\Carbon::parse($smb->tgl_update)->format('d M Y') : '-' }}</p>
                             </div>
                         </div>
@@ -144,13 +144,13 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             @if($smb->bapen)
                             <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Bapen</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Badan Pendidikan</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $smb->bapen }}</p>
                             </div>
                             @endif
                             @if($smb->alamat_bapen)
                             <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Alamat Bapen</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Alamat Badan</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $smb->alamat_bapen }}</p>
                             </div>
                             @endif
