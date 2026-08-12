@@ -296,12 +296,17 @@
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Verifikasi</label>
                                 <div class="flex gap-3">
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="TRUE"
+                                        <input type="radio" name="status_verifikasi" value="approved"
                                                class="mr-2 text-blue-600 focus:ring-blue-500">
                                         <span>Terverifikasi</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="FALSE"
+                                        <input type="radio" name="status_verifikasi" value="pending"
+                                               class="mr-2 text-gray-600 focus:ring-gray-500">
+                                        <span>Pending</span>
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="radio" name="status_verifikasi" value="rejected"
                                                class="mr-2 text-gray-600 focus:ring-gray-500">
                                         <span>Tidak Terverifikasi</span>
                                     </label>

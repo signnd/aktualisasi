@@ -287,7 +287,7 @@
                                 @endif
                             </div>   
                         </div>
-                                                    <div>
+                            <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Tanggal Update</label>
                                 <input type="date" name="tgl_update" value="{{ old('tgl_update', $smb->tgl_update ?? \Carbon\Carbon::now()->format('Y-m-d')) }}"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
