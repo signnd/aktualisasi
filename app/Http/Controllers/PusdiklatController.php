@@ -62,6 +62,8 @@ class PusdiklatController extends Controller
             'kabupaten_id' => 'required|exists:kabupaten,id',
             'nama' => 'required|string|max:400',
             'alamat' => 'nullable|string|max:800',
+            'latitude' => 'nullable|string|max:50',
+            'longitude' => 'nullable|string|max:50',
             'berdiri' => 'nullable|string|max:50',
             'izop_1' => 'nullable|string|max:100',
             'ppjg_1' => 'nullable|string|max:100',
@@ -142,10 +144,12 @@ class PusdiklatController extends Controller
             abort(403, 'Anda tidak memiliki akses untuk mengedit data kabupaten ini.');
         }
 
-                $validated = $request->validate([
+        $validated = $request->validate([
             'kabupaten_id' => 'required|exists:kabupaten,id',
             'nama' => 'required|string|max:400',
             'alamat' => 'nullable|string|max:800',
+            'latitude' => 'nullable|string|max:50',
+            'longitude' => 'nullable|string|max:50',
             'berdiri' => 'nullable|string|max:50',
             'izop_1' => 'nullable|string|max:100',
             'ppjg_1' => 'nullable|string|max:100',

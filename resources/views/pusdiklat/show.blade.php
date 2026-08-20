@@ -30,17 +30,6 @@
             </div>
 
             <div class="p-6 space-y-6"> <!-- informasi -->
-                <!-- Informasi Lokasi 
-                <div class="border-b pb-4">
-                    <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                        </svg>
-                        Informasi Umum
-                    </h4>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    </div>
-                </div> -->
 
                 <!-- Informasi Umum -->
                 <div class="border-b pb-4">
@@ -54,6 +43,11 @@
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Alamat Lengkap</p>
                             <p class="font-medium">{{ $pusdiklat->alamat ?? '-' }}</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Koordinat (Latitude, Longitude)</p>
+                            <p class="font-medium hover:underline">
+                                <a href="https://maps.google.com/?q={{ $pusdiklat->latitude ?? '-' }}, {{ $pusdiklat->longitude ?? '-' }}" target="_blank">{{ $pusdiklat->latitude ?? '-' }}, {{ $pusdiklat->longitude ?? '-' }}</a></p>
                         </div>
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Kabupaten</p>

@@ -205,6 +205,12 @@
                             <p class="font-medium">{{ $smb->alamat ?? '-' }}</p>
                         </div>
                         <div>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Koordinat (Latitude, Longitude)</p>
+                            <p class="font-medium hover:underline">
+                                <a href="https://maps.google.com/?q={{ $smb->latitude ?? '-' }}, {{ $smb->longitude ?? '-' }}" target="_blank">{{ $smb->latitude ?? '-' }}, {{ $smb->longitude ?? '-' }}</a></p>
+</p>
+                        </div>
+                        <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Kabupaten</p>
                             <p class="font-medium">{{ $smb->kabupaten->kabupaten ?? '-' }}</p>
                         </div>

@@ -48,6 +48,14 @@
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $smb->alamat }}</p>
                             </div>
                             @endif
+                            @if($smb->latitude || $smb->longitude)
+                            <div class="md:col-span-2">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Koordinat (Latitude & Longitude)</p>
+                                <p class="font-medium">
+                                    <a href="https://maps.google.com/?q={{ $smb->latitude ?? '-' }}, {{ $smb->longitude ?? '-' }}" target="_blank">{{ $smb->latitude ?? '-' }}, {{ $smb->longitude ?? '-' }}</a></p>
+                                </p>
+                            </div>
+                            @endif
                         </div>
                     </div>
 

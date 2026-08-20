@@ -30,17 +30,25 @@
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Kabupaten</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 dark:text-gray-400">Kabupaten</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $dhammasekha->kabupaten->kabupaten ?? '-' }}</p>
                             </div>
                             <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Kecamatan</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 dark:text-gray-400">Kecamatan</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $dhammasekha->kecamatan->kecamatan ?? '-' }}</p>
                             </div>
                             @if($dhammasekha->alamat)
                             <div class="md:col-span-2">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Alamat Lengkap</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-300 dark:text-gray-400">Alamat Lengkap</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $dhammasekha->alamat }}</p>
+                            </div>
+                            @endif
+                            @if($dhammasekha->latitude || $dhammasekha->longitude)
+                            <div class="md:col-span-2">
+                                <p class="text-sm text-gray-500 dark:text-gray-300 dark:text-gray-400">Koordinat (Latitude, Longitude)</p>
+                                <p class="font-medium">
+                                    <a href="https://maps.google.com/?q={{ $dhammasekha->latitude ?? '-' }}, {{ $dhammasekha->longitude ?? '-' }}" target="_blank">{{ $dhammasekha->latitude ?? '-' }}, {{ $dhammasekha->longitude ?? '-' }}</a></p>
+                                </p>
                             </div>
                             @endif
                         </div>
@@ -57,72 +65,72 @@
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <p class="text-sm text-gray-500">Jenis</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Jenis</p>
                             <p class="font-medium">{{ $dhammasekha->jenis ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Alamat Lengkap</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Alamat Lengkap</p>
                             <p class="font-medium">{{ $dhammasekha->alamat ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Kabupaten</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Kabupaten</p>
                             <p class="font-medium">{{ $dhammasekha->kabupaten->kabupaten ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Tanggal Berdiri</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Tanggal Berdiri</p>
                             <p class="font-medium">{{ $dhammasekha->tgl_berdiri ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">No. Izin Operasional</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">No. Izin Operasional</p>
                             <p class="font-medium">{{ $dhammasekha->no_izop ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">IZOP PPJG</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">IZOP PPJG</p>
                             <p class="font-medium">{{ $dhammasekha->izop_ppjg ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Masa IZOP</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Masa IZOP</p>
                             <p class="font-medium">{{ $dhammasekha->masa_izop ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Tanggal IZOP</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Tanggal IZOP</p>
                             <p class="font-medium">{{ $dhammasekha->tgl_izop ? \Carbon\Carbon::parse($dhammasekha->tgl_izop)->format('d M Y') : '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Masa IZOP</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Masa IZOP</p>
                             <p class="font-medium">{{ $dhammasekha->masa_izop ? \Carbon\Carbon::parse($dhammasekha->masa_izop)->format('d M Y') : '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">No. Statistik</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">No. Statistik</p>
                             <p class="font-medium">{{ $dhammasekha->no_statistik ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Nama Yayasan</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Nama Yayasan</p>
                             <p class="font-medium">{{ $dhammasekha->nama_yayasan ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Alamat Yayasan</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Alamat Yayasan</p>
                             <p class="font-medium">{{ $dhammasekha->alamat_yayasan ?? '-' }}</p>
                         </div>
-                        <div>
-                            <p class="text-sm text-gray-500">NPYP</p>
+                        <!--<div>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">NPYP</p>
                             <p class="font-medium">{{ $dhammasekha->npyp ?? '-' }}</p>
-                        </div>
+                        </div> -->
                         <div>
-                            <p class="text-sm text-gray-500">NPSN</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">NPSN</p>
                             <p class="font-medium">{{ $dhammasekha->npsn ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Akreditasi</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Akreditasi</p>
                             <p class="font-medium">{{ $dhammasekha->akreditasi ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Jumlah Siswa</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Jumlah Siswa</p>
                             <p class="font-medium">{{ $dhammasekha->siswadhammasekha->count() }} orang</p>
                         </div>
                         @if($dhammasekha->jenis !== 'Dhammasekha Non Formal')
                         <div>
-                            <p class="text-sm text-gray-500">Naungan Kemenag</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Naungan Kemenag</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->naungan_kemenag == 'Ya' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $dhammasekha->naungan_kemenag ?? '-' }}
@@ -130,24 +138,24 @@
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Naungan Dinas Pendidikan</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Naungan Dinas Pendidikan</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->naungan_disdik == 'Ya' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $dhammasekha->naungan_disdik ?? '-' }}
                                 </span>
                             </p>
                         </div>
-                        <div>
-                            <p class="text-sm text-gray-500">TK Dinas Pendidikan KB Kemenag</p>
+                        <!--<div>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">TK Dinas Pendidikan KB Kemenag</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->tk_disdik_kb_kemenag == 'Ya' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $dhammasekha->tk_disdik_kb_kemenag ?? '-' }}
                                 </span>
                             </p>
-                        </div>
+                        </div>-->
                         @endif
                         <div>
-                            <p class="text-sm text-gray-500">Kondisi Bangunan</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Kondisi Bangunan</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm 
                                     {{ $dhammasekha->kondisi == 'Sangat Baik' ? 'bg-green-100 text-green-800' : 
@@ -159,30 +167,30 @@
                             </p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Status Eksisting</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Status Eksisting</p>
                             <p class="font-medium">
                                 <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->eksisting == 'Aktif' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">
                                     {{ $dhammasekha->eksisting ?? '-' }}
                                 </span>
                             </p>
                         </div>
-                        <div>
-                            <p class="text-sm text-gray-500">Status Verifikasi</p>
+                        <!--<div>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Status Verifikasi</p>
                             <p class="font-medium">
-                                <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-100' }}">
+                                <span class="px-2 py-1 rounded text-sm {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-300' }}">
                                     {{ $dhammasekha->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                 </span>
                             </p>
-                        </div>
+                        </div>-->
                         <div>
-                            <p class="text-sm text-gray-500">Tanggal Update</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Tanggal Update</p>
                             <p class="font-medium">{{ $dhammasekha->tgl_update ? \Carbon\Carbon::parse($dhammasekha->tgl_update)->format('d M Y') : '-' }}</p>
                         </div>
                     </div>
                 </div>
                 <!-- Informasi Kontak -->
                 <div class="border-b dark:border-zinc-700">
-                    <h4 class="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                    <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
@@ -191,15 +199,15 @@
                     </h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <p class="text-sm text-gray-500">Nama PIC</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Nama PIC</p>
                             <p class="font-medium">{{ $dhammasekha->nama_pic ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">No. Telp/HP/WhatsApp</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">No. Telp/HP/WhatsApp</p>
                             <p class="font-medium">{{ $dhammasekha->no_hp ?? '-' }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Email</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-300">Email</p>
                             <p class="font-medium">{{ $dhammasekha->email ?? '-' }}</p>
                         </div>
                 </div>

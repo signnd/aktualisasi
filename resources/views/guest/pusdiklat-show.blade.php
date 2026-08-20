@@ -39,6 +39,13 @@
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $pusdiklat->alamat }}</p>
                             </div>
                             @endif
+                            @if($pusdiklat->latitude || $pusdiklat->longitude)
+                            <div class="md:col-span-2">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Koordinat (Latitude, Longitude)</p>
+                                <p class="font-medium text-gray-900 dark:text-white hover:underline">
+                                    <a href="https://maps.google.com/?q={{ $pusdiklat->latitude ?? '-' }}, {{ $pusdiklat->longitude ?? '-' }}" target="_blank">{{ $pusdiklat->latitude ?? '-' }}, {{ $pusdiklat->longitude ?? '-' }}</a></p></p>
+                            </div>
+                            @endif
                         </div>
                     </div>
 

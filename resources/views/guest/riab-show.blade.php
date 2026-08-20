@@ -54,7 +54,7 @@
                             @endif
                             @if($riab->latitude && $riab->longitude)
                             <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-300">Koordinat (Lat, Long)</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-300">Koordinat (Latitude, Longitude)</p>
                                 <p class="font-medium">
                                     <a href="https://maps.google.com/?q={{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}" target="_blank">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</a></p>
                             </div>

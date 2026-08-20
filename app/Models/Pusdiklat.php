@@ -12,8 +12,8 @@ class Pusdiklat extends Model
 
     protected $table = 'pusdiklat';
     
-    protected $fillable = ['kabupaten_id','nama','alamat','berdiri',
-        'izop_1','ppjg_1','ppjg_2','no_statistik','th_izop','tgl_izop',
+    protected $fillable = ['kabupaten_id','nama','alamat','latitude','longitude',
+        'berdiri','izop_1','ppjg_1','ppjg_2','no_statistik','th_izop','tgl_izop',
         'masa_izop','bapen','alamat_bapen','nama_pic','no_hp',
         'jml_siswa','eksisting','link_nonaktif','kondisi',
         'foto','keterangan','tgl_update','status_verifikasi','user_id',
