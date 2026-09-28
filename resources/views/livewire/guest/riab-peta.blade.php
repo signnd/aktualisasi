@@ -16,16 +16,16 @@
     <!-- SIDEBAR KIRI -->
     <div class="w-full md:w-[380px] lg:w-[420px] flex flex-col h-full shrink-0 border-r border-gray-200 z-20 shadow-lg relative bg-white">
         <!-- Header & Filters -->
-        <div class="p-5 border-b border-gray-200 bg-white">
-            <h2 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <div class="p-5 border-gray-200 bg-white dark:bg-black">
+            <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
                 <svg class="w-6 h-6 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                Eksplor Peta RIAB
+                Peta Rumah Ibadah
             </h2>
 
             <div class="space-y-3">
                 <!-- Dropdown Kota/Kabupaten -->
                 <div>
-                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Wilayah Kabupaten/Kota</label>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-100 uppercase tracking-wider mb-1">Wilayah Kabupaten/Kota</label>
                     <div class="relative">
                         <select wire:model.live="kabupaten_id" class="w-full appearance-none bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-600 text-gray-700 dark:text-white py-2.5 px-3 pr-8 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-all shadow-sm">
                             <option value="">Semua Wilayah Bali</option>
@@ -41,7 +41,7 @@
 
                 <!-- Input Pencarian -->
                 <div>
-                    <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Cari Nama/Alamat</label>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-100 uppercase tracking-wider mb-1">Cari Nama/Alamat</label>
                     <div class="relative">
                         <input type="text" wire:model.live.debounce.300ms="search" placeholder="Cari..." class="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-300 dark:border-zinc-600 text-gray-700 dark:text-white py-2.5 pl-10 pr-3 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-all shadow-sm">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
@@ -51,13 +51,13 @@
                 </div>
             </div>
             
-            <div class="mt-4 flex justify-between items-center text-xs text-gray-500">
-                <span>Ditemukan <strong class="text-indigo-600 font-bold bg-indigo-50 px-2 py-0.5 rounded-full">{{ count($listRiab) }}</strong> lokasi</span>
+            <div class="mt-4 flex justify-between items-center text-xs text-gray-500 dark:text-gray-100">
+                <span>Ditemukan <strong class="text-indigo-600 dark:text-indigo-100 font-bold px-2 py-0.5 rounded-full border-1">{{ count($listRiab) }}</strong> lokasi</span>
             </div>
         </div>
 
         <!-- Daftar Scrollable Card -->
-        <div class="flex-1 overflow-y-auto sidebar-scroll bg-gray-50/50 p-3 space-y-3">
+        <div class="flex-1 overflow-y-auto sidebar-scroll bg-slate-600/30 dark:bg-black p-3 space-y-3">
             @forelse($listRiab as $riab)
                 <div class="bg-white border text-left border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-indigo-300 transition-all cursor-pointer group" 
                      onclick="focusMapMarker({{ $riab->id }}, {{ $riab->latitude ?: 'null' }}, {{ $riab->longitude ?: 'null' }})">
@@ -110,7 +110,7 @@
             // Pindahkan zoom control ke kanan bawah
             L.control.zoom({ position: 'bottomright' }).addTo(window.riabMap);
 
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=cb1_40z3_1_55665dbac4fc781ed1bf14ba', {
                 maxZoom: 19,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             }).addTo(window.riabMap);

@@ -51,7 +51,7 @@
                             @if($smb->latitude || $smb->longitude)
                             <div class="md:col-span-2">
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Koordinat (Latitude & Longitude)</p>
-                                <p class="font-medium">
+                                <p class="font-medium hover:underline">
                                     <a href="https://maps.google.com/?q={{ $smb->latitude ?? '-' }}, {{ $smb->longitude ?? '-' }}" target="_blank">{{ $smb->latitude ?? '-' }}, {{ $smb->longitude ?? '-' }}</a></p>
                                 </p>
                             </div>
@@ -75,12 +75,6 @@
                             <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-400">Didirikan</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $smb->didirikan }}</p>
-                            </div>
-                            @endif
-                            @if($smb->tgl_update)
-                            <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Tanggal Update</p>
-                                <p class="font-medium text-gray-900 dark:text-white">{{ \Carbon\Carbon::parse($smb->tgl_update)->format('d M Y') }}</p>
                             </div>
                             @endif
                             @if($smb->izop_1)
@@ -181,13 +175,13 @@
                     </div>
                     <!-- Link Foto -->
                     @if(!empty($smb->link_foto) && $smb->link_foto !== '-')
-                    <div class="border-b pb-4">
+                    <div class="pb-4">
                         <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Dokumentasi</h4>
                         <a href="{{ $smb->link_foto }}" target="_blank" class="text-lime-600 hover:underline">
                             @endif
-                    <!-- Link Foto -->
-                    @if(!empty($smb->link_foto) && $smb->link_foto !== '-')
-                    <div class="border-b pb-4">
+                            <!-- Link Foto -->
+                            @if(!empty($smb->link_foto) && $smb->link_foto !== '-')
+                            <div class="border-b pb-4 dark:border-zinc-700">
                         @php
                             // Deteksi jenis URL dan konversi jika perlu
                             $imageUrl = $smb->link_foto;
@@ -201,8 +195,8 @@
                                 // Extract file ID dari berbagai format URL Google Drive
                                 if (preg_match('/\/d\/([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
                                     $fileId = $matches[1];
-                                } elseif (preg_match('/id=([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
-                                    $fileId = $matches[1];
+                                    } elseif (preg_match('/id=([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
+                                        $fileId = $matches[1];
                                 }
                                 
                                 if ($fileId) {
@@ -213,49 +207,49 @@
                             // Cek apakah URL langsung ke gambar (jpg, jpeg, png, gif, webp, svg)
                             elseif (preg_match('/\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i', $imageUrl)) {
                                 $isDirectImage = true;
-                            }
-                        @endphp
+                                }
+                                @endphp
                         
                         <div class="space-y-3">
                             @if($isGoogleDrive && $fileId)
-                                <!-- Google Drive Image dengan fallback ke iframe -->
+                            <!-- Google Drive Image dengan fallback ke iframe -->
                                 <div class="relative rounded-lg overflow-hidden">
                                     <img id="main-image" 
-                                         src="{{ $imageUrl }}" 
+                                    src="{{ $imageUrl }}" 
                                          alt="Foto {{ $smb->nama }}"
                                          class="w-full h-auto max-h-96 object-contain mx-auto"
                                          style="display: block;"
                                          onerror="showIframeViewer('main-image', 'iframe-viewer-main', '{{ $fileId }}')"> 
-                                    
-                                    <!-- Fallback: Google Drive Viewer (iframe) 
+                                         
+                                         <!-- Fallback: Google Drive Viewer (iframe) 
                                     <iframe id="iframe-viewer-main"
                                             src="https://drive.google.com/file/d/{{ $fileId }}/preview" 
                                             class="w-full h-96"
                                             style="display: none; border: none;"
                                             allow="autoplay"></iframe> -->
-                                </div>
-                            @elseif($isDirectImage)
+                                        </div>
+                                        @elseif($isDirectImage)
                                 <!-- Direct Image URL -->
                                 <div class="relative rounded-lg overflow-hidden">
                                     <img src="{{ $imageUrl }}" 
-                                         alt="Foto {{ $smb->nama_smb }}"
+                                    alt="Foto {{ $smb->nama_smb }}"
                                          class="w-full h-auto max-h-96 object-contain mx-auto"
                                          onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-96 text-gray-500\'><div class=\'text-center\'><svg class=\'w-16 h-16 mx-auto mb-4 text-gray-400\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\'></path></svg><p class=\'text-sm\'>Gambar tidak dapat dimuat</p><p class=\'text-xs text-gray-400 mt-1\'>URL gambar mungkin tidak valid atau tidak dapat diakses</p></div></div>';">
-                                </div>
-                            @else
-                                <!-- URL tidak dikenali atau format tidak didukung -->
-                                <div class="relative rounded-lg overflow-hidden border border-gray-300 bg-gray-50 p-10">
-                                    <div class="text-center text-gray-500">
-                                        <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        </div>
+                                        @else
+                                        <!-- URL tidak dikenali atau format tidak didukung -->
+                                        <div class="relative rounded-lg overflow-hidden border border-gray-300 bg-gray-50 p-10">
+                                            <div class="text-center text-gray-500">
+                                                <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
                                         </svg>
                                         <p class="font-medium">Format link tidak didukung</p>
                                         <p class="text-sm mt-1">Silakan gunakan link Google Drive atau URL gambar langsung</p>
                                     </div>
                                 </div>
-                            @endif
-                            
-                            <!-- Link to original -->
+                                @endif
+                                
+                                <!-- Link to original -->
                             <div class="flex items-center justify-between flex-wrap gap-2">
                                 <a href="{{ $smb->link_foto }}" target="_blank" 
                                    class="inline-flex items-center text-lime-600 hover:text-lime-800 transition">
@@ -264,21 +258,26 @@
                                         <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
                                     </svg>
                                     @if($isGoogleDrive)
-                                        Buka di Google Drive
+                                    Buka di Google Drive
                                     @else
-                                        Buka Gambar Asli
+                                    Buka Gambar Asli
                                     @endif
                                 </a>
                             </div>
                         </div>
                     </div>
-                        </a>
-                    </div>
+                </a>
+                @if($smb->tgl_update)
+                <div class="pt-2">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Tanggal Update</p>
+                    <p class="font-medium text-gray-900 dark:text-white">{{ \Carbon\Carbon::parse($smb->tgl_update)->format('d M Y') }}</p>
+                </div>
+                @endif
+            </div>
                     @endif
                 </div>
             </div>
         </div>
-                        </div>   
-
-    </div>
+    </div>   
+</div>
 </x-guest-layout>

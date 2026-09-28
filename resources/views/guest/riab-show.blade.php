@@ -39,7 +39,7 @@
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-300">Kabupaten</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-300">Kabupaten/Kota</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $riab->kabupaten->kabupaten ?? '-' }}</p>
                             </div>
                             <div>
@@ -55,7 +55,7 @@
                             @if($riab->latitude && $riab->longitude)
                             <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-300">Koordinat (Latitude, Longitude)</p>
-                                <p class="font-medium">
+                                <p class="font-medium hover:underline   ">
                                     <a href="https://maps.google.com/?q={{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}" target="_blank">{{ $riab->latitude ?? '-' }}, {{ $riab->longitude ?? '-' }}</a></p>
                             </div>
                             @else
@@ -77,42 +77,44 @@
                             Informasi Umum
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            @if($riab->ketua)
-                            <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-300">Ketua</p>
-                                <p class="font-medium text-gray-900 dark:text-white">{{ $riab->ketua }}</p>
-                            </div>
-                            @endif
-                            @if($riab->tgl_tanda_daftar)
-                            <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-300">Tanggal Terdaftar</p>
-                                <p class="font-medium text-gray-900 dark:text-white">{{ \Carbon\Carbon::parse($riab->tgl_tanda_daftar)->format('d M Y') }}</p>
-                            </div>
-                            @endif
-                            @if($riab->deskripsi)
-                            <div class="md:col-span-2">
-                                <p class="text-sm text-gray-500 dark:text-gray-300">Keterangan</p>
-                                <p class="font-medium text-gray-900 dark:text-white whitespace-pre-wrap">{{ $riab->deskripsi }}</p>
-                            </div>
-                            @endif
                             <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-300">Jenis RIAB</p>
                                 <p class="font-medium">{{ $riab->jenis_riab ?? '-' }}</p>
                             </div>
-                            <div>
+                            <!--@if($riab->tgl_tanda_daftar)
+                                <div>
+                                    <p class="text-sm text-gray-500 dark:text-gray-300">Tanggal Terdaftar</p>
+                                    <p class="font-medium text-gray-900 dark:text-white">{{ \Carbon\Carbon::parse($riab->tgl_tanda_daftar)->format('d M Y') }}</p>
+                                </div>
+                                @endif-->
+                                <div>
+                                    <p class="text-sm text-gray-500 dark:text-gray-300">Status</p>
+                                    <p class="font-medium">
+                                        {{ $riab->eksisting ?? '-' }}
+                                    </p>
+                                </div>
+                                @if($riab->deskripsi)
+                                <div class="md:col-span-2">
+                                    <p class="text-sm text-gray-500 dark:text-gray-300">Keterangan</p>
+                                    <p class="font-medium text-gray-900 dark:text-white whitespace-pre-wrap">{{ $riab->deskripsi }}</p>
+                                </div>
+                                @endif
+                                @if($riab->ketua)
+                                <div>
+                                    <p class="text-sm text-gray-500 dark:text-gray-300">Ketua</p>
+                                    <p class="font-medium text-gray-900 dark:text-white">{{ $riab->ketua }}</p>
+                                </div>
+                                @endif
+                                @if($riab->jumlah_umat)
+                                <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-300">Jumlah Umat</p>
                                 <p class="font-medium">{{ $riab->jumlah_umat ? number_format($riab->jumlah_umat) . ' orang' : '-' }}</p>
                             </div>
+                            @endif
                             <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-300">Kondisi Bangunan</p>
                                 <p class="font-medium">
                                     {{ $riab->kondisi ?? '-' }}
-                                </p>
-                            </div>
-                            <div>
-                                <p class="text-sm text-gray-500 dark:text-gray-300">Status</p>
-                                <p class="font-medium">
-                                    {{ $riab->eksisting ?? '-' }}
                                 </p>
                             </div>
                         </div>
@@ -256,7 +258,7 @@
                             Informasi Tanah & Bangunan
                         </h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
+                            <!--<div>
                                 <p class="text-sm text-gray-500 dark:text-gray-300">Status Tanah</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $riab->riabdetail->status_tanah ?? '-' }}</p>
                             </div>
@@ -267,7 +269,7 @@
                                         {{ $riab->riabdetail->sertifikasi_tanah ?? '-' }}
                                     </span>
                                 </p>
-                            </div>
+                            </div>-->
                             <div>
                                 <p class="text-sm text-gray-500 dark:text-gray-300">Luas Tanah</p>
                                 <p class="font-medium text-gray-900 dark:text-white">{{ $riab->riabdetail->luas_tanah ? $riab->riabdetail->luas_tanah . ' m²' : '-' }}</p>
@@ -298,7 +300,7 @@
                                     @endif
                                 </p>
                             </div>
-                            <div>
+                            <!--<div>
                                 <p class="text-sm text-gray-500 dark:text-gray-300">Peta Rawan Bencana</p>
                                 <p class="font-medium text-gray-900 dark:text-white">
                                     @if(!empty($petaRawan))
@@ -307,7 +309,7 @@
                                         -
                                     @endif
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -359,6 +361,7 @@
 
                     <!-- Statistik -->
                     <div>
+                        <!--
                         <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
@@ -382,8 +385,8 @@
                                 <p class="text-2xl font-bold text-orange-600 dark:text-orange-400">{{ $riab->riabdetail->jumlah_buku_keagamaan ?? 0 }}</p>
                                 <p class="text-xs text-gray-500 dark:text-gray-300">Buku Agama</p>
                             </div>
-                        </div>
-                        <div class="py-4">
+                        </div> -->
+                        <div>
                             <p class="text-sm text-gray-500 dark:text-gray-300">Tanggal Update</p>
                             <p class="font-medium">{{ $riab->tgl_update ? \Carbon\Carbon::parse($riab->tgl_update)->format('d M Y') : '-' }}</p>
                         </div>
