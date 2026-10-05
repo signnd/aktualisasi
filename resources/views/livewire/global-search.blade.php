@@ -3,7 +3,7 @@
         <input 
             type="text" 
             wire:model.live.debounce.300ms="query" 
-            class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-zinc-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-lg text-lg transition-shadow"
+            class="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-300  bg-white dark:bg-zinc-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-lg text-lg transition-shadow"
             placeholder="Cari rumah ibadah, lembaga, atau sekolah..."
             autocomplete="off"
         >

@@ -6,7 +6,7 @@ new class extends Component {
     //
 }; ?>
 
-<section class="w-full">
+<section class="w-full p-8">
     @include('partials.settings-heading')
 
     <x-settings.layout :heading="__('Tampilan')" :subheading=" __('Sesuaikan tampilan mode gelap atau terang pada aplikasi.')">

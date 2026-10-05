@@ -51,6 +51,7 @@
 
     <!-- Navbar Decoration (Optional Line) -->
     <div class="h-2 w-full bg-gradient-to-r from-amber-500 via-orange-500 to-red-500"></div>
+<x-guest-layout>
 
     <!-- Main Content -->
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
@@ -67,9 +68,10 @@
             <h1 class="text-4xl md:text-5xl font-bold mb-3 text-slate-900 tracking-tight">
                 Selamat datang di <span class="text-orange-600">SIMADHA</span>
             </h1>
-            <h3 class="text-lg md:text-xl text-slate-500 font-medium">
+            <h3 class="text-lg md:text-xl text-slate-500 font-medium mb-8">
                 Sistem Informasi Keagamaan Buddha di Bali
             </h3>
+            <livewire:global-search />
         </div>
 
         <!-- Main Categories Grid -->
@@ -222,7 +224,7 @@
         </div>
     </main>
 
-    <!-- Simple Footer -->
+    <!-- Simple Footer
     <footer class="border-t border-slate-200 mt-auto bg-white">
         <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-center text-sm text-slate-500">
@@ -232,6 +234,7 @@
                 <span>Sistem Informasi Keagamaan Buddha Provinsi Bali</span>
             </div>
         </div>
-    </footer>
+    </footer> -->
+</x-guest-layout>
 </body>
 </html>

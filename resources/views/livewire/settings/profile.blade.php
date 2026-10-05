@@ -69,7 +69,7 @@ new class extends Component {
     }
 }; ?>
 
-<section class="w-full">
+<section class="w-full p-8">
     @include('partials.settings-heading')
 
     <x-settings.layout :heading="__('Edit Profil')" :subheading="__('Perbarui nama dan email di sini')">

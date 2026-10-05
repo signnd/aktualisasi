@@ -57,7 +57,7 @@ class WelcomeController extends Controller
             ->take(3)
             ->get();
 
-        return view('welcome', compact('counts', 'informasiPublik'));
+        return view('welcome3', compact('counts', 'informasiPublik'));
     }
 
 }

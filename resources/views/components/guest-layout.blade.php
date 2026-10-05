@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('partials.head')
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -154,7 +154,8 @@
                     Informasi
                 </a>
                 </div>
-            <div class="p-2 my-auto">
+            <div class="flex items-center gap-2 p-2 my-auto">
+                <x-theme-toggle />
                 @auth
                     <a href="{{ route('dashboard') }}" 
                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">

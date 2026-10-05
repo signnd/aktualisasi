@@ -419,6 +419,7 @@
                         </div>
                         @endif
                     </div>
+                </div>
                 <!-- Data Tendik -->
                 <div class="mt-8 pt-8 border-t">
                     <div class="flex justify-between items-center mb-4">

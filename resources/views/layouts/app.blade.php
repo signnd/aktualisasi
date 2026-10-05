@@ -22,14 +22,6 @@
                         <a href="{{ url('/') }}" class="flex items-center text-xl font-bold text-blue-600">
                             {{ config('app.name', 'Laravel') }}
                         </a>
-                        <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                            <a href="{{ route('riab.index') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-blue-600">
-                                RIAB
-                            </a>
-                            <a href="{{ route('riab.create') }}" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-700 hover:text-blue-600">
-                                Tambah
-                            </a>
-                        </div>
                     </div>
                     <div class="flex items-center">
                         @auth
