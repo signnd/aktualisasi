@@ -273,7 +273,7 @@
                         <div>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Status Verifikasi</p>
                             <p class="font-medium">
-                                <span class="px-2 py-1 rounded text-sm {{ $smb->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-800 dark:text-gray-100' }}">
+                                <span class="px-2 py-1 rounded text-sm {{ $smb->status_verifikasi == 'TRUE' ? 'bg-blue-100 text-blue-800' : 'bg-gray-50 text-gray-800 dark:text-gray-800' }}">
                                     {{ $smb->status_verifikasi == 'TRUE' ? 'Terverifikasi' : 'Belum Terverifikasi' }}
                                 </span>
                             </p>
@@ -303,6 +303,8 @@
                             <p class="text-sm text-gray-600 dark:text-gray-300">No. Telp/HP/WhatsApp</p>
                             <p class="font-medium">{{ $smb->no_telp ?? '-' }}</p>
                         </div>
+                    </div>
+                </div>
 
                 <!-- Link Dokumentasi -->
                 @if($smb->link_foto)
