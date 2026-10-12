@@ -297,17 +297,17 @@
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-2">Status Verifikasi</label>
                                 <div class="flex gap-3">
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="approved"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'approved' ? 'checked' : '' }}
+                                        <input type="radio" name="status_verifikasi" value="TRUE"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'TRUE' ? 'checked' : '' }}
                                                class="mr-2 text-blue-600 focus:ring-blue-500">
                                         <span>Terverifikasi/Approved</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="pending"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'pending' ? 'checked' : '' }}
+                                        <input type="radio" name="status_verifikasi" value="PENDING"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'PENDING' ? 'checked' : '' }}
                                                class="mr-2 text-gray-600 focus:ring-gray-500">
                                         <span>Pending</span>
                                     </label>
                                     <label class="flex items-center">
-                                        <input type="radio" name="status_verifikasi" value="rejected"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'rejected' ? 'checked' : '' }}
+                                        <input type="radio" name="status_verifikasi" value="FALSE"  {{ old('status_verifikasi', $smb->status_verifikasi) == 'FALSE' ? 'checked' : '' }}
                                                class="mr-2 text-red-600 focus:ring-red-500">
                                         <span>Ditolak</span>
                                     </label>

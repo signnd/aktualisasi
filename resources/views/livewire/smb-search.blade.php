@@ -147,9 +147,9 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-center">
                                 <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full 
-                                    {{ $smb->status_verifikasi == 'approved' ? 'bg-green-100 text-green-800' : 
-                                       ($smb->status_verifikasi == 'rejected' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800') }}">
-                                    {{ ucfirst($smb->status_verifikasi ?? 'pending') }}
+                                    {{ $smb->status_verifikasi == 'TRUE' ? 'bg-green-100 text-green-800' : 
+                                       ($smb->status_verifikasi == 'FALSE' ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800') }}">
+                                    {{ ucfirst($smb->status_verifikasi ?? 'PENDING') }}
                                 </span>
                                 @if($smb->status_verifikasi === 'pending')
                                 <div class="flex justify-center space-x-2 mt-2">
