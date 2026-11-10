@@ -12,8 +12,15 @@ class Informasi extends Model
     protected $table = 'informasi';
 
     protected $fillable = [
-        'judul', 'ringkasan', 'kategori', 'foto', 'teks', 'user_id',
+        'judul', 'ringkasan', 'kategori', 'foto', 'fotos', 'teks', 'dokumentasi', 'user_id', 'created_at'
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'fotos' => 'array',
+        ];
+    }
 
     public function users()
     {

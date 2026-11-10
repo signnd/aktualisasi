@@ -83,6 +83,29 @@
                                 <input type="text" name="no_registrasi" value="{{ old('no_registrasi', $riab->no_registrasi) }}"
                                        class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat Lengkap <span class="text-red-500">*</span></label>
+                                <textarea name="alamat" rows="2" required
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat', $riab->alamat) }}</textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kelurahan/Desa</label>
+                                <input type="text" name="kelurahan" value="{{ old('kelurahan', $riab->kelurahan) }}"
+                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kecamatan <span class="text-red-500">*</span></label>
+                                <select id="kecamatan_id" name="kecamatan_id" required
+                                    class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-zinc-800 text-black dark:text-gray-100 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">-- Pilih Kecamatan --</option>
+                                    @foreach($kecamatan as $kc)
+                                        <option value="{{ $kc->id }}" data-kabupaten="{{ $kc->kabupaten_id }}"
+                                            @selected(old('kecamatan_id', $riab->kecamatan_id) == $kc->id)>
+                                            {{ $kc->kecamatan }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kabupaten/Kota <span class="text-red-500">*</span></label>
                                 @if(auth()->user()->user_role === 'admin')
@@ -111,48 +134,7 @@
                                     <!-- Hidden input untuk mengirim value karena disabled field tidak terkirim -->
                                     <input type="hidden" name="kabupaten_id" value="{{ auth()->user()->kabupaten_id }}">
                                 @endif
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kecamatan <span class="text-red-500">*</span></label>
-                                <select id="kecamatan_id" name="kecamatan_id" required
-                                    class="w-full px-3 py-2 border border-gray-400 bg-white dark:bg-zinc-800 text-black dark:text-gray-100 hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                    <option value="">-- Pilih Kecamatan --</option>
-                                    @foreach($kecamatan as $kc)
-                                        <option value="{{ $kc->id }}" data-kabupaten="{{ $kc->kabupaten_id }}"
-                                            @selected(old('kecamatan_id', $riab->kecamatan_id) == $kc->id)>
-                                            {{ $kc->kecamatan }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Kelurahan/Desa</label>
-                                <input type="text" name="kelurahan" value="{{ old('kelurahan', $riab->kelurahan) }}"
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">
-                                    Kategori 3T 
-                                    <a href="https://docs.google.com/document/d/1TI8geSRdMLf19JiWZ_fUzl0vQPpZ-fuz/edit" target="_blank" class="text-blue-50 dark:text-blue-600-500 hover:underline text-xs">(Lihat detail)</a>
-                                </label>
-                                <div class="flex items-center space-x-4 mt-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="kategori_3t" value="3T" {{ old('kategori_3t', $riab->kategori_3t) == '3T' ? 'checked' : '' }}
-                                               class="mr-2 text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
-                                        <span>3T</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="kategori_3t" value="Non 3T" {{ old('kategori_3t', $riab->kategori_3t) == 'Non 3T' ? 'checked' : '' }}
-                                               class="mr-2 text-blue-50 dark:text-blue-600-600 focus:ring-blue-500">
-                                        <span>Non 3T</span>
-                                    </label>
                                 </div>
-                            </div>
-                            <div class="md:col-span-2">
-                                <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Alamat Lengkap <span class="text-red-500">*</span></label>
-                                <textarea name="alamat" rows="2" required
-                                       class="w-full px-3 py-2 border border-gray-400 dark:bg-zinc-800 dark:border-zinc-600 dark:text-white bg-white hover:shadow-md transition motion-reduce:transition-none rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent">{{ old('alamat', $riab->alamat) }}</textarea>
-                            </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-800 dark:text-gray-100 mb-1">Latitude</label>
                                 <input type="text" name="latitude" value="{{ old('latitude', $riab->latitude) }}"

@@ -18,5 +18,28 @@
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
         "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
         "lightningcss-linux-x64-gnu": "^1.29.1"
+    },
+    "name": "simadha",
+    "version": "1.0.0",
+    "description": "",
+    "main": "vite.config.js",
+    "directories": {
+        "test": "tests"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/signnd/aktualisasi.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/signnd/aktualisasi/issues"
+    },
+    "homepage": "https://github.com/signnd/aktualisasi#readme",
+    "allowScripts": {
+        "@tailwindcss/oxide@4.1.11": true,
+        "esbuild@0.27.2": true
     }
 }

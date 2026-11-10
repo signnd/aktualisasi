@@ -1,0 +1,1 @@
+https://localhost {    tls internal    reverse_proxy adminer:8083}

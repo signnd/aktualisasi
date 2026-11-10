@@ -55,9 +55,25 @@ services:
             - 8083:8080
         networks:
             - sail
+    caddy:
+      image: caddy:2
+      restart: unless-stopped
+      ports:
+        - "127.0.0.1:8443:443"
+      volumes:
+        - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+        - caddy_data:/data
+        - caddy_config:/config
+      networks:
+        - sail
+      depends_on:
+        - adminer
+
 networks:
     sail:
         driver: bridge
 volumes:
     sail-mysql:
         driver: local
+    caddy_data:
+    caddy_config:

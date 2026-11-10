@@ -19,65 +19,78 @@
                     <h1 class="text-3xl font-bold">{{ $informasi->judul }}</h1>
                     <h3 class="font-medium py-2 text-gray-300">{{ $informasi->ringkasan ?? '-' }}</h3>
                 </div>
-                @if($informasi->foto)
-                    <div>
-                        <a href="{{ $informasi->link_foto }}" target="_blank" class="text-blue-600 hover:underline">
-                    @endif
-                    <!-- Link Foto -->
-                    @if($informasi->foto)
-                    <div>
-                        @php
-                            // Deteksi jenis URL dan konversi jika perlu
-                            $imageUrl = $informasi->foto;
-                            $fileId = null;
-                            $isGoogleDrive = false;
-                            $isDirectImage = false;
-                            
-                            // Cek apakah URL dari Google Drive
-                            if (strpos($imageUrl, 'drive.google.com') !== false) {
-                                $isGoogleDrive = true;
-                                // Extract file ID dari berbagai format URL Google Drive
-                                if (preg_match('/\/d\/([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
-                                    $fileId = $matches[1];
-                                } elseif (preg_match('/id=([a-zA-Z0-9_-]+)/', $imageUrl, $matches)) {
-                                    $fileId = $matches[1];
-                                }
-                                
-                                if ($fileId) {
-                                    // Gunakan format direct image dari lh3.googleusercontent.com
-                                    $imageUrl = "https://lh3.googleusercontent.com/d/{$fileId}";
-                                }
-                            } 
-                            // Cek apakah URL langsung ke gambar (jpg, jpeg, png, gif, webp, svg)
-                            elseif (preg_match('/\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i', $imageUrl)) {
-                                $isDirectImage = true;
-                            }
-                        @endphp
-                        
-                        <div class="space-y-3">
-                            @if($isGoogleDrive && $fileId)
-                                <!-- Google Drive Image dengan fallback ke iframe -->
-                                <div class="relative rounded-lg overflow-hidden bg-gray-50/0">
-                                    <img id="main-image" 
-                                         src="{{ $imageUrl }}" 
-                                         alt="Foto {{ $informasi->judul }}"
-                                         class="w-full h-auto max-h-96 object-contain mx-auto"
-                                         style="display: block;"
-                                         onerror="showIframeViewer('main-image', 'iframe-viewer-main', '{{ $fileId }}')">
-                                    
-                                    <!-- Fallback: Google Drive Viewer (iframe) -->
-                                    <iframe id="iframe-viewer-main"
-                                            src="https://drive.google.com/file/d/{{ $fileId }}/preview" 
-                                            class="w-full h-96"
-                                            style="display: none; border: none;"
-                                            allow="autoplay"></iframe>
-                                </div></a>
-                            @else
-                                <!-- URL tidak dikenali atau format tidak didukung -->
-                            @endif
-                        @else
+                @php
+                    $photoUrls = [];
+
+                    foreach (($informasi->fotos ?? []) as $photo) {
+                        $storagePosition = strpos($photo, '/storage/');
+
+                        if ($storagePosition !== false) {
+                            $photoUrls[] = substr($photo, $storagePosition);
+                        }
+                    }
+
+                    $externalImageUrl = $informasi->foto;
+                    $legacyStoragePosition = $externalImageUrl ? strpos($externalImageUrl, '/storage/') : false;
+
+                    if ($legacyStoragePosition !== false) {
+                        $legacyPhotoUrl = substr($externalImageUrl, $legacyStoragePosition);
+
+                        if (! in_array($legacyPhotoUrl, $photoUrls, true)) {
+                            $photoUrls[] = $legacyPhotoUrl;
+                        }
+
+                        $externalImageUrl = null;
+                    }
+
+                    $externalFileId = null;
+                    $isGoogleDrive = $externalImageUrl && str_contains($externalImageUrl, 'drive.google.com');
+
+                    if ($isGoogleDrive) {
+                        if (preg_match('/\/d\/([a-zA-Z0-9_-]+)/', $externalImageUrl, $matches)) {
+                            $externalFileId = $matches[1];
+                        } elseif (preg_match('/id=([a-zA-Z0-9_-]+)/', $externalImageUrl, $matches)) {
+                            $externalFileId = $matches[1];
+                        }
+
+                        if ($externalFileId) {
+                            $externalImageUrl = "https://lh3.googleusercontent.com/d/{$externalFileId}";
+                        }
+                    }
+                @endphp
+
+                @if(count($photoUrls) > 0 || $externalImageUrl)
+                    <div class="p-4 border-b border-gray-200 dark:border-zinc-700">
+                        <x-informasi-photo-carousel :photos="$photoUrls" :title="$informasi->judul" />
+
+                        @if($externalImageUrl)
+                            <div class="{{ count($photoUrls) > 0 ? 'mt-3' : '' }}">
+                                @if($isGoogleDrive && $externalFileId)
+                                    <div class="relative rounded-lg overflow-hidden bg-gray-50 dark:bg-zinc-900">
+                                        <img id="main-image"
+                                             src="{{ $externalImageUrl }}"
+                                             alt="Foto {{ $informasi->judul }}"
+                                             class="w-full h-auto max-h-96 object-contain mx-auto"
+                                             onerror="showIframeViewer('main-image', 'iframe-viewer-main', '{{ $externalFileId }}')">
+                                        <iframe id="iframe-viewer-main"
+                                                src="https://drive.google.com/file/d/{{ $externalFileId }}/preview"
+                                                class="w-full h-96 hidden"
+                                                style="border: none;"
+                                                allow="autoplay"></iframe>
+                                    </div>
+                                @else
+                                    <a href="{{ $externalImageUrl }}" target="_blank" class="block">
+                                        <img src="{{ $externalImageUrl }}"
+                                             alt="Foto {{ $informasi->judul }}"
+                                             class="w-full h-auto max-h-96 object-contain mx-auto rounded-lg"
+                                             onerror="this.parentElement.classList.add('hidden')">
+                                    </a>
+                                @endif
+                            </div>
                         @endif
                     </div>
+                @endif
+
                 <div class="p-6 space-y-6">
                     
                     <!-- Informasi -->
@@ -104,4 +117,20 @@
             </div>
         </div>
     </div>
+<script>
+    function showIframeViewer(imageId, iframeId, fileId) {
+        const image = document.getElementById(imageId);
+        const iframe = document.getElementById(iframeId);
+
+        if (!image || !iframe) {
+            return;
+        }
+
+        image.style.display = 'none';
+        iframe.src = `https://drive.google.com/file/d/${fileId}/preview`;
+        iframe.classList.remove('hidden');
+        iframe.style.display = 'block';
+    }
+</script>
+
 </x-guest-layout>
